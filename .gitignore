@@ -1,0 +1,22 @@
+# Build products
+DerivedData/
+build/
+
+# Xcode workspace
+*/*.xcworkspace/xcuserdata
+
+# Xcode project
+*/*.xcodeproj/*.pbxuser
+*/*.xcodeproj/*.mode1v3
+*/*.xcodeproj/xcuserdata
+# Xcode creates this hidden workspace when someone opens just the
+# project (top-level .xcodeproj folder) instead of the workspace
+# (top-level .xcworkspace folder). Because the hidden workspace never
+# contains anything but the enclosing project, it can be safely ignored.
+*/*.xcodeproj/project.xcworkspace
+
+# CocoaPods files
+*/Pods/
+
+# Other files
+.DS_Store
