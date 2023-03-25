@@ -4,9 +4,15 @@ Coding experiments on Apple platforms (mainly iOS).
 
 Code you find in this repository is public domain - do with it whatever you want. No warranty, nor even a guarantee that it runs.
 
+Current experiments:
+
+* [extended-layout](extended-layout/README.md): This project contains code that deals with the "extended layout" concept introduced by Apple in iOS 7.
+* [core-graphics](core-graphics/README.md): This project provides a user interface that lets the user interactively explore Core Graphics drawing functions.
+
+
 ## How to create a new iOS project without storyboard
 
-These steps were written for Xcode 13.2.1.
+When a new experiment is started for iOS, the steps in this chapter help to get the Xcode project up and running with a minimum of fuss. The steps were written for Xcode 13.2.1.
 
 ### Project creation
 
@@ -36,7 +42,7 @@ Remove everything in the section "UISceneSession lifecycle".
 
 Add this line at the top:
 
-     #import "ViewController.h"
+    #import "ViewController.h"
 
 Add the following code to `application:didFinishLaunchingWithOptions:()`
 
