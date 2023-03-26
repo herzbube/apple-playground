@@ -6,6 +6,7 @@
 //
 
 #import "ColorParameters.h"
+#import "../Converter.h"
 
 @implementation ColorParameters
 
@@ -20,6 +21,36 @@
   self.hexString = @"FF0000FF";
 
   return self;
+}
+
+- (void) updateWithHexString:(NSString*)hexString
+{
+  if ([hexString length] != 8)
+    return;
+
+  NSRange range = NSMakeRange(0, 2);
+  NSString* redString = [hexString substringWithRange:range];
+  range = NSMakeRange(2, 2);
+  NSString* greenString = [hexString substringWithRange:range];
+  range = NSMakeRange(4, 2);
+  NSString* blueString = [hexString substringWithRange:range];
+  range = NSMakeRange(6, 2);
+  NSString* alphaString = [hexString substringWithRange:range];
+
+  self.red = [Converter colorFractionFromColorComponentStringValue:redString];
+  self.green = [Converter colorFractionFromColorComponentStringValue:greenString];
+  self.blue = [Converter colorFractionFromColorComponentStringValue:blueString];
+  self.alpha = [Converter colorFractionFromColorComponentStringValue:alphaString];
+  self.hexString = hexString;
+}
+
+- (NSString*) hexStringFromColorComponentValues
+{
+  unsigned int red = [Converter colorComponentByteValueFromFractionValue:self.red];
+  unsigned int green = [Converter colorComponentByteValueFromFractionValue:self.green];
+  unsigned int blue = [Converter colorComponentByteValueFromFractionValue:self.blue];
+  unsigned int alpha = [Converter colorComponentByteValueFromFractionValue:self.alpha];
+  return [NSString stringWithFormat:@"%02X%02X%02X%02X", red, green, blue, alpha];
 }
 
 @end

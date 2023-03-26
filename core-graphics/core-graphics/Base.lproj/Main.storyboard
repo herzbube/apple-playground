@@ -19,37 +19,55 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="khs-zU-FeP" userLabel="Top Level Stack View">
                                 <rect key="frame" x="20" y="44" width="1366" height="980"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="25r-Gg-LbN" userLabel="Left Hand Side Stack View">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="jxG-5p-uxX" userLabel="Left hand side scroll view">
                                         <rect key="frame" x="0.0" y="0.0" width="946" height="980"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNL-nM-LRi" userLabel="ArcParametersContainerView">
-                                                <rect key="frame" x="0.0" y="0.0" width="946" height="61.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tSh-WH-9Xd">
-                                                <rect key="frame" x="0.0" y="81.5" width="946" height="50"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="25r-Gg-LbN" userLabel="Left hand side stack view">
+                                                <rect key="frame" x="0.0" y="20" width="946" height="1038.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPn-mh-CxP" userLabel="StrokeParametersContainerView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="463" height="50"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNL-nM-LRi" userLabel="ArcParametersContainerView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="946" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-8R-bBO" userLabel="FillParametersContainerView">
-                                                        <rect key="frame" x="483" y="0.0" width="463" height="50"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tSh-WH-9Xd" userLabel="Stroke and fill stack view">
+                                                        <rect key="frame" x="0.0" y="70" width="946" height="50"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPn-mh-CxP" userLabel="StrokeParametersContainerView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="463" height="50"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-8R-bBO" userLabel="FillParametersContainerView">
+                                                                <rect key="frame" x="483" y="0.0" width="463" height="50"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zdK-f7-ErI" userLabel="AffineTransformParametersContainerView">
+                                                        <rect key="frame" x="0.0" y="140" width="946" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fX-10-uhl" userLabel="GradientParametersContainerView">
+                                                        <rect key="frame" x="0.0" y="210" width="946" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5a-PY-Wsr" userLabel="Spacer view">
+                                                        <rect key="frame" x="0.0" y="280" width="946" height="758.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zdK-f7-ErI" userLabel="AffineTransformContainerView">
-                                                <rect key="frame" x="0.0" y="151.5" width="946" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5a-PY-Wsr" userLabel="Spacer View">
-                                                <rect key="frame" x="0.0" y="221.5" width="946" height="758.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
                                         </subviews>
-                                    </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-vb-dGs" customClass="DrawingView">
+                                        <constraints>
+                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="width" secondItem="gxr-57-ZH1" secondAttribute="width" id="83v-Wc-tce"/>
+                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="trailing" secondItem="J0R-7i-8gD" secondAttribute="trailing" id="Ghc-9A-aTC"/>
+                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="leading" secondItem="J0R-7i-8gD" secondAttribute="leading" id="QSC-92-4zw"/>
+                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="bottom" secondItem="J0R-7i-8gD" secondAttribute="bottom" id="VsJ-wb-9kx"/>
+                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="top" secondItem="J0R-7i-8gD" secondAttribute="top" id="ZOB-1R-kI3"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="J0R-7i-8gD"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="gxr-57-ZH1"/>
+                                    </scrollView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-vb-dGs" userLabel="Drawing view" customClass="DrawingView">
                                         <rect key="frame" x="966" y="0.0" width="400" height="980"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <gestureRecognizers/>
@@ -74,6 +92,7 @@
                         <outlet property="arcParametersContainerView" destination="dNL-nM-LRi" id="Sj7-S0-aY4"/>
                         <outlet property="drawingView" destination="jvi-vb-dGs" id="X5u-qR-02Z"/>
                         <outlet property="fillParametersContainerView" destination="qbc-8R-bBO" id="Jbo-Xj-FT3"/>
+                        <outlet property="gradientParametersContainerView" destination="6fX-10-uhl" id="DM5-Kp-qEw"/>
                         <outlet property="strokeParametersContainerView" destination="bPn-mh-CxP" id="CjY-FX-zbu"/>
                     </connections>
                 </viewController>

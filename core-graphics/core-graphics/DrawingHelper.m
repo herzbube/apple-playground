@@ -6,8 +6,12 @@
 //
 
 #import "DrawingHelper.h"
+#import "Model/AffineTransformParameters.h"
 #import "Model/ColorParameters.h"
 #import "Model/FillParameters.h"
+#import "Model/GradientStopParameters.h"
+#import "Model/LinearGradientParameters.h"
+#import "Model/RadialGradientParameters.h"
 #import "Model/StrokeParameters.h"
 
 @implementation DrawingHelper
@@ -28,38 +32,31 @@
   return MIN(rect.size.width, rect.size.height);
 }
 
-//+ (UIColor*) colorFromHexString:(NSString*)hexString
-//{
-//  if ([hexString length] != 6)
-//    return [UIColor blackColor];
-//
-//  NSRange range = NSMakeRange(0, 2);
-//  NSString* redString = [hexString substringWithRange:range];
-//  range = NSMakeRange(2, 2);
-//  NSString* greenString = [hexString substringWithRange:range];
-//  range = NSMakeRange(4, 2);
-//  NSString* blueString = [hexString substringWithRange:range];
-//
-//  unsigned int red;
-//  [[NSScanner scannerWithString:redString] scanHexInt:&red];
-//  unsigned int green;
-//  [[NSScanner scannerWithString:greenString] scanHexInt:&green];
-//  unsigned int blue;
-//  [[NSScanner scannerWithString:blueString] scanHexInt:&blue];
-//
-//  return [UIColor colorWithRed:red / 255.0
-//                         green:green / 255.0
-//                          blue:blue / 255.0
-//                         alpha:1.0];
-//}
++ (UIColor*) colorFromColorParameters:(ColorParameters*)colorParameters
+{
+  return [UIColor colorWithRed:colorParameters.red
+                         green:colorParameters.green
+                          blue:colorParameters.blue
+                         alpha:colorParameters.alpha];
+}
 
-//+ (UIColor*) randomColor
-//{
-//  CGFloat red = (CGFloat)random() / (CGFloat)RAND_MAX;
-//  CGFloat blue = (CGFloat)random() / (CGFloat)RAND_MAX;
-//  CGFloat green = (CGFloat)random() / (CGFloat)RAND_MAX;
-//  return [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-//}
++ (void) concatTransformWithContext:(CGContextRef)context
+          affineTransformParameters:(AffineTransformParameters*)affineTransformParameters
+{
+  if (! affineTransformParameters.affineTransformEnabled)
+    return;
+
+  CGAffineTransform transform = CGAffineTransformMake(affineTransformParameters.a,
+                                                      affineTransformParameters.b,
+                                                      affineTransformParameters.c,
+                                                      affineTransformParameters.d,
+                                                      affineTransformParameters.tx,
+                                                      affineTransformParameters.ty);
+  if (CGAffineTransformIsIdentity(transform))
+    return;
+
+  CGContextConcatCTM(context, transform);
+}
 
 + (void) fillOrStrokePathWithContext:(CGContextRef)context
                     strokeParameters:(StrokeParameters*)strokeParameters
@@ -67,10 +64,7 @@
 {
   if (fillParameters.fillEnabled)
   {
-    UIColor* fillColor = [UIColor colorWithRed:fillParameters.colorParameters.red
-                                         green:fillParameters.colorParameters.green
-                                          blue:fillParameters.colorParameters.blue
-                                         alpha:fillParameters.colorParameters.alpha];
+    UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.colorParameters];
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
     if (! strokeParameters.strokeEnabled)
     {
@@ -81,10 +75,7 @@
 
   if (strokeParameters.strokeEnabled)
   {
-    UIColor* strokeColor = [UIColor colorWithRed:strokeParameters.colorParameters.red
-                                           green:strokeParameters.colorParameters.green
-                                            blue:strokeParameters.colorParameters.blue
-                                           alpha:strokeParameters.colorParameters.alpha];
+    UIColor* strokeColor = [DrawingHelper colorFromColorParameters:strokeParameters.colorParameters];
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     CGContextSetLineWidth(context, strokeParameters.lineWidth);
     if (! fillParameters.fillEnabled)
@@ -96,6 +87,84 @@
 
   if (fillParameters.fillEnabled && strokeParameters.strokeEnabled)
     CGContextDrawPath(context, kCGPathFillStroke);
+}
+
+CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
+                             GradientStopParameters* gradientStopParameters)
+{
+  CGFloat locations[] = { gradientStopParameters.position1, gradientStopParameters.position2 };
+
+  UIColor* color1 = [DrawingHelper colorFromColorParameters:gradientStopParameters.colorParameters1];
+  UIColor* color2 = [DrawingHelper colorFromColorParameters:gradientStopParameters.colorParameters2];
+  NSArray* colors = [NSArray arrayWithObjects:(id)color1.CGColor, (id)color2.CGColor, nil];
+
+  // NSArray is toll-free bridged, so we can simply cast to CGArrayRef
+  CGGradientRef gradient = CGGradientCreateWithColors(colorSpace,
+                                                      (CFArrayRef)colors,
+                                                      locations);
+  return gradient;
+}
+
++ (void) drawGradientWithContext:(CGContextRef)context
+        linearGradientParameters:(LinearGradientParameters*)linearGradientParameters
+{
+  CGContextSaveGState(context);
+  
+  [DrawingHelper concatTransformWithContext:context
+                  affineTransformParameters:linearGradientParameters.affineTransformParameters];
+
+  CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+  CGGradientRef gradient = CreateGradient(colorSpace, linearGradientParameters.gradientStopParameters);
+
+  CGPoint startPoint = CGPointMake(linearGradientParameters.startPointX, linearGradientParameters.startPointY);
+  CGPoint endPoint = CGPointMake(linearGradientParameters.endPointX, linearGradientParameters.endPointY);
+
+  CGGradientDrawingOptions gradientDrawingOptions = 0;
+
+  CGContextDrawLinearGradient(context,
+                              gradient,
+                              startPoint,
+                              endPoint,
+                              gradientDrawingOptions);
+
+  CGGradientRelease(gradient);
+  CGColorSpaceRelease(colorSpace);
+
+  // Remove transform
+  CGContextRestoreGState(context);
+}
+
++ (void) drawGradientWithContext:(CGContextRef)context
+        radialGradientParameters:(RadialGradientParameters*)radialGradientParameters
+{
+  CGContextSaveGState(context);
+
+  [DrawingHelper concatTransformWithContext:context
+                  affineTransformParameters:radialGradientParameters.affineTransformParameters];
+
+  CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+  CGGradientRef gradient = CreateGradient(colorSpace, radialGradientParameters.gradientStopParameters);
+
+  CGPoint startCenter = CGPointMake(radialGradientParameters.startCenterX, radialGradientParameters.startCenterY);
+  CGPoint endCenter = CGPointMake(radialGradientParameters.endCenterX, radialGradientParameters.endCenterY);
+
+  CGGradientDrawingOptions gradientDrawingOptions = 0;
+
+  CGContextDrawRadialGradient(context,
+                              gradient,
+                              startCenter,
+                              radialGradientParameters.startRadius,
+                              endCenter,
+                              radialGradientParameters.endRadius,
+                              gradientDrawingOptions);
+
+  CGGradientRelease(gradient);
+  CGColorSpaceRelease(colorSpace);
+
+  // Remove transform
+  CGContextRestoreGState(context);
 }
 
 @end

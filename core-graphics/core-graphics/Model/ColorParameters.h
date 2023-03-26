@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ColorParameters : NSObject
 
 - (instancetype) init;
+- (void) updateWithHexString:(NSString*)hexString;
+- (NSString*) hexStringFromColorComponentValues;
 
 @property CGFloat red;
 @property CGFloat green;

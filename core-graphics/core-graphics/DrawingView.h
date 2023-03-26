@@ -10,6 +10,7 @@
 @class AffineTransformParameters;
 @class ArcParameters;
 @class FillParameters;
+@class GradientParameters;
 @class StrokeParameters;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -22,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) FillParameters* fillParameters;
 @property (strong, nonatomic) StrokeParameters* strokeParameters;
 @property (strong, nonatomic) AffineTransformParameters* affineTransformParameters;
+@property (strong, nonatomic) GradientParameters* gradientParameters;
 
 @end
 

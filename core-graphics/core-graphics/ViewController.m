@@ -10,6 +10,7 @@
 #import "Controller/AffineTransformParametersViewController.h"
 #import "Controller/ArcParametersViewController.h"
 #import "Controller/FillParametersViewController.h"
+#import "Controller/GradientParametersViewController.h"
 #import "Controller/StrokeParametersViewController.h"
 #import "AutoLayoutUtility.h"
 
@@ -18,10 +19,13 @@
 @property (weak, nonatomic) IBOutlet UIView* strokeParametersContainerView;
 @property (weak, nonatomic) IBOutlet UIView* fillParametersContainerView;
 @property (weak, nonatomic) IBOutlet UIView* affineTransformParametersContainerView;
+@property (weak, nonatomic) IBOutlet UIView* gradientParametersContainerView;
 @property (weak, nonatomic) IBOutlet DrawingView* drawingView;
 @end
 
 @implementation ViewController
+
+#pragma mark - UIViewController methods
 
 - (void) viewDidLoad
 {
@@ -30,12 +34,15 @@
   [self.drawingView startObserving];
 }
 
+#pragma mark - Manage child view controllers
+
 - (void) integrateChildViewControllers
 {
   [self integrateArcParametersChildViewController];
   [self integrateStrokeParametersChildViewController];
   [self integrateFillParametersChildViewController];
   [self integrateAffineTransformParametersChildViewController];
+  [self integrateGradientParametersChildViewController];
 }
 
 - (void) integrateArcParametersChildViewController
@@ -92,6 +99,20 @@
   [AutoLayoutUtility fillSuperview:self.affineTransformParametersContainerView withSubview:affineTransformParametersView];
 
   self.drawingView.affineTransformParameters = affineTransformParametersViewController.affineTransformParameters;
+}
+
+- (void) integrateGradientParametersChildViewController
+{
+  GradientParametersViewController* gradientParametersViewController = [[GradientParametersViewController alloc] init];
+  [self addChildViewController:gradientParametersViewController];
+  [gradientParametersViewController didMoveToParentViewController:self];
+
+  UIView* gradientParametersView = gradientParametersViewController.view;
+  [self.gradientParametersContainerView addSubview:gradientParametersView];
+  gradientParametersView.translatesAutoresizingMaskIntoConstraints = NO;
+  [AutoLayoutUtility fillSuperview:self.gradientParametersContainerView withSubview:gradientParametersView];
+
+  self.drawingView.gradientParameters = gradientParametersViewController.gradientParameters;
 }
 
 @end

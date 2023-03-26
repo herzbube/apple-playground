@@ -183,34 +183,14 @@
 
 - (void) updateModelWithHexString:(NSString*)hexString
 {
-  if ([hexString length] != 8)
-    return;
-
-  NSRange range = NSMakeRange(0, 2);
-  NSString* redString = [hexString substringWithRange:range];
-  range = NSMakeRange(2, 2);
-  NSString* greenString = [hexString substringWithRange:range];
-  range = NSMakeRange(4, 2);
-  NSString* blueString = [hexString substringWithRange:range];
-  range = NSMakeRange(6, 2);
-  NSString* alphaString = [hexString substringWithRange:range];
-
-  self.colorParameters.red = [Converter colorFractionFromColorComponentStringValue:redString];
-  self.colorParameters.green = [Converter colorFractionFromColorComponentStringValue:greenString];
-  self.colorParameters.blue = [Converter colorFractionFromColorComponentStringValue:blueString];
-  self.colorParameters.alpha = [Converter colorFractionFromColorComponentStringValue:alphaString];
-  self.colorParameters.hexString = hexString;
+  [self.colorParameters updateWithHexString:hexString];
 }
 
 #pragma mark - Conversion methods
 
 - (NSString*) hexStringFromModelValues
 {
-  unsigned int red = [Converter colorComponentByteValueFromFractionValue:self.colorParameters.red];
-  unsigned int green = [Converter colorComponentByteValueFromFractionValue:self.colorParameters.green];
-  unsigned int blue = [Converter colorComponentByteValueFromFractionValue:self.colorParameters.blue];
-  unsigned int alpha = [Converter colorComponentByteValueFromFractionValue:self.colorParameters.alpha];
-  return [NSString stringWithFormat:@"%02X%02X%02X%02X", red, green, blue, alpha];
+  return [self.colorParameters hexStringFromColorComponentValues];
 }
 
 @end

@@ -7,7 +7,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class AffineTransformParameters;
+@class ColorParameters;
 @class FillParameters;
+@class LinearGradientParameters;
+@class RadialGradientParameters;
 @class StrokeParameters;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,9 +21,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGFloat) radians:(CGFloat)degrees;
 + (CGPoint) centerOfRect:(CGRect)rect;
 + (CGFloat) lesserDimensionOfRect:(CGRect)rect;
++ (UIColor*) colorFromColorParameters:(ColorParameters*)colorParameters;
++ (void) concatTransformWithContext:(CGContextRef)context
+          affineTransformParameters:(AffineTransformParameters*)affineTransformParameters;
 + (void) fillOrStrokePathWithContext:(CGContextRef)context
                     strokeParameters:(StrokeParameters*)strokeParameters
                       fillParameters:(FillParameters*)fillParameters;
++ (void) drawGradientWithContext:(CGContextRef)context
+        linearGradientParameters:(LinearGradientParameters*)linearGradientParameters;
++ (void) drawGradientWithContext:(CGContextRef)context
+        radialGradientParameters:(RadialGradientParameters*)radialGradientParameters;
 
 @end
 

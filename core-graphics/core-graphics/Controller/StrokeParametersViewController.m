@@ -44,12 +44,13 @@
   [self updateUiWithModelValues];
 }
 
+#pragma mark - Manage child view controllers
+
 - (void) integrateChildViewControllers
 {
   ColorParametersViewController* colorParametersViewController = [[ColorParametersViewController alloc] init];
 
-  self.strokeParameters.colorParameters = colorParametersViewController.colorParameters;
-  [colorParametersViewController updateWithHexString:@"FF0000FF"];
+  colorParametersViewController.colorParameters = self.strokeParameters.colorParameters;
 
   [self addChildViewController:colorParametersViewController];
   [colorParametersViewController didMoveToParentViewController:self];

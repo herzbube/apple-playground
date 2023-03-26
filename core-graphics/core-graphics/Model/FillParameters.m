@@ -17,7 +17,9 @@
   self.fillEnabled = true;
   
   self.colorParameters = [[ColorParameters alloc] init];
-  
+
+  [self.colorParameters updateWithHexString:@"0000FFFF"];
+
   return self;
 }
 

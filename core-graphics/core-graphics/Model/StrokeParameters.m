@@ -20,7 +20,9 @@
   _maximumLineWidth = 50.0f;
   
   self.colorParameters = [[ColorParameters alloc] init];
-  
+
+  [self.colorParameters updateWithHexString:@"FF0000FF"];
+
   return self;
 }
 
