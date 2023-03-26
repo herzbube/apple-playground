@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="colorParametersContainerView" destination="ee8-o2-SAa" id="owV-Ro-6Ly"/>
                 <outlet property="fillEnabledSwitch" destination="FdF-3K-oP3" id="6EY-hX-G6m"/>
+                <outlet property="stackView" destination="Maz-WG-kmu" id="2y5-3F-nNn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,18 +22,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4q-mD-8za" userLabel="Fill parameters title label">
-                    <rect key="frame" x="0.0" y="0.0" width="400" height="31"/>
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="20.5"/>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="ColorParametersContainerView">
-                    <rect key="frame" x="0.0" y="39" width="469" height="151"/>
-                    <color key="backgroundColor" systemColor="systemGray5Color"/>
-                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Maz-WG-kmu">
+                    <rect key="frame" x="0.0" y="28.5" width="469" height="161.5"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="ColorParametersContainerView">
+                            <rect key="frame" x="0.0" y="0.0" width="469" height="151"/>
+                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FFT-N1-OS2" userLabel="Spacer view">
+                            <rect key="frame" x="0.0" y="151" width="469" height="10.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
+                </stackView>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FdF-3K-oP3" userLabel="Fill enabled switch">
-                    <rect key="frame" x="420" y="0.0" width="51" height="31"/>
+                    <rect key="frame" x="420" y="0.0" width="51" height="20.5"/>
                     <connections>
                         <action selector="fillEnabledValueChanged:" destination="-1" eventType="valueChanged" id="gOC-53-QdG"/>
                     </connections>
@@ -41,19 +51,19 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="ee8-o2-SAa" secondAttribute="bottom" id="3D9-Bu-vTv"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GZf-Hz-B0e"/>
-                <constraint firstItem="ee8-o2-SAa" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="RW6-ci-zsr"/>
-                <constraint firstItem="ee8-o2-SAa" firstAttribute="top" secondItem="k4q-mD-8za" secondAttribute="bottom" constant="8" symbolic="YES" id="bVI-tH-yGN"/>
+                <constraint firstItem="Maz-WG-kmu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="LNB-Iz-zgO"/>
+                <constraint firstItem="Maz-WG-kmu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="URH-Xt-KvV"/>
                 <constraint firstItem="FdF-3K-oP3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ePQ-Ia-7iF"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g5m-p2-PhJ"/>
-                <constraint firstItem="ee8-o2-SAa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rje-Cn-aRY"/>
+                <constraint firstItem="Maz-WG-kmu" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="kLc-Rb-IqH"/>
+                <constraint firstItem="Maz-WG-kmu" firstAttribute="top" secondItem="FdF-3K-oP3" secondAttribute="bottom" constant="8" symbolic="YES" id="uou-Eh-MKE"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="height" secondItem="FdF-3K-oP3" secondAttribute="height" id="xW0-KI-9Xl"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="trailing" secondItem="FdF-3K-oP3" secondAttribute="leading" constant="-20" id="yN5-8e-4X1"/>
                 <constraint firstItem="FdF-3K-oP3" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="zMZ-a2-sNZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="128" y="-40"/>
+            <point key="canvasLocation" x="126.81159420289856" y="-40.178571428571423"/>
         </view>
     </objects>
     <resources>

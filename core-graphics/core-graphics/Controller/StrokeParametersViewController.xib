@@ -13,79 +13,101 @@
                 <outlet property="colorParametersContainerView" destination="ee8-o2-SAa" id="hbl-ND-9IP"/>
                 <outlet property="lineWidthSlider" destination="45p-N8-Ytb" id="iwL-gF-Agr"/>
                 <outlet property="lineWidthTextField" destination="veX-at-LFK" id="MX6-65-b7q"/>
+                <outlet property="stackView" destination="pP3-ao-Td3" id="uvq-Ui-o81"/>
                 <outlet property="strokeEnabledSwitch" destination="FdF-3K-oP3" id="SPG-C4-jgB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="469" height="190"/>
+            <rect key="frame" x="0.0" y="0.0" width="469" height="245"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stroke parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4q-mD-8za" userLabel="Stroke parameters title label">
-                    <rect key="frame" x="0.0" y="0.0" width="400" height="31"/>
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="23"/>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line width" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHU-3k-zau" userLabel="Line width label">
-                    <rect key="frame" x="0.0" y="45.5" width="78" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veX-at-LFK" userLabel="Line width text field">
-                    <rect key="frame" x="86" y="39" width="100" height="34"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="tsT-6Y-2Cb"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="lineWidthEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="q1e-8C-pwc"/>
-                    </connections>
-                </textField>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="45p-N8-Ytb" userLabel="Line width slider">
-                    <rect key="frame" x="192" y="41" width="279" height="31"/>
-                    <connections>
-                        <action selector="lineWidthValueChanged:" destination="-1" eventType="valueChanged" id="cT2-KF-Z5g"/>
-                    </connections>
-                </slider>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="ColorParametersContainerView">
-                    <rect key="frame" x="0.0" y="81" width="469" height="109"/>
-                    <color key="backgroundColor" systemColor="systemGray5Color"/>
-                </view>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FdF-3K-oP3" userLabel="Stroke enabled switch">
-                    <rect key="frame" x="420" y="0.0" width="51" height="31"/>
+                    <rect key="frame" x="420" y="0.0" width="51" height="23"/>
                     <connections>
                         <action selector="strokeEnabledValueChanged:" destination="-1" eventType="valueChanged" id="9sT-zW-R8t"/>
                     </connections>
                 </switch>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pP3-ao-Td3">
+                    <rect key="frame" x="0.0" y="31" width="469" height="214"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ol6-E9-yKa" userLabel="Stroke parameters container view">
+                            <rect key="frame" x="0.0" y="0.0" width="469" height="119.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line width" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHU-3k-zau" userLabel="Line width label">
+                                    <rect key="frame" x="0.0" y="7" width="78" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veX-at-LFK" userLabel="Line width text field">
+                                    <rect key="frame" x="86" y="0.0" width="100" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="tsT-6Y-2Cb"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="lineWidthEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="q1e-8C-pwc"/>
+                                    </connections>
+                                </textField>
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="45p-N8-Ytb" userLabel="Line width slider">
+                                    <rect key="frame" x="192" y="2" width="279" height="31"/>
+                                    <connections>
+                                        <action selector="lineWidthValueChanged:" destination="-1" eventType="valueChanged" id="cT2-KF-Z5g"/>
+                                    </connections>
+                                </slider>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="ColorParametersContainerView">
+                                    <rect key="frame" x="0.0" y="62" width="469" height="109"/>
+                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="45p-N8-Ytb" firstAttribute="centerY" secondItem="veX-at-LFK" secondAttribute="centerY" id="0Mr-iz-tTi"/>
+                                <constraint firstItem="ee8-o2-SAa" firstAttribute="top" secondItem="veX-at-LFK" secondAttribute="bottom" constant="8" symbolic="YES" id="8ob-ub-T0T"/>
+                                <constraint firstItem="45p-N8-Ytb" firstAttribute="leading" secondItem="veX-at-LFK" secondAttribute="trailing" constant="8" symbolic="YES" id="9Sw-VT-nTH"/>
+                                <constraint firstItem="veX-at-LFK" firstAttribute="top" secondItem="Ol6-E9-yKa" secondAttribute="top" id="9eN-ng-FiM"/>
+                                <constraint firstAttribute="bottom" secondItem="ee8-o2-SAa" secondAttribute="bottom" id="9hv-fp-R9D"/>
+                                <constraint firstItem="veX-at-LFK" firstAttribute="leading" secondItem="nHU-3k-zau" secondAttribute="trailing" constant="8" symbolic="YES" id="RG9-q1-05l"/>
+                                <constraint firstItem="ee8-o2-SAa" firstAttribute="leading" secondItem="Ol6-E9-yKa" secondAttribute="leading" id="Y2p-EM-nZC"/>
+                                <constraint firstItem="45p-N8-Ytb" firstAttribute="trailing" secondItem="Ol6-E9-yKa" secondAttribute="trailing" id="Zzc-6y-nO8"/>
+                                <constraint firstItem="ee8-o2-SAa" firstAttribute="trailing" secondItem="Ol6-E9-yKa" secondAttribute="trailing" id="bVW-RK-M4f"/>
+                                <constraint firstItem="nHU-3k-zau" firstAttribute="leading" secondItem="Ol6-E9-yKa" secondAttribute="leading" id="p1I-pe-dHc"/>
+                                <constraint firstItem="nHU-3k-zau" firstAttribute="centerY" secondItem="veX-at-LFK" secondAttribute="centerY" id="zkl-Sc-o1P"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wjg-CS-HnZ" userLabel="Spacer view">
+                            <rect key="frame" x="0.0" y="119.5" width="469" height="94.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="ee8-o2-SAa" secondAttribute="bottom" id="3D9-Bu-vTv"/>
-                <constraint firstItem="45p-N8-Ytb" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="EQ0-cW-bJc"/>
-                <constraint firstItem="45p-N8-Ytb" firstAttribute="centerY" secondItem="veX-at-LFK" secondAttribute="centerY" id="ErP-U0-Kcs"/>
+                <constraint firstItem="pP3-ao-Td3" firstAttribute="top" secondItem="FdF-3K-oP3" secondAttribute="bottom" constant="8" symbolic="YES" id="6Ls-pt-5Dm"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GZf-Hz-B0e"/>
-                <constraint firstItem="nHU-3k-zau" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Oub-f3-hXq"/>
-                <constraint firstItem="veX-at-LFK" firstAttribute="top" secondItem="k4q-mD-8za" secondAttribute="bottom" constant="8" symbolic="YES" id="Q8j-a5-krs"/>
-                <constraint firstItem="ee8-o2-SAa" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="RW6-ci-zsr"/>
+                <constraint firstItem="pP3-ao-Td3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JCq-JP-xjd"/>
+                <constraint firstItem="pP3-ao-Td3" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="cta-ke-UhT"/>
                 <constraint firstItem="FdF-3K-oP3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ePQ-Ia-7iF"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g5m-p2-PhJ"/>
-                <constraint firstItem="45p-N8-Ytb" firstAttribute="leading" secondItem="veX-at-LFK" secondAttribute="trailing" constant="8" symbolic="YES" id="rG3-eO-a39"/>
-                <constraint firstItem="ee8-o2-SAa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rje-Cn-aRY"/>
-                <constraint firstItem="nHU-3k-zau" firstAttribute="centerY" secondItem="veX-at-LFK" secondAttribute="centerY" id="siK-Mr-WpS"/>
-                <constraint firstItem="veX-at-LFK" firstAttribute="leading" secondItem="nHU-3k-zau" secondAttribute="trailing" constant="8" symbolic="YES" id="tsF-Ke-rDW"/>
+                <constraint firstItem="pP3-ao-Td3" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="pqs-X1-Sf7"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="height" secondItem="FdF-3K-oP3" secondAttribute="height" id="xW0-KI-9Xl"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="trailing" secondItem="FdF-3K-oP3" secondAttribute="leading" constant="-20" id="yN5-8e-4X1"/>
-                <constraint firstItem="ee8-o2-SAa" firstAttribute="top" secondItem="veX-at-LFK" secondAttribute="bottom" constant="8" symbolic="YES" id="yPE-Zf-nsV"/>
                 <constraint firstItem="FdF-3K-oP3" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="zMZ-a2-sNZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="128" y="-40"/>
+            <point key="canvasLocation" x="126.81159420289856" y="-21.763392857142858"/>
         </view>
     </objects>
     <resources>

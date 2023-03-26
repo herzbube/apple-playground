@@ -11,8 +11,9 @@
 #import "../AutoLayoutUtility.h"
 
 @interface FillParametersViewController()
-@property (weak, nonatomic) IBOutlet UIView* colorParametersContainerView;
 @property (weak, nonatomic) IBOutlet UISwitch* fillEnabledSwitch;
+@property (weak, nonatomic) IBOutlet UIStackView* stackView;
+@property (weak, nonatomic) IBOutlet UIView* colorParametersContainerView;
 @end
 
 @implementation FillParametersViewController
@@ -62,6 +63,8 @@
 {
   BOOL fillEnabled = sender.on;
 
+  self.stackView.hidden = ! fillEnabled;
+
   self.fillParameters.fillEnabled = fillEnabled;
 }
 
@@ -70,6 +73,7 @@
 - (void) updateUiWithModelValues
 {
   self.fillEnabledSwitch.on = self.fillParameters.fillEnabled;
+  self.stackView.hidden = ! self.fillParameters.fillEnabled;
 }
 
 @end
