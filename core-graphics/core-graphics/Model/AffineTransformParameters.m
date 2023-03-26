@@ -13,6 +13,8 @@
 {
   self = [super init];
 
+  self.affineTransformEnabled = true;
+
   self.a = 1.0f;
   _rangeA = 1000.0f;
 

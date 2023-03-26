@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype) init;
 
+@property bool affineTransformEnabled;
+
 @property CGFloat a;
 @property (readonly) CGFloat rangeA;
 

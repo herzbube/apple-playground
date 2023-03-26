@@ -33,6 +33,7 @@
   [self.fillParameters addObserver:self forKeyPath:@"fillEnabled" options:0 context:NULL];
   [self.fillParameters.colorParameters addObserver:self forKeyPath:@"hexString" options:0 context:NULL];
 
+  [self.affineTransformParameters addObserver:self forKeyPath:@"affineTransformEnabled" options:0 context:NULL];
   [self.affineTransformParameters addObserver:self forKeyPath:@"a" options:0 context:NULL];
   [self.affineTransformParameters addObserver:self forKeyPath:@"b" options:0 context:NULL];
   [self.affineTransformParameters addObserver:self forKeyPath:@"c" options:0 context:NULL];
@@ -52,15 +53,18 @@
 {
   CGContextRef context = UIGraphicsGetCurrentContext();
 
-  CGAffineTransform transform = CGAffineTransformMake(self.affineTransformParameters.a,
-                                                      self.affineTransformParameters.b,
-                                                      self.affineTransformParameters.c,
-                                                      self.affineTransformParameters.d,
-                                                      self.affineTransformParameters.tx,
-                                                      self.affineTransformParameters.ty);
-  if (! CGAffineTransformIsIdentity(transform))
+  if (self.affineTransformParameters.affineTransformEnabled)
   {
-    CGContextConcatCTM(context, transform);
+    CGAffineTransform transform = CGAffineTransformMake(self.affineTransformParameters.a,
+                                                        self.affineTransformParameters.b,
+                                                        self.affineTransformParameters.c,
+                                                        self.affineTransformParameters.d,
+                                                        self.affineTransformParameters.tx,
+                                                        self.affineTransformParameters.ty);
+    if (! CGAffineTransformIsIdentity(transform))
+    {
+      CGContextConcatCTM(context, transform);
+    }
   }
 
 //  if (self.model.pathType == PathTypeArc)

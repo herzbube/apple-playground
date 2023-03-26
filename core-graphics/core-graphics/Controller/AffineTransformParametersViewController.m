@@ -10,6 +10,8 @@
 #import "../Converter.h"
 
 @interface AffineTransformParametersViewController()
+@property (weak, nonatomic) IBOutlet UISwitch* affineTransformEnabledSwitch;
+@property (weak, nonatomic) IBOutlet UIStackView* stackView;
 @property (weak, nonatomic) IBOutlet UITextField* aTextField;
 @property (weak, nonatomic) IBOutlet UITextField* bTextField;
 @property (weak, nonatomic) IBOutlet UITextField* cTextField;
@@ -46,6 +48,17 @@
   [super viewDidLoad];
 
   [self updateUiWithModelValues];
+}
+
+#pragma mark - Switch input actions
+
+- (IBAction) affineTransformEnabledValueChanged:(UISwitch*)sender
+{
+  BOOL affineTransformEnabled = sender.on;
+
+  self.stackView.hidden = ! affineTransformEnabled;
+
+  self.affineTransformParameters.affineTransformEnabled = affineTransformEnabled;
 }
 
 #pragma mark - Text field input actions
@@ -176,6 +189,9 @@
 
 - (void) updateUiWithModelValues
 {
+  self.affineTransformEnabledSwitch.on = self.affineTransformParameters.affineTransformEnabled;
+  self.stackView.hidden = ! self.affineTransformParameters.affineTransformEnabled;
+
   self.aTextField.text = [NSString stringWithFormat:@"%f", self.affineTransformParameters.a];
   self.bTextField.text = [NSString stringWithFormat:@"%f", self.affineTransformParameters.b];
   self.cTextField.text = [NSString stringWithFormat:@"%f", self.affineTransformParameters.c];
