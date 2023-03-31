@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ColorParametersViewController : UIViewController
 
+- (instancetype) initWithColorParameters:(ColorParameters*)colorParameters;
+
+- (void) updateUiWithModelValues;
+
 - (void) updateWithHexString:(NSString*)hexString;
 
 @property (strong, nonatomic) ColorParameters* colorParameters;

@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RadialGradientParametersViewController : UIViewController
 
+- (instancetype) initWithRadialGradientParameters:(RadialGradientParameters*)radialGradientParameters;
+
+- (void) updateUiWithModelValues;
+
 @property (strong, nonatomic) RadialGradientParameters* radialGradientParameters;
 
 @end

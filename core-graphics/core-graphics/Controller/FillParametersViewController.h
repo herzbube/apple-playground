@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FillParametersViewController : UIViewController
 
+- (instancetype) initWithFillParameters:(FillParameters*)fillParameters;
+
+- (void) updateUiWithModelValues;
+
 @property (strong, nonatomic) FillParameters* fillParameters;
 
 @end

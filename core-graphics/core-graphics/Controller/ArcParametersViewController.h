@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ArcParametersViewController : UIViewController
 
+- (instancetype) initWithArcParameters:(ArcParameters*)arcParameters;
+
+- (void) updateUiWithModelValues;
+
 @property (strong, nonatomic) ArcParameters* arcParameters;
 
 @end

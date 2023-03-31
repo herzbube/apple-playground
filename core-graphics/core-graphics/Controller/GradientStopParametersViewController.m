@@ -24,13 +24,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithGradientStopParameters:(GradientStopParameters*)gradientStopParameters
 {
   self = [super initWithNibName:@"GradientStopParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.gradientStopParameters = [[GradientStopParameters alloc] init];
+  if (gradientStopParameters)
+    self.gradientStopParameters = gradientStopParameters;
+  else
+    self.gradientStopParameters = [[GradientStopParameters alloc] init];
 
   return self;
 }
@@ -55,9 +58,7 @@
 
 - (void) integrateColorParameters1ChildViewController
 {
-  ColorParametersViewController* colorParameters1ViewController = [[ColorParametersViewController alloc] init];
-
-  colorParameters1ViewController.colorParameters = self.gradientStopParameters.colorParameters1;
+  ColorParametersViewController* colorParameters1ViewController = [[ColorParametersViewController alloc] initWithColorParameters:self.gradientStopParameters.colorParameters1];
 
   [self addChildViewController:colorParameters1ViewController];
   [colorParameters1ViewController didMoveToParentViewController:self];
@@ -70,9 +71,7 @@
 
 - (void) integrateColorParameters2ChildViewController
 {
-  ColorParametersViewController* colorParameters2ViewController = [[ColorParametersViewController alloc] init];
-
-  colorParameters2ViewController.colorParameters = self.gradientStopParameters.colorParameters2;
+  ColorParametersViewController* colorParameters2ViewController = [[ColorParametersViewController alloc] initWithColorParameters:self.gradientStopParameters.colorParameters2];
 
   [self addChildViewController:colorParameters2ViewController];
   [colorParameters2ViewController didMoveToParentViewController:self];
@@ -131,6 +130,9 @@
   self.position1Slider.value = self.gradientStopParameters.position1;
   self.position2TextField.text = [NSString stringWithFormat:@"%f", self.gradientStopParameters.position2];
   self.position2Slider.value = self.gradientStopParameters.position2;
+
+  for (id childViewController in self.childViewControllers)
+    [childViewController updateUiWithModelValues];
 }
 
 @end

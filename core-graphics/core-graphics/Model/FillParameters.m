@@ -8,19 +8,49 @@
 #import "FillParameters.h"
 #import "ColorParameters.h"
 
+static NSString* fillEnabledKey = @"fillEnabled";
+static NSString* colorParametersKey = @"colorParameters";
+
 @implementation FillParameters
 
 - (instancetype) init
 {
   self = [super init];
 
-  self.fillEnabled = true;
-  
   self.colorParameters = [[ColorParameters alloc] init];
 
-  [self.colorParameters updateWithHexString:@"0000FFFF"];
+  [self initializeWithDefaultValues];
 
   return self;
+}
+
+- (void) initializeWithDefaultValues
+{
+  self.fillEnabled = true;
+  
+  [self.colorParameters updateWithHexString:@"0000FFFF"];
+}
+
+- (NSDictionary*) valuesAsDictionary
+{
+  return
+  @{
+    fillEnabledKey : @(self.fillEnabled),
+    colorParametersKey : [self.colorParameters valuesAsDictionary],
+  };
+}
+
+- (void) setValuesWithDictionary:(NSDictionary*)dictionary
+{
+  self.fillEnabled = [dictionary[fillEnabledKey] boolValue];
+  [self.colorParameters setValuesWithDictionary:dictionary[colorParametersKey]];
+}
+
+- (void) resetToDefaultValues
+{
+  [self.colorParameters resetToDefaultValues];
+
+  [self initializeWithDefaultValues];
 }
 
 @end

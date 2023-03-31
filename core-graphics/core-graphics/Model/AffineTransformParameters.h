@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype) init;
 
+- (NSDictionary*) valuesAsDictionary;
+- (void) setValuesWithDictionary:(NSDictionary*)dictionary;
+
+- (void) resetToDefaultValues;
+
 @property bool affineTransformEnabled;
 
 @property CGFloat a;

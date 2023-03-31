@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LinearGradientParametersViewController : UIViewController
 
+- (instancetype) initWithLinearGradientParameters:(LinearGradientParameters*)linearGradientParameters;
+
+- (void) updateUiWithModelValues;
+
 @property (strong, nonatomic) LinearGradientParameters* linearGradientParameters;
 
 @end

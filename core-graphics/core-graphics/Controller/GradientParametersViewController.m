@@ -23,13 +23,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithGradientParameters:(GradientParameters*)gradientParameters
 {
   self = [super initWithNibName:@"GradientParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.gradientParameters = [[GradientParameters alloc] init];
+  if (gradientParameters)
+    self.gradientParameters = gradientParameters;
+  else
+    self.gradientParameters = [[GradientParameters alloc] init];
   self.autoLayoutConstraints = nil;
 
   return self;
@@ -57,9 +60,7 @@
 
 - (void) integrateLinearGradientParametersChildViewController
 {
-  LinearGradientParametersViewController* linearGradientParametersViewController = [[LinearGradientParametersViewController alloc] init];
-
-  linearGradientParametersViewController.linearGradientParameters = self.gradientParameters.linearGradientParameters;
+  LinearGradientParametersViewController* linearGradientParametersViewController = [[LinearGradientParametersViewController alloc] initWithLinearGradientParameters:self.gradientParameters.linearGradientParameters];
 
   [self addChildViewController:linearGradientParametersViewController];
   [linearGradientParametersViewController didMoveToParentViewController:self];
@@ -72,9 +73,7 @@
 
 - (void) integrateRadialGradientParametersChildViewController
 {
-  RadialGradientParametersViewController* radialGradientParametersViewController = [[RadialGradientParametersViewController alloc] init];
-
-  radialGradientParametersViewController.radialGradientParameters = self.gradientParameters.radialGradientParameters;
+  RadialGradientParametersViewController* radialGradientParametersViewController = [[RadialGradientParametersViewController alloc] initWithRadialGradientParameters:self.gradientParameters.radialGradientParameters];
 
   [self addChildViewController:radialGradientParametersViewController];
   [radialGradientParametersViewController didMoveToParentViewController:self];
@@ -131,6 +130,9 @@
   self.gradientEnabledSwitch.on = self.gradientParameters.gradientEnabled;
   self.stackView.hidden = ! self.gradientParameters.gradientEnabled;
   self.gradientTypeSegmentedControl.selectedSegmentIndex = self.gradientParameters.gradientType;
+
+  for (id childViewController in self.childViewControllers)
+    [childViewController updateUiWithModelValues];
 }
 
 @end

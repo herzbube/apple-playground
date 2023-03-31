@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GradientParametersViewController : UIViewController
 
+- (instancetype) initWithGradientParameters:(GradientParameters*)gradientParameters;
+
+- (void) updateUiWithModelValues;
+
 @property (strong, nonatomic) GradientParameters* gradientParameters;
 
 @end

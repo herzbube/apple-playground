@@ -33,13 +33,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithRadialGradientParameters:(RadialGradientParameters*)radialGradientParameters
 {
   self = [super initWithNibName:@"RadialGradientParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.radialGradientParameters = [[RadialGradientParameters alloc] init];
+  if (radialGradientParameters)
+    self.radialGradientParameters = radialGradientParameters;
+  else
+    self.radialGradientParameters = [[RadialGradientParameters alloc] init];
 
   return self;
 }
@@ -64,9 +67,7 @@
 
 - (void) integrateGradientStopParametersChildViewController
 {
-  GradientStopParametersViewController* gradientStopParametersViewController = [[GradientStopParametersViewController alloc] init];
-
-  gradientStopParametersViewController.gradientStopParameters = self.radialGradientParameters.gradientStopParameters;
+  GradientStopParametersViewController* gradientStopParametersViewController = [[GradientStopParametersViewController alloc] initWithGradientStopParameters:self.radialGradientParameters.gradientStopParameters];
 
   [self addChildViewController:gradientStopParametersViewController];
   [gradientStopParametersViewController didMoveToParentViewController:self];
@@ -79,9 +80,7 @@
 
 - (void) integrateAffineTransformParametersChildViewController
 {
-  AffineTransformParametersViewController* affineTransformParametersViewController = [[AffineTransformParametersViewController alloc] init];
-
-  affineTransformParametersViewController.affineTransformParameters = self.radialGradientParameters.affineTransformParameters;
+  AffineTransformParametersViewController* affineTransformParametersViewController = [[AffineTransformParametersViewController alloc] initWithAffineTransformParameters:self.radialGradientParameters.affineTransformParameters];
 
   [self addChildViewController:affineTransformParametersViewController];
   [affineTransformParametersViewController didMoveToParentViewController:self];
@@ -239,6 +238,9 @@
                                                       wholeValue:self.radialGradientParameters.maximumEndCenterY];
   self.endRadiusSlider.value = [Converter fractionFromPartValue:self.radialGradientParameters.endRadius
                                                      wholeValue:self.radialGradientParameters.maximumEndRadius];
+
+  for (id childViewController in self.childViewControllers)
+    [childViewController updateUiWithModelValues];
 }
 
 @end

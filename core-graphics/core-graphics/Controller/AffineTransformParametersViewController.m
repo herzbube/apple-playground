@@ -30,13 +30,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithAffineTransformParameters:(AffineTransformParameters*)affineTransformParameters
 {
   self = [super initWithNibName:@"AffineTransformParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.affineTransformParameters = [[AffineTransformParameters alloc] init];
+  if (affineTransformParameters)
+    self.affineTransformParameters = affineTransformParameters;
+  else
+    self.affineTransformParameters = [[AffineTransformParameters alloc] init];
 
   return self;
 }

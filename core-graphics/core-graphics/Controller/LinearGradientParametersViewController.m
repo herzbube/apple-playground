@@ -29,13 +29,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithLinearGradientParameters:(LinearGradientParameters*)linearGradientParameters
 {
   self = [super initWithNibName:@"LinearGradientParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.linearGradientParameters = [[LinearGradientParameters alloc] init];
+  if (linearGradientParameters)
+    self.linearGradientParameters = linearGradientParameters;
+  else
+    self.linearGradientParameters = [[LinearGradientParameters alloc] init];
 
   return self;
 }
@@ -60,9 +63,7 @@
 
 - (void) integrateGradientStopParametersChildViewController
 {
-  GradientStopParametersViewController* gradientStopParametersViewController = [[GradientStopParametersViewController alloc] init];
-
-  gradientStopParametersViewController.gradientStopParameters = self.linearGradientParameters.gradientStopParameters;
+  GradientStopParametersViewController* gradientStopParametersViewController = [[GradientStopParametersViewController alloc] initWithGradientStopParameters:self.linearGradientParameters.gradientStopParameters];
 
   [self addChildViewController:gradientStopParametersViewController];
   [gradientStopParametersViewController didMoveToParentViewController:self];
@@ -75,9 +76,7 @@
 
 - (void) integrateAffineTransformParametersChildViewController
 {
-  AffineTransformParametersViewController* affineTransformParametersViewController = [[AffineTransformParametersViewController alloc] init];
-
-  affineTransformParametersViewController.affineTransformParameters = self.linearGradientParameters.affineTransformParameters;
+  AffineTransformParametersViewController* affineTransformParametersViewController = [[AffineTransformParametersViewController alloc] initWithAffineTransformParameters:self.linearGradientParameters.affineTransformParameters];
 
   [self addChildViewController:affineTransformParametersViewController];
   [affineTransformParametersViewController didMoveToParentViewController:self];
@@ -189,6 +188,9 @@
                                                      wholeValue:self.linearGradientParameters.maximumEndPointX];
   self.endPointYSlider.value = [Converter fractionFromPartValue:self.linearGradientParameters.endPointY
                                                      wholeValue:self.linearGradientParameters.maximumEndPointY];
+
+  for (id childViewController in self.childViewControllers)
+    [childViewController updateUiWithModelValues];
 }
 
 @end

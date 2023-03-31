@@ -27,13 +27,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithArcParameters:(ArcParameters*)arcParameters
 {
   self = [super initWithNibName:@"ArcParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.arcParameters = [[ArcParameters alloc] init];
+  if (arcParameters)
+    self.arcParameters = arcParameters;
+  else
+    self.arcParameters = [[ArcParameters alloc] init];
 
   return self;
 }

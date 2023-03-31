@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface StrokeParametersViewController : UIViewController
 
+- (instancetype) initWithStrokeParameters:(StrokeParameters*)strokeParameters;
+
+- (void) updateUiWithModelValues;
+
 @property (strong, nonatomic) StrokeParameters* strokeParameters;
 
 @end

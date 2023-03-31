@@ -23,13 +23,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithStrokeParameters:(StrokeParameters*)strokeParameters
 {
   self = [super initWithNibName:@"StrokeParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.strokeParameters = [[StrokeParameters alloc] init];
+  if (strokeParameters)
+    self.strokeParameters = strokeParameters;
+  else
+    self.strokeParameters = [[StrokeParameters alloc] init];
 
   return self;
 }
@@ -48,9 +51,7 @@
 
 - (void) integrateChildViewControllers
 {
-  ColorParametersViewController* colorParametersViewController = [[ColorParametersViewController alloc] init];
-
-  colorParametersViewController.colorParameters = self.strokeParameters.colorParameters;
+  ColorParametersViewController* colorParametersViewController = [[ColorParametersViewController alloc] initWithColorParameters:self.strokeParameters.colorParameters];
 
   [self addChildViewController:colorParametersViewController];
   [colorParametersViewController didMoveToParentViewController:self];
@@ -105,6 +106,9 @@
   self.lineWidthTextField.text = [NSString stringWithFormat:@"%f", self.strokeParameters.lineWidth];
   self.lineWidthSlider.value = [Converter fractionFromPartValue:self.strokeParameters.lineWidth
                                                      wholeValue:self.strokeParameters.maximumLineWidth];
+
+  for (id childViewController in self.childViewControllers)
+    [childViewController updateUiWithModelValues];
 }
 
 @end

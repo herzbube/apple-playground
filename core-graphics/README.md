@@ -1,6 +1,6 @@
 # core-graphics
 
-This project provides a user interface that lets the user interactively explore Core Graphics drawing functions.
+This project provides a user interface that lets the user interactively explore Core Graphics drawing functions. As a side effect, this project demonstrates how to build a UI with reusable view controllers that load their views and Auto Layout constraints from .xib files.
 
 Although I believe I have a relatively solid grasp of the basic Core Graphics drawing functions (e.g. drawing paths like circles, rectangles or lines, plus filling and stroking such paths), from time to time I encounter a new thing that I need to wrap my head around. This is especially true when it comes to affine transformations.
 

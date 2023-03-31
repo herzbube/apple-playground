@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,14 +68,64 @@
                                         <viewLayoutGuide key="contentLayoutGuide" id="J0R-7i-8gD"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="gxr-57-ZH1"/>
                                     </scrollView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-vb-dGs" userLabel="Drawing view" customClass="DrawingView">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fu3-Ct-9A5" userLabel="Right hand side stack view">
                                         <rect key="frame" x="966" y="0.0" width="400" height="980"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="400" id="JHy-KZ-MXW"/>
-                                        </constraints>
-                                    </view>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VY6-wh-5f5" userLabel="Controls view">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="156"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kVP-Iz-2RY" userLabel="Controls stack view">
+                                                        <rect key="frame" x="20" y="20" width="360" height="116"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYu-jJ-u9g" userLabel="Save button">
+                                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="31"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                                                                <connections>
+                                                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PCX-Zq-aGH"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6G-vd-Uki" userLabel="Load button">
+                                                                <rect key="frame" x="63.5" y="0.0" width="56" height="31"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Load"/>
+                                                                <connections>
+                                                                    <action selector="loadButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2pw-I3-xSz"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69Y-vW-fkc" userLabel="Reset button">
+                                                                <rect key="frame" x="127.5" y="0.0" width="61" height="31"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="filled" title="Reset"/>
+                                                                <connections>
+                                                                    <action selector="resetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pIF-Dt-Ja8"/>
+                                                                </connections>
+                                                            </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-QR-SZS" userLabel="Spacer view">
+                                                                <rect key="frame" x="196.5" y="0.0" width="163.5" height="116"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="kVP-Iz-2RY" firstAttribute="top" secondItem="VY6-wh-5f5" secondAttribute="top" constant="20" symbolic="YES" id="MhZ-pi-bEj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="kVP-Iz-2RY" secondAttribute="bottom" constant="20" symbolic="YES" id="Zth-4T-i7B"/>
+                                                    <constraint firstAttribute="trailing" secondItem="kVP-Iz-2RY" secondAttribute="trailing" constant="20" symbolic="YES" id="mnU-hf-S4i"/>
+                                                    <constraint firstItem="kVP-Iz-2RY" firstAttribute="leading" secondItem="VY6-wh-5f5" secondAttribute="leading" constant="20" symbolic="YES" id="oel-1q-9d6"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-vb-dGs" userLabel="Drawing view" customClass="DrawingView">
+                                                <rect key="frame" x="0.0" y="156" width="400" height="824"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="400" id="JHy-KZ-MXW"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>

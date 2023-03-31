@@ -20,13 +20,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithFillParameters:(FillParameters*)fillParameters
 {
   self = [super initWithNibName:@"FillParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.fillParameters = [[FillParameters alloc] init];
+  if (fillParameters)
+    self.fillParameters = fillParameters;
+  else
+    self.fillParameters = [[FillParameters alloc] init];
 
   return self;
 }
@@ -45,9 +48,7 @@
 
 - (void) integrateChildViewControllers
 {
-  ColorParametersViewController* colorParametersViewController = [[ColorParametersViewController alloc] init];
-
-  colorParametersViewController.colorParameters = self.fillParameters.colorParameters;
+  ColorParametersViewController* colorParametersViewController = [[ColorParametersViewController alloc] initWithColorParameters:self.fillParameters.colorParameters];
   
   [self addChildViewController:colorParametersViewController];
   [colorParametersViewController didMoveToParentViewController:self];
@@ -75,6 +76,9 @@
 {
   self.fillEnabledSwitch.on = self.fillParameters.fillEnabled;
   self.stackView.hidden = ! self.fillParameters.fillEnabled;
+
+  for (id childViewController in self.childViewControllers)
+    [childViewController updateUiWithModelValues];
 }
 
 @end

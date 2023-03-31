@@ -8,19 +8,51 @@
 #import "ColorParameters.h"
 #import "../Converter.h"
 
+static NSString* redKey = @"red";
+static NSString* greenKey = @"green";
+static NSString* blueKey = @"blue";
+static NSString* alphaKey = @"alpha";
+static NSString* hexStringKey = @"hexString";
+
 @implementation ColorParameters
 
 - (instancetype) init
 {
   self = [super init];
 
+  [self initializeWithDefaultValues];
+
+  return self;
+}
+
+- (void) initializeWithDefaultValues
+{
   self.red = 1.0f;
   self.green = 0.0f;
   self.blue = 0.0f;
   self.alpha = 1.0f;
   self.hexString = @"FF0000FF";
+}
 
-  return self;
+- (NSDictionary*) valuesAsDictionary
+{
+  return
+  @{
+    redKey : @(self.red),
+    greenKey : @(self.green),
+    blueKey : @(self.blue),
+    alphaKey : @(self.alpha),
+    hexStringKey : self.hexString,
+  };
+}
+
+- (void) setValuesWithDictionary:(NSDictionary*)dictionary
+{
+  self.red = [dictionary[redKey] floatValue];
+  self.green = [dictionary[greenKey] floatValue];
+  self.blue = [dictionary[blueKey] floatValue];
+  self.alpha = [dictionary[alphaKey] floatValue];
+  self.hexString = dictionary[hexStringKey];
 }
 
 - (void) updateWithHexString:(NSString*)hexString
@@ -51,6 +83,11 @@
   unsigned int blue = [Converter colorComponentByteValueFromFractionValue:self.blue];
   unsigned int alpha = [Converter colorComponentByteValueFromFractionValue:self.alpha];
   return [NSString stringWithFormat:@"%02X%02X%02X%02X", red, green, blue, alpha];
+}
+
+- (void) resetToDefaultValues
+{
+  [self initializeWithDefaultValues];
 }
 
 @end

@@ -25,13 +25,16 @@
 
 #pragma mark - Initialization, deallocation
 
-- (instancetype) init
+- (instancetype) initWithColorParameters:(ColorParameters*)colorParameters
 {
   self = [super initWithNibName:@"ColorParametersViewController" bundle:nil];
   if (! self)
     return nil;
 
-  self.colorParameters = [[ColorParameters alloc] init];
+  if (colorParameters)
+    self.colorParameters = colorParameters;
+  else
+    self.colorParameters = [[ColorParameters alloc] init];
 
   return self;
 }

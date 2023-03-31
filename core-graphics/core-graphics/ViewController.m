@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import "Model/DrawingParameters.h"
 #import "DrawingView.h"
 #import "Controller/AffineTransformParametersViewController.h"
 #import "Controller/ArcParametersViewController.h"
@@ -15,6 +16,7 @@
 #import "AutoLayoutUtility.h"
 
 @interface ViewController()
+@property (strong, nonatomic) DrawingParameters* drawingParameters;
 @property (weak, nonatomic) IBOutlet UIView* arcParametersContainerView;
 @property (weak, nonatomic) IBOutlet UIView* strokeParametersContainerView;
 @property (weak, nonatomic) IBOutlet UIView* fillParametersContainerView;
@@ -30,6 +32,10 @@
 - (void) viewDidLoad
 {
   [super viewDidLoad];
+
+  self.drawingParameters = [[DrawingParameters alloc] init];
+  [self.drawingParameters readUserDefaults];
+
   [self integrateChildViewControllers];
   [self.drawingView startObserving];
 }
@@ -47,7 +53,7 @@
 
 - (void) integrateArcParametersChildViewController
 {
-  ArcParametersViewController* arcParametersViewController = [[ArcParametersViewController alloc] init];
+  ArcParametersViewController* arcParametersViewController = [[ArcParametersViewController alloc] initWithArcParameters:self.drawingParameters.arcParameters];
   [self addChildViewController:arcParametersViewController];
   [arcParametersViewController didMoveToParentViewController:self];
 
@@ -56,12 +62,12 @@
   arcParametersView.translatesAutoresizingMaskIntoConstraints = NO;
   [AutoLayoutUtility fillSuperview:self.arcParametersContainerView withSubview:arcParametersView];
 
-  self.drawingView.arcParameters = arcParametersViewController.arcParameters;
+  self.drawingView.arcParameters = self.drawingParameters.arcParameters;
 }
 
 - (void) integrateStrokeParametersChildViewController
 {
-  StrokeParametersViewController* strokeParametersViewController = [[StrokeParametersViewController alloc] init];
+  StrokeParametersViewController* strokeParametersViewController = [[StrokeParametersViewController alloc] initWithStrokeParameters:self.drawingParameters.strokeParameters];
   [self addChildViewController:strokeParametersViewController];
   [strokeParametersViewController didMoveToParentViewController:self];
 
@@ -70,12 +76,12 @@
   strokeParametersView.translatesAutoresizingMaskIntoConstraints = NO;
   [AutoLayoutUtility fillSuperview:self.strokeParametersContainerView withSubview:strokeParametersView];
 
-  self.drawingView.strokeParameters = strokeParametersViewController.strokeParameters;
+  self.drawingView.strokeParameters = self.drawingParameters.strokeParameters;
 }
 
 - (void) integrateFillParametersChildViewController
 {
-  FillParametersViewController* fillParametersViewController = [[FillParametersViewController alloc] init];
+  FillParametersViewController* fillParametersViewController = [[FillParametersViewController alloc] initWithFillParameters:self.drawingParameters.fillParameters];
   [self addChildViewController:fillParametersViewController];
   [fillParametersViewController didMoveToParentViewController:self];
 
@@ -84,12 +90,12 @@
   fillParametersView.translatesAutoresizingMaskIntoConstraints = NO;
   [AutoLayoutUtility fillSuperview:self.fillParametersContainerView withSubview:fillParametersView];
 
-  self.drawingView.fillParameters = fillParametersViewController.fillParameters;
+  self.drawingView.fillParameters = self.drawingParameters.fillParameters;
 }
 
 - (void) integrateAffineTransformParametersChildViewController
 {
-  AffineTransformParametersViewController* affineTransformParametersViewController = [[AffineTransformParametersViewController alloc] init];
+  AffineTransformParametersViewController* affineTransformParametersViewController = [[AffineTransformParametersViewController alloc] initWithAffineTransformParameters:self.drawingParameters.affineTransformParameters];
   [self addChildViewController:affineTransformParametersViewController];
   [affineTransformParametersViewController didMoveToParentViewController:self];
 
@@ -98,12 +104,12 @@
   affineTransformParametersView.translatesAutoresizingMaskIntoConstraints = NO;
   [AutoLayoutUtility fillSuperview:self.affineTransformParametersContainerView withSubview:affineTransformParametersView];
 
-  self.drawingView.affineTransformParameters = affineTransformParametersViewController.affineTransformParameters;
+  self.drawingView.affineTransformParameters = self.drawingParameters.affineTransformParameters;
 }
 
 - (void) integrateGradientParametersChildViewController
 {
-  GradientParametersViewController* gradientParametersViewController = [[GradientParametersViewController alloc] init];
+  GradientParametersViewController* gradientParametersViewController = [[GradientParametersViewController alloc] initWithGradientParameters:self.drawingParameters.gradientParameters];
   [self addChildViewController:gradientParametersViewController];
   [gradientParametersViewController didMoveToParentViewController:self];
 
@@ -112,7 +118,36 @@
   gradientParametersView.translatesAutoresizingMaskIntoConstraints = NO;
   [AutoLayoutUtility fillSuperview:self.gradientParametersContainerView withSubview:gradientParametersView];
 
-  self.drawingView.gradientParameters = gradientParametersViewController.gradientParameters;
+  self.drawingView.gradientParameters = self.drawingParameters.gradientParameters;
+}
+
+#pragma mark - Button interactions
+
+- (IBAction) saveButtonTapped:(UIButton*)sender
+{
+  [self.drawingParameters writeUserDefaults];
+}
+
+- (IBAction) loadButtonTapped:(UIButton*)sender
+{
+  [self.drawingParameters readUserDefaults];
+
+  [self updateUiWithModelValues];
+}
+
+- (IBAction) resetButtonTapped:(UIButton*)sender
+{
+  [self.drawingParameters resetToDefaultValues];
+
+  [self updateUiWithModelValues];
+}
+
+#pragma mark - Updaters
+
+- (void) updateUiWithModelValues
+{
+  for (id childViewController in self.childViewControllers)
+    [childViewController updateUiWithModelValues];
 }
 
 @end

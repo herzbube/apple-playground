@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AffineTransformParametersViewController : UIViewController
 
+- (instancetype) initWithAffineTransformParameters:(AffineTransformParameters*)affineTransformParameters;
+
+- (void) updateUiWithModelValues;
+
 @property (strong, nonatomic) AffineTransformParameters* affineTransformParameters;
 
 @end

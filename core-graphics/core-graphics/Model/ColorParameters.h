@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ColorParameters : NSObject
 
 - (instancetype) init;
+
+- (NSDictionary*) valuesAsDictionary;
+- (void) setValuesWithDictionary:(NSDictionary*)dictionary;
+
+- (void) resetToDefaultValues;
+
 - (void) updateWithHexString:(NSString*)hexString;
 - (NSString*) hexStringFromColorComponentValues;
 
