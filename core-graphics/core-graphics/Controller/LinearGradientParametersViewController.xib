@@ -40,19 +40,19 @@
                     <rect key="frame" x="0.0" y="28.5" width="642" height="331.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lef-Zq-Vvi" userLabel="Left hand side stack view">
-                            <rect key="frame" x="0.0" y="0.0" width="332" height="331.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="366.5" height="331.5"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DKP-Gb-uCh" userLabel="Start point x stack view">
-                                    <rect key="frame" x="0.0" y="0.0" width="332" height="34"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DKP-Gb-uCh" userLabel="Start point x stack view">
+                                    <rect key="frame" x="0.0" y="0.0" width="366.5" height="34"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start point x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHU-3k-zau" userLabel="Start point x label">
-                                            <rect key="frame" x="0.0" y="0.0" width="93" height="34"/>
+                                            <rect key="frame" x="0.0" y="7" width="87.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veX-at-LFK" userLabel="Start point x text field">
-                                            <rect key="frame" x="101" y="0.0" width="100" height="34"/>
+                                            <rect key="frame" x="95.5" y="0.0" width="100" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="TGW-PC-w8C"/>
                                             </constraints>
@@ -63,27 +63,24 @@
                                             </connections>
                                         </textField>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="45p-N8-Ytb" userLabel="Start point x slider">
-                                            <rect key="frame" x="207" y="0.0" width="127" height="35"/>
+                                            <rect key="frame" x="201.5" y="2" width="167" height="31"/>
                                             <connections>
                                                 <action selector="startPointXValueChanged:" destination="-1" eventType="valueChanged" id="Fd4-dV-Zsd"/>
                                             </connections>
                                         </slider>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qlu-Tm-EMA" userLabel="Start point y stack view">
-                                    <rect key="frame" x="0.0" y="42" width="332" height="34"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qlu-Tm-EMA" userLabel="Start point y stack view">
+                                    <rect key="frame" x="0.0" y="42" width="366.5" height="34"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start point y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-le-Hmg" userLabel="Start point y label">
-                                            <rect key="frame" x="0.0" y="0.0" width="26" height="34"/>
+                                            <rect key="frame" x="0.0" y="7" width="87.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSs-Ce-FEb" userLabel="Start point y text field">
-                                            <rect key="frame" x="34" y="0.0" width="100" height="34"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="ELy-j4-s1m"/>
-                                            </constraints>
+                                            <rect key="frame" x="95.5" y="0.0" width="100" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -91,7 +88,7 @@
                                             </connections>
                                         </textField>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jho-mF-33n" userLabel="Start point y slider">
-                                            <rect key="frame" x="140" y="0.0" width="194" height="35"/>
+                                            <rect key="frame" x="201.5" y="2" width="167" height="31"/>
                                             <connections>
                                                 <action selector="startPointYValueChanged:" destination="-1" eventType="valueChanged" id="j9C-jO-PFx"/>
                                             </connections>
@@ -99,25 +96,29 @@
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="GradientStopParametersContainerView">
-                                    <rect key="frame" x="0.0" y="84" width="332" height="247.5"/>
+                                    <rect key="frame" x="0.0" y="84" width="366.5" height="247.5"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="cSs-Ce-FEb" firstAttribute="trailing" secondItem="veX-at-LFK" secondAttribute="trailing" id="PVc-cW-Lgw"/>
+                                <constraint firstItem="cSs-Ce-FEb" firstAttribute="leading" secondItem="veX-at-LFK" secondAttribute="leading" id="TaI-qh-0mX"/>
+                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3UR-yv-Cx1" userLabel="Right hand side stack view">
-                            <rect key="frame" x="340" y="0.0" width="302" height="331.5"/>
+                            <rect key="frame" x="374.5" y="0.0" width="267.5" height="331.5"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q2B-B4-WMd" userLabel="End point x stack view">
-                                    <rect key="frame" x="0.0" y="0.0" width="302" height="30"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q2B-B4-WMd" userLabel="End point x stack view">
+                                    <rect key="frame" x="0.0" y="0.0" width="267.5" height="30"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End point x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-cb-2Tn" userLabel="End point x label">
-                                            <rect key="frame" x="0.0" y="0.0" width="14" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="End point x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-cb-2Tn" userLabel="End point x label">
+                                            <rect key="frame" x="0.0" y="5" width="73" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoD-5c-93K" userLabel="End point x text field">
-                                            <rect key="frame" x="22" y="0.0" width="100" height="30"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoD-5c-93K" userLabel="End point x text field">
+                                            <rect key="frame" x="81" y="0.0" width="100" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="WCa-E1-rRC"/>
                                             </constraints>
@@ -127,36 +128,33 @@
                                                 <action selector="endPointXEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="zHf-Gq-9is"/>
                                             </connections>
                                         </textField>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-tk-X3y" userLabel="End point x slider">
-                                            <rect key="frame" x="128" y="0.0" width="176" height="31"/>
+                                        <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-tk-X3y" userLabel="End point x slider">
+                                            <rect key="frame" x="187" y="0.0" width="82.5" height="31"/>
                                             <connections>
                                                 <action selector="endPointXValueChanged:" destination="-1" eventType="valueChanged" id="EOy-nC-Qkm"/>
                                             </connections>
                                         </slider>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-Uv-Rw1" userLabel="End point y stack view">
-                                    <rect key="frame" x="0.0" y="38" width="302" height="30"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-Uv-Rw1" userLabel="End point y stack view">
+                                    <rect key="frame" x="0.0" y="38" width="267.5" height="30"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End point y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-pD-hpf" userLabel="End point y label">
-                                            <rect key="frame" x="0.0" y="0.0" width="85.5" height="30"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="End point y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-pD-hpf" userLabel="End point y label">
+                                            <rect key="frame" x="0.0" y="5" width="73" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cyb-kc-9EC" userLabel="End point y text field">
-                                            <rect key="frame" x="93.5" y="0.0" width="100" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="MKa-oR-DCI"/>
-                                            </constraints>
+                                        <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cyb-kc-9EC" userLabel="End point y text field">
+                                            <rect key="frame" x="81" y="0.0" width="100" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
                                                 <action selector="endPointYEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="I31-CT-f17"/>
                                             </connections>
                                         </textField>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Puy-qh-3xM" userLabel="End point y slider">
-                                            <rect key="frame" x="199.5" y="0.0" width="104.5" height="31"/>
+                                        <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Puy-qh-3xM" userLabel="End point y slider">
+                                            <rect key="frame" x="187" y="0.0" width="82.5" height="31"/>
                                             <connections>
                                                 <action selector="endPointYValueChanged:" destination="-1" eventType="valueChanged" id="zm8-7c-3vi"/>
                                             </connections>
@@ -164,10 +162,14 @@
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSY-AJ-uTZ" userLabel="AffineTransformParametersContainerView">
-                                    <rect key="frame" x="0.0" y="76" width="302" height="255.5"/>
+                                    <rect key="frame" x="0.0" y="76" width="267.5" height="255.5"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="Cyb-kc-9EC" firstAttribute="leading" secondItem="uoD-5c-93K" secondAttribute="leading" id="N9o-tc-3oe"/>
+                                <constraint firstItem="Cyb-kc-9EC" firstAttribute="trailing" secondItem="uoD-5c-93K" secondAttribute="trailing" id="nyC-JA-IJH"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                 </stackView>

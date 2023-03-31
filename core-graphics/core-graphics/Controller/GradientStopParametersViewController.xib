@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,107 +26,89 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gradient stop parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4q-mD-8za" userLabel="Gradient stop parameters title label">
-                    <rect key="frame" x="0.0" y="0.0" width="642" height="20.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="642" height="13.5"/>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="OSP-pU-g7g">
-                    <rect key="frame" x="0.0" y="28.5" width="642" height="288.5"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OSP-pU-g7g" userLabel="Top-level stack view">
+                    <rect key="frame" x="0.0" y="21.5" width="642" height="295.5"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ol6-E9-yKa" userLabel="Stop1 parameters container view">
-                            <rect key="frame" x="0.0" y="0.0" width="290" height="288.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="w7E-4K-fj5" userLabel="Left hand side stack view">
+                            <rect key="frame" x="0.0" y="0.0" width="311" height="295.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHU-3k-zau" userLabel="Stop1 label">
-                                    <rect key="frame" x="0.0" y="7" width="47.5" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veX-at-LFK" userLabel="Stop1 text field">
-                                    <rect key="frame" x="55.5" y="0.0" width="100" height="34"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="100" id="tsT-6Y-2Cb"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <action selector="position1EditingDidEnd:" destination="-1" eventType="editingDidEnd" id="nEk-Zg-gW3"/>
-                                    </connections>
-                                </textField>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="45p-N8-Ytb" userLabel="Stop1 slider">
-                                    <rect key="frame" x="161.5" y="2" width="130.5" height="31"/>
-                                    <connections>
-                                        <action selector="position1ValueChanged:" destination="-1" eventType="valueChanged" id="EON-at-cAA"/>
-                                    </connections>
-                                </slider>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="As8-5S-2bC" userLabel="Stop 1 stack view">
+                                    <rect key="frame" x="0.0" y="0.0" width="311" height="34"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHU-3k-zau" userLabel="Stop1 label">
+                                            <rect key="frame" x="0.0" y="7" width="15.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veX-at-LFK" userLabel="Stop1 text field">
+                                            <rect key="frame" x="23.5" y="0.0" width="100" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="tsT-6Y-2Cb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="position1EditingDidEnd:" destination="-1" eventType="editingDidEnd" id="nEk-Zg-gW3"/>
+                                            </connections>
+                                        </textField>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="45p-N8-Ytb" userLabel="Stop1 slider">
+                                            <rect key="frame" x="129.5" y="2" width="183.5" height="31"/>
+                                            <connections>
+                                                <action selector="position1ValueChanged:" destination="-1" eventType="valueChanged" id="EON-at-cAA"/>
+                                            </connections>
+                                        </slider>
+                                    </subviews>
+                                </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="ColorParameters1ContainerView">
-                                    <rect key="frame" x="0.0" y="42" width="290" height="246.5"/>
+                                    <rect key="frame" x="0.0" y="42" width="311" height="253.5"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="45p-N8-Ytb" firstAttribute="centerY" secondItem="veX-at-LFK" secondAttribute="centerY" id="0Mr-iz-tTi"/>
-                                <constraint firstItem="ee8-o2-SAa" firstAttribute="top" secondItem="veX-at-LFK" secondAttribute="bottom" constant="8" symbolic="YES" id="8ob-ub-T0T"/>
-                                <constraint firstItem="45p-N8-Ytb" firstAttribute="leading" secondItem="veX-at-LFK" secondAttribute="trailing" constant="8" symbolic="YES" id="9Sw-VT-nTH"/>
-                                <constraint firstItem="veX-at-LFK" firstAttribute="top" secondItem="Ol6-E9-yKa" secondAttribute="top" id="9eN-ng-FiM"/>
-                                <constraint firstAttribute="bottom" secondItem="ee8-o2-SAa" secondAttribute="bottom" id="9hv-fp-R9D"/>
-                                <constraint firstItem="veX-at-LFK" firstAttribute="leading" secondItem="nHU-3k-zau" secondAttribute="trailing" constant="8" symbolic="YES" id="RG9-q1-05l"/>
-                                <constraint firstItem="ee8-o2-SAa" firstAttribute="leading" secondItem="Ol6-E9-yKa" secondAttribute="leading" id="Y2p-EM-nZC"/>
-                                <constraint firstItem="ee8-o2-SAa" firstAttribute="trailing" secondItem="Ol6-E9-yKa" secondAttribute="trailing" id="bVW-RK-M4f"/>
-                                <constraint firstAttribute="trailing" secondItem="45p-N8-Ytb" secondAttribute="trailing" id="lTH-Ek-57q"/>
-                                <constraint firstItem="nHU-3k-zau" firstAttribute="leading" secondItem="Ol6-E9-yKa" secondAttribute="leading" id="p1I-pe-dHc"/>
-                                <constraint firstItem="nHU-3k-zau" firstAttribute="centerY" secondItem="veX-at-LFK" secondAttribute="centerY" id="zkl-Sc-o1P"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWf-vz-Tuj" userLabel="Stop2 parameters container view">
-                            <rect key="frame" x="352" y="0.0" width="290" height="288.5"/>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eXf-B5-HaC" userLabel="Right hand side stack view">
+                            <rect key="frame" x="331" y="0.0" width="311" height="295.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-cb-2Tn" userLabel="Stop2 label">
-                                    <rect key="frame" x="0.0" y="7" width="50" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoD-5c-93K" userLabel="Stop2 text field">
-                                    <rect key="frame" x="58" y="0.0" width="100" height="34"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="100" id="YPc-o2-tsI"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <action selector="position2EditingDidEnd:" destination="-1" eventType="editingDidEnd" id="RUN-dQ-zhG"/>
-                                    </connections>
-                                </textField>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-tk-X3y" userLabel="Stop2 slider">
-                                    <rect key="frame" x="164" y="2" width="128" height="31"/>
-                                    <connections>
-                                        <action selector="position2ValueChanged:" destination="-1" eventType="valueChanged" id="xgY-LN-gLD"/>
-                                    </connections>
-                                </slider>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jgM-7e-amF" userLabel="Stop 2 stack view">
+                                    <rect key="frame" x="0.0" y="0.0" width="311" height="34"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-cb-2Tn" userLabel="Stop2 label">
+                                            <rect key="frame" x="0.0" y="7" width="18" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoD-5c-93K" userLabel="Stop2 text field">
+                                            <rect key="frame" x="26" y="0.0" width="100" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="YPc-o2-tsI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="position2EditingDidEnd:" destination="-1" eventType="editingDidEnd" id="RUN-dQ-zhG"/>
+                                            </connections>
+                                        </textField>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-tk-X3y" userLabel="Stop2 slider">
+                                            <rect key="frame" x="132" y="2" width="181" height="31"/>
+                                            <connections>
+                                                <action selector="position2ValueChanged:" destination="-1" eventType="valueChanged" id="xgY-LN-gLD"/>
+                                            </connections>
+                                        </slider>
+                                    </subviews>
+                                </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSY-AJ-uTZ" userLabel="ColorParameters2ContainerView">
-                                    <rect key="frame" x="0.0" y="42" width="290" height="246.5"/>
+                                    <rect key="frame" x="0.0" y="42" width="311" height="253.5"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="dSY-AJ-uTZ" firstAttribute="trailing" secondItem="pWf-vz-Tuj" secondAttribute="trailing" id="KMZ-lz-eAg"/>
-                                <constraint firstItem="6Y2-tk-X3y" firstAttribute="leading" secondItem="uoD-5c-93K" secondAttribute="trailing" constant="8" symbolic="YES" id="TsA-Mu-RLS"/>
-                                <constraint firstItem="Q2D-cb-2Tn" firstAttribute="leading" secondItem="pWf-vz-Tuj" secondAttribute="leading" id="WA4-TW-zcb"/>
-                                <constraint firstItem="uoD-5c-93K" firstAttribute="top" secondItem="pWf-vz-Tuj" secondAttribute="top" id="aIP-jY-Hnb"/>
-                                <constraint firstItem="6Y2-tk-X3y" firstAttribute="centerY" secondItem="uoD-5c-93K" secondAttribute="centerY" id="bLl-sj-cWq"/>
-                                <constraint firstItem="dSY-AJ-uTZ" firstAttribute="top" secondItem="uoD-5c-93K" secondAttribute="bottom" constant="8" symbolic="YES" id="dwl-aT-s1K"/>
-                                <constraint firstItem="Q2D-cb-2Tn" firstAttribute="centerY" secondItem="uoD-5c-93K" secondAttribute="centerY" id="dyv-FD-6xN"/>
-                                <constraint firstAttribute="bottom" secondItem="dSY-AJ-uTZ" secondAttribute="bottom" id="oak-u2-xAE"/>
-                                <constraint firstItem="dSY-AJ-uTZ" firstAttribute="leading" secondItem="pWf-vz-Tuj" secondAttribute="leading" id="ooZ-4T-iaj"/>
-                                <constraint firstItem="uoD-5c-93K" firstAttribute="leading" secondItem="Q2D-cb-2Tn" secondAttribute="trailing" constant="8" symbolic="YES" id="tey-cK-bXT"/>
-                                <constraint firstItem="6Y2-tk-X3y" firstAttribute="trailing" secondItem="pWf-vz-Tuj" secondAttribute="trailing" id="vg4-bx-OXS"/>
-                            </constraints>
-                        </view>
+                        </stackView>
                     </subviews>
                 </stackView>
             </subviews>
@@ -133,11 +116,11 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="OSP-pU-g7g" firstAttribute="top" secondItem="k4q-mD-8za" secondAttribute="bottom" constant="8" symbolic="YES" id="7Pb-Mw-ixM"/>
-                <constraint firstItem="OSP-pU-g7g" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="9aI-oe-Kb0"/>
+                <constraint firstAttribute="bottom" secondItem="OSP-pU-g7g" secondAttribute="bottom" id="8pd-ce-5On"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="EJD-Yt-lzL"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GZf-Hz-B0e"/>
-                <constraint firstItem="OSP-pU-g7g" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="NuR-Z7-rta"/>
                 <constraint firstItem="OSP-pU-g7g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WC1-CR-wBH"/>
+                <constraint firstAttribute="trailing" secondItem="OSP-pU-g7g" secondAttribute="trailing" id="eHV-IF-0An"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g5m-p2-PhJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

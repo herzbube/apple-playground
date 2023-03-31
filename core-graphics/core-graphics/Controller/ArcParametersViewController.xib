@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,178 +31,188 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Arc parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8o-0e-hiV" userLabel="Arc parameters title label">
-                    <rect key="frame" x="0.0" y="0.0" width="502" height="21"/>
+                    <rect key="frame" x="0.0" y="0.0" width="502" height="20.5"/>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Center x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZf-ii-AJb" userLabel="Center x label">
-                    <rect key="frame" x="0.0" y="35.5" width="65" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Center y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmX-B3-2CB" userLabel="Center y label">
-                    <rect key="frame" x="0.0" y="77.5" width="65" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq4-6q-uga" userLabel="Radius label">
-                    <rect key="frame" x="0.0" y="119.5" width="52" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Start angle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyS-Ni-5DN" userLabel="Start angle label">
-                    <rect key="frame" x="0.0" y="161.5" width="83" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="End angle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkr-54-JBR" userLabel="End angle label">
-                    <rect key="frame" x="0.0" y="203.5" width="76" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clockwise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uts-GT-BjX" userLabel="Clockwise label">
-                    <rect key="frame" x="0.0" y="270" width="78" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTX-Gk-8zd" userLabel="Center x text field">
-                    <rect key="frame" x="91" y="29" width="100" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="centerXEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="IwU-dy-CFf"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I9Y-0V-f10" userLabel="Center y text field">
-                    <rect key="frame" x="91" y="71" width="100" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="centerYEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="Vmx-gQ-rTD"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHp-l7-2vz" userLabel="Radius text field">
-                    <rect key="frame" x="91" y="113" width="100" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="radiusEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="xxF-nz-u24"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9r9-HP-luu" userLabel="Start angle text field">
-                    <rect key="frame" x="91" y="155" width="100" height="34"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nip-sW-yrm" userLabel="Top-level stack view">
+                    <rect key="frame" x="0.0" y="28.5" width="502" height="267.5"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ouV-6d-Nxe" userLabel="Center x stack view">
+                            <rect key="frame" x="0.0" y="0.0" width="502" height="41.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Center x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZf-ii-AJb" userLabel="Center x label">
+                                    <rect key="frame" x="0.0" y="10.5" width="0.0" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTX-Gk-8zd" userLabel="Center x text field">
+                                    <rect key="frame" x="8" y="4" width="100" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="centerXEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="IwU-dy-CFf"/>
+                                    </connections>
+                                </textField>
+                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oow-vt-Lur" userLabel="Center x slider">
+                                    <rect key="frame" x="114" y="6" width="390" height="31"/>
+                                    <connections>
+                                        <action selector="centerXValueChanged:" destination="-1" eventType="valueChanged" id="klN-gr-Ya2"/>
+                                    </connections>
+                                </slider>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kn2-ls-emL" userLabel="Center y stack view">
+                            <rect key="frame" x="0.0" y="49.5" width="502" height="34"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Center y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmX-B3-2CB" userLabel="Center y label">
+                                    <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I9Y-0V-f10" userLabel="Center y text field">
+                                    <rect key="frame" x="8" y="0.0" width="100" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="centerYEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="Vmx-gQ-rTD"/>
+                                    </connections>
+                                </textField>
+                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3AT-1K-Dbr" userLabel="Center y slider">
+                                    <rect key="frame" x="114" y="2" width="390" height="31"/>
+                                    <connections>
+                                        <action selector="centerYValueChanged:" destination="-1" eventType="valueChanged" id="7oZ-BW-nfG"/>
+                                    </connections>
+                                </slider>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0vx-bi-Hpv" userLabel="Radius stack view">
+                            <rect key="frame" x="0.0" y="91.5" width="502" height="34"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hq4-6q-uga" userLabel="Radius label">
+                                    <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CHp-l7-2vz" userLabel="Radius text field">
+                                    <rect key="frame" x="8" y="0.0" width="100" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="radiusEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="xxF-nz-u24"/>
+                                    </connections>
+                                </textField>
+                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PNL-zo-CM4" userLabel="Radius slider">
+                                    <rect key="frame" x="114" y="2" width="390" height="31"/>
+                                    <connections>
+                                        <action selector="radiusValueChanged:" destination="-1" eventType="valueChanged" id="MOo-EW-X6q"/>
+                                    </connections>
+                                </slider>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zcB-0f-Nzn" userLabel="Start angle stack view">
+                            <rect key="frame" x="0.0" y="133.5" width="502" height="34"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Start angle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyS-Ni-5DN" userLabel="Start angle label">
+                                    <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9r9-HP-luu" userLabel="Start angle text field">
+                                    <rect key="frame" x="8" y="0.0" width="100" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="0mV-t8-An4"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="startAngleEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="lPX-XM-XGN"/>
+                                    </connections>
+                                </textField>
+                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nFp-Ju-jM4" userLabel="Start angle slider">
+                                    <rect key="frame" x="114" y="2" width="390" height="31"/>
+                                    <connections>
+                                        <action selector="startAngleValueChanged:" destination="-1" eventType="valueChanged" id="FpA-Lc-zId"/>
+                                    </connections>
+                                </slider>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="D7g-tc-hoN" userLabel="End angle stack view">
+                            <rect key="frame" x="0.0" y="175.5" width="502" height="34"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="End angle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkr-54-JBR" userLabel="End angle label">
+                                    <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPB-b9-tPy" userLabel="End angle text field">
+                                    <rect key="frame" x="8" y="0.0" width="100" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="endAngleEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="tzp-jw-aGX"/>
+                                    </connections>
+                                </textField>
+                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sGe-kr-ei3" userLabel="End angle slider">
+                                    <rect key="frame" x="114" y="2" width="390" height="31"/>
+                                    <connections>
+                                        <action selector="endAngleValueChanged:" destination="-1" eventType="valueChanged" id="vRm-mw-0SA"/>
+                                    </connections>
+                                </slider>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AeR-zE-k0y" userLabel="Clockwise stack view">
+                            <rect key="frame" x="0.0" y="217.5" width="502" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Clockwise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uts-GT-BjX" userLabel="Clockwise label">
+                                    <rect key="frame" x="0.0" y="15" width="0.0" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqR-lN-DtL" userLabel="Clockwise switch">
+                                    <rect key="frame" x="8" y="9.5" width="51" height="31"/>
+                                    <connections>
+                                        <action selector="clockwiseValueChanged:" destination="-1" eventType="valueChanged" id="oeP-xm-Tgl"/>
+                                    </connections>
+                                </switch>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gF3-0i-Pah" userLabel="Spacer view">
+                                    <rect key="frame" x="65" y="0.0" width="437" height="50"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="0mV-t8-An4"/>
+                        <constraint firstItem="oTX-Gk-8zd" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="94A-oa-dPY"/>
+                        <constraint firstItem="aPB-b9-tPy" firstAttribute="trailing" secondItem="9r9-HP-luu" secondAttribute="trailing" id="9dk-Sv-nsF"/>
+                        <constraint firstItem="CHp-l7-2vz" firstAttribute="trailing" secondItem="9r9-HP-luu" secondAttribute="trailing" id="NjD-CY-ki6"/>
+                        <constraint firstItem="I9Y-0V-f10" firstAttribute="trailing" secondItem="9r9-HP-luu" secondAttribute="trailing" id="ZGA-aq-7Mq"/>
+                        <constraint firstItem="oTX-Gk-8zd" firstAttribute="trailing" secondItem="9r9-HP-luu" secondAttribute="trailing" id="cRa-fy-2uP"/>
+                        <constraint firstItem="aPB-b9-tPy" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="d6J-xz-Gp7"/>
+                        <constraint firstItem="I9Y-0V-f10" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="iD6-ig-toa"/>
+                        <constraint firstItem="eqR-lN-DtL" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="k6y-f1-RBB"/>
+                        <constraint firstItem="CHp-l7-2vz" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="rtB-j0-UBr"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="startAngleEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="lPX-XM-XGN"/>
-                    </connections>
-                </textField>
-                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aPB-b9-tPy" userLabel="End angle text field">
-                    <rect key="frame" x="91" y="197" width="100" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="endAngleEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="tzp-jw-aGX"/>
-                    </connections>
-                </textField>
-                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="oow-vt-Lur" userLabel="Center x slider">
-                    <rect key="frame" x="197" y="31" width="307" height="31"/>
-                    <connections>
-                        <action selector="centerXValueChanged:" destination="-1" eventType="valueChanged" id="klN-gr-Ya2"/>
-                    </connections>
-                </slider>
-                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3AT-1K-Dbr" userLabel="Center y slider">
-                    <rect key="frame" x="197" y="73" width="307" height="31"/>
-                    <connections>
-                        <action selector="centerYValueChanged:" destination="-1" eventType="valueChanged" id="7oZ-BW-nfG"/>
-                    </connections>
-                </slider>
-                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PNL-zo-CM4" userLabel="Radius slider">
-                    <rect key="frame" x="197" y="115" width="307" height="31"/>
-                    <connections>
-                        <action selector="radiusValueChanged:" destination="-1" eventType="valueChanged" id="MOo-EW-X6q"/>
-                    </connections>
-                </slider>
-                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nFp-Ju-jM4" userLabel="Start angle slider">
-                    <rect key="frame" x="197" y="157" width="307" height="31"/>
-                    <connections>
-                        <action selector="startAngleValueChanged:" destination="-1" eventType="valueChanged" id="FpA-Lc-zId"/>
-                    </connections>
-                </slider>
-                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sGe-kr-ei3" userLabel="End angle slider">
-                    <rect key="frame" x="197" y="199" width="307" height="31"/>
-                    <connections>
-                        <action selector="endAngleValueChanged:" destination="-1" eventType="valueChanged" id="vRm-mw-0SA"/>
-                    </connections>
-                </slider>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eqR-lN-DtL" userLabel="Clockwise switch">
-                    <rect key="frame" x="91" y="265" width="51" height="31"/>
-                    <connections>
-                        <action selector="clockwiseValueChanged:" destination="-1" eventType="valueChanged" id="oeP-xm-Tgl"/>
-                    </connections>
-                </switch>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="PNL-zo-CM4" firstAttribute="leading" secondItem="CHp-l7-2vz" secondAttribute="trailing" constant="8" symbolic="YES" id="0Va-7M-4ek"/>
-                <constraint firstItem="nFp-Ju-jM4" firstAttribute="centerY" secondItem="9r9-HP-luu" secondAttribute="centerY" id="1c4-um-2j8"/>
-                <constraint firstItem="9r9-HP-luu" firstAttribute="leading" secondItem="NyS-Ni-5DN" secondAttribute="trailing" constant="8" symbolic="YES" id="776-Oa-9Bl"/>
-                <constraint firstItem="oTX-Gk-8zd" firstAttribute="top" secondItem="i8o-0e-hiV" secondAttribute="bottom" constant="8" symbolic="YES" id="8Ih-IM-Adk"/>
-                <constraint firstItem="i8o-0e-hiV" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="9Hg-sP-XyJ"/>
-                <constraint firstAttribute="bottom" secondItem="eqR-lN-DtL" secondAttribute="bottom" id="AaW-cZ-f7h"/>
-                <constraint firstItem="oTX-Gk-8zd" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="AqO-di-2Uo"/>
-                <constraint firstItem="lZf-ii-AJb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BVH-6i-HrK"/>
-                <constraint firstItem="3AT-1K-Dbr" firstAttribute="centerY" secondItem="I9Y-0V-f10" secondAttribute="centerY" id="DPW-y2-XSx"/>
-                <constraint firstItem="nFp-Ju-jM4" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="DUr-sd-waJ"/>
-                <constraint firstItem="CHp-l7-2vz" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="DqX-Lh-vMG"/>
-                <constraint firstItem="eqR-lN-DtL" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="F1l-9k-dsB"/>
-                <constraint firstItem="3AT-1K-Dbr" firstAttribute="leading" secondItem="I9Y-0V-f10" secondAttribute="trailing" constant="8" symbolic="YES" id="FP0-Kc-8iC"/>
-                <constraint firstItem="sGe-kr-ei3" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="GVa-pE-ppb"/>
-                <constraint firstItem="hq4-6q-uga" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HUH-9y-JnW"/>
-                <constraint firstItem="sGe-kr-ei3" firstAttribute="centerY" secondItem="aPB-b9-tPy" secondAttribute="centerY" id="JJo-Q5-v9z"/>
-                <constraint firstItem="3AT-1K-Dbr" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="KJA-NN-g5p"/>
-                <constraint firstItem="oow-vt-Lur" firstAttribute="leading" secondItem="oTX-Gk-8zd" secondAttribute="trailing" constant="8" symbolic="YES" id="MKa-zi-ank"/>
-                <constraint firstItem="I9Y-0V-f10" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="PVP-vb-mRV"/>
-                <constraint firstItem="NyS-Ni-5DN" firstAttribute="centerY" secondItem="9r9-HP-luu" secondAttribute="centerY" id="Pdr-Tw-0hQ"/>
-                <constraint firstItem="lZf-ii-AJb" firstAttribute="centerY" secondItem="oTX-Gk-8zd" secondAttribute="centerY" id="VDb-kW-h4e"/>
-                <constraint firstItem="GmX-B3-2CB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vjj-mZ-TTm"/>
-                <constraint firstItem="oow-vt-Lur" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Vom-VX-QZh"/>
-                <constraint firstItem="eqR-lN-DtL" firstAttribute="top" secondItem="aPB-b9-tPy" secondAttribute="bottom" constant="8" symbolic="YES" id="Woe-KN-zxm"/>
-                <constraint firstItem="nFp-Ju-jM4" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="trailing" constant="8" symbolic="YES" id="ZJW-wK-3LI"/>
-                <constraint firstItem="sGe-kr-ei3" firstAttribute="leading" secondItem="aPB-b9-tPy" secondAttribute="trailing" constant="8" symbolic="YES" id="a1n-7z-dJx"/>
-                <constraint firstItem="GmX-B3-2CB" firstAttribute="centerY" secondItem="I9Y-0V-f10" secondAttribute="centerY" id="bdt-NW-NCN"/>
-                <constraint firstItem="oow-vt-Lur" firstAttribute="centerY" secondItem="oTX-Gk-8zd" secondAttribute="centerY" id="cVj-0w-aaL"/>
-                <constraint firstItem="aPB-b9-tPy" firstAttribute="leading" secondItem="9r9-HP-luu" secondAttribute="leading" id="dC4-yl-Xd3"/>
-                <constraint firstItem="Lkr-54-JBR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dJN-oi-EDh"/>
-                <constraint firstItem="I9Y-0V-f10" firstAttribute="trailing" secondItem="9r9-HP-luu" secondAttribute="trailing" id="fJe-HO-3je"/>
-                <constraint firstItem="Uts-GT-BjX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g4v-Mg-Bbx"/>
-                <constraint firstItem="oTX-Gk-8zd" firstAttribute="trailing" secondItem="9r9-HP-luu" secondAttribute="trailing" id="gXb-F9-GO8"/>
-                <constraint firstItem="aPB-b9-tPy" firstAttribute="trailing" secondItem="9r9-HP-luu" secondAttribute="trailing" id="h0I-8v-Wut"/>
-                <constraint firstItem="Uts-GT-BjX" firstAttribute="centerY" secondItem="eqR-lN-DtL" secondAttribute="centerY" id="hKb-Pc-gz4"/>
-                <constraint firstItem="CHp-l7-2vz" firstAttribute="top" secondItem="I9Y-0V-f10" secondAttribute="bottom" constant="8" symbolic="YES" id="hek-do-ZYI"/>
-                <constraint firstItem="CHp-l7-2vz" firstAttribute="trailing" secondItem="9r9-HP-luu" secondAttribute="trailing" id="iHt-27-cpH"/>
-                <constraint firstItem="I9Y-0V-f10" firstAttribute="top" secondItem="oTX-Gk-8zd" secondAttribute="bottom" constant="8" symbolic="YES" id="kDf-6d-pMf"/>
-                <constraint firstItem="Lkr-54-JBR" firstAttribute="centerY" secondItem="aPB-b9-tPy" secondAttribute="centerY" id="lzG-fh-FaL"/>
-                <constraint firstItem="aPB-b9-tPy" firstAttribute="top" secondItem="9r9-HP-luu" secondAttribute="bottom" constant="8" symbolic="YES" id="nYq-ET-gCQ"/>
-                <constraint firstItem="PNL-zo-CM4" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="oGc-LF-9Ja"/>
-                <constraint firstItem="hq4-6q-uga" firstAttribute="centerY" secondItem="CHp-l7-2vz" secondAttribute="centerY" id="qYg-3Q-lhe"/>
-                <constraint firstItem="i8o-0e-hiV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="s9V-ly-SEX"/>
-                <constraint firstItem="9r9-HP-luu" firstAttribute="top" secondItem="CHp-l7-2vz" secondAttribute="bottom" constant="8" symbolic="YES" id="tRZ-eX-BCd"/>
-                <constraint firstItem="PNL-zo-CM4" firstAttribute="centerY" secondItem="CHp-l7-2vz" secondAttribute="centerY" id="twH-cm-ZIh"/>
-                <constraint firstItem="i8o-0e-hiV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vuo-H8-lxf"/>
-                <constraint firstItem="NyS-Ni-5DN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xjB-Sp-lQi"/>
+                <constraint firstItem="i8o-0e-hiV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JMO-ca-F8h"/>
+                <constraint firstItem="nip-sW-yrm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TSR-Nw-miO"/>
+                <constraint firstAttribute="trailing" secondItem="i8o-0e-hiV" secondAttribute="trailing" id="ZYx-SR-VUX"/>
+                <constraint firstItem="i8o-0e-hiV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dKp-LD-hwB"/>
+                <constraint firstItem="nip-sW-yrm" firstAttribute="top" secondItem="i8o-0e-hiV" secondAttribute="bottom" constant="8" symbolic="YES" id="daO-6B-ths"/>
+                <constraint firstAttribute="trailing" secondItem="nip-sW-yrm" secondAttribute="trailing" id="wSf-tl-mcr"/>
+                <constraint firstAttribute="bottom" secondItem="nip-sW-yrm" secondAttribute="bottom" id="wbV-ic-16W"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="201.44927536231884" y="290.625"/>
