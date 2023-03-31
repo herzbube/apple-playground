@@ -13,7 +13,10 @@
 
 @interface GradientParametersViewController()
 @property (weak, nonatomic) IBOutlet UISwitch* gradientEnabledSwitch;
-@property (weak, nonatomic) IBOutlet UIStackView* stackView;
+@property (weak, nonatomic) IBOutlet UIStackView* topLevelStackView;
+// Strong reference is needed so that the object is not deallocated when it is
+// removed from the view hierarchy
+@property (strong, nonatomic) IBOutlet UIStackView* gradientParametersStackView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl* gradientTypeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIView* containerView;
 @property (strong, nonatomic) NSArray* autoLayoutConstraints;
@@ -107,9 +110,9 @@
 {
   BOOL gradientEnabled = sender.on;
 
-  self.stackView.hidden = ! gradientEnabled;
-
   self.gradientParameters.gradientEnabled = gradientEnabled;
+
+  [self updateUiVisibility];
 }
 
 #pragma mark - Segmented control input actions
@@ -128,11 +131,29 @@
 - (void) updateUiWithModelValues
 {
   self.gradientEnabledSwitch.on = self.gradientParameters.gradientEnabled;
-  self.stackView.hidden = ! self.gradientParameters.gradientEnabled;
   self.gradientTypeSegmentedControl.selectedSegmentIndex = self.gradientParameters.gradientType;
+
+  [self updateUiVisibility];
 
   for (id childViewController in self.childViewControllers)
     [childViewController updateUiWithModelValues];
+}
+
+- (void) updateUiVisibility
+{
+  if (self.gradientParameters.gradientEnabled)
+  {
+    if (! [self.topLevelStackView.arrangedSubviews containsObject:self.gradientParametersStackView])
+      [self.topLevelStackView insertArrangedSubview:self.gradientParametersStackView atIndex:0];
+  }
+  else
+  {
+    if ([self.topLevelStackView.arrangedSubviews containsObject:self.gradientParametersStackView])
+    {
+      [self.topLevelStackView removeArrangedSubview:self.gradientParametersStackView];
+      [self.gradientParametersStackView removeFromSuperview];
+    }
+  }
 }
 
 @end

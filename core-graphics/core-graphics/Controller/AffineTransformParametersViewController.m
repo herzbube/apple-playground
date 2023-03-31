@@ -11,7 +11,10 @@
 
 @interface AffineTransformParametersViewController()
 @property (weak, nonatomic) IBOutlet UISwitch* affineTransformEnabledSwitch;
-@property (weak, nonatomic) IBOutlet UIStackView* stackView;
+@property (weak, nonatomic) IBOutlet UIStackView* topLevelStackView;
+// Strong reference is needed so that the object is not deallocated when it is
+// removed from the view hierarchy
+@property (strong, nonatomic) IBOutlet UIStackView* affineTransformParametersStackView;
 @property (weak, nonatomic) IBOutlet UITextField* aTextField;
 @property (weak, nonatomic) IBOutlet UITextField* bTextField;
 @property (weak, nonatomic) IBOutlet UITextField* cTextField;
@@ -59,9 +62,9 @@
 {
   BOOL affineTransformEnabled = sender.on;
 
-  self.stackView.hidden = ! affineTransformEnabled;
-
   self.affineTransformParameters.affineTransformEnabled = affineTransformEnabled;
+
+  [self updateUiVisibility];
 }
 
 #pragma mark - Text field input actions
@@ -193,7 +196,6 @@
 - (void) updateUiWithModelValues
 {
   self.affineTransformEnabledSwitch.on = self.affineTransformParameters.affineTransformEnabled;
-  self.stackView.hidden = ! self.affineTransformParameters.affineTransformEnabled;
 
   self.aTextField.text = [NSString stringWithFormat:@"%f", self.affineTransformParameters.a];
   self.bTextField.text = [NSString stringWithFormat:@"%f", self.affineTransformParameters.b];
@@ -214,6 +216,25 @@
                                               rangeValue:self.affineTransformParameters.rangeTx];
   self.tySlider.value = [Converter fractionFromPartValue:self.affineTransformParameters.ty
                                               rangeValue:self.affineTransformParameters.rangeTy];
+
+  [self updateUiVisibility];
+}
+
+- (void) updateUiVisibility
+{
+  if (self.affineTransformParameters.affineTransformEnabled)
+  {
+    if (! [self.topLevelStackView.arrangedSubviews containsObject:self.affineTransformParametersStackView])
+      [self.topLevelStackView insertArrangedSubview:self.affineTransformParametersStackView atIndex:0];
+  }
+  else
+  {
+    if ([self.topLevelStackView.arrangedSubviews containsObject:self.affineTransformParametersStackView])
+    {
+      [self.topLevelStackView removeArrangedSubview:self.affineTransformParametersStackView];
+      [self.affineTransformParametersStackView removeFromSuperview];
+    }
+  }
 }
 
 @end

@@ -21,7 +21,6 @@
 		CDB6A11D29CF5A34007618BA /* FillParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A11A29CF5A34007618BA /* FillParametersViewController.m */; };
 		CDB6A11E29CF5A34007618BA /* FillParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A11C29CF5A34007618BA /* FillParametersViewController.xib */; };
 		CDB6A12129CF64B5007618BA /* AffineTransformParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A11F29CF64B5007618BA /* AffineTransformParameters.m */; };
-		CDB6A12529CF7900007618BA /* AffineTransformParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A12229CF7900007618BA /* AffineTransformParametersViewController.xib */; };
 		CDB6A12629CF7900007618BA /* AffineTransformParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A12329CF7900007618BA /* AffineTransformParametersViewController.m */; };
 		CDB6A12929D06DBA007618BA /* GradientStopParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A12829D06DBA007618BA /* GradientStopParameters.m */; };
 		CDB6A12C29D06E80007618BA /* LinearGradientParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A12B29D06E80007618BA /* LinearGradientParameters.m */; };
@@ -36,6 +35,7 @@
 		CDB6A14529D09815007618BA /* RadialGradientParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A14229D09815007618BA /* RadialGradientParametersViewController.xib */; };
 		CDB6A14629D09815007618BA /* RadialGradientParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A14429D09815007618BA /* RadialGradientParametersViewController.m */; };
 		CDB6A14929D6E2BD007618BA /* DrawingParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A14829D6E2BD007618BA /* DrawingParameters.m */; };
+		CDB6A14C29D7470F007618BA /* AffineTransformParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A14B29D7470F007618BA /* AffineTransformParametersViewController.xib */; };
 		CDC0F9DD29CBAAD10005F9F6 /* StrokeParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0F9DB29CBAAD10005F9F6 /* StrokeParametersViewController.m */; };
 		CDC0F9DE29CBAAD10005F9F6 /* StrokeParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC0F9DC29CBAAD10005F9F6 /* StrokeParametersViewController.xib */; };
 		CDC0F9E229CE06E80005F9F6 /* ColorParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0F9E029CE06E80005F9F6 /* ColorParametersViewController.m */; };
@@ -74,7 +74,6 @@
 		CDB6A11C29CF5A34007618BA /* FillParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FillParametersViewController.xib; sourceTree = "<group>"; };
 		CDB6A11F29CF64B5007618BA /* AffineTransformParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AffineTransformParameters.m; sourceTree = "<group>"; };
 		CDB6A12029CF64B5007618BA /* AffineTransformParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffineTransformParameters.h; sourceTree = "<group>"; };
-		CDB6A12229CF7900007618BA /* AffineTransformParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AffineTransformParametersViewController.xib; sourceTree = "<group>"; };
 		CDB6A12329CF7900007618BA /* AffineTransformParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AffineTransformParametersViewController.m; sourceTree = "<group>"; };
 		CDB6A12429CF7900007618BA /* AffineTransformParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffineTransformParametersViewController.h; sourceTree = "<group>"; };
 		CDB6A12729D06DBA007618BA /* GradientStopParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientStopParameters.h; sourceTree = "<group>"; };
@@ -99,6 +98,7 @@
 		CDB6A14429D09815007618BA /* RadialGradientParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialGradientParametersViewController.m; sourceTree = "<group>"; };
 		CDB6A14729D6E2BD007618BA /* DrawingParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingParameters.h; sourceTree = "<group>"; };
 		CDB6A14829D6E2BD007618BA /* DrawingParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawingParameters.m; sourceTree = "<group>"; };
+		CDB6A14B29D7470F007618BA /* AffineTransformParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AffineTransformParametersViewController.xib; sourceTree = "<group>"; };
 		CDC0F9DA29CBAAD10005F9F6 /* StrokeParametersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StrokeParametersViewController.h; sourceTree = "<group>"; };
 		CDC0F9DB29CBAAD10005F9F6 /* StrokeParametersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StrokeParametersViewController.m; sourceTree = "<group>"; };
 		CDC0F9DC29CBAAD10005F9F6 /* StrokeParametersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StrokeParametersViewController.xib; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 			children = (
 				CDB6A12429CF7900007618BA /* AffineTransformParametersViewController.h */,
 				CDB6A12329CF7900007618BA /* AffineTransformParametersViewController.m */,
-				CDB6A12229CF7900007618BA /* AffineTransformParametersViewController.xib */,
+				CDB6A14B29D7470F007618BA /* AffineTransformParametersViewController.xib */,
 				CDC0F9F229CF2C5D0005F9F6 /* ArcParametersViewController.h */,
 				CDC0F9F329CF2C5D0005F9F6 /* ArcParametersViewController.m */,
 				CDC0F9F429CF2C5D0005F9F6 /* ArcParametersViewController.xib */,
@@ -291,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB6A14C29D7470F007618BA /* AffineTransformParametersViewController.xib in Resources */,
 				CD84616029C78A6200D4D6B7 /* LaunchScreen.storyboard in Resources */,
 				CDC0F9F629CF2C5D0005F9F6 /* ArcParametersViewController.xib in Resources */,
 				CD84615D29C78A6200D4D6B7 /* Assets.xcassets in Resources */,
@@ -298,7 +299,6 @@
 				CDC0F9DE29CBAAD10005F9F6 /* StrokeParametersViewController.xib in Resources */,
 				CDB6A14529D09815007618BA /* RadialGradientParametersViewController.xib in Resources */,
 				CDB6A13729D07323007618BA /* GradientStopParametersViewController.xib in Resources */,
-				CDB6A12529CF7900007618BA /* AffineTransformParametersViewController.xib in Resources */,
 				CDB6A11E29CF5A34007618BA /* FillParametersViewController.xib in Resources */,
 				CDC0F9E329CE06E80005F9F6 /* ColorParametersViewController.xib in Resources */,
 				CD84615B29C78A5F00D4D6B7 /* Main.storyboard in Resources */,

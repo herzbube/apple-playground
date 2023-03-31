@@ -13,7 +13,10 @@
 
 @interface StrokeParametersViewController()
 @property (weak, nonatomic) IBOutlet UISwitch* strokeEnabledSwitch;
-@property (weak, nonatomic) IBOutlet UIStackView* stackView;
+@property (weak, nonatomic) IBOutlet UIStackView* topLevelStackView;
+// Strong reference is needed so that the object is not deallocated when it is
+// removed from the view hierarchy
+@property (strong, nonatomic) IBOutlet UIStackView* strokeParametersStackView;
 @property (weak, nonatomic) IBOutlet UITextField* lineWidthTextField;
 @property (weak, nonatomic) IBOutlet UISlider* lineWidthSlider;
 @property (weak, nonatomic) IBOutlet UIView* colorParametersContainerView;
@@ -68,9 +71,9 @@
 {
   BOOL strokeEnabled = sender.on;
 
-  self.stackView.hidden = ! strokeEnabled;
-
   self.strokeParameters.strokeEnabled = strokeEnabled;
+
+  [self updateUiVisibility];
 }
 
 #pragma mark - Text field input actions
@@ -102,13 +105,31 @@
 - (void) updateUiWithModelValues
 {
   self.strokeEnabledSwitch.on = self.strokeParameters.strokeEnabled;
-  self.stackView.hidden = ! self.strokeParameters.strokeEnabled;
   self.lineWidthTextField.text = [NSString stringWithFormat:@"%f", self.strokeParameters.lineWidth];
   self.lineWidthSlider.value = [Converter fractionFromPartValue:self.strokeParameters.lineWidth
                                                      wholeValue:self.strokeParameters.maximumLineWidth];
 
+  [self updateUiVisibility];
+
   for (id childViewController in self.childViewControllers)
     [childViewController updateUiWithModelValues];
+}
+
+- (void) updateUiVisibility
+{
+  if (self.strokeParameters.strokeEnabled)
+  {
+    if (! [self.topLevelStackView.arrangedSubviews containsObject:self.strokeParametersStackView])
+      [self.topLevelStackView insertArrangedSubview:self.strokeParametersStackView atIndex:0];
+  }
+  else
+  {
+    if ([self.topLevelStackView.arrangedSubviews containsObject:self.strokeParametersStackView])
+    {
+      [self.topLevelStackView removeArrangedSubview:self.strokeParametersStackView];
+      [self.strokeParametersStackView removeFromSuperview];
+    }
+  }
 }
 
 @end

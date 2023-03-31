@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="colorParametersContainerView" destination="ee8-o2-SAa" id="owV-Ro-6Ly"/>
                 <outlet property="fillEnabledSwitch" destination="FdF-3K-oP3" id="6EY-hX-G6m"/>
-                <outlet property="stackView" destination="Maz-WG-kmu" id="2y5-3F-nNn"/>
+                <outlet property="topLevelStackView" destination="Maz-WG-kmu" id="TBo-zx-Jn6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,7 +28,13 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Maz-WG-kmu">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FdF-3K-oP3" userLabel="Fill enabled switch">
+                    <rect key="frame" x="420" y="0.0" width="51" height="20.5"/>
+                    <connections>
+                        <action selector="fillEnabledValueChanged:" destination="-1" eventType="valueChanged" id="gOC-53-QdG"/>
+                    </connections>
+                </switch>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Maz-WG-kmu" userLabel="Top-level stack view">
                     <rect key="frame" x="0.0" y="28.5" width="469" height="161.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="ColorParametersContainerView">
@@ -41,22 +47,16 @@
                         </view>
                     </subviews>
                 </stackView>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FdF-3K-oP3" userLabel="Fill enabled switch">
-                    <rect key="frame" x="420" y="0.0" width="51" height="20.5"/>
-                    <connections>
-                        <action selector="fillEnabledValueChanged:" destination="-1" eventType="valueChanged" id="gOC-53-QdG"/>
-                    </connections>
-                </switch>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="GZf-Hz-B0e"/>
-                <constraint firstItem="Maz-WG-kmu" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="LNB-Iz-zgO"/>
+                <constraint firstAttribute="trailing" secondItem="Maz-WG-kmu" secondAttribute="trailing" id="LB8-s7-TkU"/>
                 <constraint firstItem="Maz-WG-kmu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="URH-Xt-KvV"/>
                 <constraint firstItem="FdF-3K-oP3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ePQ-Ia-7iF"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g5m-p2-PhJ"/>
-                <constraint firstItem="Maz-WG-kmu" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="kLc-Rb-IqH"/>
+                <constraint firstAttribute="bottom" secondItem="Maz-WG-kmu" secondAttribute="bottom" id="r9G-jn-m7O"/>
                 <constraint firstItem="Maz-WG-kmu" firstAttribute="top" secondItem="FdF-3K-oP3" secondAttribute="bottom" constant="8" symbolic="YES" id="uou-Eh-MKE"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="height" secondItem="FdF-3K-oP3" secondAttribute="height" id="xW0-KI-9Xl"/>
                 <constraint firstItem="k4q-mD-8za" firstAttribute="trailing" secondItem="FdF-3K-oP3" secondAttribute="leading" constant="-20" id="yN5-8e-4X1"/>

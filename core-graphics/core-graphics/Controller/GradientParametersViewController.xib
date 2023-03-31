@@ -13,8 +13,9 @@
             <connections>
                 <outlet property="containerView" destination="wQl-bL-nni" id="jDi-bw-MWj"/>
                 <outlet property="gradientEnabledSwitch" destination="qfk-r3-sqc" id="wj4-QM-EZh"/>
+                <outlet property="gradientParametersStackView" destination="H13-Wq-6ta" id="4Wp-m2-aHt"/>
                 <outlet property="gradientTypeSegmentedControl" destination="Vtw-56-Wx8" id="ieY-UC-BLy"/>
-                <outlet property="stackView" destination="SAd-8l-TsM" id="0gp-jD-E4H"/>
+                <outlet property="topLevelStackView" destination="SAd-8l-TsM" id="dgN-fZ-ZQT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,33 +25,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gradient parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDr-P7-xO6" userLabel="Gradient parameters title label">
-                    <rect key="frame" x="0.0" y="0.0" width="505" height="31"/>
+                    <rect key="frame" x="0.0" y="0.0" width="505" height="20.5"/>
                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfk-r3-sqc" userLabel="Gradient enabled switch">
-                    <rect key="frame" x="525" y="0.0" width="51" height="31"/>
+                    <rect key="frame" x="525" y="0.0" width="51" height="20.5"/>
                     <connections>
                         <action selector="gradientEnabledValueChanged:" destination="-1" eventType="valueChanged" id="LzO-b6-yUx"/>
                     </connections>
                 </switch>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SAd-8l-TsM" userLabel="Top-level stack view">
-                    <rect key="frame" x="0.0" y="39" width="574" height="200"/>
+                    <rect key="frame" x="0.0" y="28.5" width="574" height="210.5"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vtw-56-Wx8" userLabel="Gradient type segmented control">
-                            <rect key="frame" x="0.0" y="0.0" width="574" height="65"/>
-                            <segments>
-                                <segment title="Linear gradient"/>
-                                <segment title="Radial gradient"/>
-                            </segments>
-                            <connections>
-                                <action selector="gradientTypeValueChanged:" destination="-1" eventType="valueChanged" id="b4O-8s-6Ri"/>
-                            </connections>
-                        </segmentedControl>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQl-bL-nni" userLabel="Container view">
-                            <rect key="frame" x="0.0" y="72" width="574" height="128"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H13-Wq-6ta" userLabel="Gradient parameters stack view">
+                            <rect key="frame" x="0.0" y="0.0" width="574" height="152.5"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vtw-56-Wx8" userLabel="Gradient type segmented control">
+                                    <rect key="frame" x="0.0" y="0.0" width="574" height="32"/>
+                                    <segments>
+                                        <segment title="Linear gradient"/>
+                                        <segment title="Radial gradient"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="gradientTypeValueChanged:" destination="-1" eventType="valueChanged" id="b4O-8s-6Ri"/>
+                                    </connections>
+                                </segmentedControl>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQl-bL-nni" userLabel="Container view">
+                                    <rect key="frame" x="0.0" y="39" width="574" height="113.5"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Dg-vg-7M0" userLabel="Spacer view">
+                            <rect key="frame" x="0.0" y="160.5" width="574" height="50"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                     </subviews>
@@ -61,13 +71,13 @@
             <constraints>
                 <constraint firstItem="SAd-8l-TsM" firstAttribute="top" secondItem="IDr-P7-xO6" secondAttribute="bottom" constant="8" symbolic="YES" id="0CT-U2-J2l"/>
                 <constraint firstItem="qfk-r3-sqc" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="EMa-FR-41o"/>
+                <constraint firstAttribute="bottom" secondItem="SAd-8l-TsM" secondAttribute="bottom" id="KC1-1g-9fx"/>
                 <constraint firstItem="SAd-8l-TsM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KTG-eU-fzO"/>
                 <constraint firstItem="IDr-P7-xO6" firstAttribute="height" secondItem="qfk-r3-sqc" secondAttribute="height" id="Vl6-04-68R"/>
                 <constraint firstItem="IDr-P7-xO6" firstAttribute="trailing" secondItem="qfk-r3-sqc" secondAttribute="leading" constant="-20" id="Y4V-h7-fXI"/>
                 <constraint firstItem="IDr-P7-xO6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YVV-fe-wV3"/>
                 <constraint firstItem="IDr-P7-xO6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iOj-nV-plX"/>
-                <constraint firstItem="SAd-8l-TsM" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="lEY-Ts-Fcs"/>
-                <constraint firstItem="SAd-8l-TsM" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="tY3-Be-aQ8"/>
+                <constraint firstAttribute="trailing" secondItem="SAd-8l-TsM" secondAttribute="trailing" id="xkM-qq-fYk"/>
                 <constraint firstItem="qfk-r3-sqc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ze5-SD-bjm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -12,8 +12,8 @@
 
 @interface FillParametersViewController()
 @property (weak, nonatomic) IBOutlet UISwitch* fillEnabledSwitch;
-@property (weak, nonatomic) IBOutlet UIStackView* stackView;
-@property (weak, nonatomic) IBOutlet UIView* colorParametersContainerView;
+@property (weak, nonatomic) IBOutlet UIStackView* topLevelStackView;
+@property (strong, nonatomic) IBOutlet UIView* colorParametersContainerView;
 @end
 
 @implementation FillParametersViewController
@@ -65,9 +65,9 @@
 {
   BOOL fillEnabled = sender.on;
 
-  self.stackView.hidden = ! fillEnabled;
-
   self.fillParameters.fillEnabled = fillEnabled;
+
+  [self updateUiVisibility];
 }
 
 #pragma mark - Updaters
@@ -75,10 +75,28 @@
 - (void) updateUiWithModelValues
 {
   self.fillEnabledSwitch.on = self.fillParameters.fillEnabled;
-  self.stackView.hidden = ! self.fillParameters.fillEnabled;
+
+  [self updateUiVisibility];
 
   for (id childViewController in self.childViewControllers)
     [childViewController updateUiWithModelValues];
+}
+
+- (void) updateUiVisibility
+{
+  if (self.fillParameters.fillEnabled)
+  {
+    if (! [self.topLevelStackView.arrangedSubviews containsObject:self.colorParametersContainerView])
+      [self.topLevelStackView insertArrangedSubview:self.colorParametersContainerView atIndex:0];
+  }
+  else
+  {
+    if ([self.topLevelStackView.arrangedSubviews containsObject:self.colorParametersContainerView])
+    {
+      [self.topLevelStackView removeArrangedSubview:self.colorParametersContainerView];
+      [self.colorParametersContainerView removeFromSuperview];
+    }
+  }
 }
 
 @end
