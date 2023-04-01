@@ -9,15 +9,15 @@
 #import "Model/DrawingParameters.h"
 #import "DrawingView.h"
 #import "Controller/AffineTransformParametersViewController.h"
-#import "Controller/ArcParametersViewController.h"
 #import "Controller/FillParametersViewController.h"
 #import "Controller/GradientParametersViewController.h"
+#import "Controller/PathParametersViewController.h"
 #import "Controller/StrokeParametersViewController.h"
 #import "AutoLayoutUtility.h"
 
 @interface ViewController()
 @property (strong, nonatomic) DrawingParameters* drawingParameters;
-@property (weak, nonatomic) IBOutlet UIView* arcParametersContainerView;
+@property (weak, nonatomic) IBOutlet UIView* pathParametersContainerView;
 @property (weak, nonatomic) IBOutlet UIView* strokeParametersContainerView;
 @property (weak, nonatomic) IBOutlet UIView* fillParametersContainerView;
 @property (weak, nonatomic) IBOutlet UIView* affineTransformParametersContainerView;
@@ -44,25 +44,25 @@
 
 - (void) integrateChildViewControllers
 {
-  [self integrateArcParametersChildViewController];
+  [self integratePathParametersChildViewController];
   [self integrateStrokeParametersChildViewController];
   [self integrateFillParametersChildViewController];
   [self integrateAffineTransformParametersChildViewController];
   [self integrateGradientParametersChildViewController];
 }
 
-- (void) integrateArcParametersChildViewController
+- (void) integratePathParametersChildViewController
 {
-  ArcParametersViewController* arcParametersViewController = [[ArcParametersViewController alloc] initWithArcParameters:self.drawingParameters.arcParameters];
-  [self addChildViewController:arcParametersViewController];
-  [arcParametersViewController didMoveToParentViewController:self];
+  PathParametersViewController* pathParametersViewController = [[PathParametersViewController alloc] initWithPathParameters:self.drawingParameters.pathParameters];
+  [self addChildViewController:pathParametersViewController];
+  [pathParametersViewController didMoveToParentViewController:self];
 
-  UIView* arcParametersView = arcParametersViewController.view;
-  [self.arcParametersContainerView addSubview:arcParametersView];
-  arcParametersView.translatesAutoresizingMaskIntoConstraints = NO;
-  [AutoLayoutUtility fillSuperview:self.arcParametersContainerView withSubview:arcParametersView];
+  UIView* pathParametersView = pathParametersViewController.view;
+  [self.pathParametersContainerView addSubview:pathParametersView];
+  pathParametersView.translatesAutoresizingMaskIntoConstraints = NO;
+  [AutoLayoutUtility fillSuperview:self.pathParametersContainerView withSubview:pathParametersView];
 
-  self.drawingView.arcParameters = self.drawingParameters.arcParameters;
+  self.drawingView.pathParameters = self.drawingParameters.pathParameters;
 }
 
 - (void) integrateStrokeParametersChildViewController

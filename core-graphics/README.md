@@ -26,15 +26,22 @@ The following table lists the Core Graphics functions currently supported by thi
 | CGContextAddRect | <ul><li>rectangle: `CGRect`</li></ul> | |
 | CGContextSetLineWidth | <ul><li>width: `CGFloat`</li></ul> | |
 | CGContextSetStrokeColorWithColor | <ul><li>color: `CGColorRef`</li></ul> | |
-| CGContextStrokePath | None | |
+| CGContextStrokePath | None | This function is used if the path needs to be stroked, but not filled. |
 | CGContextSetFillColorWithColor | <ul><li>color: `CGColorRef`</li></ul> | |
-| CGContextFillPath | None | |
+| CGContextFillPath | None | This function is used if the path needs to be filled, but not stroked. |
+| CGContextDrawPath | <ul><li>drawingMode: `CGPathDrawingMode`</li></ul> | This function is used if the path needs to be stroked **and** filled. The drawing mode parameter value is always `kCGPathFillStroke`. |
+| CGContextConcatCTM | <ul><li>transform: `CGAffineTransform`</li></ul> | The `CGAffineTransform` type is a structure that holds the 6 parameters (a, b, c, d, tx, ty) described in the "Affine transformation notes" section below. |
 | CGContextRotateCTM | <ul><li>angle: `CGFloat`</li></ul> | Input is in degrees, positive values rotate counterclockwise, negative values rotate clockwise. |
 | CGContextScaleCTM | <ul><li>sx, sy: 2x `CGFloat`</li></ul> | The parameters are the factors used to scale in x/y-direction. |
 | CGContextTranslateCTM | <ul><li>tx, ty: 2x `CGFloat`</li></ul> | The parameters are the amounts used to translate in x/y-direction. |
+| CGColorSpaceCreateDeviceRGB | None | |
+| CGColorSpaceRelease | <ul><li>colorSpace: `CGColorSpaceRef`</li></ul> | The parameter value is the reference to the color space created by `CGColorSpaceCreateDeviceRGB`. |
 | CGGradientCreateWithColors | <ul><li>colors: 2x `CGColor`</li> <li>locations: 2x `CGFloat`</li></ul> | Currently supports only two colors. The color space currently always is RGB. |
-| CGContextDrawLinearGradient | <ul><li>gradient: `CGGradientRef`</li> <li>startPoint: `CGPoint`</li> <li>endPoint: `CGPoint`</li></ul> | Currently does not support specifying options. |
-| CGContextDrawRadialGradient | <ul><li>gradient: `CGGradientRef`</li> <li>startCenter: `CGPoint`</li> <li>startRadius: `CGFloat`</li> <li>endCenter: `CGPoint`</li> <li>endRadius: `CGFloat`</li></ul> | Currently does not support specifying options. |
+| CGGradientRelease | <ul><li>gradient: `CGGradientRef`</li></ul> | The parameter value is the reference to the gradient created by `CGGradientCreateWithColors`. |
+| CGContextDrawLinearGradient | <ul><li>gradient: `CGGradientRef`</li> <li>startPoint: `CGPoint`</li> <li>endPoint: `CGPoint`</li><li>options: `CGGradientDrawingOptions`</li></ul> | Currently the options parameter value is always 0 (zero). |
+| CGContextDrawRadialGradient | <ul><li>gradient: `CGGradientRef`</li> <li>startCenter: `CGPoint`</li> <li>startRadius: `CGFloat`</li> <li>endCenter: `CGPoint`</li> <li>endRadius: `CGFloat`</li><li>options: `CGGradientDrawingOptions`</li></ul> | Currently the options parameter value is always 0 (zero). |
+| CGContextSaveGState | None | |
+| CGContextRestoreGState | None | |
 
 Not covered so far, but should be:
 

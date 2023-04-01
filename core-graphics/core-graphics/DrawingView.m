@@ -14,7 +14,9 @@
 #import "Model/GradientParameters.h"
 #import "Model/GradientStopParameters.h"
 #import "Model/LinearGradientParameters.h"
+#import "Model/PathParameters.h"
 #import "Model/RadialGradientParameters.h"
+#import "Model/RectangleParameters.h"
 #import "Model/StrokeParameters.h"
 
 @implementation DrawingView
@@ -23,12 +25,18 @@
 
 - (void) startObserving
 {
-  [self.arcParameters addObserver:self forKeyPath:@"centerX" options:0 context:NULL];
-  [self.arcParameters addObserver:self forKeyPath:@"centerY" options:0 context:NULL];
-  [self.arcParameters addObserver:self forKeyPath:@"radius" options:0 context:NULL];
-  [self.arcParameters addObserver:self forKeyPath:@"startAngle" options:0 context:NULL];
-  [self.arcParameters addObserver:self forKeyPath:@"endAngle" options:0 context:NULL];
-  [self.arcParameters addObserver:self forKeyPath:@"clockwise" options:0 context:NULL];
+  [self.pathParameters addObserver:self forKeyPath:@"pathEnabled" options:0 context:NULL];
+  [self.pathParameters addObserver:self forKeyPath:@"pathType" options:0 context:NULL];
+  [self.pathParameters.arcParameters addObserver:self forKeyPath:@"centerX" options:0 context:NULL];
+  [self.pathParameters.arcParameters addObserver:self forKeyPath:@"centerY" options:0 context:NULL];
+  [self.pathParameters.arcParameters addObserver:self forKeyPath:@"radius" options:0 context:NULL];
+  [self.pathParameters.arcParameters addObserver:self forKeyPath:@"startAngle" options:0 context:NULL];
+  [self.pathParameters.arcParameters addObserver:self forKeyPath:@"endAngle" options:0 context:NULL];
+  [self.pathParameters.arcParameters addObserver:self forKeyPath:@"clockwise" options:0 context:NULL];
+  [self.pathParameters.rectangleParameters addObserver:self forKeyPath:@"originX" options:0 context:NULL];
+  [self.pathParameters.rectangleParameters addObserver:self forKeyPath:@"originY" options:0 context:NULL];
+  [self.pathParameters.rectangleParameters addObserver:self forKeyPath:@"width" options:0 context:NULL];
+  [self.pathParameters.rectangleParameters addObserver:self forKeyPath:@"height" options:0 context:NULL];
 
   [self.strokeParameters addObserver:self forKeyPath:@"strokeEnabled" options:0 context:NULL];
   [self.strokeParameters addObserver:self forKeyPath:@"lineWidth" options:0 context:NULL];
@@ -97,19 +105,26 @@
   [DrawingHelper concatTransformWithContext:context
                   affineTransformParameters:self.affineTransformParameters];
 
-//  if (self.model.pathType == PathTypeArc)
+  if (self.pathParameters.pathEnabled)
   {
-    CGContextAddArc(context,
-                    self.arcParameters.centerX,
-                    self.arcParameters.centerY,
-                    self.arcParameters.radius,
-                    [DrawingHelper radians:self.arcParameters.startAngle],
-                    [DrawingHelper radians:self.arcParameters.endAngle],
-                    self.arcParameters.clockwise);
-  }
-//  else
-  {
-    // TODO Draw rectangle
+    if (self.pathParameters.pathType == PathTypeArc)
+    {
+      CGContextAddArc(context,
+                      self.pathParameters.arcParameters.centerX,
+                      self.pathParameters.arcParameters.centerY,
+                      self.pathParameters.arcParameters.radius,
+                      [DrawingHelper radians:self.pathParameters.arcParameters.startAngle],
+                      [DrawingHelper radians:self.pathParameters.arcParameters.endAngle],
+                      self.pathParameters.arcParameters.clockwise);
+    }
+    else
+    {
+      CGRect rectangle = CGRectMake(self.pathParameters.rectangleParameters.originX,
+                                    self.pathParameters.rectangleParameters.originY,
+                                    self.pathParameters.rectangleParameters.width,
+                                    self.pathParameters.rectangleParameters.height);
+      CGContextAddRect(context, rectangle);
+    }
   }
 
   [DrawingHelper fillOrStrokePathWithContext:context

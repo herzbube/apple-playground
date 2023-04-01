@@ -36,6 +36,12 @@
 		CDB6A14629D09815007618BA /* RadialGradientParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A14429D09815007618BA /* RadialGradientParametersViewController.m */; };
 		CDB6A14929D6E2BD007618BA /* DrawingParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A14829D6E2BD007618BA /* DrawingParameters.m */; };
 		CDB6A14C29D7470F007618BA /* AffineTransformParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A14B29D7470F007618BA /* AffineTransformParametersViewController.xib */; };
+		CDB6A14F29D78B6F007618BA /* RectangleParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A14D29D78B6E007618BA /* RectangleParameters.m */; };
+		CDB6A15229D78BA2007618BA /* PathParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A15129D78BA2007618BA /* PathParameters.m */; };
+		CDB6A15629D78E71007618BA /* RectangleParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A15329D78E70007618BA /* RectangleParametersViewController.xib */; };
+		CDB6A15729D78E71007618BA /* RectangleParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A15529D78E71007618BA /* RectangleParametersViewController.m */; };
+		CDB6A15B29D78E95007618BA /* PathParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A15829D78E94007618BA /* PathParametersViewController.m */; };
+		CDB6A15C29D78E95007618BA /* PathParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A15A29D78E95007618BA /* PathParametersViewController.xib */; };
 		CDC0F9DD29CBAAD10005F9F6 /* StrokeParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0F9DB29CBAAD10005F9F6 /* StrokeParametersViewController.m */; };
 		CDC0F9DE29CBAAD10005F9F6 /* StrokeParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC0F9DC29CBAAD10005F9F6 /* StrokeParametersViewController.xib */; };
 		CDC0F9E229CE06E80005F9F6 /* ColorParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0F9E029CE06E80005F9F6 /* ColorParametersViewController.m */; };
@@ -99,6 +105,16 @@
 		CDB6A14729D6E2BD007618BA /* DrawingParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrawingParameters.h; sourceTree = "<group>"; };
 		CDB6A14829D6E2BD007618BA /* DrawingParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrawingParameters.m; sourceTree = "<group>"; };
 		CDB6A14B29D7470F007618BA /* AffineTransformParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AffineTransformParametersViewController.xib; sourceTree = "<group>"; };
+		CDB6A14D29D78B6E007618BA /* RectangleParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectangleParameters.m; sourceTree = "<group>"; };
+		CDB6A14E29D78B6E007618BA /* RectangleParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectangleParameters.h; sourceTree = "<group>"; };
+		CDB6A15029D78BA2007618BA /* PathParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathParameters.h; sourceTree = "<group>"; };
+		CDB6A15129D78BA2007618BA /* PathParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathParameters.m; sourceTree = "<group>"; };
+		CDB6A15329D78E70007618BA /* RectangleParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RectangleParametersViewController.xib; sourceTree = "<group>"; };
+		CDB6A15429D78E70007618BA /* RectangleParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectangleParametersViewController.h; sourceTree = "<group>"; };
+		CDB6A15529D78E71007618BA /* RectangleParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectangleParametersViewController.m; sourceTree = "<group>"; };
+		CDB6A15829D78E94007618BA /* PathParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathParametersViewController.m; sourceTree = "<group>"; };
+		CDB6A15929D78E95007618BA /* PathParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathParametersViewController.h; sourceTree = "<group>"; };
+		CDB6A15A29D78E95007618BA /* PathParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PathParametersViewController.xib; sourceTree = "<group>"; };
 		CDC0F9DA29CBAAD10005F9F6 /* StrokeParametersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StrokeParametersViewController.h; sourceTree = "<group>"; };
 		CDC0F9DB29CBAAD10005F9F6 /* StrokeParametersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StrokeParametersViewController.m; sourceTree = "<group>"; };
 		CDC0F9DC29CBAAD10005F9F6 /* StrokeParametersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StrokeParametersViewController.xib; sourceTree = "<group>"; };
@@ -182,6 +198,8 @@
 				CD84617329C7CFA100D4D6B7 /* ArcParameters.m */,
 				CDC0F9ED29CE189C0005F9F6 /* ColorParameters.h */,
 				CDC0F9EC29CE189C0005F9F6 /* ColorParameters.m */,
+				CDB6A14729D6E2BD007618BA /* DrawingParameters.h */,
+				CDB6A14829D6E2BD007618BA /* DrawingParameters.m */,
 				CDC0F9F829CF561E0005F9F6 /* FillParameters.h */,
 				CDC0F9F729CF561E0005F9F6 /* FillParameters.m */,
 				CDB6A12E29D070AF007618BA /* GradientParameters.h */,
@@ -190,10 +208,12 @@
 				CDB6A12829D06DBA007618BA /* GradientStopParameters.m */,
 				CDB6A12A29D06E80007618BA /* LinearGradientParameters.h */,
 				CDB6A12B29D06E80007618BA /* LinearGradientParameters.m */,
-				CDB6A14729D6E2BD007618BA /* DrawingParameters.h */,
-				CDB6A14829D6E2BD007618BA /* DrawingParameters.m */,
+				CDB6A15029D78BA2007618BA /* PathParameters.h */,
+				CDB6A15129D78BA2007618BA /* PathParameters.m */,
 				CDB6A13129D071B7007618BA /* RadialGradientParameters.h */,
 				CDB6A13029D071B7007618BA /* RadialGradientParameters.m */,
+				CDB6A14E29D78B6E007618BA /* RectangleParameters.h */,
+				CDB6A14D29D78B6E007618BA /* RectangleParameters.m */,
 				CD84617629C7D43400D4D6B7 /* StrokeParameters.h */,
 				CD84617529C7D43400D4D6B7 /* StrokeParameters.m */,
 			);
@@ -224,9 +244,15 @@
 				CDB6A13829D07A3A007618BA /* LinearGradientParametersViewController.h */,
 				CDB6A13929D07A3A007618BA /* LinearGradientParametersViewController.m */,
 				CDB6A13A29D07A3A007618BA /* LinearGradientParametersViewController.xib */,
+				CDB6A15929D78E95007618BA /* PathParametersViewController.h */,
+				CDB6A15829D78E94007618BA /* PathParametersViewController.m */,
+				CDB6A15A29D78E95007618BA /* PathParametersViewController.xib */,
 				CDB6A14329D09815007618BA /* RadialGradientParametersViewController.h */,
 				CDB6A14429D09815007618BA /* RadialGradientParametersViewController.m */,
 				CDB6A14229D09815007618BA /* RadialGradientParametersViewController.xib */,
+				CDB6A15429D78E70007618BA /* RectangleParametersViewController.h */,
+				CDB6A15529D78E71007618BA /* RectangleParametersViewController.m */,
+				CDB6A15329D78E70007618BA /* RectangleParametersViewController.xib */,
 				CDC0F9DA29CBAAD10005F9F6 /* StrokeParametersViewController.h */,
 				CDC0F9DB29CBAAD10005F9F6 /* StrokeParametersViewController.m */,
 				CDC0F9DC29CBAAD10005F9F6 /* StrokeParametersViewController.xib */,
@@ -299,9 +325,11 @@
 				CDC0F9DE29CBAAD10005F9F6 /* StrokeParametersViewController.xib in Resources */,
 				CDB6A14529D09815007618BA /* RadialGradientParametersViewController.xib in Resources */,
 				CDB6A13729D07323007618BA /* GradientStopParametersViewController.xib in Resources */,
+				CDB6A15C29D78E95007618BA /* PathParametersViewController.xib in Resources */,
 				CDB6A11E29CF5A34007618BA /* FillParametersViewController.xib in Resources */,
 				CDC0F9E329CE06E80005F9F6 /* ColorParametersViewController.xib in Resources */,
 				CD84615B29C78A5F00D4D6B7 /* Main.storyboard in Resources */,
+				CDB6A15629D78E71007618BA /* RectangleParametersViewController.xib in Resources */,
 				CDB6A13C29D07A3B007618BA /* LinearGradientParametersViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDC0F9F129CF197B0005F9F6 /* Converter.m in Sources */,
+				CDB6A14F29D78B6F007618BA /* RectangleParameters.m in Sources */,
 				CDC0F9F529CF2C5D0005F9F6 /* ArcParametersViewController.m in Sources */,
 				CDB6A13229D071B7007618BA /* RadialGradientParameters.m in Sources */,
 				CDB6A12129CF64B5007618BA /* AffineTransformParameters.m in Sources */,
@@ -327,6 +356,8 @@
 				CDB6A13629D07323007618BA /* GradientStopParametersViewController.m in Sources */,
 				CDB6A12F29D070AF007618BA /* GradientParameters.m in Sources */,
 				CDB6A14629D09815007618BA /* RadialGradientParametersViewController.m in Sources */,
+				CDB6A15229D78BA2007618BA /* PathParameters.m in Sources */,
+				CDB6A15729D78E71007618BA /* RectangleParametersViewController.m in Sources */,
 				CDC0F9F929CF561E0005F9F6 /* FillParameters.m in Sources */,
 				CD84616329C78A6200D4D6B7 /* main.m in Sources */,
 				CDC0F9E229CE06E80005F9F6 /* ColorParametersViewController.m in Sources */,
@@ -336,6 +367,7 @@
 				CDB6A14029D083FE007618BA /* GradientParametersViewController.m in Sources */,
 				CDB6A14929D6E2BD007618BA /* DrawingParameters.m in Sources */,
 				CDB6A12629CF7900007618BA /* AffineTransformParametersViewController.m in Sources */,
+				CDB6A15B29D78E95007618BA /* PathParametersViewController.m in Sources */,
 				CDB6A11D29CF5A34007618BA /* FillParametersViewController.m in Sources */,
 				CDB6A12C29D06E80007618BA /* LinearGradientParameters.m in Sources */,
 				CD84617429C7CFA100D4D6B7 /* ArcParameters.m in Sources */,

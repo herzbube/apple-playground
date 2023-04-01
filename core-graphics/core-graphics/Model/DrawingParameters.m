@@ -7,17 +7,17 @@
 
 #import "DrawingParameters.h"
 #import "AffineTransformParameters.h"
-#import "ArcParameters.h"
 #import "FillParameters.h"
 #import "GradientParameters.h"
+#import "PathParameters.h"
 #import "StrokeParameters.h"
 
 static NSString* drawingParametersKey = @"drawingParameters";
-static NSString* affineTransformParametersKey = @"affineTransformParameters";
-static NSString* arcParametersKey = @"arcParameters";
-static NSString* fillParametersKey = @"fillParameters";
-static NSString* gradientParametersKey = @"gradientParameters";
+static NSString* pathParametersKey = @"pathParameters";
 static NSString* strokeParametersKey = @"strokeParameters";
+static NSString* fillParametersKey = @"fillParameters";
+static NSString* affineTransformParametersKey = @"affineTransformParameters";
+static NSString* gradientParametersKey = @"gradientParameters";
 
 @implementation DrawingParameters
 
@@ -25,11 +25,11 @@ static NSString* strokeParametersKey = @"strokeParameters";
 {
   self = [super init];
 
-  self.affineTransformParameters = [[AffineTransformParameters alloc] init];
-  self.arcParameters = [[ArcParameters alloc] init];
-  self.fillParameters = [[FillParameters alloc] init];
-  self.gradientParameters = [[GradientParameters alloc] init];
+  self.pathParameters = [[PathParameters alloc] init];
   self.strokeParameters = [[StrokeParameters alloc] init];
+  self.fillParameters = [[FillParameters alloc] init];
+  self.affineTransformParameters = [[AffineTransformParameters alloc] init];
+  self.gradientParameters = [[GradientParameters alloc] init];
 
   return self;
 }
@@ -38,21 +38,21 @@ static NSString* strokeParametersKey = @"strokeParameters";
 {
   return
   @{
-    affineTransformParametersKey : [self.affineTransformParameters valuesAsDictionary],
-    arcParametersKey : [self.arcParameters valuesAsDictionary],
-    fillParametersKey : [self.fillParameters valuesAsDictionary],
-    gradientParametersKey : [self.gradientParameters valuesAsDictionary],
+    pathParametersKey : [self.pathParameters valuesAsDictionary],
     strokeParametersKey : [self.strokeParameters valuesAsDictionary],
+    fillParametersKey : [self.fillParameters valuesAsDictionary],
+    affineTransformParametersKey : [self.affineTransformParameters valuesAsDictionary],
+    gradientParametersKey : [self.gradientParameters valuesAsDictionary],
   };
 }
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
-  [self.affineTransformParameters setValuesWithDictionary:dictionary[affineTransformParametersKey]];
-  [self.arcParameters setValuesWithDictionary:dictionary[arcParametersKey]];
-  [self.fillParameters setValuesWithDictionary:dictionary[fillParametersKey]];
-  [self.gradientParameters setValuesWithDictionary:dictionary[gradientParametersKey]];
+  [self.pathParameters setValuesWithDictionary:dictionary[pathParametersKey]];
   [self.strokeParameters setValuesWithDictionary:dictionary[strokeParametersKey]];
+  [self.fillParameters setValuesWithDictionary:dictionary[fillParametersKey]];
+  [self.affineTransformParameters setValuesWithDictionary:dictionary[affineTransformParametersKey]];
+  [self.gradientParameters setValuesWithDictionary:dictionary[gradientParametersKey]];
 }
 
 - (void) readUserDefaults
@@ -72,11 +72,11 @@ static NSString* strokeParametersKey = @"strokeParameters";
 
 - (void) resetToDefaultValues
 {
-  [self.affineTransformParameters resetToDefaultValues];
-  [self.arcParameters resetToDefaultValues];
-  [self.fillParameters resetToDefaultValues];
-  [self.gradientParameters resetToDefaultValues];
+  [self.pathParameters resetToDefaultValues];
   [self.strokeParameters resetToDefaultValues];
+  [self.fillParameters resetToDefaultValues];
+  [self.affineTransformParameters resetToDefaultValues];
+  [self.gradientParameters resetToDefaultValues];
 }
 
 @end

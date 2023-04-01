@@ -208,7 +208,7 @@
             <constraints>
                 <constraint firstItem="i8o-0e-hiV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JMO-ca-F8h"/>
                 <constraint firstItem="nip-sW-yrm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TSR-Nw-miO"/>
-                <constraint firstAttribute="trailing" secondItem="i8o-0e-hiV" secondAttribute="trailing" id="ZYx-SR-VUX"/>
+                <constraint firstItem="i8o-0e-hiV" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="ZYx-SR-VUX"/>
                 <constraint firstItem="i8o-0e-hiV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dKp-LD-hwB"/>
                 <constraint firstItem="nip-sW-yrm" firstAttribute="top" secondItem="i8o-0e-hiV" secondAttribute="bottom" constant="8" symbolic="YES" id="daO-6B-ths"/>
                 <constraint firstAttribute="trailing" secondItem="nip-sW-yrm" secondAttribute="trailing" id="wSf-tl-mcr"/>

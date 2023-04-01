@@ -26,7 +26,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="25r-Gg-LbN" userLabel="Left hand side stack view">
                                                 <rect key="frame" x="0.0" y="20" width="906" height="1038.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNL-nM-LRi" userLabel="ArcParametersContainerView">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNL-nM-LRi" userLabel="PathParametersContainerView">
                                                         <rect key="frame" x="0.0" y="0.0" width="906" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
@@ -140,10 +140,10 @@
                     </view>
                     <connections>
                         <outlet property="affineTransformParametersContainerView" destination="zdK-f7-ErI" id="1sR-Vt-zpB"/>
-                        <outlet property="arcParametersContainerView" destination="dNL-nM-LRi" id="Sj7-S0-aY4"/>
                         <outlet property="drawingView" destination="jvi-vb-dGs" id="X5u-qR-02Z"/>
                         <outlet property="fillParametersContainerView" destination="qbc-8R-bBO" id="Jbo-Xj-FT3"/>
                         <outlet property="gradientParametersContainerView" destination="6fX-10-uhl" id="DM5-Kp-qEw"/>
+                        <outlet property="pathParametersContainerView" destination="dNL-nM-LRi" id="1UU-Qv-8dC"/>
                         <outlet property="strokeParametersContainerView" destination="bPn-mh-CxP" id="CjY-FX-zbu"/>
                     </connections>
                 </viewController>

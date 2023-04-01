@@ -8,9 +8,9 @@
 #import <UIKit/UIKit.h>
 
 @class AffineTransformParameters;
-@class ArcParameters;
 @class FillParameters;
 @class GradientParameters;
+@class PathParameters;
 @class StrokeParameters;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,9 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) startObserving;
 
-@property (strong, nonatomic) ArcParameters* arcParameters;
-@property (strong, nonatomic) FillParameters* fillParameters;
+@property (strong, nonatomic) PathParameters* pathParameters;
 @property (strong, nonatomic) StrokeParameters* strokeParameters;
+@property (strong, nonatomic) FillParameters* fillParameters;
 @property (strong, nonatomic) AffineTransformParameters* affineTransformParameters;
 @property (strong, nonatomic) GradientParameters* gradientParameters;
 
