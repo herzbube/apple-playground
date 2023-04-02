@@ -7,7 +7,7 @@
 
 #import "DrawingView.h"
 #import "DrawingHelper.h"
-#import "Model/AffineTransformParameters.h"
+#import "Model/AffineTransform/AffineTransformParameters.h"
 #import "Model/ArcParameters.h"
 #import "Model/ColorParameters.h"
 #import "Model/FillParameters.h"
@@ -73,12 +73,7 @@
 - (void) startObservingAffineTransformParameters:(AffineTransformParameters*)affineTransformParameters
 {
   [affineTransformParameters addObserver:self forKeyPath:@"affineTransformEnabled" options:0 context:NULL];
-  [affineTransformParameters addObserver:self forKeyPath:@"a" options:0 context:NULL];
-  [affineTransformParameters addObserver:self forKeyPath:@"b" options:0 context:NULL];
-  [affineTransformParameters addObserver:self forKeyPath:@"c" options:0 context:NULL];
-  [affineTransformParameters addObserver:self forKeyPath:@"d" options:0 context:NULL];
-  [affineTransformParameters addObserver:self forKeyPath:@"tx" options:0 context:NULL];
-  [affineTransformParameters addObserver:self forKeyPath:@"ty" options:0 context:NULL];
+  [affineTransformParameters addObserver:self forKeyPath:@"affineTransform" options:0 context:NULL];
 }
 
 - (void) startObservingGradientStopParameters:(GradientStopParameters*)gradientStopParameters

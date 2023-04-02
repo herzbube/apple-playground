@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScaleAffineTransformParametersViewController">
+            <connections>
+                <outlet property="scaleXSlider" destination="qVm-g2-UZW" id="Pih-AS-ah4"/>
+                <outlet property="scaleXTextField" destination="sfO-22-2bu" id="RJb-BJ-CGQ"/>
+                <outlet property="scaleYSlider" destination="CTr-jN-xtf" id="b9m-u9-6wW"/>
+                <outlet property="scaleYTextField" destination="RXE-Cd-oJP" id="0RC-ql-Apg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="431" height="346"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ixs-Sh-l4i" userLabel="Top level stack view">
+                    <rect key="frame" x="0.0" y="0.0" width="431" height="346"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fBK-dO-qlj" userLabel="Scale affine transform parameters stack view">
+                            <rect key="frame" x="0.0" y="0.0" width="431" height="256.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZcC-H1-jWU" userLabel="Scale x stack view">
+                                    <rect key="frame" x="0.0" y="0.0" width="431" height="214.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q05-US-MBH" userLabel="Scale x label">
+                                            <rect key="frame" x="0.0" y="97" width="0.0" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfO-22-2bu" userLabel="Scale x text field">
+                                            <rect key="frame" x="8" y="90.5" width="100" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="ZPd-al-99J"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="scaleXEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="JCu-Ya-aqp"/>
+                                            </connections>
+                                        </textField>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="qVm-g2-UZW" userLabel="Scale x slider">
+                                            <rect key="frame" x="114" y="92.5" width="319" height="31"/>
+                                            <connections>
+                                                <action selector="scaleXValueChanged:" destination="-1" eventType="valueChanged" id="cUR-nq-6v9"/>
+                                            </connections>
+                                        </slider>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UL5-46-8Fg" userLabel="Scale y stack view">
+                                    <rect key="frame" x="0.0" y="222.5" width="431" height="34"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scale y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0E-pm-q31" userLabel="Scale y label">
+                                            <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RXE-Cd-oJP" userLabel="Scale y text field">
+                                            <rect key="frame" x="8" y="0.0" width="100" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="scaleYEditingDidEnd:" destination="-1" eventType="editingDidEnd" id="lNM-iD-uQL"/>
+                                            </connections>
+                                        </textField>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CTr-jN-xtf" userLabel="Scale y slider">
+                                            <rect key="frame" x="114" y="2" width="319" height="31"/>
+                                            <connections>
+                                                <action selector="scaleYValueChanged:" destination="-1" eventType="valueChanged" id="xtt-LF-tid"/>
+                                            </connections>
+                                        </slider>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="RXE-Cd-oJP" firstAttribute="leading" secondItem="sfO-22-2bu" secondAttribute="leading" id="Bkg-Xk-Eug"/>
+                                <constraint firstItem="RXE-Cd-oJP" firstAttribute="trailing" secondItem="sfO-22-2bu" secondAttribute="trailing" id="lkh-Jc-jMx"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EoJ-cd-pGb" userLabel="Spacer view">
+                            <rect key="frame" x="0.0" y="256.5" width="431" height="89.5"/>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ixs-Sh-l4i" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6JL-Nd-uJd"/>
+                <constraint firstItem="ixs-Sh-l4i" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HEN-CF-JVY"/>
+                <constraint firstAttribute="trailing" secondItem="ixs-Sh-l4i" secondAttribute="trailing" id="ahP-i4-uUq"/>
+                <constraint firstAttribute="bottom" secondItem="ixs-Sh-l4i" secondAttribute="bottom" id="asi-wt-aGf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="73" y="82"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

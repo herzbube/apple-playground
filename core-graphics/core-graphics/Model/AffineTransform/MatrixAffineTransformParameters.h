@@ -1,8 +1,8 @@
 //
-//  AffineTransformParameters.h
+//  MatrixAffineTransformParameters.h
 //  core-graphics
 //
-//  Created by Patrick Näf Moser on 25.03.23.
+//  Created by Patrick Näf Moser on 01.04.23.
 //
 
 #import <UIKit/UIKit.h>
@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 // The affine transform parameters are named according to the Apple
 // documentation. See README.md for details.
 
-@interface AffineTransformParameters : NSObject
+@interface MatrixAffineTransformParameters : NSObject
 
 - (instancetype) init;
 
@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) resetToDefaultValues;
 
-@property bool affineTransformEnabled;
+- (void) updateParametersDidChange;
 
 @property CGFloat a;
 @property (readonly) CGFloat rangeA;
@@ -41,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property CGFloat ty;
 @property (readonly) CGFloat rangeTy;
 
+@property (nonatomic) CGAffineTransform affineTransform;
+@property (strong, nonatomic) NSString* affineTransformTypeAsString;
+@property (strong, nonatomic) NSString* parametersAsString;
 
 @end
 

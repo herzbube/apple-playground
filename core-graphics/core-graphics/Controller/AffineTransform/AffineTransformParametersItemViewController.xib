@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AffineTransformParametersItemViewController">
+            <connections>
+                <outlet property="affineTransformParametersItemScrollView" destination="h42-Tu-4Gb" id="Rsa-4L-1ds"/>
+                <outlet property="affineTransformTypeSegmentedControl" destination="Vtw-56-Wx8" id="dZi-Go-eEN"/>
+                <outlet property="containerView" destination="wQl-bL-nni" id="jDi-bw-MWj"/>
+                <outlet property="topLevelStackView" destination="SAd-8l-TsM" id="8XL-lI-TYu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="574" height="239"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SAd-8l-TsM" userLabel="Top-level stack view">
+                    <rect key="frame" x="0.0" y="0.0" width="574" height="239"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h42-Tu-4Gb" userLabel="Affine transform parameters item scroll view">
+                            <rect key="frame" x="0.0" y="0.0" width="574" height="197"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H13-Wq-6ta" userLabel="Affine transform parameters item stack view">
+                                    <rect key="frame" x="0.0" y="16" width="500" height="197"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vtw-56-Wx8" userLabel="Affine transform type segmented control">
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="32"/>
+                                            <segments>
+                                                <segment title="Scale"/>
+                                                <segment title="Shear"/>
+                                                <segment title="Rotate"/>
+                                                <segment title="Translate"/>
+                                                <segment title="Matrix"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="affineTransformTypeValueChanged:" destination="-1" eventType="valueChanged" id="Iao-ud-f3e"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQl-bL-nni" userLabel="Container view">
+                                            <rect key="frame" x="0.0" y="39" width="500" height="158"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="sUa-WF-Aup"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="H13-Wq-6ta" firstAttribute="top" secondItem="bsg-Fn-EFG" secondAttribute="top" id="6Xa-ef-R0g"/>
+                                <constraint firstItem="H13-Wq-6ta" firstAttribute="bottom" secondItem="bsg-Fn-EFG" secondAttribute="bottom" id="XB3-ob-2e8"/>
+                                <constraint firstItem="H13-Wq-6ta" firstAttribute="height" secondItem="bOI-Zy-liN" secondAttribute="height" id="XEb-Hq-GBM"/>
+                                <constraint firstItem="H13-Wq-6ta" firstAttribute="trailing" secondItem="bsg-Fn-EFG" secondAttribute="trailing" id="Xpa-pZ-9rh"/>
+                                <constraint firstItem="H13-Wq-6ta" firstAttribute="leading" secondItem="bsg-Fn-EFG" secondAttribute="leading" id="uVi-j0-pMo"/>
+                            </constraints>
+                            <viewLayoutGuide key="contentLayoutGuide" id="bsg-Fn-EFG"/>
+                            <viewLayoutGuide key="frameLayoutGuide" id="bOI-Zy-liN"/>
+                        </scrollView>
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Dg-vg-7M0" userLabel="Spacer view">
+                            <rect key="frame" x="0.0" y="197" width="574" height="42"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="SAd-8l-TsM" secondAttribute="bottom" id="KC1-1g-9fx"/>
+                <constraint firstItem="SAd-8l-TsM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KTG-eU-fzO"/>
+                <constraint firstItem="SAd-8l-TsM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jhu-tf-c3M"/>
+                <constraint firstAttribute="trailing" secondItem="SAd-8l-TsM" secondAttribute="trailing" id="xkM-qq-fYk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="24.637681159420293" y="273.54910714285711"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

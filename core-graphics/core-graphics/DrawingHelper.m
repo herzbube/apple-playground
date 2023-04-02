@@ -6,7 +6,7 @@
 //
 
 #import "DrawingHelper.h"
-#import "Model/AffineTransformParameters.h"
+#import "Model/AffineTransform/AffineTransformParameters.h"
 #import "Model/ColorParameters.h"
 #import "Model/FillParameters.h"
 #import "Model/GradientStopParameters.h"
@@ -46,16 +46,10 @@
   if (! affineTransformParameters.affineTransformEnabled)
     return;
 
-  CGAffineTransform transform = CGAffineTransformMake(affineTransformParameters.a,
-                                                      affineTransformParameters.b,
-                                                      affineTransformParameters.c,
-                                                      affineTransformParameters.d,
-                                                      affineTransformParameters.tx,
-                                                      affineTransformParameters.ty);
-  if (CGAffineTransformIsIdentity(transform))
+  if (CGAffineTransformIsIdentity(affineTransformParameters.affineTransform))
     return;
 
-  CGContextConcatCTM(context, transform);
+  CGContextConcatCTM(context, affineTransformParameters.affineTransform);
 }
 
 + (void) fillOrStrokePathWithContext:(CGContextRef)context

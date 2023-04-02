@@ -1,11 +1,11 @@
 //
-//  AffineTransformParameters.m
+//  MatrixAffineTransformParameters.m
 //  core-graphics
 //
-//  Created by Patrick Näf Moser on 25.03.23.
+//  Created by Patrick Näf Moser on 01.04.23.
 //
 
-#import "AffineTransformParameters.h"
+#import "MatrixAffineTransformParameters.h"
 
 static NSString* aKey = @"a";
 static NSString* bKey = @"b";
@@ -14,7 +14,7 @@ static NSString* dKey = @"d";
 static NSString* txKey = @"tx";
 static NSString* tyKey = @"ty";
 
-@implementation AffineTransformParameters
+@implementation MatrixAffineTransformParameters
 
 - (instancetype) init
 {
@@ -28,19 +28,22 @@ static NSString* tyKey = @"ty";
   _rangeD = 1000.0f;
   _rangeTx = 1000.0f;
   _rangeTy = 1000.0f;
+  
+  self.affineTransformTypeAsString = @"Matrix";
 
   return self;
 }
 
 - (void) initializeWithDefaultValues
 {
-  self.affineTransformEnabled = true;
   self.a = 1.0f;
   self.b = 0.0f;
   self.c = 0.0f;
   self.d = 1.0f;
   self.tx = 0.0f;
   self.ty = 0.0f;
+
+  [self updateParametersDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -55,6 +58,7 @@ static NSString* tyKey = @"ty";
     tyKey : @(self.ty),
   };
 }
+
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
   self.a = [dictionary[aKey] floatValue];
@@ -63,11 +67,19 @@ static NSString* tyKey = @"ty";
   self.d = [dictionary[dKey] floatValue];
   self.tx = [dictionary[txKey] floatValue];
   self.ty = [dictionary[tyKey] floatValue];
+
+  [self updateParametersDidChange];
 }
 
 - (void) resetToDefaultValues
 {
   [self initializeWithDefaultValues];
+}
+
+- (void) updateParametersDidChange
+{
+  self.affineTransform = CGAffineTransformMake(_a, _b, _c, _d, _tx, _ty);
+  self.parametersAsString = [NSString stringWithFormat:@"%f, %f, %f, %f, %f, %f", _a, _b, _c, _d, _tx, _ty];
 }
 
 @end

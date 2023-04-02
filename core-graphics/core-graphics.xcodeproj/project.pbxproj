@@ -42,6 +42,24 @@
 		CDB6A15729D78E71007618BA /* RectangleParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A15529D78E71007618BA /* RectangleParametersViewController.m */; };
 		CDB6A15B29D78E95007618BA /* PathParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A15829D78E94007618BA /* PathParametersViewController.m */; };
 		CDB6A15C29D78E95007618BA /* PathParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A15A29D78E95007618BA /* PathParametersViewController.xib */; };
+		CDB6A16829D8899A007618BA /* ShearAffineTransformParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A16029D8899A007618BA /* ShearAffineTransformParameters.m */; };
+		CDB6A16929D8899A007618BA /* MatrixAffineTransformParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A16129D8899A007618BA /* MatrixAffineTransformParameters.m */; };
+		CDB6A16A29D8899A007618BA /* RotateAffineTransformParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A16329D8899A007618BA /* RotateAffineTransformParameters.m */; };
+		CDB6A16B29D8899A007618BA /* TranslateAffineTransformParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A16429D8899A007618BA /* TranslateAffineTransformParameters.m */; };
+		CDB6A16C29D8899A007618BA /* ScaleAffineTransformParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A16729D8899A007618BA /* ScaleAffineTransformParameters.m */; };
+		CDB6A16F29D88EC2007618BA /* AffineTransformParametersItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A16E29D88EC2007618BA /* AffineTransformParametersItem.m */; };
+		CDB6A17429D8BF65007618BA /* MatrixAffineTransformParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A17129D8BF65007618BA /* MatrixAffineTransformParametersViewController.xib */; };
+		CDB6A17529D8BF65007618BA /* MatrixAffineTransformParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A17329D8BF65007618BA /* MatrixAffineTransformParametersViewController.m */; };
+		CDB6A17929D8C18E007618BA /* ScaleAffineTransformParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A17729D8C18E007618BA /* ScaleAffineTransformParametersViewController.m */; };
+		CDB6A17A29D8C18E007618BA /* ScaleAffineTransformParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A17829D8C18E007618BA /* ScaleAffineTransformParametersViewController.xib */; };
+		CDB6A17E29D8E4BE007618BA /* ShearAffineTransformParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A17B29D8E4BE007618BA /* ShearAffineTransformParametersViewController.m */; };
+		CDB6A17F29D8E4BE007618BA /* ShearAffineTransformParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A17C29D8E4BE007618BA /* ShearAffineTransformParametersViewController.xib */; };
+		CDB6A18329D8E6A5007618BA /* RotateAffineTransformParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A18029D8E6A5007618BA /* RotateAffineTransformParametersViewController.m */; };
+		CDB6A18429D8E6A5007618BA /* RotateAffineTransformParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A18229D8E6A5007618BA /* RotateAffineTransformParametersViewController.xib */; };
+		CDB6A18829D8E896007618BA /* TranslateAffineTransformParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A18529D8E896007618BA /* TranslateAffineTransformParametersViewController.xib */; };
+		CDB6A18929D8E896007618BA /* TranslateAffineTransformParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A18729D8E896007618BA /* TranslateAffineTransformParametersViewController.m */; };
+		CDB6A18D29D8EA5E007618BA /* AffineTransformParametersItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDB6A18A29D8EA5E007618BA /* AffineTransformParametersItemViewController.xib */; };
+		CDB6A18E29D8EA5F007618BA /* AffineTransformParametersItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB6A18C29D8EA5E007618BA /* AffineTransformParametersItemViewController.m */; };
 		CDC0F9DD29CBAAD10005F9F6 /* StrokeParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0F9DB29CBAAD10005F9F6 /* StrokeParametersViewController.m */; };
 		CDC0F9DE29CBAAD10005F9F6 /* StrokeParametersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC0F9DC29CBAAD10005F9F6 /* StrokeParametersViewController.xib */; };
 		CDC0F9E229CE06E80005F9F6 /* ColorParametersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC0F9E029CE06E80005F9F6 /* ColorParametersViewController.m */; };
@@ -115,6 +133,36 @@
 		CDB6A15829D78E94007618BA /* PathParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathParametersViewController.m; sourceTree = "<group>"; };
 		CDB6A15929D78E95007618BA /* PathParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathParametersViewController.h; sourceTree = "<group>"; };
 		CDB6A15A29D78E95007618BA /* PathParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PathParametersViewController.xib; sourceTree = "<group>"; };
+		CDB6A15E29D8899A007618BA /* ScaleAffineTransformParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleAffineTransformParameters.h; sourceTree = "<group>"; };
+		CDB6A15F29D8899A007618BA /* MatrixAffineTransformParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixAffineTransformParameters.h; sourceTree = "<group>"; };
+		CDB6A16029D8899A007618BA /* ShearAffineTransformParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShearAffineTransformParameters.m; sourceTree = "<group>"; };
+		CDB6A16129D8899A007618BA /* MatrixAffineTransformParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixAffineTransformParameters.m; sourceTree = "<group>"; };
+		CDB6A16229D8899A007618BA /* RotateAffineTransformParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotateAffineTransformParameters.h; sourceTree = "<group>"; };
+		CDB6A16329D8899A007618BA /* RotateAffineTransformParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotateAffineTransformParameters.m; sourceTree = "<group>"; };
+		CDB6A16429D8899A007618BA /* TranslateAffineTransformParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateAffineTransformParameters.m; sourceTree = "<group>"; };
+		CDB6A16529D8899A007618BA /* TranslateAffineTransformParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateAffineTransformParameters.h; sourceTree = "<group>"; };
+		CDB6A16629D8899A007618BA /* ShearAffineTransformParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShearAffineTransformParameters.h; sourceTree = "<group>"; };
+		CDB6A16729D8899A007618BA /* ScaleAffineTransformParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleAffineTransformParameters.m; sourceTree = "<group>"; };
+		CDB6A16D29D88EC2007618BA /* AffineTransformParametersItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffineTransformParametersItem.h; sourceTree = "<group>"; };
+		CDB6A16E29D88EC2007618BA /* AffineTransformParametersItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AffineTransformParametersItem.m; sourceTree = "<group>"; };
+		CDB6A17129D8BF65007618BA /* MatrixAffineTransformParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatrixAffineTransformParametersViewController.xib; sourceTree = "<group>"; };
+		CDB6A17229D8BF65007618BA /* MatrixAffineTransformParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixAffineTransformParametersViewController.h; sourceTree = "<group>"; };
+		CDB6A17329D8BF65007618BA /* MatrixAffineTransformParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixAffineTransformParametersViewController.m; sourceTree = "<group>"; };
+		CDB6A17629D8C18E007618BA /* ScaleAffineTransformParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleAffineTransformParametersViewController.h; sourceTree = "<group>"; };
+		CDB6A17729D8C18E007618BA /* ScaleAffineTransformParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleAffineTransformParametersViewController.m; sourceTree = "<group>"; };
+		CDB6A17829D8C18E007618BA /* ScaleAffineTransformParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScaleAffineTransformParametersViewController.xib; sourceTree = "<group>"; };
+		CDB6A17B29D8E4BE007618BA /* ShearAffineTransformParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShearAffineTransformParametersViewController.m; sourceTree = "<group>"; };
+		CDB6A17C29D8E4BE007618BA /* ShearAffineTransformParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShearAffineTransformParametersViewController.xib; sourceTree = "<group>"; };
+		CDB6A17D29D8E4BE007618BA /* ShearAffineTransformParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShearAffineTransformParametersViewController.h; sourceTree = "<group>"; };
+		CDB6A18029D8E6A5007618BA /* RotateAffineTransformParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotateAffineTransformParametersViewController.m; sourceTree = "<group>"; };
+		CDB6A18129D8E6A5007618BA /* RotateAffineTransformParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotateAffineTransformParametersViewController.h; sourceTree = "<group>"; };
+		CDB6A18229D8E6A5007618BA /* RotateAffineTransformParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RotateAffineTransformParametersViewController.xib; sourceTree = "<group>"; };
+		CDB6A18529D8E896007618BA /* TranslateAffineTransformParametersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TranslateAffineTransformParametersViewController.xib; sourceTree = "<group>"; };
+		CDB6A18629D8E896007618BA /* TranslateAffineTransformParametersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslateAffineTransformParametersViewController.h; sourceTree = "<group>"; };
+		CDB6A18729D8E896007618BA /* TranslateAffineTransformParametersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslateAffineTransformParametersViewController.m; sourceTree = "<group>"; };
+		CDB6A18A29D8EA5E007618BA /* AffineTransformParametersItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AffineTransformParametersItemViewController.xib; sourceTree = "<group>"; };
+		CDB6A18B29D8EA5E007618BA /* AffineTransformParametersItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffineTransformParametersItemViewController.h; sourceTree = "<group>"; };
+		CDB6A18C29D8EA5E007618BA /* AffineTransformParametersItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AffineTransformParametersItemViewController.m; sourceTree = "<group>"; };
 		CDC0F9DA29CBAAD10005F9F6 /* StrokeParametersViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StrokeParametersViewController.h; sourceTree = "<group>"; };
 		CDC0F9DB29CBAAD10005F9F6 /* StrokeParametersViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StrokeParametersViewController.m; sourceTree = "<group>"; };
 		CDC0F9DC29CBAAD10005F9F6 /* StrokeParametersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StrokeParametersViewController.xib; sourceTree = "<group>"; };
@@ -192,8 +240,7 @@
 		CD84617129C7CF6B00D4D6B7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CDB6A12029CF64B5007618BA /* AffineTransformParameters.h */,
-				CDB6A11F29CF64B5007618BA /* AffineTransformParameters.m */,
+				CDB6A15D29D88929007618BA /* AffineTransform */,
 				CD84617229C7CFA100D4D6B7 /* ArcParameters.h */,
 				CD84617329C7CFA100D4D6B7 /* ArcParameters.m */,
 				CDC0F9ED29CE189C0005F9F6 /* ColorParameters.h */,
@@ -220,12 +267,59 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CDC0F9D329C91AA50005F9F6 /* Controller */ = {
+		CDB6A15D29D88929007618BA /* AffineTransform */ = {
 			isa = PBXGroup;
 			children = (
+				CDB6A12029CF64B5007618BA /* AffineTransformParameters.h */,
+				CDB6A11F29CF64B5007618BA /* AffineTransformParameters.m */,
+				CDB6A16D29D88EC2007618BA /* AffineTransformParametersItem.h */,
+				CDB6A16E29D88EC2007618BA /* AffineTransformParametersItem.m */,
+				CDB6A15F29D8899A007618BA /* MatrixAffineTransformParameters.h */,
+				CDB6A16129D8899A007618BA /* MatrixAffineTransformParameters.m */,
+				CDB6A16229D8899A007618BA /* RotateAffineTransformParameters.h */,
+				CDB6A16329D8899A007618BA /* RotateAffineTransformParameters.m */,
+				CDB6A15E29D8899A007618BA /* ScaleAffineTransformParameters.h */,
+				CDB6A16729D8899A007618BA /* ScaleAffineTransformParameters.m */,
+				CDB6A16629D8899A007618BA /* ShearAffineTransformParameters.h */,
+				CDB6A16029D8899A007618BA /* ShearAffineTransformParameters.m */,
+				CDB6A16529D8899A007618BA /* TranslateAffineTransformParameters.h */,
+				CDB6A16429D8899A007618BA /* TranslateAffineTransformParameters.m */,
+			);
+			path = AffineTransform;
+			sourceTree = "<group>";
+		};
+		CDB6A17029D8BED9007618BA /* AffineTransform */ = {
+			isa = PBXGroup;
+			children = (
+				CDB6A18B29D8EA5E007618BA /* AffineTransformParametersItemViewController.h */,
+				CDB6A18C29D8EA5E007618BA /* AffineTransformParametersItemViewController.m */,
+				CDB6A18A29D8EA5E007618BA /* AffineTransformParametersItemViewController.xib */,
 				CDB6A12429CF7900007618BA /* AffineTransformParametersViewController.h */,
 				CDB6A12329CF7900007618BA /* AffineTransformParametersViewController.m */,
 				CDB6A14B29D7470F007618BA /* AffineTransformParametersViewController.xib */,
+				CDB6A17229D8BF65007618BA /* MatrixAffineTransformParametersViewController.h */,
+				CDB6A17329D8BF65007618BA /* MatrixAffineTransformParametersViewController.m */,
+				CDB6A17129D8BF65007618BA /* MatrixAffineTransformParametersViewController.xib */,
+				CDB6A18129D8E6A5007618BA /* RotateAffineTransformParametersViewController.h */,
+				CDB6A18029D8E6A5007618BA /* RotateAffineTransformParametersViewController.m */,
+				CDB6A18229D8E6A5007618BA /* RotateAffineTransformParametersViewController.xib */,
+				CDB6A17629D8C18E007618BA /* ScaleAffineTransformParametersViewController.h */,
+				CDB6A17729D8C18E007618BA /* ScaleAffineTransformParametersViewController.m */,
+				CDB6A17829D8C18E007618BA /* ScaleAffineTransformParametersViewController.xib */,
+				CDB6A17D29D8E4BE007618BA /* ShearAffineTransformParametersViewController.h */,
+				CDB6A17B29D8E4BE007618BA /* ShearAffineTransformParametersViewController.m */,
+				CDB6A17C29D8E4BE007618BA /* ShearAffineTransformParametersViewController.xib */,
+				CDB6A18629D8E896007618BA /* TranslateAffineTransformParametersViewController.h */,
+				CDB6A18729D8E896007618BA /* TranslateAffineTransformParametersViewController.m */,
+				CDB6A18529D8E896007618BA /* TranslateAffineTransformParametersViewController.xib */,
+			);
+			path = AffineTransform;
+			sourceTree = "<group>";
+		};
+		CDC0F9D329C91AA50005F9F6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CDB6A17029D8BED9007618BA /* AffineTransform */,
 				CDC0F9F229CF2C5D0005F9F6 /* ArcParametersViewController.h */,
 				CDC0F9F329CF2C5D0005F9F6 /* ArcParametersViewController.m */,
 				CDC0F9F429CF2C5D0005F9F6 /* ArcParametersViewController.xib */,
@@ -318,15 +412,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDB6A14C29D7470F007618BA /* AffineTransformParametersViewController.xib in Resources */,
+				CDB6A17A29D8C18E007618BA /* ScaleAffineTransformParametersViewController.xib in Resources */,
 				CD84616029C78A6200D4D6B7 /* LaunchScreen.storyboard in Resources */,
 				CDC0F9F629CF2C5D0005F9F6 /* ArcParametersViewController.xib in Resources */,
 				CD84615D29C78A6200D4D6B7 /* Assets.xcassets in Resources */,
 				CDB6A14129D083FE007618BA /* GradientParametersViewController.xib in Resources */,
 				CDC0F9DE29CBAAD10005F9F6 /* StrokeParametersViewController.xib in Resources */,
+				CDB6A18429D8E6A5007618BA /* RotateAffineTransformParametersViewController.xib in Resources */,
 				CDB6A14529D09815007618BA /* RadialGradientParametersViewController.xib in Resources */,
+				CDB6A17429D8BF65007618BA /* MatrixAffineTransformParametersViewController.xib in Resources */,
+				CDB6A18829D8E896007618BA /* TranslateAffineTransformParametersViewController.xib in Resources */,
 				CDB6A13729D07323007618BA /* GradientStopParametersViewController.xib in Resources */,
 				CDB6A15C29D78E95007618BA /* PathParametersViewController.xib in Resources */,
 				CDB6A11E29CF5A34007618BA /* FillParametersViewController.xib in Resources */,
+				CDB6A17F29D8E4BE007618BA /* ShearAffineTransformParametersViewController.xib in Resources */,
+				CDB6A18D29D8EA5E007618BA /* AffineTransformParametersItemViewController.xib in Resources */,
 				CDC0F9E329CE06E80005F9F6 /* ColorParametersViewController.xib in Resources */,
 				CD84615B29C78A5F00D4D6B7 /* Main.storyboard in Resources */,
 				CDB6A15629D78E71007618BA /* RectangleParametersViewController.xib in Resources */,
@@ -342,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDC0F9F129CF197B0005F9F6 /* Converter.m in Sources */,
+				CDB6A17529D8BF65007618BA /* MatrixAffineTransformParametersViewController.m in Sources */,
 				CDB6A14F29D78B6F007618BA /* RectangleParameters.m in Sources */,
 				CDC0F9F529CF2C5D0005F9F6 /* ArcParametersViewController.m in Sources */,
 				CDB6A13229D071B7007618BA /* RadialGradientParameters.m in Sources */,
@@ -350,12 +451,17 @@
 				CD84617729C7D43400D4D6B7 /* StrokeParameters.m in Sources */,
 				CD84615829C78A5F00D4D6B7 /* ViewController.m in Sources */,
 				CDC0F9EE29CE189C0005F9F6 /* ColorParameters.m in Sources */,
+				CDB6A16F29D88EC2007618BA /* AffineTransformParametersItem.m in Sources */,
 				CDC0F9DD29CBAAD10005F9F6 /* StrokeParametersViewController.m in Sources */,
 				CDB6A12929D06DBA007618BA /* GradientStopParameters.m in Sources */,
 				CD84615229C78A5F00D4D6B7 /* AppDelegate.m in Sources */,
 				CDB6A13629D07323007618BA /* GradientStopParametersViewController.m in Sources */,
+				CDB6A16929D8899A007618BA /* MatrixAffineTransformParameters.m in Sources */,
+				CDB6A17929D8C18E007618BA /* ScaleAffineTransformParametersViewController.m in Sources */,
 				CDB6A12F29D070AF007618BA /* GradientParameters.m in Sources */,
+				CDB6A16829D8899A007618BA /* ShearAffineTransformParameters.m in Sources */,
 				CDB6A14629D09815007618BA /* RadialGradientParametersViewController.m in Sources */,
+				CDB6A17E29D8E4BE007618BA /* ShearAffineTransformParametersViewController.m in Sources */,
 				CDB6A15229D78BA2007618BA /* PathParameters.m in Sources */,
 				CDB6A15729D78E71007618BA /* RectangleParametersViewController.m in Sources */,
 				CDC0F9F929CF561E0005F9F6 /* FillParameters.m in Sources */,
@@ -363,15 +469,21 @@
 				CDC0F9E229CE06E80005F9F6 /* ColorParametersViewController.m in Sources */,
 				CD84616D29C7CB5700D4D6B7 /* DrawingView.m in Sources */,
 				CD84615529C78A5F00D4D6B7 /* SceneDelegate.m in Sources */,
+				CDB6A18329D8E6A5007618BA /* RotateAffineTransformParametersViewController.m in Sources */,
 				CDC0F9EB29CE154F0005F9F6 /* AutoLayoutUtility.m in Sources */,
 				CDB6A14029D083FE007618BA /* GradientParametersViewController.m in Sources */,
 				CDB6A14929D6E2BD007618BA /* DrawingParameters.m in Sources */,
 				CDB6A12629CF7900007618BA /* AffineTransformParametersViewController.m in Sources */,
+				CDB6A18E29D8EA5F007618BA /* AffineTransformParametersItemViewController.m in Sources */,
+				CDB6A16C29D8899A007618BA /* ScaleAffineTransformParameters.m in Sources */,
 				CDB6A15B29D78E95007618BA /* PathParametersViewController.m in Sources */,
 				CDB6A11D29CF5A34007618BA /* FillParametersViewController.m in Sources */,
+				CDB6A16B29D8899A007618BA /* TranslateAffineTransformParameters.m in Sources */,
+				CDB6A16A29D8899A007618BA /* RotateAffineTransformParameters.m in Sources */,
 				CDB6A12C29D06E80007618BA /* LinearGradientParameters.m in Sources */,
 				CD84617429C7CFA100D4D6B7 /* ArcParameters.m in Sources */,
 				CDB6A13B29D07A3B007618BA /* LinearGradientParametersViewController.m in Sources */,
+				CDB6A18929D8E896007618BA /* TranslateAffineTransformParametersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

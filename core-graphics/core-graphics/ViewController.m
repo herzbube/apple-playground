@@ -8,7 +8,7 @@
 #import "ViewController.h"
 #import "Model/DrawingParameters.h"
 #import "DrawingView.h"
-#import "Controller/AffineTransformParametersViewController.h"
+#import "Controller/AffineTransform/AffineTransformParametersViewController.h"
 #import "Controller/FillParametersViewController.h"
 #import "Controller/GradientParametersViewController.h"
 #import "Controller/PathParametersViewController.h"

@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AffineTransformParametersViewController : UIViewController
+@interface AffineTransformParametersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 - (instancetype) initWithAffineTransformParameters:(AffineTransformParameters*)affineTransformParameters;
 
