@@ -11,10 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AffineTransformParametersViewController">
             <connections>
+                <outlet property="affineParametersStackView" destination="E6O-DO-V01" id="fRN-8q-Aq3"/>
                 <outlet property="affineTransformEnabledSwitch" destination="NwG-rn-gxn" id="15D-CA-WDL"/>
                 <outlet property="concatenatedAffineTransformTextField" destination="X2t-Dr-OYr" id="iSx-X5-Wbh"/>
                 <outlet property="detailContainerView" destination="QBT-RW-h61" id="nnf-5O-dkL"/>
-                <outlet property="masterDetailStackView" destination="h6M-Z8-obv" id="8H3-I6-CAz"/>
                 <outlet property="topLevelStackView" destination="ixs-Sh-l4i" id="Q2x-uw-X6N"/>
                 <outlet property="transformsTableView" destination="oON-zF-35a" id="5fP-ry-mlN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -41,89 +41,94 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ixs-Sh-l4i" userLabel="Top level stack view">
                     <rect key="frame" x="0.0" y="9.5" width="431" height="336.5"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h6M-Z8-obv" userLabel="Master/detail stack view">
-                            <rect key="frame" x="0.0" y="0.0" width="431" height="300"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E6O-DO-V01" userLabel="Affine parameters stack view">
+                            <rect key="frame" x="0.0" y="0.0" width="431" height="328.5"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sy8-kk-0MM" userLabel="Master stack view">
-                                    <rect key="frame" x="0.0" y="0.0" width="172" height="300"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h6M-Z8-obv" userLabel="Master/detail stack view">
+                                    <rect key="frame" x="0.0" y="0.0" width="431" height="300"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="YCt-ye-B2v" userLabel="Transforms operations stack view">
-                                            <rect key="frame" x="0.0" y="0.0" width="172" height="31"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sy8-kk-0MM" userLabel="Master stack view">
+                                            <rect key="frame" x="0.0" y="0.0" width="172" height="300"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAB-GP-EAE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="43.5" height="31"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="YCt-ye-B2v" userLabel="Transforms operations stack view">
+                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="31"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAB-GP-EAE">
+                                                            <rect key="frame" x="0.0" y="0.0" width="43.5" height="31"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="nQi-BE-WjA"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hc9-4q-HCw">
+                                                            <rect key="frame" x="43.5" y="0.0" width="43.5" height="31"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="removeButtonTapped:" destination="-1" eventType="touchUpInside" id="E8T-nI-81W"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOn-jk-B8d">
+                                                            <rect key="frame" x="87" y="0.0" width="42.5" height="31"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="arrow.up" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="moveUpButtonTapped:" destination="-1" eventType="touchUpInside" id="A5I-Uq-Aft"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dj-bu-Bj9">
+                                                            <rect key="frame" x="129.5" y="0.0" width="42.5" height="31"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="arrow.down" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="moveDownButtonTapped:" destination="-1" eventType="touchUpInside" id="Y9N-ql-So6"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oON-zF-35a" userLabel="Transforms table view">
+                                                    <rect key="frame" x="0.0" y="39" width="172" height="261"/>
                                                     <connections>
-                                                        <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="nQi-BE-WjA"/>
+                                                        <outlet property="dataSource" destination="-1" id="oA5-g1-VRQ"/>
+                                                        <outlet property="delegate" destination="-1" id="wiy-wu-Epy"/>
                                                     </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hc9-4q-HCw">
-                                                    <rect key="frame" x="43.5" y="0.0" width="43.5" height="31"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="removeButtonTapped:" destination="-1" eventType="touchUpInside" id="E8T-nI-81W"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOn-jk-B8d">
-                                                    <rect key="frame" x="87" y="0.0" width="42.5" height="31"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="arrow.up" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="moveUpButtonTapped:" destination="-1" eventType="touchUpInside" id="A5I-Uq-Aft"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dj-bu-Bj9">
-                                                    <rect key="frame" x="129.5" y="0.0" width="42.5" height="31"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="arrow.down" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="moveDownButtonTapped:" destination="-1" eventType="touchUpInside" id="Y9N-ql-So6"/>
-                                                    </connections>
-                                                </button>
+                                                </tableView>
                                             </subviews>
                                         </stackView>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oON-zF-35a" userLabel="Transforms table view">
-                                            <rect key="frame" x="0.0" y="39" width="172" height="261"/>
-                                            <connections>
-                                                <outlet property="dataSource" destination="-1" id="oA5-g1-VRQ"/>
-                                                <outlet property="delegate" destination="-1" id="wiy-wu-Epy"/>
-                                            </connections>
-                                        </tableView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Sqk-QZ-OQa" userLabel="Detail stack view">
+                                            <rect key="frame" x="192" y="0.0" width="239" height="300"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-RW-h61" userLabel="Detail container view">
+                                                    <rect key="frame" x="0.0" y="0.0" width="239" height="300"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="39R-ZJ-DkE"/>
+                                    </constraints>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Sqk-QZ-OQa" userLabel="Detail stack view">
-                                    <rect key="frame" x="192" y="0.0" width="239" height="300"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IsX-cm-Ngv" userLabel="Concatenated affine transform stack view">
+                                    <rect key="frame" x="0.0" y="308" width="431" height="20.5"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-RW-h61" userLabel="Detail container view">
-                                            <rect key="frame" x="0.0" y="0.0" width="239" height="300"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Concatenated affine transform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-vy-sc4" userLabel="Concatenated affine transform label">
+                                            <rect key="frame" x="0.0" y="0.0" width="233" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-Dr-OYr" userLabel="Concatenated affine transform text field">
+                                            <rect key="frame" x="241" y="0.0" width="190" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="TF9-lB-6n0"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
                                 </stackView>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="39R-ZJ-DkE"/>
-                            </constraints>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IsX-cm-Ngv" userLabel="Concatenated affine transform stack view">
-                            <rect key="frame" x="0.0" y="308" width="431" height="20.5"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Concatenated affine transform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zB-vy-sc4" userLabel="Concatenated affine transform label">
-                                    <rect key="frame" x="0.0" y="0.0" width="233" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-Dr-OYr" userLabel="Concatenated affine transform text field">
-                                    <rect key="frame" x="241" y="0.0" width="190" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="TF9-lB-6n0"/>
-                                    </connections>
-                                </textField>
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EoJ-cd-pGb" userLabel="Spacer view">

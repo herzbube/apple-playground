@@ -19,7 +19,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
 @property (weak, nonatomic) IBOutlet UIStackView* topLevelStackView;
 // Strong reference is needed so that the object is not deallocated when it is
 // removed from the view hierarchy
-@property (strong, nonatomic) IBOutlet UIStackView* masterDetailStackView;
+@property (strong, nonatomic) IBOutlet UIStackView* affineParametersStackView;
 @property (weak, nonatomic) IBOutlet UITableView* transformsTableView;
 @property (weak, nonatomic) IBOutlet UIView* detailContainerView;
 @property (strong, nonatomic) IBOutlet UITextField* concatenatedAffineTransformTextField;
@@ -224,15 +224,15 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
 {
   if (self.affineTransformParameters.affineTransformEnabled)
   {
-    if (! [self.topLevelStackView.arrangedSubviews containsObject:self.masterDetailStackView])
-      [self.topLevelStackView insertArrangedSubview:self.masterDetailStackView atIndex:0];
+    if (! [self.topLevelStackView.arrangedSubviews containsObject:self.affineParametersStackView])
+      [self.topLevelStackView insertArrangedSubview:self.affineParametersStackView atIndex:0];
   }
   else
   {
-    if ([self.topLevelStackView.arrangedSubviews containsObject:self.masterDetailStackView])
+    if ([self.topLevelStackView.arrangedSubviews containsObject:self.affineParametersStackView])
     {
-      [self.topLevelStackView removeArrangedSubview:self.masterDetailStackView];
-      [self.masterDetailStackView removeFromSuperview];
+      [self.topLevelStackView removeArrangedSubview:self.affineParametersStackView];
+      [self.affineParametersStackView removeFromSuperview];
     }
   }
 }
