@@ -9,6 +9,7 @@
 #import "Model/AffineTransform/AffineTransformParameters.h"
 #import "Model/ColorParameters.h"
 #import "Model/FillParameters.h"
+#import "Model/GradientParameters.h"
 #import "Model/GradientStopParameters.h"
 #import "Model/LinearGradientParameters.h"
 #import "Model/RadialGradientParameters.h"
@@ -56,31 +57,71 @@
                     strokeParameters:(StrokeParameters*)strokeParameters
                       fillParameters:(FillParameters*)fillParameters
 {
-  if (fillParameters.fillEnabled)
-  {
-    UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.colorParameters];
-    CGContextSetFillColorWithColor(context, fillColor.CGColor);
-    if (! strokeParameters.strokeEnabled)
-    {
-      CGContextFillPath(context);
-      return;
-    }
-  }
+  if (! strokeParameters.strokeEnabled && ! fillParameters.fillEnabled)
+    return;
 
   if (strokeParameters.strokeEnabled)
   {
     UIColor* strokeColor = [DrawingHelper colorFromColorParameters:strokeParameters.colorParameters];
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     CGContextSetLineWidth(context, strokeParameters.lineWidth);
-    if (! fillParameters.fillEnabled)
+  }
+
+  if (fillParameters.fillEnabled && fillParameters.fillType == FillTypeSolidColor)
+  {
+    UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.colorParameters];
+    CGContextSetFillColorWithColor(context, fillColor.CGColor);
+  }
+
+  // Cases
+  // 1. Stroke enabled + fill enabled with solid     => CGContextDrawPath
+  // 2. Stroke enabled + fill enabled with gradient  => CGContextStrokePath + Gradient/Clip
+  // 3. Stroke enabled + fill disabled               => CGContextStrokePath
+  // 4. Stroke disabled + fill enabled with solid    => CGContextFillPath
+  // 5. Stroke disabled + fill enabled with gradient => Gradient/Clip
+
+  // Case 1
+  if (strokeParameters.strokeEnabled && fillParameters.fillEnabled && fillParameters.fillType == FillTypeSolidColor)
+  {
+    CGContextDrawPath(context, kCGPathFillStroke);
+    return;
+  }
+
+  if (fillParameters.fillEnabled)
+  {
+    // Case 4
+    if (fillParameters.fillType == FillTypeSolidColor)
     {
-      CGContextStrokePath(context);
-      return;
+      CGContextFillPath(context);
+    }
+    // Case 2+5
+    else
+    {
+      if (fillParameters.fillEnabled && fillParameters.clipGradientToPath)
+      {
+        CGContextSaveGState(context);
+        CGContextClip(context);
+      }
+
+      [DrawingHelper drawGradientWithContext:context
+                          gradientParameters:fillParameters.gradientParameters];
+
+      if (fillParameters.fillEnabled && fillParameters.clipGradientToPath)
+      {
+        // Remove clipping
+        CGContextRestoreGState(context);
+      }
     }
   }
 
-  if (fillParameters.fillEnabled && strokeParameters.strokeEnabled)
-    CGContextDrawPath(context, kCGPathFillStroke);
+  // Case 2+3
+  // CGContextStrokePath removes the path, so this must be done only after
+  // the gradient fill so that the gradient fill can clip to the path
+  if (strokeParameters.strokeEnabled)
+  {
+    CGContextStrokePath(context);
+  }
+
 }
 
 CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
@@ -97,6 +138,21 @@ CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
                                                       (CFArrayRef)colors,
                                                       locations);
   return gradient;
+}
+
++ (void) drawGradientWithContext:(CGContextRef)context
+              gradientParameters:(GradientParameters*)gradientParameters
+{
+  if (gradientParameters.gradientType == GradientTypeLinear)
+  {
+    [DrawingHelper drawGradientWithContext:context
+                  linearGradientParameters:gradientParameters.linearGradientParameters];
+  }
+  else
+  {
+    [DrawingHelper drawGradientWithContext:context
+                  radialGradientParameters:gradientParameters.radialGradientParameters];
+  }
 }
 
 + (void) drawGradientWithContext:(CGContextRef)context

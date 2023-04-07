@@ -43,26 +43,13 @@
   [self.strokeParameters.colorParameters addObserver:self forKeyPath:@"hexString" options:0 context:NULL];
 
   [self.fillParameters addObserver:self forKeyPath:@"fillEnabled" options:0 context:NULL];
+  [self.fillParameters addObserver:self forKeyPath:@"fillType" options:0 context:NULL];
+  [self.fillParameters addObserver:self forKeyPath:@"clipGradientToPath" options:0 context:NULL];
   [self startObservingColorParameters:self.fillParameters.colorParameters];
+  [self startObservingGradientParameters:self.fillParameters.gradientParameters];
 
   [self startObservingAffineTransformParameters:self.affineTransformParameters];
-
-  [self.gradientParameters addObserver:self forKeyPath:@"gradientEnabled" options:0 context:NULL];
-  [self.gradientParameters addObserver:self forKeyPath:@"gradientType" options:0 context:NULL];
-  [self.gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"startPointX" options:0 context:NULL];
-  [self.gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"startPointY" options:0 context:NULL];
-  [self.gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"endPointX" options:0 context:NULL];
-  [self.gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"endPointY" options:0 context:NULL];
-  [self startObservingGradientStopParameters:self.gradientParameters.linearGradientParameters.gradientStopParameters];
-  [self startObservingAffineTransformParameters:self.gradientParameters.linearGradientParameters.affineTransformParameters];
-  [self.gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"startCenterX" options:0 context:NULL];
-  [self.gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"startCenterY" options:0 context:NULL];
-  [self.gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"startRadius" options:0 context:NULL];
-  [self.gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"endCenterX" options:0 context:NULL];
-  [self.gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"endCenterY" options:0 context:NULL];
-  [self.gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"endRadius" options:0 context:NULL];
-  [self startObservingGradientStopParameters:self.gradientParameters.radialGradientParameters.gradientStopParameters];
-  [self startObservingAffineTransformParameters:self.gradientParameters.radialGradientParameters.affineTransformParameters];
+  [self startObservingGradientParameters:self.gradientParameters];
 }
 
 - (void) startObservingColorParameters:(ColorParameters*)colorParameters
@@ -74,6 +61,26 @@
 {
   [affineTransformParameters addObserver:self forKeyPath:@"affineTransformEnabled" options:0 context:NULL];
   [affineTransformParameters addObserver:self forKeyPath:@"affineTransform" options:0 context:NULL];
+}
+
+- (void) startObservingGradientParameters:(GradientParameters*)gradientParameters
+{
+  [gradientParameters addObserver:self forKeyPath:@"gradientEnabled" options:0 context:NULL];
+  [gradientParameters addObserver:self forKeyPath:@"gradientType" options:0 context:NULL];
+  [gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"startPointX" options:0 context:NULL];
+  [gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"startPointY" options:0 context:NULL];
+  [gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"endPointX" options:0 context:NULL];
+  [gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"endPointY" options:0 context:NULL];
+  [self startObservingGradientStopParameters:gradientParameters.linearGradientParameters.gradientStopParameters];
+  [self startObservingAffineTransformParameters:gradientParameters.linearGradientParameters.affineTransformParameters];
+  [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"startCenterX" options:0 context:NULL];
+  [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"startCenterY" options:0 context:NULL];
+  [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"startRadius" options:0 context:NULL];
+  [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"endCenterX" options:0 context:NULL];
+  [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"endCenterY" options:0 context:NULL];
+  [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"endRadius" options:0 context:NULL];
+  [self startObservingGradientStopParameters:gradientParameters.radialGradientParameters.gradientStopParameters];
+  [self startObservingAffineTransformParameters:gradientParameters.radialGradientParameters.affineTransformParameters];
 }
 
 - (void) startObservingGradientStopParameters:(GradientStopParameters*)gradientStopParameters
@@ -131,16 +138,8 @@
 
   if (self.gradientParameters.gradientEnabled)
   {
-    if (self.gradientParameters.gradientType == GradientTypeLinear)
-    {
-      [DrawingHelper drawGradientWithContext:context
-                    linearGradientParameters:self.gradientParameters.linearGradientParameters];
-    }
-    else
-    {
-      [DrawingHelper drawGradientWithContext:context
-                    radialGradientParameters:self.gradientParameters.radialGradientParameters];
-    }
+    [DrawingHelper drawGradientWithContext:context
+                        gradientParameters:self.gradientParameters];
   }
 }
 

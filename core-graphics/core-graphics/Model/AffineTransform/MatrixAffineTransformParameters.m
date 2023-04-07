@@ -61,6 +61,9 @@ static NSString* tyKey = @"ty";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.a = [dictionary[aKey] floatValue];
   self.b = [dictionary[bKey] floatValue];
   self.c = [dictionary[cKey] floatValue];

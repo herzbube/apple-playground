@@ -58,6 +58,9 @@ static NSString* translateAffineTransformParametersKey = @"translateAffineTransf
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   [self stopObserving];
 
   self.affineTransformType = [dictionary[affineTransformTypeKey] intValue];

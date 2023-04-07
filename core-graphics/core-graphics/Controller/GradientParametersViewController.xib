@@ -15,6 +15,7 @@
                 <outlet property="gradientEnabledSwitch" destination="qfk-r3-sqc" id="wj4-QM-EZh"/>
                 <outlet property="gradientParametersStackView" destination="H13-Wq-6ta" id="4Wp-m2-aHt"/>
                 <outlet property="gradientTypeSegmentedControl" destination="Vtw-56-Wx8" id="ieY-UC-BLy"/>
+                <outlet property="titleLabelAndEnabledSwitchStackView" destination="C7f-tc-pCk" id="1ee-7b-SN8"/>
                 <outlet property="topLevelStackView" destination="SAd-8l-TsM" id="dgN-fZ-ZQT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,21 +25,26 @@
             <rect key="frame" x="0.0" y="0.0" width="574" height="239"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gradient parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDr-P7-xO6" userLabel="Gradient parameters title label">
-                    <rect key="frame" x="0.0" y="0.0" width="505" height="20.5"/>
-                    <color key="backgroundColor" systemColor="systemGreenColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfk-r3-sqc" userLabel="Gradient enabled switch">
-                    <rect key="frame" x="525" y="0.0" width="51" height="20.5"/>
-                    <connections>
-                        <action selector="gradientEnabledValueChanged:" destination="-1" eventType="valueChanged" id="LzO-b6-yUx"/>
-                    </connections>
-                </switch>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SAd-8l-TsM" userLabel="Top-level stack view">
-                    <rect key="frame" x="0.0" y="28.5" width="574" height="210.5"/>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="C7f-tc-pCk" userLabel="Title label and enabled switch stack view">
+                    <rect key="frame" x="0.0" y="0.0" width="574" height="27.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gradient parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDr-P7-xO6" userLabel="Gradient parameters title label">
+                            <rect key="frame" x="0.0" y="0.0" width="505" height="27.5"/>
+                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfk-r3-sqc" userLabel="Gradient enabled switch">
+                            <rect key="frame" x="525" y="0.0" width="51" height="27.5"/>
+                            <connections>
+                                <action selector="gradientEnabledValueChanged:" destination="-1" eventType="valueChanged" id="LzO-b6-yUx"/>
+                            </connections>
+                        </switch>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="SAd-8l-TsM" userLabel="Top-level stack view">
+                    <rect key="frame" x="0.0" y="35.5" width="574" height="203.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H13-Wq-6ta" userLabel="Gradient parameters stack view">
                             <rect key="frame" x="0.0" y="0.0" width="574" height="152.5"/>
@@ -60,7 +66,7 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Dg-vg-7M0" userLabel="Spacer view">
-                            <rect key="frame" x="0.0" y="160.5" width="574" height="50"/>
+                            <rect key="frame" x="0.0" y="153.5" width="574" height="50"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                     </subviews>
@@ -69,19 +75,16 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="SAd-8l-TsM" firstAttribute="top" secondItem="IDr-P7-xO6" secondAttribute="bottom" constant="8" symbolic="YES" id="0CT-U2-J2l"/>
-                <constraint firstItem="qfk-r3-sqc" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="EMa-FR-41o"/>
+                <constraint firstItem="C7f-tc-pCk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2jD-XO-BWz"/>
                 <constraint firstAttribute="bottom" secondItem="SAd-8l-TsM" secondAttribute="bottom" id="KC1-1g-9fx"/>
                 <constraint firstItem="SAd-8l-TsM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KTG-eU-fzO"/>
-                <constraint firstItem="IDr-P7-xO6" firstAttribute="height" secondItem="qfk-r3-sqc" secondAttribute="height" id="Vl6-04-68R"/>
-                <constraint firstItem="IDr-P7-xO6" firstAttribute="trailing" secondItem="qfk-r3-sqc" secondAttribute="leading" constant="-20" id="Y4V-h7-fXI"/>
-                <constraint firstItem="IDr-P7-xO6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YVV-fe-wV3"/>
-                <constraint firstItem="IDr-P7-xO6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iOj-nV-plX"/>
+                <constraint firstAttribute="trailing" secondItem="C7f-tc-pCk" secondAttribute="trailing" id="aqG-NC-0Rw"/>
+                <constraint firstItem="C7f-tc-pCk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nJw-VG-QjX"/>
+                <constraint firstItem="SAd-8l-TsM" firstAttribute="top" secondItem="C7f-tc-pCk" secondAttribute="bottom" constant="8" symbolic="YES" id="ssE-ua-TSv"/>
                 <constraint firstAttribute="trailing" secondItem="SAd-8l-TsM" secondAttribute="trailing" id="xkM-qq-fYk"/>
-                <constraint firstItem="qfk-r3-sqc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ze5-SD-bjm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="24.637681159420293" y="273.54910714285711"/>
+            <point key="canvasLocation" x="24.637681159420293" y="272.87946428571428"/>
         </view>
     </objects>
     <resources>

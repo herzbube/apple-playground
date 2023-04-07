@@ -47,6 +47,9 @@ static NSString* colorParametersKey = @"colorParameters";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.strokeEnabled = [dictionary[strokeEnabledKey] boolValue];
   self.lineWidth = [dictionary[lineWidthKey] floatValue];
   [self.colorParameters setValuesWithDictionary:dictionary[colorParametersKey]];

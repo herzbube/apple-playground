@@ -47,7 +47,10 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
-  self.affineTransformEnabled = [dictionary[affineTransformEnabledKey] floatValue];
+  if (! dictionary)
+    return;
+
+  self.affineTransformEnabled = [dictionary[affineTransformEnabledKey] boolValue];
 
   [self removeAllItems];
 

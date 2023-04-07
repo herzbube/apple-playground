@@ -10,7 +10,8 @@
 @class LinearGradientParameters;
 @class RadialGradientParameters;
 
-typedef NS_ENUM(NSInteger, GradientType) {
+typedef NS_ENUM(NSInteger, GradientType)
+{
   GradientTypeLinear,
   GradientTypeRadial,
 };

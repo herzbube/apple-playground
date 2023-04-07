@@ -42,6 +42,9 @@ static NSString* rotateAngleKey = @"rotateAngle";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.rotateAngle = [dictionary[rotateAngleKey] floatValue];
 
   [self updateParametersDidChange];

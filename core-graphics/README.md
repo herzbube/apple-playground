@@ -47,7 +47,7 @@ Not covered so far, but should be:
 
 * Constructing more paths than just arcs and rectangles
 * Filling using the even-odd rule
-* Clipping
+* Clipping (clipping is already applied for gradient fill)
 * Drawing text
 
 ## Affine transformation notes

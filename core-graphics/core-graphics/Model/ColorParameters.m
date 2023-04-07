@@ -48,6 +48,9 @@ static NSString* hexStringKey = @"hexString";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.red = [dictionary[redKey] floatValue];
   self.green = [dictionary[greenKey] floatValue];
   self.blue = [dictionary[blueKey] floatValue];

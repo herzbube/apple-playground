@@ -46,6 +46,9 @@ static NSString* shearAngleYKey = @"shearAngleY";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.shearAngleX = [dictionary[shearAngleXKey] floatValue];
   self.shearAngleY = [dictionary[shearAngleYKey] floatValue];
 

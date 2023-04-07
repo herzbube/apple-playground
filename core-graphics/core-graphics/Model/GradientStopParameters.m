@@ -46,6 +46,9 @@ static NSString* colorParameters2Key = @"colorParameters2";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.position1 = [dictionary[position1Key] floatValue];
   [self.colorParameters1 setValuesWithDictionary:dictionary[colorParameters1Key]];
   self.position2 = [dictionary[position2Key] floatValue];

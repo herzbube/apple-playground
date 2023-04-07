@@ -47,6 +47,9 @@ static NSString* rectangleParametersKey = @"rectangleParameters";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.pathEnabled = [dictionary[pathEnabledKey] boolValue];
   self.pathType = [dictionary[pathTypeKey] intValue];
   [self.arcParameters setValuesWithDictionary:dictionary[arcParametersKey]];

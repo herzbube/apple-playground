@@ -48,6 +48,9 @@ static NSString* heightKey = @"height";
 }
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.originX = [dictionary[originXKey] floatValue];
   self.originY = [dictionary[originYKey] floatValue];
   self.width = [dictionary[widthKey] floatValue];

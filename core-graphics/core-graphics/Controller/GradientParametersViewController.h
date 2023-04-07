@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype) initWithGradientParameters:(GradientParameters*)gradientParameters;
 
 - (void) updateUiWithModelValues;
+- (void) hideTitleLabelAndEnabledSwitch;
 
 @property (strong, nonatomic) GradientParameters* gradientParameters;
 

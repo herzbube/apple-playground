@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1A2A2829E046AC00CD0848 /* ParametersHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1A2A2729E046AC00CD0848 /* ParametersHelper.m */; };
 		CD84615229C78A5F00D4D6B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD84615129C78A5F00D4D6B7 /* AppDelegate.m */; };
 		CD84615529C78A5F00D4D6B7 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD84615429C78A5F00D4D6B7 /* SceneDelegate.m */; };
 		CD84615829C78A5F00D4D6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD84615729C78A5F00D4D6B7 /* ViewController.m */; };
@@ -73,6 +74,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD1A2A2629E046AC00CD0848 /* ParametersHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersHelper.h; sourceTree = "<group>"; };
+		CD1A2A2729E046AC00CD0848 /* ParametersHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersHelper.m; sourceTree = "<group>"; };
 		CD84614D29C78A5F00D4D6B7 /* core-graphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "core-graphics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD84615029C78A5F00D4D6B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD84615129C78A5F00D4D6B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				CDC0F9EA29CE154F0005F9F6 /* AutoLayoutUtility.m */,
 				CDC0F9F029CF197B0005F9F6 /* Converter.h */,
 				CDC0F9EF29CF197B0005F9F6 /* Converter.m */,
+				CD1A2A2629E046AC00CD0848 /* ParametersHelper.h */,
+				CD1A2A2729E046AC00CD0848 /* ParametersHelper.m */,
 			);
 			path = "core-graphics";
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 				CDB6A16A29D8899A007618BA /* RotateAffineTransformParameters.m in Sources */,
 				CDB6A12C29D06E80007618BA /* LinearGradientParameters.m in Sources */,
 				CD84617429C7CFA100D4D6B7 /* ArcParameters.m in Sources */,
+				CD1A2A2829E046AC00CD0848 /* ParametersHelper.m in Sources */,
 				CDB6A13B29D07A3B007618BA /* LinearGradientParametersViewController.m in Sources */,
 				CDB6A18929D8E896007618BA /* TranslateAffineTransformParametersViewController.m in Sources */,
 			);

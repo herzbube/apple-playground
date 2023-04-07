@@ -10,7 +10,8 @@
 @class ArcParameters;
 @class RectangleParameters;
 
-typedef NS_ENUM(NSInteger, PathType) {
+typedef NS_ENUM(NSInteger, PathType)
+{
   PathTypeArc,
   PathTypeRectangle,
 };

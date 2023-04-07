@@ -12,6 +12,7 @@
 #import "../AutoLayoutUtility.h"
 
 @interface GradientParametersViewController()
+@property (weak, nonatomic) IBOutlet UIStackView* titleLabelAndEnabledSwitchStackView;
 @property (weak, nonatomic) IBOutlet UISwitch* gradientEnabledSwitch;
 @property (weak, nonatomic) IBOutlet UIStackView* topLevelStackView;
 // Strong reference is needed so that the object is not deallocated when it is
@@ -47,7 +48,6 @@
 {
   [super viewDidLoad];
 
-  [self integrateChildViewControllers];
   [self updateUiWithModelValues];
 }
 
@@ -135,6 +135,9 @@
 
   [self updateUiVisibility];
 
+  [self removeChildViewController];
+  [self integrateChildViewControllers];
+
   for (id childViewController in self.childViewControllers)
     [childViewController updateUiWithModelValues];
 }
@@ -153,6 +156,19 @@
       [self.topLevelStackView removeArrangedSubview:self.gradientParametersStackView];
       [self.gradientParametersStackView removeFromSuperview];
     }
+  }
+}
+
+#pragma mark - Public API
+
+- (void) hideTitleLabelAndEnabledSwitch
+{
+  while (self.titleLabelAndEnabledSwitchStackView.arrangedSubviews.count > 0)
+  {
+    UIView* arrangedSubView = self.titleLabelAndEnabledSwitchStackView.arrangedSubviews.lastObject;
+
+    [self.titleLabelAndEnabledSwitchStackView removeArrangedSubview:arrangedSubView];
+    [arrangedSubView removeFromSuperview];
   }
 }
 

@@ -8,6 +8,13 @@
 #import <UIKit/UIKit.h>
 
 @class ColorParameters;
+@class GradientParameters;
+
+typedef NS_ENUM(NSInteger, FillType)
+{
+  FillTypeSolidColor,
+  FillTypeGradient,
+};
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,8 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) resetToDefaultValues;
 
 @property bool fillEnabled;
+@property FillType fillType;
+@property bool clipGradientToPath;
 
 @property (strong, nonatomic) ColorParameters* colorParameters;
+@property (strong, nonatomic) GradientParameters* gradientParameters;
 
 @end
 

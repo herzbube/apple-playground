@@ -48,6 +48,9 @@ static NSString* gradientParametersKey = @"gradientParameters";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   [self.pathParameters setValuesWithDictionary:dictionary[pathParametersKey]];
   [self.strokeParameters setValuesWithDictionary:dictionary[strokeParametersKey]];
   [self.fillParameters setValuesWithDictionary:dictionary[fillParametersKey]];
@@ -59,8 +62,7 @@ static NSString* gradientParametersKey = @"gradientParameters";
 {
   NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
   NSDictionary* dictionary = [userDefaults dictionaryForKey:drawingParametersKey];
-  if (dictionary)
-    [self setValuesWithDictionary:dictionary];
+  [self setValuesWithDictionary:dictionary];
 }
 
 - (void) writeUserDefaults

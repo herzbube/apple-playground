@@ -24,6 +24,9 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
 @property (weak, nonatomic) IBOutlet UIView* detailContainerView;
 @property (strong, nonatomic) IBOutlet UITextField* concatenatedAffineTransformTextField;
 @property (nonatomic) NSUInteger indexOfSelectedAffineTransformParametersItem;
+// Keep a strong reference so that we can remove the KVO observer registration
+// even after the item is no longer retained by its parent
+// AffineTransformParameters
 @property (strong, nonatomic) AffineTransformParametersItem* selectedAffineTransformParametersItem;
 @end
 
@@ -37,10 +40,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
   if (! self)
     return nil;
 
-  if (affineTransformParameters)
-    self.affineTransformParameters = affineTransformParameters;
-  else
-    self.affineTransformParameters = [[AffineTransformParameters alloc] init];
+  self.affineTransformParameters = affineTransformParameters;
 
   return self;
 }

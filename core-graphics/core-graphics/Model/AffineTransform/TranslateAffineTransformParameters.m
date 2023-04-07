@@ -45,6 +45,9 @@ static NSString* translateYKey = @"translateY";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.translateX = [dictionary[translateXKey] floatValue];
   self.translateY = [dictionary[translateYKey] floatValue];
 

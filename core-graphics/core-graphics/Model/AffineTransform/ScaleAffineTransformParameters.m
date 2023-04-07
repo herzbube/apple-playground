@@ -45,6 +45,9 @@ static NSString* scaleYKey = @"scaleY";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.scaleX = [dictionary[scaleXKey] floatValue];
   self.scaleY = [dictionary[scaleYKey] floatValue];
 

@@ -62,6 +62,9 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.startPointX = [dictionary[startPointXKey] floatValue];
   self.startPointY = [dictionary[startPointYKey] floatValue];
   self.endPointX = [dictionary[endPointXKey] floatValue];

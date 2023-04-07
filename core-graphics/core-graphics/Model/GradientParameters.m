@@ -47,6 +47,9 @@ static NSString* radialGradientParametersKey = @"radialGradientParameters";
 
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.gradientEnabled = [dictionary[gradientEnabledKey] boolValue];
   self.gradientType = [dictionary[gradientTypeKey] intValue];
   [self.linearGradientParameters setValuesWithDictionary:dictionary[linearGradientParametersKey]];

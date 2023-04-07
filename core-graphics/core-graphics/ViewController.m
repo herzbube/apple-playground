@@ -6,14 +6,15 @@
 //
 
 #import "ViewController.h"
-#import "Model/DrawingParameters.h"
+#import "AutoLayoutUtility.h"
 #import "DrawingView.h"
+#import "ParametersHelper.h"
 #import "Controller/AffineTransform/AffineTransformParametersViewController.h"
 #import "Controller/FillParametersViewController.h"
 #import "Controller/GradientParametersViewController.h"
 #import "Controller/PathParametersViewController.h"
 #import "Controller/StrokeParametersViewController.h"
-#import "AutoLayoutUtility.h"
+#import "Model/DrawingParameters.h"
 
 @interface ViewController()
 @property (strong, nonatomic) DrawingParameters* drawingParameters;
@@ -125,20 +126,24 @@
 
 - (IBAction) saveButtonTapped:(UIButton*)sender
 {
-  [self.drawingParameters writeUserDefaults];
+  [ParametersHelper saveParameters:self.drawingParameters];
 }
 
 - (IBAction) loadButtonTapped:(UIButton*)sender
 {
-  [self.drawingParameters readUserDefaults];
-
+  [ParametersHelper loadParameters:self.drawingParameters];
   [self updateUiWithModelValues];
 }
 
 - (IBAction) resetButtonTapped:(UIButton*)sender
 {
-  [self.drawingParameters resetToDefaultValues];
+  [ParametersHelper resetParameters:self.drawingParameters];
+  [self updateUiWithModelValues];
+}
 
+- (IBAction) alignGradientToPathButtonTapped:(UIButton*)sender
+{
+  [ParametersHelper alignGradientToPathParameters:self.drawingParameters];
   [self updateUiWithModelValues];
 }
 

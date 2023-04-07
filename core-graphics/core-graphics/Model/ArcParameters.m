@@ -55,6 +55,9 @@ static NSString* clockwiseKey = @"clockwise";
 }
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary
 {
+  if (! dictionary)
+    return;
+
   self.centerX = [dictionary[centerXKey] floatValue];
   self.centerY = [dictionary[centerYKey] floatValue];
   self.radius = [dictionary[radiusKey] floatValue];

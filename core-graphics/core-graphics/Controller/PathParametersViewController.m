@@ -47,7 +47,6 @@
 {
   [super viewDidLoad];
 
-  [self integrateChildViewControllers];
   [self updateUiWithModelValues];
 }
 
@@ -134,6 +133,9 @@
   self.pathTypeSegmentedControl.selectedSegmentIndex = self.pathParameters.pathType;
 
   [self updateUiVisibility];
+
+  [self removeChildViewController];
+  [self integrateChildViewControllers];
 
   for (id childViewController in self.childViewControllers)
     [childViewController updateUiWithModelValues];
