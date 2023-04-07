@@ -40,9 +40,19 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
   if (! self)
     return nil;
 
-  self.affineTransformParameters = affineTransformParameters;
+  if (affineTransformParameters)
+    self.affineTransformParameters = affineTransformParameters;
+  else
+    self.affineTransformParameters = [[AffineTransformParameters alloc] init];
 
   return self;
+}
+
+- (void) dealloc
+{
+  [self stopObserving];
+  if (self.selectedAffineTransformParametersItem)
+    [self stopObservingAffineTransformParametersItem:self.selectedAffineTransformParametersItem];
 }
 
 #pragma mark - UIViewController methods
@@ -289,6 +299,11 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
 - (void) startObserving
 {
   [self.affineTransformParameters addObserver:self forKeyPath:@"affineTransformAsString" options:0 context:NULL];
+}
+
+- (void) stopObserving
+{
+  [self.affineTransformParameters removeObserver:self forKeyPath:@"affineTransformAsString"];
 }
 
 - (void) startObservingAffineTransformParametersItem:(AffineTransformParametersItem*)affineTransformParametersItem

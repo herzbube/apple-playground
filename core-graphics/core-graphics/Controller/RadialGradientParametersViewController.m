@@ -6,8 +6,8 @@
 //
 
 #import "RadialGradientParametersViewController.h"
-#import "AffineTransformParametersViewController.h"
 #import "GradientStopParametersViewController.h"
+#import "AffineTransform/AffineTransformParametersViewController.h"
 #import "../Model/RadialGradientParameters.h"
 #import "../AutoLayoutUtility.h"
 #import "../Converter.h"
@@ -85,10 +85,10 @@
   [self addChildViewController:affineTransformParametersViewController];
   [affineTransformParametersViewController didMoveToParentViewController:self];
 
-  UIView* affineTransformStopParametersView = affineTransformParametersViewController.view;
-  [self.affineTransformParametersContainerView addSubview:affineTransformStopParametersView];
-  affineTransformStopParametersView.translatesAutoresizingMaskIntoConstraints = NO;
-  [AutoLayoutUtility fillSuperview:self.affineTransformParametersContainerView withSubview:affineTransformStopParametersView];
+  UIView* affineTransformParametersView = affineTransformParametersViewController.view;
+  [self.affineTransformParametersContainerView addSubview:affineTransformParametersView];
+  affineTransformParametersView.translatesAutoresizingMaskIntoConstraints = NO;
+  [AutoLayoutUtility fillSuperview:self.affineTransformParametersContainerView withSubview:affineTransformParametersView];
 }
 
 #pragma mark - Text field input actions
