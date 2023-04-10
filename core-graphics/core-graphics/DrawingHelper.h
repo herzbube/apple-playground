@@ -11,8 +11,7 @@
 @class ColorParameters;
 @class FillParameters;
 @class GradientParameters;
-@class LinearGradientParameters;
-@class RadialGradientParameters;
+@class PathParameters;
 @class StrokeParameters;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -27,13 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
           affineTransformParameters:(AffineTransformParameters*)affineTransformParameters;
 + (void) fillOrStrokePathWithContext:(CGContextRef)context
                     strokeParameters:(StrokeParameters*)strokeParameters
-                      fillParameters:(FillParameters*)fillParameters;
+                      fillParameters:(FillParameters*)fillParameters
+                      pathParameters:(PathParameters*)pathParameters;
 + (void) drawGradientWithContext:(CGContextRef)context
               gradientParameters:(GradientParameters*)gradientParameters;
-+ (void) drawGradientWithContext:(CGContextRef)context
-        linearGradientParameters:(LinearGradientParameters*)linearGradientParameters;
-+ (void) drawGradientWithContext:(CGContextRef)context
-        radialGradientParameters:(RadialGradientParameters*)radialGradientParameters;
 
 @end
 

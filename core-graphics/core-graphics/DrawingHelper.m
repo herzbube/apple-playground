@@ -7,12 +7,15 @@
 
 #import "DrawingHelper.h"
 #import "Model/AffineTransform/AffineTransformParameters.h"
+#import "Model/ArcParameters.h"
 #import "Model/ColorParameters.h"
 #import "Model/FillParameters.h"
 #import "Model/GradientParameters.h"
 #import "Model/GradientStopParameters.h"
 #import "Model/LinearGradientParameters.h"
+#import "Model/PathParameters.h"
 #import "Model/RadialGradientParameters.h"
+#import "Model/RectangleParameters.h"
 #import "Model/StrokeParameters.h"
 
 @implementation DrawingHelper
@@ -56,72 +59,92 @@
 + (void) fillOrStrokePathWithContext:(CGContextRef)context
                     strokeParameters:(StrokeParameters*)strokeParameters
                       fillParameters:(FillParameters*)fillParameters
+                      pathParameters:(PathParameters*)pathParameters
 {
-  if (! strokeParameters.strokeEnabled && ! fillParameters.fillEnabled)
+  // Perform gradient fill before stroking so that stroke draws over the fill
+  // => same behaviour as if both solid color fill & stroking is enabled, i.e.
+  //    path is drawn with kCGPathFillStroke
+  if (fillParameters.fillEnabled && fillParameters.fillType == FillTypeGradient)
+  {
+    [DrawingHelper gradientFillPathWithContext:context
+                                fillParameters:fillParameters
+                                pathParameters:pathParameters];
+  }
+
+  [DrawingHelper solidColorFillOrStrokePathWithContext:context
+                                      strokeParameters:strokeParameters
+                                        fillParameters:fillParameters
+                                        pathParameters:pathParameters];
+}
+
++ (void) gradientFillPathWithContext:(CGContextRef)context
+                      fillParameters:(FillParameters*)fillParameters
+                      pathParameters:(PathParameters*)pathParameters
+{
+  bool shouldGradientFill = fillParameters.fillEnabled && fillParameters.fillType == FillTypeGradient;
+  if (! shouldGradientFill)
     return;
 
-  if (strokeParameters.strokeEnabled)
+  if (fillParameters.clipGradientToPath)
+  {
+    CGContextSaveGState(context);
+
+    // Path will be cleared below by CGContextClip
+    [DrawingHelper addPathToContext:context
+                     pathParameters:pathParameters];
+
+    CGContextClip(context);
+  }
+
+  [DrawingHelper drawGradientWithContext:context
+                      gradientParameters:fillParameters.gradientParameters];
+
+  if (fillParameters.clipGradientToPath)
+  {
+    // Remove clipping
+    CGContextRestoreGState(context);
+  }
+}
+
++ (void) solidColorFillOrStrokePathWithContext:(CGContextRef)context
+                              strokeParameters:(StrokeParameters*)strokeParameters
+                                fillParameters:(FillParameters*)fillParameters
+                                pathParameters:(PathParameters*)pathParameters
+{
+  bool shouldStroke = strokeParameters.strokeEnabled;
+  bool shouldSolidColorFill = fillParameters.fillEnabled && fillParameters.fillType == FillTypeSolidColor;
+  if (! shouldStroke && ! shouldSolidColorFill)
+    return;
+
+  // Path will be cleared below when it is stroked and/or filled
+  [DrawingHelper addPathToContext:context
+                   pathParameters:pathParameters];
+
+  if (shouldSolidColorFill)
+  {
+    UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.colorParameters];
+    CGContextSetFillColorWithColor(context, fillColor.CGColor);
+    if (! shouldStroke)
+    {
+      CGContextFillPath(context);
+      return;
+    }
+  }
+
+  if (shouldStroke)
   {
     UIColor* strokeColor = [DrawingHelper colorFromColorParameters:strokeParameters.colorParameters];
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     CGContextSetLineWidth(context, strokeParameters.lineWidth);
+    if (! shouldSolidColorFill)
+    {
+      CGContextStrokePath(context);
+      return;
+    }
   }
 
-  if (fillParameters.fillEnabled && fillParameters.fillType == FillTypeSolidColor)
-  {
-    UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.colorParameters];
-    CGContextSetFillColorWithColor(context, fillColor.CGColor);
-  }
-
-  // Cases
-  // 1. Stroke enabled + fill enabled with solid     => CGContextDrawPath
-  // 2. Stroke enabled + fill enabled with gradient  => CGContextStrokePath + Gradient/Clip
-  // 3. Stroke enabled + fill disabled               => CGContextStrokePath
-  // 4. Stroke disabled + fill enabled with solid    => CGContextFillPath
-  // 5. Stroke disabled + fill enabled with gradient => Gradient/Clip
-
-  // Case 1
-  if (strokeParameters.strokeEnabled && fillParameters.fillEnabled && fillParameters.fillType == FillTypeSolidColor)
-  {
+  if (shouldSolidColorFill && shouldStroke)
     CGContextDrawPath(context, kCGPathFillStroke);
-    return;
-  }
-
-  if (fillParameters.fillEnabled)
-  {
-    // Case 4
-    if (fillParameters.fillType == FillTypeSolidColor)
-    {
-      CGContextFillPath(context);
-    }
-    // Case 2+5
-    else
-    {
-      if (fillParameters.fillEnabled && fillParameters.clipGradientToPath)
-      {
-        CGContextSaveGState(context);
-        CGContextClip(context);
-      }
-
-      [DrawingHelper drawGradientWithContext:context
-                          gradientParameters:fillParameters.gradientParameters];
-
-      if (fillParameters.fillEnabled && fillParameters.clipGradientToPath)
-      {
-        // Remove clipping
-        CGContextRestoreGState(context);
-      }
-    }
-  }
-
-  // Case 2+3
-  // CGContextStrokePath removes the path, so this must be done only after
-  // the gradient fill so that the gradient fill can clip to the path
-  if (strokeParameters.strokeEnabled)
-  {
-    CGContextStrokePath(context);
-  }
-
 }
 
 CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
@@ -138,6 +161,32 @@ CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
                                                       (CFArrayRef)colors,
                                                       locations);
   return gradient;
+}
+
++ (void) addPathToContext:(CGContextRef)context
+           pathParameters:(PathParameters*)pathParameters
+{
+  if (! pathParameters.pathEnabled)
+    return;
+
+  if (pathParameters.pathType == PathTypeArc)
+  {
+    CGContextAddArc(context,
+                    pathParameters.arcParameters.centerX,
+                    pathParameters.arcParameters.centerY,
+                    pathParameters.arcParameters.radius,
+                    [DrawingHelper radians:pathParameters.arcParameters.startAngle],
+                    [DrawingHelper radians:pathParameters.arcParameters.endAngle],
+                    pathParameters.arcParameters.clockwise);
+  }
+  else
+  {
+    CGRect rectangle = CGRectMake(pathParameters.rectangleParameters.originX,
+                                  pathParameters.rectangleParameters.originY,
+                                  pathParameters.rectangleParameters.width,
+                                  pathParameters.rectangleParameters.height);
+    CGContextAddRect(context, rectangle);
+  }
 }
 
 + (void) drawGradientWithContext:(CGContextRef)context

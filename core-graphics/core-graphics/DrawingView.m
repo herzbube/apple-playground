@@ -107,31 +107,10 @@
   [DrawingHelper concatTransformWithContext:context
                   affineTransformParameters:self.affineTransformParameters];
 
-  if (self.pathParameters.pathEnabled)
-  {
-    if (self.pathParameters.pathType == PathTypeArc)
-    {
-      CGContextAddArc(context,
-                      self.pathParameters.arcParameters.centerX,
-                      self.pathParameters.arcParameters.centerY,
-                      self.pathParameters.arcParameters.radius,
-                      [DrawingHelper radians:self.pathParameters.arcParameters.startAngle],
-                      [DrawingHelper radians:self.pathParameters.arcParameters.endAngle],
-                      self.pathParameters.arcParameters.clockwise);
-    }
-    else
-    {
-      CGRect rectangle = CGRectMake(self.pathParameters.rectangleParameters.originX,
-                                    self.pathParameters.rectangleParameters.originY,
-                                    self.pathParameters.rectangleParameters.width,
-                                    self.pathParameters.rectangleParameters.height);
-      CGContextAddRect(context, rectangle);
-    }
-  }
-
   [DrawingHelper fillOrStrokePathWithContext:context
                             strokeParameters:self.strokeParameters
-                              fillParameters:self.fillParameters];
+                              fillParameters:self.fillParameters
+                              pathParameters:self.pathParameters];
 
   // Remove transform
   CGContextRestoreGState(context);
