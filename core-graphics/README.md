@@ -6,15 +6,17 @@ Although I believe I have a relatively solid grasp of the basic Core Graphics dr
 
 The user interface in this project exposes Core Graphics drawing functions and their parameters to the user as raw as possible so that the user can play with them.
 
+**Important note:** Core Graphics drawing contexts have the origin of their coordinate system in the lower-left corner. The documentation of Core Graphics functions reflects this. UiKit drawing contexts, however, have the origin of their coordinate system in the upper-left corner. **This project performs drawing with a UiKit drawing context.** Keep this in mind when comparing Core Graphics function documentations with the drawing results from this project.
+
 ## UI workflow
 
 This project does not pretend to be a full-fledged drawing application. It merely has the following very limited workflow:
 
 1. The user selects a path to draw, and the path parameters.
-2. The user selects whether to use an affine transformation for drawing the path, and the affine transformation parameters.
-3. The user selects whether to stroke the path, and the stroking parameters (line width, color).
-4. The user selects whether to fill the path, and the fill parameters (fill color).
-5. The user selects whether to draw a gradient, and the gradient parameters.
+2. The user selects whether to stroke the path, and the stroking parameters (line width, color).
+3. The user selects whether to fill the path, and the fill parameters (fill color if solid color fill is selected, or gradient parameters if gradient fill is selected).
+4. The user selects whether to use an affine transformation for drawing the path, and the affine transformation parameters.
+5. The user selects whether to draw a gradient, and the gradient parameters. Note that the affine transformation from step 4 is not applied to the gradient - the gradient parameters allow to set a gradient-specific affine transform.
 
 ## Core Graphics function coverage
 
@@ -26,12 +28,12 @@ The following table lists the Core Graphics functions currently supported by thi
 | CGContextAddRect | <ul><li>rectangle: `CGRect`</li></ul> | |
 | CGContextSetLineWidth | <ul><li>width: `CGFloat`</li></ul> | |
 | CGContextSetStrokeColorWithColor | <ul><li>color: `CGColorRef`</li></ul> | |
-| CGContextStrokePath | None | This function is used if the path needs to be stroked, but not filled. |
+| CGContextStrokePath | None | This function is used if the path needs to be stroked, but not filled with a solid color. |
 | CGContextSetFillColorWithColor | <ul><li>color: `CGColorRef`</li></ul> | |
-| CGContextFillPath | None | This function is used if the path needs to be filled, but not stroked. |
-| CGContextDrawPath | <ul><li>drawingMode: `CGPathDrawingMode`</li></ul> | This function is used if the path needs to be stroked **and** filled. The drawing mode parameter value is always `kCGPathFillStroke`. |
+| CGContextFillPath | None | This function is used if the path needs to be filled with a solid color, but not stroked. |
+| CGContextDrawPath | <ul><li>drawingMode: `CGPathDrawingMode`</li></ul> | This function is used if the path needs to be stroked **and** filled with a solid color. The drawing mode parameter value is always `kCGPathFillStroke`. |
 | CGContextConcatCTM | <ul><li>transform: `CGAffineTransform`</li></ul> | The `CGAffineTransform` type is a structure that holds the 6 parameters (a, b, c, d, tx, ty) described in the "Affine transformation notes" section below. |
-| CGContextRotateCTM | <ul><li>angle: `CGFloat`</li></ul> | Input is in degrees, positive values rotate counterclockwise, negative values rotate clockwise. |
+| CGContextRotateCTM | <ul><li>angle: `CGFloat`</li></ul> | Input is in degrees. Positive values rotate clockwise, negative values rotate counterclockwise. The Core Graphics function documentation has it the other way round, the reason is that UiKit drawing contexts use a flipped coordinate system. |
 | CGContextScaleCTM | <ul><li>sx, sy: 2x `CGFloat`</li></ul> | The parameters are the factors used to scale in x/y-direction. |
 | CGContextTranslateCTM | <ul><li>tx, ty: 2x `CGFloat`</li></ul> | The parameters are the amounts used to translate in x/y-direction. |
 | CGColorSpaceCreateDeviceRGB | None | |
@@ -42,12 +44,13 @@ The following table lists the Core Graphics functions currently supported by thi
 | CGContextDrawRadialGradient | <ul><li>gradient: `CGGradientRef`</li> <li>startCenter: `CGPoint`</li> <li>startRadius: `CGFloat`</li> <li>endCenter: `CGPoint`</li> <li>endRadius: `CGFloat`</li><li>options: `CGGradientDrawingOptions`</li></ul> | Currently the options parameter value is always 0 (zero). |
 | CGContextSaveGState | None | |
 | CGContextRestoreGState | None | |
+| CGContextClip | None | Currently this is used only to clip the gradient fill to the drawing path. |
 
 Not covered so far, but should be:
 
 * Constructing more paths than just arcs and rectangles
 * Filling using the even-odd rule
-* Clipping (clipping is already applied for gradient fill)
+* Clipping (other than being used for gradient filling)
 * Drawing text
 
 ## Affine transformation notes
