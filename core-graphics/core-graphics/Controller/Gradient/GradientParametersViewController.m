@@ -8,8 +8,8 @@
 #import "GradientParametersViewController.h"
 #import "LinearGradientParametersViewController.h"
 #import "RadialGradientParametersViewController.h"
-#import "../Model/GradientParameters.h"
-#import "../AutoLayoutUtility.h"
+#import "../../Model/Gradient/GradientParameters.h"
+#import "../../AutoLayoutUtility.h"
 
 @interface GradientParametersViewController()
 @property (weak, nonatomic) IBOutlet UIStackView* titleLabelAndEnabledSwitchStackView;

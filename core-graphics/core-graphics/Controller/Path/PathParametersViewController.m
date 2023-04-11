@@ -8,8 +8,8 @@
 #import "PathParametersViewController.h"
 #import "ArcParametersViewController.h"
 #import "RectangleParametersViewController.h"
-#import "../Model/PathParameters.h"
-#import "../AutoLayoutUtility.h"
+#import "../../Model/Path/PathParameters.h"
+#import "../../AutoLayoutUtility.h"
 
 @interface PathParametersViewController()
 @property (weak, nonatomic) IBOutlet UISwitch* pathEnabledSwitch;

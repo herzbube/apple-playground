@@ -1,24 +1,17 @@
 //
-//  FillParameters.h
+//  GradientFillParameters.h
 //  core-graphics
 //
-//  Created by Patrick Näf Moser on 25.03.23.
+//  Created by Patrick Näf Moser on 11.04.23.
 //
 
 #import <UIKit/UIKit.h>
 
-@class ColorParameters;
 @class GradientParameters;
-
-typedef NS_ENUM(NSInteger, FillType)
-{
-  FillTypeSolidColor,
-  FillTypeGradient,
-};
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FillParameters : NSObject
+@interface GradientFillParameters : NSObject
 
 - (instancetype) init;
 
@@ -27,11 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) resetToDefaultValues;
 
-@property bool fillEnabled;
-@property FillType fillType;
 @property bool clipGradientToPath;
 
-@property (strong, nonatomic) ColorParameters* colorParameters;
 @property (strong, nonatomic) GradientParameters* gradientParameters;
 
 @end

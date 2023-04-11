@@ -7,17 +7,19 @@
 
 #import "DrawingView.h"
 #import "DrawingHelper.h"
-#import "Model/AffineTransform/AffineTransformParameters.h"
-#import "Model/ArcParameters.h"
 #import "Model/ColorParameters.h"
-#import "Model/FillParameters.h"
-#import "Model/GradientParameters.h"
-#import "Model/GradientStopParameters.h"
-#import "Model/LinearGradientParameters.h"
-#import "Model/PathParameters.h"
-#import "Model/RadialGradientParameters.h"
-#import "Model/RectangleParameters.h"
 #import "Model/StrokeParameters.h"
+#import "Model/AffineTransform/AffineTransformParameters.h"
+#import "Model/Fill/FillParameters.h"
+#import "Model/Fill/SolidColorFillParameters.h"
+#import "Model/Fill/GradientFillParameters.h"
+#import "Model/Gradient/GradientParameters.h"
+#import "Model/Gradient/GradientStopParameters.h"
+#import "Model/Gradient/LinearGradientParameters.h"
+#import "Model/Gradient/RadialGradientParameters.h"
+#import "Model/Path/ArcParameters.h"
+#import "Model/Path/PathParameters.h"
+#import "Model/Path/RectangleParameters.h"
 
 @implementation DrawingView
 
@@ -44,9 +46,9 @@
 
   [self.fillParameters addObserver:self forKeyPath:@"fillEnabled" options:0 context:NULL];
   [self.fillParameters addObserver:self forKeyPath:@"fillType" options:0 context:NULL];
-  [self.fillParameters addObserver:self forKeyPath:@"clipGradientToPath" options:0 context:NULL];
-  [self startObservingColorParameters:self.fillParameters.colorParameters];
-  [self startObservingGradientParameters:self.fillParameters.gradientParameters];
+  [self startObservingColorParameters:self.fillParameters.solidColorFillParameters.colorParameters];
+  [self.fillParameters.gradientFillParameters addObserver:self forKeyPath:@"clipGradientToPath" options:0 context:NULL];
+  [self startObservingGradientParameters:self.fillParameters.gradientFillParameters.gradientParameters];
 
   [self startObservingAffineTransformParameters:self.affineTransformParameters];
   [self startObservingGradientParameters:self.gradientParameters];

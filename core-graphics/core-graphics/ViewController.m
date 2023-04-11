@@ -10,9 +10,9 @@
 #import "DrawingView.h"
 #import "ParametersHelper.h"
 #import "Controller/AffineTransform/AffineTransformParametersViewController.h"
-#import "Controller/FillParametersViewController.h"
-#import "Controller/GradientParametersViewController.h"
-#import "Controller/PathParametersViewController.h"
+#import "Controller/Fill/FillParametersViewController.h"
+#import "Controller/Gradient/GradientParametersViewController.h"
+#import "Controller/Path/PathParametersViewController.h"
 #import "Controller/StrokeParametersViewController.h"
 #import "Model/DrawingParameters.h"
 

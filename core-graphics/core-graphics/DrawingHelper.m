@@ -6,17 +6,20 @@
 //
 
 #import "DrawingHelper.h"
-#import "Model/AffineTransform/AffineTransformParameters.h"
-#import "Model/ArcParameters.h"
+
 #import "Model/ColorParameters.h"
-#import "Model/FillParameters.h"
-#import "Model/GradientParameters.h"
-#import "Model/GradientStopParameters.h"
-#import "Model/LinearGradientParameters.h"
-#import "Model/PathParameters.h"
-#import "Model/RadialGradientParameters.h"
-#import "Model/RectangleParameters.h"
 #import "Model/StrokeParameters.h"
+#import "Model/AffineTransform/AffineTransformParameters.h"
+#import "Model/Fill/FillParameters.h"
+#import "Model/Fill/SolidColorFillParameters.h"
+#import "Model/Fill/GradientFillParameters.h"
+#import "Model/Gradient/GradientParameters.h"
+#import "Model/Gradient/GradientStopParameters.h"
+#import "Model/Gradient/LinearGradientParameters.h"
+#import "Model/Gradient/RadialGradientParameters.h"
+#import "Model/Path/ArcParameters.h"
+#import "Model/Path/PathParameters.h"
+#import "Model/Path/RectangleParameters.h"
 
 @implementation DrawingHelper
 
@@ -85,7 +88,7 @@
   if (! shouldGradientFill)
     return;
 
-  if (fillParameters.clipGradientToPath)
+  if (fillParameters.gradientFillParameters.clipGradientToPath)
   {
     CGContextSaveGState(context);
 
@@ -97,9 +100,9 @@
   }
 
   [DrawingHelper drawGradientWithContext:context
-                      gradientParameters:fillParameters.gradientParameters];
+                      gradientParameters:fillParameters.gradientFillParameters.gradientParameters];
 
-  if (fillParameters.clipGradientToPath)
+  if (fillParameters.gradientFillParameters.clipGradientToPath)
   {
     // Remove clipping
     CGContextRestoreGState(context);
@@ -122,7 +125,7 @@
 
   if (shouldSolidColorFill)
   {
-    UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.colorParameters];
+    UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.solidColorFillParameters.colorParameters];
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
     if (! shouldStroke)
     {

@@ -6,7 +6,7 @@
 //
 
 #import "GradientStopParameters.h"
-#import "ColorParameters.h"
+#import "../ColorParameters.h"
 
 static NSString* position1Key = @"position1";
 static NSString* colorParameters1Key = @"colorParameters1";

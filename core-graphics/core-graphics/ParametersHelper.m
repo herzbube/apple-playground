@@ -6,14 +6,14 @@
 //
 
 #import "ParametersHelper.h"
-#import "Model/ArcParameters.h"
 #import "Model/DrawingParameters.h"
-#import "Model/GradientParameters.h"
-#import "Model/GradientStopParameters.h"
-#import "Model/LinearGradientParameters.h"
-#import "Model/PathParameters.h"
-#import "Model/RadialGradientParameters.h"
-#import "Model/RectangleParameters.h"
+#import "Model/Gradient/GradientParameters.h"
+#import "Model/Gradient/GradientStopParameters.h"
+#import "Model/Gradient/LinearGradientParameters.h"
+#import "Model/Gradient/RadialGradientParameters.h"
+#import "Model/Path/ArcParameters.h"
+#import "Model/Path/PathParameters.h"
+#import "Model/Path/RectangleParameters.h"
 
 @implementation ParametersHelper
 

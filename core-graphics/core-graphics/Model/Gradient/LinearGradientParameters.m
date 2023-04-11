@@ -6,9 +6,9 @@
 //
 
 #import "LinearGradientParameters.h"
-#import "AffineTransformParameters.h"
-#import "ColorParameters.h"
 #import "GradientStopParameters.h"
+#import "../ColorParameters.h"
+#import "../AffineTransform/AffineTransformParameters.h"
 
 static NSString* startPointXKey = @"startPointX";
 static NSString* startPointYKey = @"startPointY";

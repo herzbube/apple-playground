@@ -6,9 +6,9 @@
 //
 
 #import "RadialGradientParameters.h"
-#import "AffineTransformParameters.h"
-#import "ColorParameters.h"
 #import "GradientStopParameters.h"
+#import "../ColorParameters.h"
+#import "../AffineTransform/AffineTransformParameters.h"
 
 static NSString* startCenterXKey = @"startCenterX";
 static NSString* startCenterYKey = @"startCenterY";

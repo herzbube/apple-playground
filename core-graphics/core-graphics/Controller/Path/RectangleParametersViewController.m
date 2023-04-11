@@ -6,8 +6,8 @@
 //
 
 #import "RectangleParametersViewController.h"
-#import "../Model/RectangleParameters.h"
-#import "../Converter.h"
+#import "../../Model/Path/RectangleParameters.h"
+#import "../../Converter.h"
 
 @interface RectangleParametersViewController()
 @property (weak, nonatomic) IBOutlet UITextField* originXTextField;

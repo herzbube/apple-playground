@@ -6,8 +6,8 @@
 //
 
 #import "ArcParametersViewController.h"
-#import "../Model/ArcParameters.h"
-#import "../Converter.h"
+#import "../../Model/Path/ArcParameters.h"
+#import "../../Converter.h"
 
 @interface ArcParametersViewController()
 @property (weak, nonatomic) IBOutlet UITextField* centerXTextField;

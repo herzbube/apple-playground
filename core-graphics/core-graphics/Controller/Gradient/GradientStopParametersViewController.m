@@ -6,10 +6,10 @@
 //
 
 #import "GradientStopParametersViewController.h"
-#import "ColorParametersViewController.h"
-#import "../Model/GradientStopParameters.h"
-#import "../AutoLayoutUtility.h"
-#import "../Converter.h"
+#import "../ColorParametersViewController.h"
+#import "../../Model/Gradient/GradientStopParameters.h"
+#import "../../AutoLayoutUtility.h"
+#import "../../Converter.h"
 
 @interface GradientStopParametersViewController()
 @property (weak, nonatomic) IBOutlet UITextField* position1TextField;

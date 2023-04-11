@@ -6,10 +6,10 @@
 //
 
 #import "FillParametersViewController.h"
-#import "ColorParametersViewController.h"
-#import "GradientParametersViewController.h"
-#import "../Model/FillParameters.h"
-#import "../AutoLayoutUtility.h"
+#import "GradientFillParametersViewController.h"
+#import "SolidColorFillParametersViewController.h"
+#import "../../Model/Fill/FillParameters.h"
+#import "../../AutoLayoutUtility.h"
 
 @interface FillParametersViewController()
 @property (weak, nonatomic) IBOutlet UISwitch* fillEnabledSwitch;
@@ -18,8 +18,6 @@
 // removed from the view hierarchy
 @property (strong, nonatomic) IBOutlet UIStackView* fillParametersStackView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl* fillTypeSegmentedControl;
-@property (weak, nonatomic) IBOutlet UILabel* clipGradientToPathLabel;
-@property (weak, nonatomic) IBOutlet UISwitch* clipGradientToPathSwitch;
 @property (weak, nonatomic) IBOutlet UIView* containerView;
 @property (strong, nonatomic) NSArray* autoLayoutConstraints;
 @end
@@ -57,37 +55,35 @@
 - (void) integrateChildViewControllers
 {
   if (self.fillParameters.fillType == FillTypeSolidColor)
-    [self integrateColorParametersChildViewController];
+    [self integrateSolidColorFillParametersChildViewController];
   else
-    [self integrateGradientParametersChildViewController];
+    [self integrateGradientFillParametersChildViewController];
 }
 
-- (void) integrateColorParametersChildViewController
+- (void) integrateSolidColorFillParametersChildViewController
 {
-  ColorParametersViewController* colorParametersViewController = [[ColorParametersViewController alloc] initWithColorParameters:self.fillParameters.colorParameters];
+  SolidColorFillParametersViewController* solidColorFillParametersViewController = [[SolidColorFillParametersViewController alloc] initWithSolidColorFillParameters:self.fillParameters.solidColorFillParameters];
 
-  [self addChildViewController:colorParametersViewController];
-  [colorParametersViewController didMoveToParentViewController:self];
+  [self addChildViewController:solidColorFillParametersViewController];
+  [solidColorFillParametersViewController didMoveToParentViewController:self];
 
-  UIView* colorParametersView = colorParametersViewController.view;
-  [self.containerView addSubview:colorParametersView];
-  colorParametersView.translatesAutoresizingMaskIntoConstraints = NO;
-  self.autoLayoutConstraints = [AutoLayoutUtility fillSuperview:self.containerView withSubview:colorParametersView];
+  UIView* solidColorFillParametersView = solidColorFillParametersViewController.view;
+  [self.containerView addSubview:solidColorFillParametersView];
+  solidColorFillParametersView.translatesAutoresizingMaskIntoConstraints = NO;
+  self.autoLayoutConstraints = [AutoLayoutUtility fillSuperview:self.containerView withSubview:solidColorFillParametersView];
 }
 
-- (void) integrateGradientParametersChildViewController
+- (void) integrateGradientFillParametersChildViewController
 {
-  GradientParametersViewController* gradientParametersViewController = [[GradientParametersViewController alloc] initWithGradientParameters:self.fillParameters.gradientParameters];
+  GradientFillParametersViewController* gradientFillParametersViewController = [[GradientFillParametersViewController alloc] initWithGradientFillParameters:self.fillParameters.gradientFillParameters];
 
-  [self addChildViewController:gradientParametersViewController];
-  [gradientParametersViewController didMoveToParentViewController:self];
+  [self addChildViewController:gradientFillParametersViewController];
+  [gradientFillParametersViewController didMoveToParentViewController:self];
 
-  UIView* gradientParametersView = gradientParametersViewController.view;
-  [self.containerView addSubview:gradientParametersView];
-  gradientParametersView.translatesAutoresizingMaskIntoConstraints = NO;
-  self.autoLayoutConstraints = [AutoLayoutUtility fillSuperview:self.containerView withSubview:gradientParametersView];
-
-  [gradientParametersViewController hideTitleLabelAndEnabledSwitch];
+  UIView* gradientFillParametersView = gradientFillParametersViewController.view;
+  [self.containerView addSubview:gradientFillParametersView];
+  gradientFillParametersView.translatesAutoresizingMaskIntoConstraints = NO;
+  self.autoLayoutConstraints = [AutoLayoutUtility fillSuperview:self.containerView withSubview:gradientFillParametersView];
 }
 
 - (void) removeChildViewController
@@ -118,15 +114,6 @@
   [self updateUiVisibility];
 }
 
-- (IBAction) clipGradientToPathValueChanged:(UISwitch*)sender
-{
-  BOOL clipGradientToPath = sender.on;
-
-  self.fillParameters.clipGradientToPath = clipGradientToPath;
-
-  [self updateUiVisibility];
-}
-
 #pragma mark - Segmented control input actions
 
 - (IBAction) fillTypeValueChanged:(UISegmentedControl*)sender
@@ -149,7 +136,6 @@
 {
   self.fillEnabledSwitch.on = self.fillParameters.fillEnabled;
   self.fillTypeSegmentedControl.selectedSegmentIndex = self.fillParameters.fillType;
-  self.clipGradientToPathSwitch.on = self.fillParameters.clipGradientToPath;
 
   [self updateUiVisibility];
 
@@ -175,10 +161,6 @@
       [self.fillParametersStackView removeFromSuperview];
     }
   }
-
-  BOOL clipGradientToPathControlsHidden = self.fillParameters.fillType == FillTypeSolidColor;
-  self.clipGradientToPathLabel.hidden = clipGradientToPathControlsHidden;
-  self.clipGradientToPathSwitch.hidden = clipGradientToPathControlsHidden;
 }
 
 @end

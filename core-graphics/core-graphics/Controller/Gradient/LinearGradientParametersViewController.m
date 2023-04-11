@@ -7,10 +7,10 @@
 
 #import "LinearGradientParametersViewController.h"
 #import "GradientStopParametersViewController.h"
-#import "AffineTransform/AffineTransformParametersViewController.h"
-#import "../Model/LinearGradientParameters.h"
-#import "../AutoLayoutUtility.h"
-#import "../Converter.h"
+#import "../AffineTransform/AffineTransformParametersViewController.h"
+#import "../../Model/Gradient/LinearGradientParameters.h"
+#import "../../AutoLayoutUtility.h"
+#import "../../Converter.h"
 
 @interface LinearGradientParametersViewController()
 @property (weak, nonatomic) IBOutlet UITextField* startPointXTextField;

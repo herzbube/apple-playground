@@ -11,8 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FillParametersViewController">
             <connections>
-                <outlet property="clipGradientToPathLabel" destination="W33-ea-ihD" id="qFh-IQ-XRy"/>
-                <outlet property="clipGradientToPathSwitch" destination="t9l-bU-gDQ" id="CS6-4K-yKx"/>
                 <outlet property="containerView" destination="ee8-o2-SAa" id="Zlg-pC-I34"/>
                 <outlet property="fillEnabledSwitch" destination="FdF-3K-oP3" id="6EY-hX-G6m"/>
                 <outlet property="fillParametersStackView" destination="Hhi-Dl-YtE" id="CUB-0A-3jk"/>
@@ -45,42 +43,16 @@
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Hhi-Dl-YtE" userLabel="Fill parameters stack view">
                             <rect key="frame" x="0.0" y="0.0" width="469" height="101"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XGY-as-8ns" userLabel="Fill type + clip gradient to path stack view">
-                                    <rect key="frame" x="0.0" y="0.0" width="469" height="31"/>
-                                    <subviews>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eOe-Ov-n1G" userLabel="Fill type segmented control">
-                                            <rect key="frame" x="0.0" y="0.0" width="224.5" height="32"/>
-                                            <segments>
-                                                <segment title="Solid color"/>
-                                                <segment title="Gradient"/>
-                                            </segments>
-                                            <connections>
-                                                <action selector="fillTypeValueChanged:" destination="-1" eventType="valueChanged" id="r1v-eG-Ka3"/>
-                                            </connections>
-                                        </segmentedControl>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vjl-91-3KO" userLabel="Clip gradient to path stack view">
-                                            <rect key="frame" x="244.5" y="0.0" width="224.5" height="31"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dND-OJ-5Rk" userLabel="Spacer view">
-                                                    <rect key="frame" x="0.0" y="0.0" width="4" height="31"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clip gradient to path" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W33-ea-ihD" userLabel="Clip gradient to path label">
-                                                    <rect key="frame" x="12" y="0.0" width="155.5" height="31"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t9l-bU-gDQ" userLabel="Clip gradient to path switch">
-                                                    <rect key="frame" x="175.5" y="0.0" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="clipGradientToPathValueChanged:" destination="-1" eventType="valueChanged" id="jgy-TX-5Xz"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                </stackView>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eOe-Ov-n1G" userLabel="Fill type segmented control">
+                                    <rect key="frame" x="0.0" y="0.0" width="469" height="32"/>
+                                    <segments>
+                                        <segment title="Solid color"/>
+                                        <segment title="Gradient"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="fillTypeValueChanged:" destination="-1" eventType="valueChanged" id="r1v-eG-Ka3"/>
+                                    </connections>
+                                </segmentedControl>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="Container view">
                                     <rect key="frame" x="0.0" y="39" width="469" height="62"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>

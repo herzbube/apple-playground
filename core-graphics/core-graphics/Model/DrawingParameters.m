@@ -6,11 +6,11 @@
 //
 
 #import "DrawingParameters.h"
-#import "AffineTransformParameters.h"
-#import "FillParameters.h"
-#import "GradientParameters.h"
-#import "PathParameters.h"
 #import "StrokeParameters.h"
+#import "AffineTransform/AffineTransformParameters.h"
+#import "Fill/FillParameters.h"
+#import "Gradient/GradientParameters.h"
+#import "Path/PathParameters.h"
 
 static NSString* drawingParametersKey = @"drawingParameters";
 static NSString* pathParametersKey = @"pathParameters";

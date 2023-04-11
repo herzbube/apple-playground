@@ -7,10 +7,10 @@
 
 #import "RadialGradientParametersViewController.h"
 #import "GradientStopParametersViewController.h"
-#import "AffineTransform/AffineTransformParametersViewController.h"
-#import "../Model/RadialGradientParameters.h"
-#import "../AutoLayoutUtility.h"
-#import "../Converter.h"
+#import "../AffineTransform/AffineTransformParametersViewController.h"
+#import "../../Model/Gradient/RadialGradientParameters.h"
+#import "../../AutoLayoutUtility.h"
+#import "../../Converter.h"
 
 @interface RadialGradientParametersViewController()
 @property (weak, nonatomic) IBOutlet UITextField* startCenterXTextField;
