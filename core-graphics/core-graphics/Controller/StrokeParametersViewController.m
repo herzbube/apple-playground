@@ -7,6 +7,7 @@
 
 #import "StrokeParametersViewController.h"
 #import "ColorParametersViewController.h"
+#import "ShadowParametersViewController.h"
 #import "../Model/StrokeParameters.h"
 #import "../AutoLayoutUtility.h"
 #import "../Converter.h"
@@ -19,7 +20,8 @@
 @property (strong, nonatomic) IBOutlet UIStackView* strokeParametersStackView;
 @property (weak, nonatomic) IBOutlet UITextField* lineWidthTextField;
 @property (weak, nonatomic) IBOutlet UISlider* lineWidthSlider;
-@property (weak, nonatomic) IBOutlet UIView* colorParametersContainerView;
+@property (weak, nonatomic) IBOutlet UIView* colorContainerView;
+@property (weak, nonatomic) IBOutlet UIView* shadowContainerView;
 @end
 
 @implementation StrokeParametersViewController
@@ -54,15 +56,33 @@
 
 - (void) integrateChildViewControllers
 {
+  [self integrateColorParametersChildViewController];
+  [self integrateShadowParametersChildViewController];
+}
+
+- (void) integrateColorParametersChildViewController
+{
   ColorParametersViewController* colorParametersViewController = [[ColorParametersViewController alloc] initWithColorParameters:self.strokeParameters.colorParameters];
 
   [self addChildViewController:colorParametersViewController];
   [colorParametersViewController didMoveToParentViewController:self];
 
   UIView* colorParametersView = colorParametersViewController.view;
-  [self.colorParametersContainerView addSubview:colorParametersView];
+  [self.colorContainerView addSubview:colorParametersView];
   colorParametersView.translatesAutoresizingMaskIntoConstraints = NO;
-  [AutoLayoutUtility fillSuperview:self.colorParametersContainerView withSubview:colorParametersView];
+  [AutoLayoutUtility fillSuperview:self.colorContainerView withSubview:colorParametersView];
+}
+
+- (void) integrateShadowParametersChildViewController
+{
+  ShadowParametersViewController* shadowParametersViewController = [[ShadowParametersViewController alloc] initWithShadowParameters:self.strokeParameters.shadowParameters];
+  [self addChildViewController:shadowParametersViewController];
+  [shadowParametersViewController didMoveToParentViewController:self];
+
+  UIView* shadowParametersView = shadowParametersViewController.view;
+  [self.shadowContainerView addSubview:shadowParametersView];
+  shadowParametersView.translatesAutoresizingMaskIntoConstraints = NO;
+  [AutoLayoutUtility fillSuperview:self.shadowContainerView withSubview:shadowParametersView];
 }
 
 #pragma mark - Switch input actions

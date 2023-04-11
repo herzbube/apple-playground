@@ -8,6 +8,7 @@
 #import "DrawingHelper.h"
 
 #import "Model/ColorParameters.h"
+#import "Model/ShadowParameters.h"
 #import "Model/StrokeParameters.h"
 #import "Model/AffineTransform/AffineTransformParameters.h"
 #import "Model/Fill/FillParameters.h"
@@ -47,6 +48,23 @@
                          alpha:colorParameters.alpha];
 }
 
++ (void) setShadowWithContext:(CGContextRef)context
+             shadowParameters:(ShadowParameters*)shadowParameters
+{
+  if (! shadowParameters.shadowEnabled)
+    return;
+
+  CGSize offset = CGSizeMake(shadowParameters.offsetX,
+                             shadowParameters.offsetY);
+
+  UIColor* shadowColor = [DrawingHelper colorFromColorParameters:shadowParameters.colorParameters];
+
+  CGContextSetShadowWithColor(context,
+                              offset,
+                              shadowParameters.blur,
+                              shadowColor.CGColor);
+}
+
 + (void) concatTransformWithContext:(CGContextRef)context
           affineTransformParameters:(AffineTransformParameters*)affineTransformParameters
 {
@@ -64,20 +82,53 @@
                       fillParameters:(FillParameters*)fillParameters
                       pathParameters:(PathParameters*)pathParameters
 {
-  // Perform gradient fill before stroking so that stroke draws over the fill
-  // => same behaviour as if both solid color fill & stroking is enabled, i.e.
-  //    path is drawn with kCGPathFillStroke
-  if (fillParameters.fillEnabled && fillParameters.fillType == FillTypeGradient)
+  // Perform fill before stroking so that stroke draws over the fill
+  // => same behaviour as if CGContextDrawPath is invoked with option
+  //    kCGPathFillStroke
+  if (fillParameters.fillEnabled)
   {
-    [DrawingHelper gradientFillPathWithContext:context
-                                fillParameters:fillParameters
-                                pathParameters:pathParameters];
+    if (fillParameters.fillType == FillTypeSolidColor)
+    {
+      [DrawingHelper solidColorFillPathWithContext:context
+                                    fillParameters:fillParameters
+                                    pathParameters:pathParameters];
+    }
+    else
+    {
+      [DrawingHelper gradientFillPathWithContext:context
+                                  fillParameters:fillParameters
+                                  pathParameters:pathParameters];
+    }
   }
 
-  [DrawingHelper solidColorFillOrStrokePathWithContext:context
-                                      strokeParameters:strokeParameters
-                                        fillParameters:fillParameters
-                                        pathParameters:pathParameters];
+  [DrawingHelper strokePathWithContext:context
+                      strokeParameters:strokeParameters
+                        pathParameters:pathParameters];
+}
+
++ (void) solidColorFillPathWithContext:(CGContextRef)context
+                        fillParameters:(FillParameters*)fillParameters
+                        pathParameters:(PathParameters*)pathParameters
+{
+  bool shouldSolidColorFill = fillParameters.fillEnabled && fillParameters.fillType == FillTypeSolidColor;
+  if (! shouldSolidColorFill)
+    return;
+
+  CGContextSaveGState(context);
+
+  [DrawingHelper setShadowWithContext:context
+                     shadowParameters:fillParameters.solidColorFillParameters.shadowParameters];
+
+  // Path will be cleared below when it is filled
+  [DrawingHelper addPathToContext:context
+                   pathParameters:pathParameters];
+
+  UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.solidColorFillParameters.colorParameters];
+  CGContextSetFillColorWithColor(context, fillColor.CGColor);
+  CGContextFillPath(context);
+
+  // Remove shadow
+  CGContextRestoreGState(context);
 }
 
 + (void) gradientFillPathWithContext:(CGContextRef)context
@@ -109,45 +160,30 @@
   }
 }
 
-+ (void) solidColorFillOrStrokePathWithContext:(CGContextRef)context
-                              strokeParameters:(StrokeParameters*)strokeParameters
-                                fillParameters:(FillParameters*)fillParameters
-                                pathParameters:(PathParameters*)pathParameters
++ (void) strokePathWithContext:(CGContextRef)context
+              strokeParameters:(StrokeParameters*)strokeParameters
+                pathParameters:(PathParameters*)pathParameters
 {
   bool shouldStroke = strokeParameters.strokeEnabled;
-  bool shouldSolidColorFill = fillParameters.fillEnabled && fillParameters.fillType == FillTypeSolidColor;
-  if (! shouldStroke && ! shouldSolidColorFill)
+  if (! shouldStroke)
     return;
 
-  // Path will be cleared below when it is stroked and/or filled
+  CGContextSaveGState(context);
+
+  [DrawingHelper setShadowWithContext:context
+                     shadowParameters:strokeParameters.shadowParameters];
+
+  // Path will be cleared below when it is stroked
   [DrawingHelper addPathToContext:context
                    pathParameters:pathParameters];
 
-  if (shouldSolidColorFill)
-  {
-    UIColor* fillColor = [DrawingHelper colorFromColorParameters:fillParameters.solidColorFillParameters.colorParameters];
-    CGContextSetFillColorWithColor(context, fillColor.CGColor);
-    if (! shouldStroke)
-    {
-      CGContextFillPath(context);
-      return;
-    }
-  }
+  UIColor* strokeColor = [DrawingHelper colorFromColorParameters:strokeParameters.colorParameters];
+  CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
+  CGContextSetLineWidth(context, strokeParameters.lineWidth);
+  CGContextStrokePath(context);
 
-  if (shouldStroke)
-  {
-    UIColor* strokeColor = [DrawingHelper colorFromColorParameters:strokeParameters.colorParameters];
-    CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
-    CGContextSetLineWidth(context, strokeParameters.lineWidth);
-    if (! shouldSolidColorFill)
-    {
-      CGContextStrokePath(context);
-      return;
-    }
-  }
-
-  if (shouldSolidColorFill && shouldStroke)
-    CGContextDrawPath(context, kCGPathFillStroke);
+  // Remove shadow
+  CGContextRestoreGState(context);
 }
 
 CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
@@ -211,7 +247,10 @@ CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
         linearGradientParameters:(LinearGradientParameters*)linearGradientParameters
 {
   CGContextSaveGState(context);
-  
+
+  [DrawingHelper setShadowWithContext:context
+                     shadowParameters:linearGradientParameters.shadowParameters];
+
   [DrawingHelper concatTransformWithContext:context
                   affineTransformParameters:linearGradientParameters.affineTransformParameters];
 
@@ -233,7 +272,7 @@ CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
   CGGradientRelease(gradient);
   CGColorSpaceRelease(colorSpace);
 
-  // Remove transform
+  // Remove shadow and transform
   CGContextRestoreGState(context);
 }
 
@@ -241,6 +280,9 @@ CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
         radialGradientParameters:(RadialGradientParameters*)radialGradientParameters
 {
   CGContextSaveGState(context);
+
+  [DrawingHelper setShadowWithContext:context
+                     shadowParameters:radialGradientParameters.shadowParameters];
 
   [DrawingHelper concatTransformWithContext:context
                   affineTransformParameters:radialGradientParameters.affineTransformParameters];
@@ -265,7 +307,7 @@ CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
   CGGradientRelease(gradient);
   CGColorSpaceRelease(colorSpace);
 
-  // Remove transform
+  // Remove shadow and transform
   CGContextRestoreGState(context);
 }
 

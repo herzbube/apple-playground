@@ -7,10 +7,12 @@
 
 #import "StrokeParameters.h"
 #import "ColorParameters.h"
+#import "ShadowParameters.h"
 
 static NSString* strokeEnabledKey = @"strokeEnabled";
 static NSString* lineWidthKey = @"lineWidth";
 static NSString* colorParametersKey = @"colorParameters";
+static NSString* shadowParametersKey = @"shadowParameters";
 
 @implementation StrokeParameters
 
@@ -19,6 +21,7 @@ static NSString* colorParametersKey = @"colorParameters";
   self = [super init];
 
   self.colorParameters = [[ColorParameters alloc] init];
+  self.shadowParameters = [[ShadowParameters alloc] init];
 
   [self initializeWithDefaultValues];
 
@@ -42,6 +45,7 @@ static NSString* colorParametersKey = @"colorParameters";
     strokeEnabledKey : @(self.strokeEnabled),
     lineWidthKey : @(self.lineWidth),
     colorParametersKey : [self.colorParameters valuesAsDictionary],
+    shadowParametersKey : [self.shadowParameters valuesAsDictionary],
   };
 }
 
@@ -53,11 +57,13 @@ static NSString* colorParametersKey = @"colorParameters";
   self.strokeEnabled = [dictionary[strokeEnabledKey] boolValue];
   self.lineWidth = [dictionary[lineWidthKey] floatValue];
   [self.colorParameters setValuesWithDictionary:dictionary[colorParametersKey]];
+  [self.shadowParameters setValuesWithDictionary:dictionary[shadowParametersKey]];
 }
 
 - (void) resetToDefaultValues
 {
   [self.colorParameters resetToDefaultValues];
+  [self.shadowParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
 }

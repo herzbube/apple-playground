@@ -11,12 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LinearGradientParametersViewController">
             <connections>
-                <outlet property="affineTransformParametersContainerView" destination="dSY-AJ-uTZ" id="ReJ-R0-rAR"/>
+                <outlet property="affineTransformContainerView" destination="dSY-AJ-uTZ" id="ReJ-R0-rAR"/>
                 <outlet property="endPointXSlider" destination="6Y2-tk-X3y" id="5L3-Xz-e15"/>
                 <outlet property="endPointXTextField" destination="uoD-5c-93K" id="PdT-gb-Rde"/>
                 <outlet property="endPointYSlider" destination="Puy-qh-3xM" id="Lkd-2D-Zxk"/>
                 <outlet property="endPointYTextField" destination="Cyb-kc-9EC" id="soC-8J-QRT"/>
-                <outlet property="gradientStopParametersContainerView" destination="ee8-o2-SAa" id="1WZ-Jv-enb"/>
+                <outlet property="gradientStopShadowContainerView" destination="ee8-o2-SAa" id="Xn2-FS-aS3"/>
+                <outlet property="gradientStopShadowSegmentedControl" destination="z3w-Fy-GiM" id="e0I-rL-vlG"/>
                 <outlet property="startPointXSlider" destination="45p-N8-Ytb" id="NJc-1S-TMX"/>
                 <outlet property="startPointXTextField" destination="veX-at-LFK" id="QJe-Th-njE"/>
                 <outlet property="startPointYSlider" destination="Jho-mF-33n" id="sjk-OI-zVo"/>
@@ -168,14 +169,29 @@
                                 </stackView>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ac5-17-Duv" userLabel="Gradient stop/affine transform stack view">
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ac5-17-Duv" userLabel="Gradient stop/shadow/affine transform stack view">
                             <rect key="frame" x="0.0" y="84" width="642" height="128"/>
                             <subviews>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="GradientStopParametersContainerView">
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rBO-4s-Uf8" userLabel="Gradient stop/shadow stack view">
                                     <rect key="frame" x="0.0" y="0.0" width="311" height="128"/>
-                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                </view>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSY-AJ-uTZ" userLabel="AffineTransformParametersContainerView">
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z3w-Fy-GiM" userLabel="Gradient stop/shadow segmented control">
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="13"/>
+                                            <segments>
+                                                <segment title="Gradient stop"/>
+                                                <segment title="Shadow"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="gradientStopShadowValueChanged:" destination="-1" eventType="valueChanged" id="Ewq-s9-VMo"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="Gradient stop/shadow container view">
+                                            <rect key="frame" x="0.0" y="20" width="311" height="108"/>
+                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSY-AJ-uTZ" userLabel="Affine transform container view">
                                     <rect key="frame" x="331" y="0.0" width="311" height="128"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 </view>

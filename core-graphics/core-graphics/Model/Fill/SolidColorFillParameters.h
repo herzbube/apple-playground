@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @class ColorParameters;
+@class ShadowParameters;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) resetToDefaultValues;
 
 @property (strong, nonatomic) ColorParameters* colorParameters;
+@property (strong, nonatomic) ShadowParameters* shadowParameters;
 
 @end
 

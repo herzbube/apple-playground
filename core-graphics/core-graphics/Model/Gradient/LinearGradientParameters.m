@@ -8,6 +8,7 @@
 #import "LinearGradientParameters.h"
 #import "GradientStopParameters.h"
 #import "../ColorParameters.h"
+#import "../ShadowParameters.h"
 #import "../AffineTransform/AffineTransformParameters.h"
 
 static NSString* startPointXKey = @"startPointX";
@@ -15,6 +16,7 @@ static NSString* startPointYKey = @"startPointY";
 static NSString* endPointXKey = @"endPointX";
 static NSString* endPointYKey = @"endPointY";
 static NSString* gradientStopParametersKey = @"gradientStopParameters";
+static NSString* shadowParametersKey = @"shadowParameters";
 static NSString* affineTransformParametersKey = @"affineTransformParameters";
 
 @implementation LinearGradientParameters
@@ -24,6 +26,7 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
   self = [super init];
 
   self.gradientStopParameters = [[GradientStopParameters alloc] init];
+  self.shadowParameters = [[ShadowParameters alloc] init];
   self.affineTransformParameters = [[AffineTransformParameters alloc] init];
 
   [self initializeWithDefaultValues];
@@ -45,6 +48,7 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
 
   [self.gradientStopParameters.colorParameters1 updateWithHexString:@"00FF00FF"];
   [self.gradientStopParameters.colorParameters2 updateWithHexString:@"FF00FF00"];
+  self.shadowParameters.shadowEnabled = false;
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -56,6 +60,7 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
     endPointXKey : @(self.endPointX),
     endPointYKey : @(self.endPointY),
     gradientStopParametersKey : [self.gradientStopParameters valuesAsDictionary],
+    shadowParametersKey : [self.shadowParameters valuesAsDictionary],
     affineTransformParametersKey : [self.affineTransformParameters valuesAsDictionary],
   };
 }
@@ -70,12 +75,14 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
   self.endPointX = [dictionary[endPointXKey] floatValue];
   self.endPointY = [dictionary[endPointYKey] floatValue];
   [self.gradientStopParameters setValuesWithDictionary:dictionary[gradientStopParametersKey]];
+  [self.shadowParameters setValuesWithDictionary:dictionary[shadowParametersKey]];
   [self.affineTransformParameters setValuesWithDictionary:dictionary[affineTransformParametersKey]];
 }
 
 - (void) resetToDefaultValues
 {
   [self.gradientStopParameters resetToDefaultValues];
+  [self.shadowParameters resetToDefaultValues];
   [self.affineTransformParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];

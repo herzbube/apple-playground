@@ -124,8 +124,6 @@
 
   self.fillParameters.fillType = fillType;
 
-  [self updateUiVisibility];
-
   [self removeChildViewController];
   [self integrateChildViewControllers];
 }

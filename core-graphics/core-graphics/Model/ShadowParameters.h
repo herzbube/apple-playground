@@ -1,18 +1,17 @@
 //
-//  StrokeParameters.h
+//  ShadowParameters.h
 //  core-graphics
 //
-//  Created by Patrick Näf Moser on 20.03.23.
+//  Created by Patrick Näf Moser on 11.04.23.
 //
 
 #import <UIKit/UIKit.h>
 
 @class ColorParameters;
-@class ShadowParameters;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface StrokeParameters : NSObject
+@interface ShadowParameters : NSObject
 
 - (instancetype) init;
 
@@ -21,13 +20,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) resetToDefaultValues;
 
-@property bool strokeEnabled;
+@property bool shadowEnabled;
 
-@property CGFloat lineWidth;
-@property (readonly) CGFloat maximumLineWidth;
+@property CGFloat offsetX;
+@property (readonly) CGFloat rangeOffsetX;
+
+@property CGFloat offsetY;
+@property (readonly) CGFloat rangeOffsetY;
+
+@property CGFloat blur;
+@property (readonly) CGFloat maximumBlur;
 
 @property (strong, nonatomic) ColorParameters* colorParameters;
-@property (strong, nonatomic) ShadowParameters* shadowParameters;
 
 @end
 

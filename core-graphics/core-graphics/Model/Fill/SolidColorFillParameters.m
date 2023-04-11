@@ -7,8 +7,10 @@
 
 #import "SolidColorFillParameters.h"
 #import "../ColorParameters.h"
+#import "../ShadowParameters.h"
 
 static NSString* colorParametersKey = @"colorParameters";
+static NSString* shadowParametersKey = @"shadowParameters";
 
 @implementation SolidColorFillParameters
 
@@ -17,6 +19,7 @@ static NSString* colorParametersKey = @"colorParameters";
   self = [super init];
 
   self.colorParameters = [[ColorParameters alloc] init];
+  self.shadowParameters = [[ShadowParameters alloc] init];
 
   [self initializeWithDefaultValues];
 
@@ -25,7 +28,8 @@ static NSString* colorParametersKey = @"colorParameters";
 
 - (void) initializeWithDefaultValues
 {
-  [self.colorParameters updateWithHexString:@"0000FFFF"];
+  [self.colorParameters updateWithHexString:@"8080FFFF"];
+  self.shadowParameters.shadowEnabled = false;
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -33,6 +37,7 @@ static NSString* colorParametersKey = @"colorParameters";
   return
   @{
     colorParametersKey : [self.colorParameters valuesAsDictionary],
+    shadowParametersKey : [self.shadowParameters valuesAsDictionary],
   };
 }
 
@@ -42,11 +47,13 @@ static NSString* colorParametersKey = @"colorParameters";
     return;
 
   [self.colorParameters setValuesWithDictionary:dictionary[colorParametersKey]];
+  [self.shadowParameters setValuesWithDictionary:dictionary[shadowParametersKey]];
 }
 
 - (void) resetToDefaultValues
 {
   [self.colorParameters resetToDefaultValues];
+  [self.shadowParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
 }

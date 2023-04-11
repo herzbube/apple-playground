@@ -8,6 +8,7 @@
 #import "DrawingView.h"
 #import "DrawingHelper.h"
 #import "Model/ColorParameters.h"
+#import "Model/ShadowParameters.h"
 #import "Model/StrokeParameters.h"
 #import "Model/AffineTransform/AffineTransformParameters.h"
 #import "Model/Fill/FillParameters.h"
@@ -43,10 +44,12 @@
   [self.strokeParameters addObserver:self forKeyPath:@"strokeEnabled" options:0 context:NULL];
   [self.strokeParameters addObserver:self forKeyPath:@"lineWidth" options:0 context:NULL];
   [self.strokeParameters.colorParameters addObserver:self forKeyPath:@"hexString" options:0 context:NULL];
+  [self startObservingShadowParameters:self.strokeParameters.shadowParameters];
 
   [self.fillParameters addObserver:self forKeyPath:@"fillEnabled" options:0 context:NULL];
   [self.fillParameters addObserver:self forKeyPath:@"fillType" options:0 context:NULL];
   [self startObservingColorParameters:self.fillParameters.solidColorFillParameters.colorParameters];
+  [self startObservingShadowParameters:self.fillParameters.solidColorFillParameters.shadowParameters];
   [self.fillParameters.gradientFillParameters addObserver:self forKeyPath:@"clipGradientToPath" options:0 context:NULL];
   [self startObservingGradientParameters:self.fillParameters.gradientFillParameters.gradientParameters];
 
@@ -57,6 +60,15 @@
 - (void) startObservingColorParameters:(ColorParameters*)colorParameters
 {
   [colorParameters addObserver:self forKeyPath:@"hexString" options:0 context:NULL];
+}
+
+- (void) startObservingShadowParameters:(ShadowParameters*)shadowParameters
+{
+  [shadowParameters addObserver:self forKeyPath:@"shadowEnabled" options:0 context:NULL];
+  [shadowParameters addObserver:self forKeyPath:@"offsetX" options:0 context:NULL];
+  [shadowParameters addObserver:self forKeyPath:@"offsetY" options:0 context:NULL];
+  [shadowParameters addObserver:self forKeyPath:@"blur" options:0 context:NULL];
+  [self startObservingColorParameters:shadowParameters.colorParameters];
 }
 
 - (void) startObservingAffineTransformParameters:(AffineTransformParameters*)affineTransformParameters
@@ -74,6 +86,7 @@
   [gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"endPointX" options:0 context:NULL];
   [gradientParameters.linearGradientParameters addObserver:self forKeyPath:@"endPointY" options:0 context:NULL];
   [self startObservingGradientStopParameters:gradientParameters.linearGradientParameters.gradientStopParameters];
+  [self startObservingShadowParameters:gradientParameters.linearGradientParameters.shadowParameters];
   [self startObservingAffineTransformParameters:gradientParameters.linearGradientParameters.affineTransformParameters];
   [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"startCenterX" options:0 context:NULL];
   [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"startCenterY" options:0 context:NULL];
@@ -82,6 +95,7 @@
   [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"endCenterY" options:0 context:NULL];
   [gradientParameters.radialGradientParameters addObserver:self forKeyPath:@"endRadius" options:0 context:NULL];
   [self startObservingGradientStopParameters:gradientParameters.radialGradientParameters.gradientStopParameters];
+  [self startObservingShadowParameters:gradientParameters.radialGradientParameters.shadowParameters];
   [self startObservingAffineTransformParameters:gradientParameters.radialGradientParameters.affineTransformParameters];
 }
 

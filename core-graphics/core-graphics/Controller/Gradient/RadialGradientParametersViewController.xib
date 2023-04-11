@@ -11,14 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RadialGradientParametersViewController">
             <connections>
-                <outlet property="affineTransformParametersContainerView" destination="dSY-AJ-uTZ" id="ReJ-R0-rAR"/>
+                <outlet property="affineTransformContainerView" destination="dSY-AJ-uTZ" id="ReJ-R0-rAR"/>
                 <outlet property="endCenterXSlider" destination="6Y2-tk-X3y" id="FiY-1l-fMo"/>
                 <outlet property="endCenterXTextField" destination="uoD-5c-93K" id="K1b-x4-tyM"/>
                 <outlet property="endCenterYSlider" destination="Puy-qh-3xM" id="HEv-di-j7e"/>
                 <outlet property="endCenterYTextField" destination="Cyb-kc-9EC" id="FMP-2N-1yt"/>
                 <outlet property="endRadiusSlider" destination="7hE-as-Csu" id="qZC-tH-41F"/>
                 <outlet property="endRadiusTextField" destination="EWb-7y-I3P" id="gSe-tn-1GN"/>
-                <outlet property="gradientStopParametersContainerView" destination="ee8-o2-SAa" id="1WZ-Jv-enb"/>
+                <outlet property="gradientStopShadowContainerView" destination="ee8-o2-SAa" id="Fbk-R1-kbZ"/>
+                <outlet property="gradientStopShadowSegmentedControl" destination="qfX-Vn-5q2" id="lUX-LI-bbt"/>
                 <outlet property="startCenterXSlider" destination="45p-N8-Ytb" id="JyT-oV-4l6"/>
                 <outlet property="startCenterXTextField" destination="veX-at-LFK" id="SoJ-ib-uHa"/>
                 <outlet property="startCenterYSlider" destination="Jho-mF-33n" id="gfu-IZ-jt4"/>
@@ -44,22 +45,22 @@
                     <rect key="frame" x="0.0" y="28.5" width="717" height="462.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qKj-rl-Dml" userLabel="Start/end circle stack view">
-                            <rect key="frame" x="0.0" y="0.0" width="717" height="301"/>
+                            <rect key="frame" x="0.0" y="0.0" width="717" height="250"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lef-Zq-Vvi" userLabel="Start circle stack view">
-                                    <rect key="frame" x="0.0" y="0.0" width="348.5" height="301"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="348.5" height="250"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DKP-Gb-uCh" userLabel="Start center x stack view">
-                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="217"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="166"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start center x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHU-3k-zau" userLabel="Start center x label">
-                                                    <rect key="frame" x="0.0" y="98.5" width="0.0" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="73" width="0.0" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="veX-at-LFK" userLabel="Start center x text field">
-                                                    <rect key="frame" x="8" y="91.5" width="100" height="34"/>
+                                                    <rect key="frame" x="8" y="66" width="100" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="Bl1-JM-mR5"/>
                                                     </constraints>
@@ -70,7 +71,7 @@
                                                     </connections>
                                                 </textField>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="45p-N8-Ytb" userLabel="Start center x slider">
-                                                    <rect key="frame" x="114" y="93.5" width="236.5" height="31"/>
+                                                    <rect key="frame" x="114" y="68" width="236.5" height="31"/>
                                                     <connections>
                                                         <action selector="startCenterXValueChanged:" destination="-1" eventType="valueChanged" id="kKi-iL-dAD"/>
                                                     </connections>
@@ -78,7 +79,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qlu-Tm-EMA" userLabel="Start center y stack view">
-                                            <rect key="frame" x="0.0" y="225" width="348.5" height="34"/>
+                                            <rect key="frame" x="0.0" y="174" width="348.5" height="34"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start center y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj8-le-Hmg" userLabel="Start center y label">
                                                     <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
@@ -103,7 +104,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7aG-oM-1l1" userLabel="Start radius stack view">
-                                            <rect key="frame" x="0.0" y="267" width="348.5" height="34"/>
+                                            <rect key="frame" x="0.0" y="216" width="348.5" height="34"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9v-YF-alf" userLabel="Start radius label">
                                                     <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
@@ -136,19 +137,19 @@
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3UR-yv-Cx1" userLabel="End circle stack view">
-                                    <rect key="frame" x="368.5" y="0.0" width="348.5" height="301"/>
+                                    <rect key="frame" x="368.5" y="0.0" width="348.5" height="250"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q2B-B4-WMd" userLabel="End center x stack view">
-                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="217"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="166"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End center x" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-cb-2Tn" userLabel="End center x label">
-                                                    <rect key="frame" x="0.0" y="98.5" width="41.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="73" width="0.0" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoD-5c-93K" userLabel="End center x text field">
-                                                    <rect key="frame" x="49.5" y="91.5" width="100" height="34"/>
+                                                    <rect key="frame" x="8" y="66" width="100" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="PVT-lZ-Ggz"/>
                                                     </constraints>
@@ -159,7 +160,7 @@
                                                     </connections>
                                                 </textField>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-tk-X3y" userLabel="End center x slider">
-                                                    <rect key="frame" x="155.5" y="93.5" width="195" height="31"/>
+                                                    <rect key="frame" x="114" y="68" width="236.5" height="31"/>
                                                     <connections>
                                                         <action selector="endCenterXValueChanged:" destination="-1" eventType="valueChanged" id="cyz-5b-IvY"/>
                                                     </connections>
@@ -167,16 +168,16 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-Uv-Rw1" userLabel="End center y stack view">
-                                            <rect key="frame" x="0.0" y="225" width="348.5" height="34"/>
+                                            <rect key="frame" x="0.0" y="174" width="348.5" height="34"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End center y" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLU-pD-hpf" userLabel="End center y label">
-                                                    <rect key="frame" x="0.0" y="7" width="41.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cyb-kc-9EC" userLabel="End center y text field">
-                                                    <rect key="frame" x="49.5" y="0.0" width="100" height="34"/>
+                                                    <rect key="frame" x="8" y="0.0" width="100" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -184,7 +185,7 @@
                                                     </connections>
                                                 </textField>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Puy-qh-3xM" userLabel="End center y slider">
-                                                    <rect key="frame" x="155.5" y="2" width="195" height="31"/>
+                                                    <rect key="frame" x="114" y="2" width="236.5" height="31"/>
                                                     <connections>
                                                         <action selector="endCenterYValueChanged:" destination="-1" eventType="valueChanged" id="kbr-nY-V5j"/>
                                                     </connections>
@@ -192,16 +193,16 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WSS-TS-yoL" userLabel="End radius stack view">
-                                            <rect key="frame" x="0.0" y="267" width="348.5" height="34"/>
+                                            <rect key="frame" x="0.0" y="216" width="348.5" height="34"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raB-My-tbI" userLabel="End radius label">
-                                                    <rect key="frame" x="0.0" y="7" width="41.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="7" width="0.0" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EWb-7y-I3P" userLabel="End radius text field">
-                                                    <rect key="frame" x="49.5" y="0.0" width="100" height="34"/>
+                                                    <rect key="frame" x="8" y="0.0" width="100" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -209,7 +210,7 @@
                                                     </connections>
                                                 </textField>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7hE-as-Csu" userLabel="End radius slider">
-                                                    <rect key="frame" x="155.5" y="2" width="195" height="31"/>
+                                                    <rect key="frame" x="114" y="2" width="236.5" height="31"/>
                                                     <connections>
                                                         <action selector="endRadiusValueChanged:" destination="-1" eventType="valueChanged" id="67U-A7-Rqf"/>
                                                     </connections>
@@ -226,15 +227,30 @@
                                 </stackView>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eav-oU-yrE" userLabel="Gradient stop/affine transform stack view">
-                            <rect key="frame" x="0.0" y="309" width="717" height="50"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eav-oU-yrE" userLabel="Gradient stop/shadow/affine transform stack view">
+                            <rect key="frame" x="0.0" y="258" width="717" height="101"/>
                             <subviews>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="GradientStopParametersContainerView">
-                                    <rect key="frame" x="0.0" y="0.0" width="348.5" height="50"/>
-                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                </view>
-                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSY-AJ-uTZ" userLabel="AffineTransformParametersContainerView">
-                                    <rect key="frame" x="368.5" y="0.0" width="348.5" height="50"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="nW4-b7-ENY" userLabel="Gradient stop/shadow stack view">
+                                    <rect key="frame" x="0.0" y="0.0" width="348.5" height="101"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qfX-Vn-5q2" userLabel="Gradient stop/shadow segmented control">
+                                            <rect key="frame" x="0.0" y="0.0" width="348.5" height="44"/>
+                                            <segments>
+                                                <segment title="Gradient stop"/>
+                                                <segment title="Shadow"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="gradientStopShadowValueChanged:" destination="-1" eventType="valueChanged" id="TAF-cQ-XrY"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="Gradient stop/shadow container view">
+                                            <rect key="frame" x="0.0" y="51" width="348.5" height="50"/>
+                                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dSY-AJ-uTZ" userLabel="Affine transform container view">
+                                    <rect key="frame" x="368.5" y="0.0" width="348.5" height="101"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 </view>
                             </subviews>

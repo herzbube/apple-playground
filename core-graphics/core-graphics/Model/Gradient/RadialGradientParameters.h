@@ -9,6 +9,7 @@
 
 @class AffineTransformParameters;
 @class GradientStopParameters;
+@class ShadowParameters;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -40,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) CGFloat maximumEndRadius;
 
 @property (strong, nonatomic) GradientStopParameters* gradientStopParameters;
+@property (strong, nonatomic) ShadowParameters* shadowParameters;
 @property (strong, nonatomic) AffineTransformParameters* affineTransformParameters;
 
 @end

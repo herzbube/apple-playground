@@ -10,7 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SolidColorFillParametersViewController">
             <connections>
-                <outlet property="containerView" destination="ee8-o2-SAa" id="Zlg-pC-I34"/>
+                <outlet property="colorContainerView" destination="ee8-o2-SAa" id="Zlg-pC-I34"/>
+                <outlet property="shadowContainerView" destination="yXF-ok-aN3" id="qvf-1M-0qt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,12 +23,21 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Maz-WG-kmu" userLabel="Top-level stack view">
                     <rect key="frame" x="0.0" y="0.0" width="469" height="190"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="Container view">
-                            <rect key="frame" x="0.0" y="0.0" width="469" height="140"/>
-                            <color key="backgroundColor" systemColor="systemGray5Color"/>
-                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="EFN-EL-G6p" userLabel="Color/shadow stack view">
+                            <rect key="frame" x="0.0" y="0.0" width="469" height="109"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-o2-SAa" userLabel="Color container view">
+                                    <rect key="frame" x="0.0" y="0.0" width="224.5" height="109"/>
+                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                </view>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yXF-ok-aN3" userLabel="Shadow container view">
+                                    <rect key="frame" x="244.5" y="0.0" width="224.5" height="109"/>
+                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                </view>
+                            </subviews>
+                        </stackView>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FFT-N1-OS2" userLabel="Spacer view">
-                            <rect key="frame" x="0.0" y="140" width="469" height="50"/>
+                            <rect key="frame" x="0.0" y="109" width="469" height="81"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                     </subviews>

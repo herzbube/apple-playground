@@ -8,6 +8,7 @@
 #import "LinearGradientParametersViewController.h"
 #import "GradientStopParametersViewController.h"
 #import "../AffineTransform/AffineTransformParametersViewController.h"
+#import "../ShadowParametersViewController.h"
 #import "../../Model/Gradient/LinearGradientParameters.h"
 #import "../../AutoLayoutUtility.h"
 #import "../../Converter.h"
@@ -21,8 +22,10 @@
 @property (weak, nonatomic) IBOutlet UISlider* startPointYSlider;
 @property (weak, nonatomic) IBOutlet UISlider* endPointXSlider;
 @property (weak, nonatomic) IBOutlet UISlider* endPointYSlider;
-@property (weak, nonatomic) IBOutlet UIView* gradientStopParametersContainerView;
-@property (weak, nonatomic) IBOutlet UIView* affineTransformParametersContainerView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl* gradientStopShadowSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIView* gradientStopShadowContainerView;
+@property (strong, nonatomic) NSArray* gradientStopShadowAutoLayoutConstraints;
+@property (weak, nonatomic) IBOutlet UIView* affineTransformContainerView;
 @end
 
 @implementation LinearGradientParametersViewController
@@ -39,6 +42,7 @@
     self.linearGradientParameters = linearGradientParameters;
   else
     self.linearGradientParameters = [[LinearGradientParameters alloc] init];
+  self.gradientStopShadowAutoLayoutConstraints = nil;
 
   return self;
 }
@@ -57,7 +61,10 @@
 
 - (void) integrateChildViewControllers
 {
-  [self integrateGradientStopParametersChildViewController];
+  if (self.gradientStopShadowSegmentedControl.selectedSegmentIndex == 0)
+    [self integrateGradientStopParametersChildViewController];
+  else
+    [self integrateShadowParametersChildViewController];
   [self integrateAffineTransformParametersChildViewController];
 }
 
@@ -69,9 +76,21 @@
   [gradientStopParametersViewController didMoveToParentViewController:self];
 
   UIView* gradientStopParametersView = gradientStopParametersViewController.view;
-  [self.gradientStopParametersContainerView addSubview:gradientStopParametersView];
+  [self.gradientStopShadowContainerView addSubview:gradientStopParametersView];
   gradientStopParametersView.translatesAutoresizingMaskIntoConstraints = NO;
-  [AutoLayoutUtility fillSuperview:self.gradientStopParametersContainerView withSubview:gradientStopParametersView];
+  self.gradientStopShadowAutoLayoutConstraints = [AutoLayoutUtility fillSuperview:self.gradientStopShadowContainerView withSubview:gradientStopParametersView];
+}
+
+- (void) integrateShadowParametersChildViewController
+{
+  ShadowParametersViewController* shadowParametersViewController = [[ShadowParametersViewController alloc] initWithShadowParameters:self.linearGradientParameters.shadowParameters];
+  [self addChildViewController:shadowParametersViewController];
+  [shadowParametersViewController didMoveToParentViewController:self];
+
+  UIView* shadowParametersView = shadowParametersViewController.view;
+  [self.gradientStopShadowContainerView addSubview:shadowParametersView];
+  shadowParametersView.translatesAutoresizingMaskIntoConstraints = NO;
+  self.gradientStopShadowAutoLayoutConstraints = [AutoLayoutUtility fillSuperview:self.gradientStopShadowContainerView withSubview:shadowParametersView];
 }
 
 - (void) integrateAffineTransformParametersChildViewController
@@ -82,9 +101,34 @@
   [affineTransformParametersViewController didMoveToParentViewController:self];
 
   UIView* affineTransformParametersView = affineTransformParametersViewController.view;
-  [self.affineTransformParametersContainerView addSubview:affineTransformParametersView];
+  [self.affineTransformContainerView addSubview:affineTransformParametersView];
   affineTransformParametersView.translatesAutoresizingMaskIntoConstraints = NO;
-  [AutoLayoutUtility fillSuperview:self.affineTransformParametersContainerView withSubview:affineTransformParametersView];
+  [AutoLayoutUtility fillSuperview:self.affineTransformContainerView withSubview:affineTransformParametersView];
+}
+
+- (void) removeChildViewController
+{
+  if (self.childViewControllers.count == 0)
+    return;
+
+  UIViewController* childViewController = self.childViewControllers.firstObject;
+
+  [childViewController.view removeFromSuperview];
+  for (NSLayoutConstraint* autoLayoutConstraint in self.gradientStopShadowAutoLayoutConstraints)
+    autoLayoutConstraint.active = NO;
+  self.gradientStopShadowAutoLayoutConstraints = nil;
+
+  [childViewController willMoveToParentViewController:nil];
+  // Automatically calls didMoveToParentViewController:
+  [childViewController removeFromParentViewController];
+}
+
+#pragma mark - Segmented control input actions
+
+- (IBAction) gradientStopShadowValueChanged:(UISegmentedControl*)sender
+{
+  [self removeChildViewController];
+  [self integrateChildViewControllers];
 }
 
 #pragma mark - Text field input actions

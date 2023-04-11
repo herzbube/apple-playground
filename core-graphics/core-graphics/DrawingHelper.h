@@ -12,6 +12,7 @@
 @class FillParameters;
 @class GradientParameters;
 @class PathParameters;
+@class ShadowParameters;
 @class StrokeParameters;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -22,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (CGPoint) centerOfRect:(CGRect)rect;
 + (CGFloat) lesserDimensionOfRect:(CGRect)rect;
 + (UIColor*) colorFromColorParameters:(ColorParameters*)colorParameters;
++ (void) setShadowWithContext:(CGContextRef)context
+             shadowParameters:(ShadowParameters*)shadowParameters;
 + (void) concatTransformWithContext:(CGContextRef)context
           affineTransformParameters:(AffineTransformParameters*)affineTransformParameters;
 + (void) fillOrStrokePathWithContext:(CGContextRef)context

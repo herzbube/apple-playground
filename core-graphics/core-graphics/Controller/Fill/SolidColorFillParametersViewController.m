@@ -7,11 +7,13 @@
 
 #import "SolidColorFillParametersViewController.h"
 #import "../ColorParametersViewController.h"
+#import "../ShadowParametersViewController.h"
 #import "../../Model/Fill/SolidColorFillParameters.h"
 #import "../../AutoLayoutUtility.h"
 
 @interface SolidColorFillParametersViewController()
-@property (weak, nonatomic) IBOutlet UIView* containerView;
+@property (weak, nonatomic) IBOutlet UIView* colorContainerView;
+@property (weak, nonatomic) IBOutlet UIView* shadowContainerView;
 @end
 
 @implementation SolidColorFillParametersViewController
@@ -47,6 +49,7 @@
 - (void) integrateChildViewControllers
 {
   [self integrateColorParametersChildViewController];
+  [self integrateShadowParametersChildViewController];
 }
 
 - (void) integrateColorParametersChildViewController
@@ -57,9 +60,21 @@
   [colorParametersViewController didMoveToParentViewController:self];
 
   UIView* colorParametersView = colorParametersViewController.view;
-  [self.containerView addSubview:colorParametersView];
+  [self.colorContainerView addSubview:colorParametersView];
   colorParametersView.translatesAutoresizingMaskIntoConstraints = NO;
-  [AutoLayoutUtility fillSuperview:self.containerView withSubview:colorParametersView];
+  [AutoLayoutUtility fillSuperview:self.colorContainerView withSubview:colorParametersView];
+}
+
+- (void) integrateShadowParametersChildViewController
+{
+  ShadowParametersViewController* shadowParametersViewController = [[ShadowParametersViewController alloc] initWithShadowParameters:self.solidColorFillParameters.shadowParameters];
+  [self addChildViewController:shadowParametersViewController];
+  [shadowParametersViewController didMoveToParentViewController:self];
+
+  UIView* shadowParametersView = shadowParametersViewController.view;
+  [self.shadowContainerView addSubview:shadowParametersView];
+  shadowParametersView.translatesAutoresizingMaskIntoConstraints = NO;
+  [AutoLayoutUtility fillSuperview:self.shadowContainerView withSubview:shadowParametersView];
 }
 
 #pragma mark - Updaters
