@@ -52,76 +52,12 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drawing area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-0g-0s5" userLabel="Drawing view title label">
                                                 <rect key="frame" x="0.0" y="0.0" width="400" height="30"/>
                                                 <color key="backgroundColor" systemColor="systemTealColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="rER-fS-POf"/>
-                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VY6-wh-5f5" userLabel="Controls view">
-                                                <rect key="frame" x="0.0" y="38" width="400" height="136"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kVP-Iz-2RY" userLabel="Controls stack view">
-                                                        <rect key="frame" x="20" y="0.0" width="360" height="116"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYu-jJ-u9g" userLabel="Save button">
-                                                                <rect key="frame" x="0.0" y="42.5" width="55.5" height="31"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
-                                                                <connections>
-                                                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PCX-Zq-aGH"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6G-vd-Uki" userLabel="Load button">
-                                                                <rect key="frame" x="63.5" y="42.5" width="56" height="31"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Load"/>
-                                                                <connections>
-                                                                    <action selector="loadButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2pw-I3-xSz"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69Y-vW-fkc" userLabel="Reset button">
-                                                                <rect key="frame" x="127.5" y="42.5" width="61" height="31"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Reset"/>
-                                                                <connections>
-                                                                    <action selector="resetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pIF-Dt-Ja8"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFe-0w-HTS" userLabel="Align gradient to path button">
-                                                                <rect key="frame" x="196.5" y="25.5" width="81.5" height="65"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled" title="Align gradient to path"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.textAlignment">
-                                                                        <integer key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.numberOfLines">
-                                                                        <integer key="value" value="0"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="alignGradientToPathButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nBR-zf-JfR"/>
-                                                                </connections>
-                                                            </button>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYl-QR-SZS" userLabel="Spacer view">
-                                                                <rect key="frame" x="286" y="0.0" width="74" height="116"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            </view>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="kVP-Iz-2RY" firstAttribute="top" secondItem="VY6-wh-5f5" secondAttribute="top" id="MhZ-pi-bEj"/>
-                                                    <constraint firstAttribute="bottom" secondItem="kVP-Iz-2RY" secondAttribute="bottom" constant="20" symbolic="YES" id="Zth-4T-i7B"/>
-                                                    <constraint firstAttribute="trailing" secondItem="kVP-Iz-2RY" secondAttribute="trailing" constant="20" symbolic="YES" id="mnU-hf-S4i"/>
-                                                    <constraint firstItem="kVP-Iz-2RY" firstAttribute="leading" secondItem="VY6-wh-5f5" secondAttribute="leading" constant="20" symbolic="YES" id="oel-1q-9d6"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-vb-dGs" userLabel="Drawing view" customClass="DrawingView">
-                                                <rect key="frame" x="0.0" y="182" width="400" height="778"/>
+                                                <rect key="frame" x="0.0" y="38" width="400" height="922"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -131,6 +67,9 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="pDA-0g-0s5" firstAttribute="height" secondItem="2rS-Kc-vBV" secondAttribute="height" id="plB-rv-d58"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

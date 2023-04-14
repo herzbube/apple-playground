@@ -25,17 +25,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="431" height="346"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sy8-kk-0MM" userLabel="Master stack view">
-                            <rect key="frame" x="0.0" y="0.0" width="431" height="290"/>
+                            <rect key="frame" x="0.0" y="0.0" width="431" height="278"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oON-zF-35a" userLabel="Items table view">
-                                    <rect key="frame" x="0.0" y="0.0" width="373" height="290"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="278"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="oA5-g1-VRQ"/>
                                         <outlet property="delegate" destination="-1" id="wiy-wu-Epy"/>
                                     </connections>
                                 </tableView>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YCt-ye-B2v" userLabel="Item operations stack view">
-                                    <rect key="frame" x="381" y="0.0" width="50" height="290"/>
+                                    <rect key="frame" x="58" y="0.0" width="50" height="278"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAB-GP-EAE" userLabel="Add button">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="31"/>
@@ -70,7 +70,56 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ctb-hw-IIH" userLabel="Spacer view">
-                                            <rect key="frame" x="0.0" y="156" width="50" height="134"/>
+                                            <rect key="frame" x="0.0" y="156" width="50" height="122"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0v4-N7-atL" userLabel="Controls stack view">
+                                    <rect key="frame" x="116" y="0.0" width="315" height="278"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onI-Xl-ND2" userLabel="Save button">
+                                            <rect key="frame" x="0.0" y="0.0" width="55.5" height="103"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                                            <connections>
+                                                <action selector="saveButtonTapped:" destination="-1" eventType="touchUpInside" id="JkQ-uP-Fya"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1U-v5-Dgu" userLabel="Load button">
+                                            <rect key="frame" x="0.0" y="111" width="56" height="31"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Load"/>
+                                            <connections>
+                                                <action selector="loadButtonTapped:" destination="-1" eventType="touchUpInside" id="JlD-Qj-FQe"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRl-Q7-xEl" userLabel="Reset button">
+                                            <rect key="frame" x="0.0" y="150" width="61" height="31"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Reset"/>
+                                            <connections>
+                                                <action selector="resetButtonTapped:" destination="-1" eventType="touchUpInside" id="we2-Q4-GTa"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wat-Od-X20" userLabel="Align gradient to path button">
+                                            <rect key="frame" x="0.0" y="189" width="163.5" height="31"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Align gradient to path"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.textAlignment">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.numberOfLines">
+                                                    <integer key="value" value="0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="alignGradientToPathButtonTapped:" destination="-1" eventType="touchUpInside" id="6dl-ud-3jQ"/>
+                                            </connections>
+                                        </button>
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Vo-o2-5KY" userLabel="Spacer view">
+                                            <rect key="frame" x="0.0" y="228" width="82.5" height="50"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </view>
                                     </subviews>
@@ -78,14 +127,14 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jza-b7-VuO" userLabel="Separator view">
-                            <rect key="frame" x="0.0" y="298" width="431" height="2"/>
+                            <rect key="frame" x="0.0" y="286" width="431" height="2"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="FSG-5c-dN0"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBT-RW-h61" userLabel="Detail container view">
-                            <rect key="frame" x="0.0" y="308" width="431" height="38"/>
+                            <rect key="frame" x="0.0" y="296" width="431" height="50"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                     </subviews>

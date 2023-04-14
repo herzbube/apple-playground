@@ -73,7 +73,7 @@ static NSString* reusableCellIdentifier = @"DrawingParametersItem";
   [AutoLayoutUtility fillSuperview:self.detailContainerView withSubview:drawingParametersItemView];
 }
 
-#pragma mark - Button interactions
+#pragma mark - Button interactions - Drawing items
 
 - (IBAction) addButtonTapped:(UIButton*)sender
 {
@@ -131,6 +131,36 @@ static NSString* reusableCellIdentifier = @"DrawingParametersItem";
   NSUInteger indexOfNewlySelectedItem = indexOfItemToMoveDown + 1;
   [self updateSelectedDrawingParametersItem:indexOfNewlySelectedItem];
   [self updateCellSelection];
+}
+
+#pragma mark - Button interactions - Changing drawing parameters
+
+- (IBAction) saveButtonTapped:(UIButton*)sender
+{
+  [ParametersHelper saveParameters:self.drawingParameters];
+}
+
+- (IBAction) loadButtonTapped:(UIButton*)sender
+{
+  [ParametersHelper loadParameters:self.drawingParameters];
+  [self updateUiWithModelValues];
+}
+
+- (IBAction) resetButtonTapped:(UIButton*)sender
+{
+  [ParametersHelper resetParameters:self.drawingParameters];
+  [self updateUiWithModelValues];
+}
+
+- (IBAction) alignGradientToPathButtonTapped:(UIButton*)sender
+{
+  if (! self.selectedDrawingParametersItem)
+    return;
+
+  [ParametersHelper alignGradientToPathParameters:self.selectedDrawingParametersItem];
+
+  for (id childViewController in self.childViewControllers)
+    [childViewController updateUiWithModelValues];
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -250,17 +280,6 @@ static NSString* reusableCellIdentifier = @"DrawingParametersItem";
 
   DrawingParametersItemViewController* drawingParametersItemViewController = self.childViewControllers.firstObject;
   [drawingParametersItemViewController updateDrawingParametersItem:drawingParametersItem];
-}
-
-- (void) alignGradientToPathParameters
-{
-  if (! self.selectedDrawingParametersItem)
-    return;
-
-  [ParametersHelper alignGradientToPathParameters:self.selectedDrawingParametersItem];
-
-  for (id childViewController in self.childViewControllers)
-    [childViewController updateUiWithModelValues];
 }
 
 #pragma mark - KVO

@@ -8,7 +8,6 @@
 #import "ViewController.h"
 #import "AutoLayoutUtility.h"
 #import "DrawingView.h"
-#import "ParametersHelper.h"
 #import "Controller/Drawing/DrawingParametersViewController.h"
 #import "Model/Drawing/DrawingParameters.h"
 
@@ -52,42 +51,6 @@
   [self.drawingParametersContainerView addSubview:drawingParametersView];
   drawingParametersView.translatesAutoresizingMaskIntoConstraints = NO;
   [AutoLayoutUtility fillSuperview:self.drawingParametersContainerView withSubview:drawingParametersView];
-}
-
-#pragma mark - Button interactions
-
-- (IBAction) saveButtonTapped:(UIButton*)sender
-{
-  [ParametersHelper saveParameters:self.drawingParameters];
-}
-
-- (IBAction) loadButtonTapped:(UIButton*)sender
-{
-  [ParametersHelper loadParameters:self.drawingParameters];
-  [self updateUiWithModelValues];
-}
-
-- (IBAction) resetButtonTapped:(UIButton*)sender
-{
-  [ParametersHelper resetParameters:self.drawingParameters];
-  [self updateUiWithModelValues];
-}
-
-- (IBAction) alignGradientToPathButtonTapped:(UIButton*)sender
-{
-  if (self.childViewControllers.count == 0)
-    return;
-
-  DrawingParametersViewController* drawingParametersViewController = self.childViewControllers.firstObject;
-  [drawingParametersViewController alignGradientToPathParameters];
-}
-
-#pragma mark - Updaters
-
-- (void) updateUiWithModelValues
-{
-  for (id childViewController in self.childViewControllers)
-    [childViewController updateUiWithModelValues];
 }
 
 @end

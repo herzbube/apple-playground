@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype) initWithDrawingParameters:(DrawingParameters*)drawingParameters;
 
 - (void) updateUiWithModelValues;
-- (void) alignGradientToPathParameters;
 
 @property (strong, nonatomic) DrawingParameters* drawingParameters;
 

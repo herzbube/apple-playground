@@ -107,7 +107,7 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="39R-ZJ-DkE"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="39R-ZJ-DkE"/>
                                     </constraints>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IsX-cm-Ngv" userLabel="Concatenated affine transform stack view">
