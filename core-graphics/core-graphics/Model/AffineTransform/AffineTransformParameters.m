@@ -26,7 +26,7 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
 
 - (void) initializeWithDefaultValues
 {
-  self.affineTransformEnabled = true;
+  self.affineTransformEnabled = false;
   [self removeAllItems];
 
   [self valuesDidChange];
