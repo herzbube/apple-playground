@@ -8,6 +8,7 @@
 #import "FillParameters.h"
 #import "GradientFillParameters.h"
 #import "SolidColorFillParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* fillEnabledKey = @"fillEnabled";
 static NSString* fillTypeKey = @"fillType";
@@ -32,6 +33,8 @@ static NSString* gradientFillParametersKey = @"gradientFillParameters";
 {
   self.fillEnabled = true;
   self.fillType = FillTypeSolidColor;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -54,6 +57,8 @@ static NSString* gradientFillParametersKey = @"gradientFillParameters";
   self.fillType = [dictionary[fillTypeKey] intValue];
   [self.solidColorFillParameters setValuesWithDictionary:dictionary[solidColorFillParametersKey]];
   [self.gradientFillParameters setValuesWithDictionary:dictionary[gradientFillParametersKey]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -62,6 +67,11 @@ static NSString* gradientFillParametersKey = @"gradientFillParameters";
   [self.gradientFillParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

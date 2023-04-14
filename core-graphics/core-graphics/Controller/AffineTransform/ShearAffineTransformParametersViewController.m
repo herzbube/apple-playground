@@ -50,7 +50,7 @@
   CGFloat shearAngleX = [Converter floatFromStringValue:sender.text];
 
   self.shearAffineTransformParameters.shearAngleX = shearAngleX;
-  [self.shearAffineTransformParameters updateParametersDidChange];
+  [self.shearAffineTransformParameters valuesDidChange];
 
   self.shearAngleXSlider.value = [Converter fractionFromPartValue:shearAngleX
                                                        rangeValue:self.shearAffineTransformParameters.rangeShearAngleX];
@@ -61,7 +61,7 @@
   CGFloat shearAngleY = [Converter floatFromStringValue:sender.text];
 
   self.shearAffineTransformParameters.shearAngleY = shearAngleY;
-  [self.shearAffineTransformParameters updateParametersDidChange];
+  [self.shearAffineTransformParameters valuesDidChange];
 
   self.shearAngleYSlider.value = [Converter fractionFromPartValue:shearAngleY
                                                        rangeValue:self.shearAffineTransformParameters.rangeShearAngleY];
@@ -75,7 +75,7 @@
                                                    rangeValue:self.shearAffineTransformParameters.rangeShearAngleX];
 
   self.shearAffineTransformParameters.shearAngleX = shearAngleX;
-  [self.shearAffineTransformParameters updateParametersDidChange];
+  [self.shearAffineTransformParameters valuesDidChange];
 
   self.shearAngleXTextField.text = [NSString stringWithFormat:@"%f", shearAngleX];
 }
@@ -86,7 +86,7 @@
                                                    rangeValue:self.shearAffineTransformParameters.rangeShearAngleY];
 
   self.shearAffineTransformParameters.shearAngleY = shearAngleY;
-  [self.shearAffineTransformParameters updateParametersDidChange];
+  [self.shearAffineTransformParameters valuesDidChange];
 
   self.shearAngleYTextField.text = [NSString stringWithFormat:@"%f", shearAngleY];
 }

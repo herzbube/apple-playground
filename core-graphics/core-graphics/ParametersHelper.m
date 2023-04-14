@@ -6,7 +6,8 @@
 //
 
 #import "ParametersHelper.h"
-#import "Model/DrawingParameters.h"
+#import "Model/Drawing/DrawingParameters.h"
+#import "Model/Drawing/DrawingParametersItem.h"
 #import "Model/Gradient/GradientParameters.h"
 #import "Model/Gradient/GradientStopParameters.h"
 #import "Model/Gradient/LinearGradientParameters.h"
@@ -32,15 +33,15 @@
   [drawingParameters resetToDefaultValues];
 }
 
-+ (void) alignGradientToPathParameters:(DrawingParameters*)drawingParameters
++ (void) alignGradientToPathParameters:(DrawingParametersItem*)drawingParametersItem
 {
-  if (drawingParameters.gradientParameters.gradientType == GradientTypeLinear)
+  if (drawingParametersItem.gradientParameters.gradientType == GradientTypeLinear)
   {
-    LinearGradientParameters* linearGradientParameters = drawingParameters.gradientParameters.linearGradientParameters;
+    LinearGradientParameters* linearGradientParameters = drawingParametersItem.gradientParameters.linearGradientParameters;
 
-    if (drawingParameters.pathParameters.pathType == PathTypeArc)
+    if (drawingParametersItem.pathParameters.pathType == PathTypeArc)
     {
-      ArcParameters* arcParameters = drawingParameters.pathParameters.arcParameters;
+      ArcParameters* arcParameters = drawingParametersItem.pathParameters.arcParameters;
 
       linearGradientParameters.startPointX = arcParameters.centerX - arcParameters.radius;
       linearGradientParameters.startPointY = arcParameters.centerY;
@@ -50,7 +51,7 @@
     }
     else
     {
-      RectangleParameters* rectangleParameters = drawingParameters.pathParameters.rectangleParameters;
+      RectangleParameters* rectangleParameters = drawingParametersItem.pathParameters.rectangleParameters;
 
       CGRect rect = CGRectMake(rectangleParameters.originX,
                                rectangleParameters.originY,
@@ -63,14 +64,16 @@
       linearGradientParameters.endPointX = CGRectGetMaxX(rect);
       linearGradientParameters.endPointY = CGRectGetMidY(rect);
     }
+
+    [linearGradientParameters valuesDidChange];
   }
   else
   {
-    RadialGradientParameters* radialGradientParameters = drawingParameters.gradientParameters.radialGradientParameters;
+    RadialGradientParameters* radialGradientParameters = drawingParametersItem.gradientParameters.radialGradientParameters;
 
-    if (drawingParameters.pathParameters.pathType == PathTypeArc)
+    if (drawingParametersItem.pathParameters.pathType == PathTypeArc)
     {
-      ArcParameters* arcParameters = drawingParameters.pathParameters.arcParameters;
+      ArcParameters* arcParameters = drawingParametersItem.pathParameters.arcParameters;
 
       radialGradientParameters.startCenterX = arcParameters.centerX;
       radialGradientParameters.startCenterY = arcParameters.centerY;
@@ -82,7 +85,7 @@
     }
     else
     {
-      RectangleParameters* rectangleParameters = drawingParameters.pathParameters.rectangleParameters;
+      RectangleParameters* rectangleParameters = drawingParametersItem.pathParameters.rectangleParameters;
 
       CGRect rect = CGRectMake(rectangleParameters.originX,
                                rectangleParameters.originY,
@@ -97,6 +100,8 @@
       radialGradientParameters.endCenterY = CGRectGetMidY(rect);
       radialGradientParameters.endRadius = MIN(rect.size.width, rect.size.height);
     }
+
+    [radialGradientParameters valuesDidChange];
   }
 }
 

@@ -138,6 +138,7 @@
   CGFloat startPointX = [Converter floatFromStringValue:sender.text];
 
   self.linearGradientParameters.startPointX = startPointX;
+  [self.linearGradientParameters valuesDidChange];
 
   self.startPointXSlider.value = [Converter fractionFromPartValue:startPointX
                                                        wholeValue:self.linearGradientParameters.maximumStartPointX];
@@ -148,6 +149,7 @@
   CGFloat startPointY = [Converter floatFromStringValue:sender.text];
 
   self.linearGradientParameters.startPointY = startPointY;
+  [self.linearGradientParameters valuesDidChange];
 
   self.startPointYSlider.value = [Converter fractionFromPartValue:startPointY
                                                        wholeValue:self.linearGradientParameters.maximumStartPointY];
@@ -158,6 +160,7 @@
   CGFloat endPointX = [Converter floatFromStringValue:sender.text];
 
   self.linearGradientParameters.endPointX = endPointX;
+  [self.linearGradientParameters valuesDidChange];
 
   self.endPointXSlider.value = [Converter fractionFromPartValue:endPointX
                                                      wholeValue:self.linearGradientParameters.maximumEndPointX];
@@ -168,6 +171,7 @@
   CGFloat endPointY = [Converter floatFromStringValue:sender.text];
 
   self.linearGradientParameters.endPointY = endPointY;
+  [self.linearGradientParameters valuesDidChange];
 
   self.endPointYSlider.value = [Converter fractionFromPartValue:endPointY
                                                      wholeValue:self.linearGradientParameters.maximumEndPointY];
@@ -181,6 +185,7 @@
                                                    wholeValue:self.linearGradientParameters.maximumStartPointX];
 
   self.linearGradientParameters.startPointX = startPointX;
+  [self.linearGradientParameters valuesDidChange];
 
   self.startPointXTextField.text = [NSString stringWithFormat:@"%f", startPointX];
 }
@@ -191,6 +196,7 @@
                                                    wholeValue:self.linearGradientParameters.maximumStartPointY];
 
   self.linearGradientParameters.startPointY = startPointY;
+  [self.linearGradientParameters valuesDidChange];
 
   self.startPointYTextField.text = [NSString stringWithFormat:@"%f", startPointY];
 }
@@ -201,6 +207,7 @@
                                                  wholeValue:self.linearGradientParameters.maximumEndPointX];
 
   self.linearGradientParameters.endPointX = endPointX;
+  [self.linearGradientParameters valuesDidChange];
 
   self.endPointXTextField.text = [NSString stringWithFormat:@"%f", endPointX];
 }
@@ -211,6 +218,7 @@
                                                  wholeValue:self.linearGradientParameters.maximumEndPointY];
 
   self.linearGradientParameters.endPointY = endPointY;
+  [self.linearGradientParameters valuesDidChange];
 
   self.endPointYTextField.text = [NSString stringWithFormat:@"%f", endPointY];
 }

@@ -6,6 +6,7 @@
 //
 
 #import "RectangleParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* originXKey = @"originX";
 static NSString* originYKey = @"originY";
@@ -34,6 +35,8 @@ static NSString* heightKey = @"height";
   self.originY = 100.0f;
   self.width = 200.0f;
   self.height = 200.0f;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -55,11 +58,19 @@ static NSString* heightKey = @"height";
   self.originY = [dictionary[originYKey] floatValue];
   self.width = [dictionary[widthKey] floatValue];
   self.height = [dictionary[heightKey] floatValue];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
 {
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  self.parametersAsString = [NSString stringWithFormat:@"%f, %f, %f, %f", _originX, _originX, _width, _height];
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

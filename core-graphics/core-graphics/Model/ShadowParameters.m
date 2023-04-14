@@ -7,6 +7,7 @@
 
 #import "ShadowParameters.h"
 #import "ColorParameters.h"
+#import "../GlobalConstants.h"
 
 static NSString* shadowEnabledKey = @"shadowEnabled";
 static NSString* offsetXKey = @"offsetX";
@@ -39,6 +40,8 @@ static NSString* colorParametersKey = @"colorParameters";
   self.blur = 10.0f;
 
   [self.colorParameters updateWithHexString:@"00000080"];
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -63,6 +66,8 @@ static NSString* colorParametersKey = @"colorParameters";
   self.offsetY = [dictionary[offsetYKey] floatValue];
   self.blur = [dictionary[blurKey] floatValue];
   [self.colorParameters setValuesWithDictionary:dictionary[colorParametersKey]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -70,6 +75,11 @@ static NSString* colorParametersKey = @"colorParameters";
   [self.colorParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

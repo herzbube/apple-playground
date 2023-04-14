@@ -57,6 +57,7 @@
   CGFloat centerX = [Converter floatFromStringValue:sender.text];
 
   self.arcParameters.centerX = centerX;
+  [self.arcParameters valuesDidChange];
 
   self.centerXSlider.value = [Converter fractionFromPartValue:centerX
                                                    wholeValue:self.arcParameters.maximumCenterX];
@@ -67,6 +68,7 @@
   CGFloat centerY = [Converter floatFromStringValue:sender.text];
 
   self.arcParameters.centerY = centerY;
+  [self.arcParameters valuesDidChange];
 
   self.centerYSlider.value = [Converter fractionFromPartValue:centerY
                                                    wholeValue:self.arcParameters.maximumCenterY];
@@ -77,6 +79,7 @@
   CGFloat radius = [Converter floatFromStringValue:sender.text];
 
   self.arcParameters.radius = radius;
+  [self.arcParameters valuesDidChange];
 
   self.radiusSlider.value = [Converter fractionFromPartValue:radius
                                                   wholeValue:self.arcParameters.maximumRadius];
@@ -87,6 +90,7 @@
   CGFloat startAngle = [Converter floatFromStringValue:sender.text];
 
   self.arcParameters.startAngle = startAngle;
+  [self.arcParameters valuesDidChange];
 
   self.startAngleSlider.value = [Converter fractionFromPartValue:startAngle
                                                       wholeValue:self.arcParameters.maximumStartAngle];
@@ -97,6 +101,7 @@
   CGFloat endAngle = [Converter floatFromStringValue:sender.text];
 
   self.arcParameters.endAngle = endAngle;
+  [self.arcParameters valuesDidChange];
 
   self.endAngleSlider.value = [Converter fractionFromPartValue:endAngle
                                                     wholeValue:self.arcParameters.maximumEndAngle];
@@ -110,6 +115,7 @@
                                                wholeValue:self.arcParameters.maximumCenterX];
 
   self.arcParameters.centerX = centerX;
+  [self.arcParameters valuesDidChange];
 
   self.centerXTextField.text = [NSString stringWithFormat:@"%f", centerX];
 }
@@ -120,6 +126,7 @@
                                                wholeValue:self.arcParameters.maximumCenterY];
 
   self.arcParameters.centerY = centerY;
+  [self.arcParameters valuesDidChange];
 
   self.centerYTextField.text = [NSString stringWithFormat:@"%f", centerY];
 }
@@ -130,6 +137,7 @@
                                               wholeValue:self.arcParameters.maximumRadius];
 
   self.arcParameters.radius = radius;
+  [self.arcParameters valuesDidChange];
 
   self.radiusTextField.text = [NSString stringWithFormat:@"%f", radius];
 }
@@ -140,6 +148,7 @@
                                                   wholeValue:self.arcParameters.maximumStartAngle];
 
   self.arcParameters.startAngle = startAngle;
+  [self.arcParameters valuesDidChange];
 
   self.startAngleTextField.text = [NSString stringWithFormat:@"%f", startAngle];
 }
@@ -150,6 +159,7 @@
                                                 wholeValue:self.arcParameters.maximumEndAngle];
 
   self.arcParameters.endAngle = endAngle;
+  [self.arcParameters valuesDidChange];
 
   self.endAngleTextField.text = [NSString stringWithFormat:@"%f", endAngle];
 }
@@ -159,6 +169,7 @@
 - (IBAction) clockwiseValueChanged:(UISwitch*)sender
 {
   BOOL clockwise = sender.on;
+  [self.arcParameters valuesDidChange];
 
   self.arcParameters.clockwise = clockwise;
 }

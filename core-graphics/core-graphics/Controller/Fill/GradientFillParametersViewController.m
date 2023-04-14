@@ -72,6 +72,7 @@
   BOOL clipGradientToPath = sender.on;
 
   self.gradientFillParameters.clipGradientToPath = clipGradientToPath;
+  [self.gradientFillParameters valuesDidChange];
 }
 
 #pragma mark - Updaters

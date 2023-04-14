@@ -17,8 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary;
 
 - (void) resetToDefaultValues;
-
-- (void) updateParametersDidChange;
+- (void) valuesDidChange;
 
 @property CGFloat scaleX;
 @property (readonly) CGFloat maximumScaleX;

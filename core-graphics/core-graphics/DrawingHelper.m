@@ -6,7 +6,6 @@
 //
 
 #import "DrawingHelper.h"
-
 #import "Model/ColorParameters.h"
 #import "Model/ShadowParameters.h"
 #import "Model/StrokeParameters.h"
@@ -231,6 +230,9 @@ CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
 + (void) drawGradientWithContext:(CGContextRef)context
               gradientParameters:(GradientParameters*)gradientParameters
 {
+  if (! gradientParameters.gradientEnabled)
+    return;
+
   if (gradientParameters.gradientType == GradientTypeLinear)
   {
     [DrawingHelper drawGradientWithContext:context

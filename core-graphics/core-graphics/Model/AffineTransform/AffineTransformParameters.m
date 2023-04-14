@@ -7,6 +7,7 @@
 
 #import "AffineTransformParameters.h"
 #import "AffineTransformParametersItem.h"
+#import "../../GlobalConstants.h"
 
 static NSString* affineTransformEnabledKey = @"affineTransformEnabled";
 static NSString* affineTransformParametersItemsKey = @"affineTransformParametersItems";
@@ -28,7 +29,7 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
   self.affineTransformEnabled = true;
   [self removeAllItems];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -64,12 +65,19 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
     [self.affineTransformParametersItems addObject:item];
   }
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
 {
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [self updateAffineTransform];
+  [self updateAffineTransformAsString];
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 #pragma mark - Manage items - Public API
@@ -92,7 +100,7 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
     indexOfNewItem = self.affineTransformParametersItems.count - 1;
   }
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 
   return indexOfNewItem;
 }
@@ -108,7 +116,7 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
 
   [self.affineTransformParametersItems removeObjectAtIndex:index];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 
   return true;
 }
@@ -128,7 +136,7 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
   NSUInteger reinsertIndex = index - 1;
   [self.affineTransformParametersItems insertObject:item atIndex:reinsertIndex];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 
   return true;
 }
@@ -149,7 +157,7 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
   else
     [self.affineTransformParametersItems addObject:item];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 
   return true;
 }
@@ -177,13 +185,7 @@ static NSString* affineTransformParametersItemsKey = @"affineTransformParameters
 
 - (void) observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
 {
-  [self updateParametersDidChange];
-}
-
-- (void) updateParametersDidChange
-{
-  [self updateAffineTransform];
-  [self updateAffineTransformAsString];
+  [self valuesDidChange];
 }
 
 - (void) updateAffineTransform

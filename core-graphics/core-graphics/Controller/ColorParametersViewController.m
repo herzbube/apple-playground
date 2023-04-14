@@ -64,6 +64,7 @@
   self.colorParameters.red = red;
   NSString* hexString = [self hexStringFromModelValues];
   self.colorParameters.hexString = hexString;
+  [self.colorParameters valuesDidChange];
 
   self.redSlider.value = red;
   self.hexTextField.text = hexString;
@@ -76,6 +77,7 @@
   self.colorParameters.green = green;
   NSString* hexString = [self hexStringFromModelValues];
   self.colorParameters.hexString = hexString;
+  [self.colorParameters valuesDidChange];
 
   self.greenSlider.value = green;
   self.hexTextField.text = hexString;
@@ -88,6 +90,7 @@
   self.colorParameters.blue = blue;
   NSString* hexString = [self hexStringFromModelValues];
   self.colorParameters.hexString = hexString;
+  [self.colorParameters valuesDidChange];
 
   self.blueSlider.value = blue;
   self.hexTextField.text = hexString;
@@ -100,6 +103,7 @@
   self.colorParameters.alpha = alpha;
   NSString* hexString = [self hexStringFromModelValues];
   self.colorParameters.hexString = hexString;
+  [self.colorParameters valuesDidChange];
 
   self.alphaSlider.value = alpha;
   self.hexTextField.text = hexString;
@@ -127,6 +131,7 @@
   self.colorParameters.red = red;
   NSString* hexString = [self hexStringFromModelValues];
   self.colorParameters.hexString = hexString;
+  [self.colorParameters valuesDidChange];
 
   self.redTextField.text = [NSString stringWithFormat:@"%f", [Converter colorComponentValueFromFractionValue:red]];
   self.hexTextField.text = hexString;
@@ -139,6 +144,7 @@
   self.colorParameters.green = green;
   NSString* hexString = [self hexStringFromModelValues];
   self.colorParameters.hexString = hexString;
+  [self.colorParameters valuesDidChange];
 
   self.greenTextField.text = [NSString stringWithFormat:@"%f", [Converter colorComponentValueFromFractionValue:green]];
   self.hexTextField.text = hexString;
@@ -151,6 +157,7 @@
   self.colorParameters.blue = blue;
   NSString* hexString = [self hexStringFromModelValues];
   self.colorParameters.hexString = hexString;
+  [self.colorParameters valuesDidChange];
 
   self.blueTextField.text = [NSString stringWithFormat:@"%f", [Converter colorComponentValueFromFractionValue:blue]];
   self.hexTextField.text = hexString;
@@ -163,6 +170,7 @@
   self.colorParameters.alpha = alpha;
   NSString* hexString = [self hexStringFromModelValues];
   self.colorParameters.hexString = hexString;
+  [self.colorParameters valuesDidChange];
 
   self.alphaTextField.text = [NSString stringWithFormat:@"%f", [Converter colorComponentValueFromFractionValue:alpha]];
   self.hexTextField.text = hexString;
@@ -187,6 +195,7 @@
 - (void) updateModelWithHexString:(NSString*)hexString
 {
   [self.colorParameters updateWithHexString:hexString];
+  [self.colorParameters valuesDidChange];
 }
 
 #pragma mark - Conversion methods

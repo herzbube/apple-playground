@@ -6,6 +6,7 @@
 //
 
 #import "ScaleAffineTransformParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* scaleXKey = @"scaleX";
 static NSString* scaleYKey = @"scaleY";
@@ -31,7 +32,7 @@ static NSString* scaleYKey = @"scaleY";
   self.scaleX = 1.0f;
   self.scaleY = 1.0f;
   
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -51,7 +52,7 @@ static NSString* scaleYKey = @"scaleY";
   self.scaleX = [dictionary[scaleXKey] floatValue];
   self.scaleY = [dictionary[scaleYKey] floatValue];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -59,10 +60,11 @@ static NSString* scaleYKey = @"scaleY";
   [self initializeWithDefaultValues];
 }
 
-- (void) updateParametersDidChange
+- (void) valuesDidChange
 {
   self.affineTransform = CGAffineTransformScale(CGAffineTransformIdentity, _scaleX, _scaleY);
   self.parametersAsString = [NSString stringWithFormat:@"%f, %f", _scaleX, _scaleY];
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

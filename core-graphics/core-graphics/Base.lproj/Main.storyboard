@@ -17,65 +17,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="khs-zU-FeP" userLabel="Top level stack view">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="khs-zU-FeP" userLabel="Top level stack view">
                                 <rect key="frame" x="20" y="44" width="1326" height="960"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="jxG-5p-uxX" userLabel="Left hand side scroll view">
-                                        <rect key="frame" x="0.0" y="0.0" width="906" height="960"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xCY-2J-SZm" userLabel="Left hand side stack view">
+                                        <rect key="frame" x="0.0" y="0.0" width="908" height="960"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="25r-Gg-LbN" userLabel="Left hand side stack view">
-                                                <rect key="frame" x="0.0" y="20" width="906" height="1116.5"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="odF-8g-qLx" userLabel="Path and stroke stack view">
-                                                        <rect key="frame" x="0.0" y="0.0" width="906" height="50"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNL-nM-LRi" userLabel="PathParametersContainerView">
-                                                                <rect key="frame" x="0.0" y="0.0" width="349" height="50"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPn-mh-CxP" userLabel="StrokeParametersContainerView">
-                                                                <rect key="frame" x="369" y="0.0" width="537" height="50"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            </view>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="dNL-nM-LRi" firstAttribute="width" secondItem="bPn-mh-CxP" secondAttribute="width" multiplier="0.65" id="iJB-wr-QFf"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbc-8R-bBO" userLabel="FillParametersContainerView">
-                                                        <rect key="frame" x="0.0" y="70" width="906" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zdK-f7-ErI" userLabel="AffineTransformParametersContainerView">
-                                                        <rect key="frame" x="0.0" y="140" width="906" height="128"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fX-10-uhl" userLabel="GradientParametersContainerView">
-                                                        <rect key="frame" x="0.0" y="288" width="906" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t5a-PY-Wsr" userLabel="Spacer view">
-                                                        <rect key="frame" x="0.0" y="358" width="906" height="758.5"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drawing parameters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rS-Kc-vBV" userLabel="Drawing parameters title label">
+                                                <rect key="frame" x="0.0" y="0.0" width="908" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="v1k-ZX-M4i"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytP-nB-2Wj" userLabel="Drawing parameters container view">
+                                                <rect key="frame" x="0.0" y="38" width="908" height="922"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0W-PX-Gen" userLabel="Separator view">
+                                        <rect key="frame" x="916" y="0.0" width="2" height="960"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="width" secondItem="gxr-57-ZH1" secondAttribute="width" id="83v-Wc-tce"/>
-                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="trailing" secondItem="J0R-7i-8gD" secondAttribute="trailing" id="Ghc-9A-aTC"/>
-                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="leading" secondItem="J0R-7i-8gD" secondAttribute="leading" id="Hh9-Iy-Ipn"/>
-                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="bottom" secondItem="J0R-7i-8gD" secondAttribute="bottom" id="VsJ-wb-9kx"/>
-                                            <constraint firstItem="25r-Gg-LbN" firstAttribute="top" secondItem="J0R-7i-8gD" secondAttribute="top" id="ZOB-1R-kI3"/>
+                                            <constraint firstAttribute="width" constant="2" id="GLl-Ew-Um5"/>
                                         </constraints>
-                                        <viewLayoutGuide key="contentLayoutGuide" id="J0R-7i-8gD"/>
-                                        <viewLayoutGuide key="frameLayoutGuide" id="gxr-57-ZH1"/>
-                                    </scrollView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fu3-Ct-9A5" userLabel="Right hand side stack view">
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fu3-Ct-9A5" userLabel="Right hand side stack view">
                                         <rect key="frame" x="926" y="0.0" width="400" height="960"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drawing area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDA-0g-0s5" userLabel="Drawing view title label">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="rER-fS-POf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VY6-wh-5f5" userLabel="Controls view">
-                                                <rect key="frame" x="0.0" y="0.0" width="400" height="136"/>
+                                                <rect key="frame" x="0.0" y="38" width="400" height="136"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kVP-Iz-2RY" userLabel="Controls stack view">
                                                         <rect key="frame" x="20" y="0.0" width="360" height="116"/>
@@ -136,7 +121,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-vb-dGs" userLabel="Drawing view" customClass="DrawingView">
-                                                <rect key="frame" x="0.0" y="136" width="400" height="824"/>
+                                                <rect key="frame" x="0.0" y="182" width="400" height="778"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -158,12 +143,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="affineTransformParametersContainerView" destination="zdK-f7-ErI" id="1sR-Vt-zpB"/>
+                        <outlet property="drawingParametersContainerView" destination="ytP-nB-2Wj" id="enG-Dv-vob"/>
                         <outlet property="drawingView" destination="jvi-vb-dGs" id="X5u-qR-02Z"/>
-                        <outlet property="fillParametersContainerView" destination="qbc-8R-bBO" id="Jbo-Xj-FT3"/>
-                        <outlet property="gradientParametersContainerView" destination="6fX-10-uhl" id="DM5-Kp-qEw"/>
-                        <outlet property="pathParametersContainerView" destination="dNL-nM-LRi" id="1UU-Qv-8dC"/>
-                        <outlet property="strokeParametersContainerView" destination="bPn-mh-CxP" id="CjY-FX-zbu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -174,6 +155,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

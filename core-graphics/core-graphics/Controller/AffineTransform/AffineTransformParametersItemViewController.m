@@ -165,7 +165,10 @@
 
 - (IBAction) affineTransformTypeValueChanged:(UISegmentedControl*)sender
 {
-  self.affineTransformParametersItem.affineTransformType = [self affineTransformTypeForSegmentIndex:sender.selectedSegmentIndex];
+  AffineTransformType affineTransformType = [self affineTransformTypeForSegmentIndex:sender.selectedSegmentIndex];
+
+  self.affineTransformParametersItem.affineTransformType = affineTransformType;
+  [self.affineTransformParametersItem valuesDidChange];
 
   [self removeChildViewController];
   [self integrateChildViewControllers];

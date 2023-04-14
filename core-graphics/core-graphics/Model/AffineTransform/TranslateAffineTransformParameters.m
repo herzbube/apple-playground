@@ -6,6 +6,7 @@
 //
 
 #import "TranslateAffineTransformParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* translateXKey = @"translateX";
 static NSString* translateYKey = @"translateY";
@@ -31,7 +32,7 @@ static NSString* translateYKey = @"translateY";
   self.translateX = 0.0f;
   self.translateY = 0.0f;
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -51,7 +52,7 @@ static NSString* translateYKey = @"translateY";
   self.translateX = [dictionary[translateXKey] floatValue];
   self.translateY = [dictionary[translateYKey] floatValue];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -59,10 +60,11 @@ static NSString* translateYKey = @"translateY";
   [self initializeWithDefaultValues];
 }
 
-- (void) updateParametersDidChange
+- (void) valuesDidChange
 {
   self.affineTransform = CGAffineTransformTranslate(CGAffineTransformIdentity, _translateX, _translateY);
   self.parametersAsString = [NSString stringWithFormat:@"%f, %f", _translateX, _translateY];
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

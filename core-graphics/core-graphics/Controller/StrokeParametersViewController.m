@@ -92,6 +92,7 @@
   BOOL strokeEnabled = sender.on;
 
   self.strokeParameters.strokeEnabled = strokeEnabled;
+  [self.strokeParameters valuesDidChange];
 
   [self updateUiVisibility];
 }
@@ -103,6 +104,7 @@
   CGFloat lineWidth = [Converter floatFromStringValue:sender.text];
 
   self.strokeParameters.lineWidth = lineWidth;
+  [self.strokeParameters valuesDidChange];
 
   self.lineWidthSlider.value = [Converter fractionFromPartValue:lineWidth
                                                      wholeValue:self.strokeParameters.maximumLineWidth];
@@ -116,6 +118,7 @@
                                                  wholeValue:self.strokeParameters.maximumLineWidth];
 
   self.strokeParameters.lineWidth = lineWidth;
+  [self.strokeParameters valuesDidChange];
 
   self.lineWidthTextField.text = [NSString stringWithFormat:@"%f", lineWidth];
 }

@@ -8,6 +8,7 @@
 #import "StrokeParameters.h"
 #import "ColorParameters.h"
 #import "ShadowParameters.h"
+#import "../GlobalConstants.h"
 
 static NSString* strokeEnabledKey = @"strokeEnabled";
 static NSString* lineWidthKey = @"lineWidth";
@@ -36,6 +37,8 @@ static NSString* shadowParametersKey = @"shadowParameters";
   self.lineWidth = 10.0f;
 
   [self.colorParameters updateWithHexString:@"FF0000FF"];
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -58,6 +61,8 @@ static NSString* shadowParametersKey = @"shadowParameters";
   self.lineWidth = [dictionary[lineWidthKey] floatValue];
   [self.colorParameters setValuesWithDictionary:dictionary[colorParametersKey]];
   [self.shadowParameters setValuesWithDictionary:dictionary[shadowParametersKey]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -66,6 +71,11 @@ static NSString* shadowParametersKey = @"shadowParameters";
   [self.shadowParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

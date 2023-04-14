@@ -142,6 +142,7 @@
   CGFloat startCenterX = [Converter floatFromStringValue:sender.text];
 
   self.radialGradientParameters.startCenterX = startCenterX;
+  [self.radialGradientParameters valuesDidChange];
 
   self.startCenterXSlider.value = [Converter fractionFromPartValue:startCenterX
                                                         wholeValue:self.radialGradientParameters.maximumStartCenterX];
@@ -152,6 +153,7 @@
   CGFloat startCenterY = [Converter floatFromStringValue:sender.text];
 
   self.radialGradientParameters.startCenterY = startCenterY;
+  [self.radialGradientParameters valuesDidChange];
 
   self.startCenterYSlider.value = [Converter fractionFromPartValue:startCenterY
                                                         wholeValue:self.radialGradientParameters.maximumStartCenterY];
@@ -162,6 +164,7 @@
   CGFloat startRadius = [Converter floatFromStringValue:sender.text];
 
   self.radialGradientParameters.startRadius = startRadius;
+  [self.radialGradientParameters valuesDidChange];
 
   self.startRadiusSlider.value = [Converter fractionFromPartValue:startRadius
                                                        wholeValue:self.radialGradientParameters.maximumStartRadius];
@@ -172,6 +175,7 @@
   CGFloat endCenterX = [Converter floatFromStringValue:sender.text];
 
   self.radialGradientParameters.endCenterX = endCenterX;
+  [self.radialGradientParameters valuesDidChange];
 
   self.endCenterXSlider.value = [Converter fractionFromPartValue:endCenterX
                                                      wholeValue:self.radialGradientParameters.maximumEndCenterX];
@@ -182,6 +186,7 @@
   CGFloat endCenterY = [Converter floatFromStringValue:sender.text];
 
   self.radialGradientParameters.endCenterY = endCenterY;
+  [self.radialGradientParameters valuesDidChange];
 
   self.endCenterYSlider.value = [Converter fractionFromPartValue:endCenterY
                                                      wholeValue:self.radialGradientParameters.maximumEndCenterY];
@@ -192,6 +197,7 @@
   CGFloat endRadius = [Converter floatFromStringValue:sender.text];
 
   self.radialGradientParameters.endRadius = endRadius;
+  [self.radialGradientParameters valuesDidChange];
 
   self.endRadiusSlider.value = [Converter fractionFromPartValue:endRadius
                                                      wholeValue:self.radialGradientParameters.maximumEndRadius];
@@ -205,6 +211,7 @@
                                                     wholeValue:self.radialGradientParameters.maximumStartCenterX];
 
   self.radialGradientParameters.startCenterX = startCenterX;
+  [self.radialGradientParameters valuesDidChange];
 
   self.startCenterXTextField.text = [NSString stringWithFormat:@"%f", startCenterX];
 }
@@ -215,6 +222,7 @@
                                                     wholeValue:self.radialGradientParameters.maximumStartCenterY];
 
   self.radialGradientParameters.startCenterY = startCenterY;
+  [self.radialGradientParameters valuesDidChange];
 
   self.startCenterYTextField.text = [NSString stringWithFormat:@"%f", startCenterY];
 }
@@ -225,6 +233,7 @@
                                                    wholeValue:self.radialGradientParameters.maximumStartRadius];
 
   self.radialGradientParameters.startRadius = startRadius;
+  [self.radialGradientParameters valuesDidChange];
 
   self.startRadiusTextField.text = [NSString stringWithFormat:@"%f", startRadius];
 }
@@ -235,6 +244,7 @@
                                                   wholeValue:self.radialGradientParameters.maximumEndCenterX];
 
   self.radialGradientParameters.endCenterX = endCenterX;
+  [self.radialGradientParameters valuesDidChange];
 
   self.endCenterXTextField.text = [NSString stringWithFormat:@"%f", endCenterX];
 }
@@ -245,6 +255,7 @@
                                                   wholeValue:self.radialGradientParameters.maximumEndCenterY];
 
   self.radialGradientParameters.endCenterY = endCenterY;
+  [self.radialGradientParameters valuesDidChange];
 
   self.endCenterYTextField.text = [NSString stringWithFormat:@"%f", endCenterY];
 }
@@ -255,6 +266,7 @@
                                                  wholeValue:self.radialGradientParameters.maximumEndRadius];
 
   self.radialGradientParameters.endRadius = endRadius;
+  [self.radialGradientParameters valuesDidChange];
 
   self.endRadiusTextField.text = [NSString stringWithFormat:@"%f", endRadius];
 }

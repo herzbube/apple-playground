@@ -6,6 +6,7 @@
 //
 
 #import "MatrixAffineTransformParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* aKey = @"a";
 static NSString* bKey = @"b";
@@ -43,7 +44,7 @@ static NSString* tyKey = @"ty";
   self.tx = 0.0f;
   self.ty = 0.0f;
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -71,7 +72,7 @@ static NSString* tyKey = @"ty";
   self.tx = [dictionary[txKey] floatValue];
   self.ty = [dictionary[tyKey] floatValue];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -79,10 +80,11 @@ static NSString* tyKey = @"ty";
   [self initializeWithDefaultValues];
 }
 
-- (void) updateParametersDidChange
+- (void) valuesDidChange
 {
   self.affineTransform = CGAffineTransformMake(_a, _b, _c, _d, _tx, _ty);
   self.parametersAsString = [NSString stringWithFormat:@"%f, %f, %f, %f, %f, %f", _a, _b, _c, _d, _tx, _ty];
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

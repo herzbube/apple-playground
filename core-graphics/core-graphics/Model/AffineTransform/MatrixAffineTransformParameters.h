@@ -20,8 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary;
 
 - (void) resetToDefaultValues;
-
-- (void) updateParametersDidChange;
+- (void) valuesDidChange;
 
 @property CGFloat a;
 @property (readonly) CGFloat rangeA;

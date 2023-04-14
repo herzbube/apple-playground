@@ -11,6 +11,7 @@
 #import "ScaleAffineTransformParameters.h"
 #import "ShearAffineTransformParameters.h"
 #import "TranslateAffineTransformParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* affineTransformTypeKey = @"affineTransformType";
 static NSString* matrixAffineTransformParametersKey = @"matrixAffineTransformParameters";
@@ -41,6 +42,8 @@ static NSString* translateAffineTransformParametersKey = @"translateAffineTransf
 - (void) initializeWithDefaultValues
 {
   self.affineTransformType = AffineTransformTypeTranslate;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -71,6 +74,8 @@ static NSString* translateAffineTransformParametersKey = @"translateAffineTransf
   [self.translateAffineTransformParameters setValuesWithDictionary:dictionary[translateAffineTransformParametersKey]];
 
   [self startObserving];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -86,6 +91,11 @@ static NSString* translateAffineTransformParametersKey = @"translateAffineTransf
   [self initializeWithDefaultValues];
 
   [self startObserving];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 #pragma mark - KVO

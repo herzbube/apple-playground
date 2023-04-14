@@ -7,6 +7,7 @@
 
 #import "ColorParameters.h"
 #import "../Converter.h"
+#import "../GlobalConstants.h"
 
 static NSString* redKey = @"red";
 static NSString* greenKey = @"green";
@@ -32,6 +33,8 @@ static NSString* hexStringKey = @"hexString";
   self.blue = 0.0f;
   self.alpha = 1.0f;
   self.hexString = @"FF0000FF";
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -56,6 +59,8 @@ static NSString* hexStringKey = @"hexString";
   self.blue = [dictionary[blueKey] floatValue];
   self.alpha = [dictionary[alphaKey] floatValue];
   self.hexString = dictionary[hexStringKey];
+
+  [self valuesDidChange];
 }
 
 - (void) updateWithHexString:(NSString*)hexString
@@ -91,6 +96,11 @@ static NSString* hexStringKey = @"hexString";
 - (void) resetToDefaultValues
 {
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

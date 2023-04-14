@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary;
 
 - (void) resetToDefaultValues;
+- (void) valuesDidChange;
 
 @property CGFloat originX;
 @property (readonly) CGFloat maximumOriginX;
@@ -29,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property CGFloat height;
 @property (readonly) CGFloat maximumHeight;
+
+@property (strong, nonatomic) NSString* parametersAsString;
 
 @end
 

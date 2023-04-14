@@ -7,6 +7,7 @@
 
 #import "ShearAffineTransformParameters.h"
 #import "../../DrawingHelper.h"
+#import "../../GlobalConstants.h"
 
 static NSString* shearAngleXKey = @"shearAngleX";
 static NSString* shearAngleYKey = @"shearAngleY";
@@ -32,7 +33,7 @@ static NSString* shearAngleYKey = @"shearAngleY";
   self.shearAngleX = 0.0f;
   self.shearAngleY = 0.0f;
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -52,7 +53,7 @@ static NSString* shearAngleYKey = @"shearAngleY";
   self.shearAngleX = [dictionary[shearAngleXKey] floatValue];
   self.shearAngleY = [dictionary[shearAngleYKey] floatValue];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -60,7 +61,7 @@ static NSString* shearAngleYKey = @"shearAngleY";
   [self initializeWithDefaultValues];
 }
 
-- (void) updateParametersDidChange
+- (void) valuesDidChange
 {
   CGAffineTransform shearAffineTransform = CGAffineTransformIdentity;
   shearAffineTransform.c = tan([DrawingHelper radians:_shearAngleX]);
@@ -68,6 +69,7 @@ static NSString* shearAngleYKey = @"shearAngleY";
   self.affineTransform = shearAffineTransform;
 
   self.parametersAsString = [NSString stringWithFormat:@"%f, %f", _shearAngleX, _shearAngleY];
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

@@ -54,6 +54,7 @@
   CGFloat originX = [Converter floatFromStringValue:sender.text];
 
   self.rectangleParameters.originX = originX;
+  [self.rectangleParameters valuesDidChange];
 
   self.originXSlider.value = [Converter fractionFromPartValue:originX
                                                    wholeValue:self.rectangleParameters.maximumOriginX];
@@ -64,6 +65,7 @@
   CGFloat originY = [Converter floatFromStringValue:sender.text];
 
   self.rectangleParameters.originY = originY;
+  [self.rectangleParameters valuesDidChange];
 
   self.originYSlider.value = [Converter fractionFromPartValue:originY
                                                    wholeValue:self.rectangleParameters.maximumOriginY];
@@ -74,6 +76,7 @@
   CGFloat width = [Converter floatFromStringValue:sender.text];
 
   self.rectangleParameters.width = width;
+  [self.rectangleParameters valuesDidChange];
 
   self.widthSlider.value = [Converter fractionFromPartValue:width
                                                  wholeValue:self.rectangleParameters.maximumWidth];
@@ -84,6 +87,7 @@
   CGFloat height = [Converter floatFromStringValue:sender.text];
 
   self.rectangleParameters.height = height;
+  [self.rectangleParameters valuesDidChange];
 
   self.heightSlider.value = [Converter fractionFromPartValue:height
                                                   wholeValue:self.rectangleParameters.maximumHeight];
@@ -97,6 +101,7 @@
                                                wholeValue:self.rectangleParameters.maximumOriginX];
 
   self.rectangleParameters.originX = originX;
+  [self.rectangleParameters valuesDidChange];
 
   self.originXTextField.text = [NSString stringWithFormat:@"%f", originX];
 }
@@ -107,6 +112,7 @@
                                                wholeValue:self.rectangleParameters.maximumOriginY];
 
   self.rectangleParameters.originY = originY;
+  [self.rectangleParameters valuesDidChange];
 
   self.originYTextField.text = [NSString stringWithFormat:@"%f", originY];
 }
@@ -117,6 +123,7 @@
                                              wholeValue:self.rectangleParameters.maximumWidth];
 
   self.rectangleParameters.width = width;
+  [self.rectangleParameters valuesDidChange];
 
   self.widthTextField.text = [NSString stringWithFormat:@"%f", width];
 }
@@ -127,6 +134,7 @@
                                               wholeValue:self.rectangleParameters.maximumHeight];
 
   self.rectangleParameters.height = height;
+  [self.rectangleParameters valuesDidChange];
 
   self.heightTextField.text = [NSString stringWithFormat:@"%f", height];
 }

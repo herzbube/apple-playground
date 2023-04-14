@@ -50,7 +50,7 @@
   CGFloat translateX = [Converter floatFromStringValue:sender.text];
 
   self.translateAffineTransformParameters.translateX = translateX;
-  [self.translateAffineTransformParameters updateParametersDidChange];
+  [self.translateAffineTransformParameters valuesDidChange];
 
   self.translateXSlider.value = [Converter fractionFromPartValue:translateX
                                                       rangeValue:self.translateAffineTransformParameters.rangeTranslateX];
@@ -61,7 +61,7 @@
   CGFloat translateY = [Converter floatFromStringValue:sender.text];
 
   self.translateAffineTransformParameters.translateY = translateY;
-  [self.translateAffineTransformParameters updateParametersDidChange];
+  [self.translateAffineTransformParameters valuesDidChange];
 
   self.translateYSlider.value = [Converter fractionFromPartValue:translateY
                                                       rangeValue:self.translateAffineTransformParameters.rangeTranslateY];
@@ -75,7 +75,7 @@
                                                   rangeValue:self.translateAffineTransformParameters.rangeTranslateX];
 
   self.translateAffineTransformParameters.translateX = translateX;
-  [self.translateAffineTransformParameters updateParametersDidChange];
+  [self.translateAffineTransformParameters valuesDidChange];
 
   self.translateXTextField.text = [NSString stringWithFormat:@"%f", translateX];
 }
@@ -86,7 +86,7 @@
                                                   rangeValue:self.translateAffineTransformParameters.rangeTranslateY];
 
   self.translateAffineTransformParameters.translateY = translateY;
-  [self.translateAffineTransformParameters updateParametersDidChange];
+  [self.translateAffineTransformParameters valuesDidChange];
 
   self.translateYTextField.text = [NSString stringWithFormat:@"%f", translateY];
 }

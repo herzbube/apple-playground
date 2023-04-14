@@ -10,6 +10,7 @@
 #import "../ColorParameters.h"
 #import "../ShadowParameters.h"
 #import "../AffineTransform/AffineTransformParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* startCenterXKey = @"startCenterX";
 static NSString* startCenterYKey = @"startCenterY";
@@ -55,6 +56,8 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
   [self.gradientStopParameters.colorParameters1 updateWithHexString:@"FFFF00FF"];
   [self.gradientStopParameters.colorParameters2 updateWithHexString:@"0000FF00"];
   self.shadowParameters.shadowEnabled = false;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -87,6 +90,8 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
   [self.gradientStopParameters setValuesWithDictionary:dictionary[gradientStopParametersKey]];
   [self.shadowParameters setValuesWithDictionary:dictionary[shadowParametersKey]];
   [self.affineTransformParameters setValuesWithDictionary:dictionary[affineTransformParametersKey]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -96,6 +101,11 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
   [self.affineTransformParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

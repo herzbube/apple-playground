@@ -8,6 +8,7 @@
 #import "GradientParameters.h"
 #import "LinearGradientParameters.h"
 #import "RadialGradientParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* gradientEnabledKey = @"gradientEnabled";
 static NSString* gradientTypeKey = @"gradientType";
@@ -32,6 +33,8 @@ static NSString* radialGradientParametersKey = @"radialGradientParameters";
 {
   self.gradientEnabled = true;
   self.gradientType = GradientTypeLinear;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -54,6 +57,8 @@ static NSString* radialGradientParametersKey = @"radialGradientParameters";
   self.gradientType = [dictionary[gradientTypeKey] intValue];
   [self.linearGradientParameters setValuesWithDictionary:dictionary[linearGradientParametersKey]];
   [self.radialGradientParameters setValuesWithDictionary:dictionary[radialGradientParametersKey]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -62,6 +67,11 @@ static NSString* radialGradientParametersKey = @"radialGradientParameters";
   [self.radialGradientParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

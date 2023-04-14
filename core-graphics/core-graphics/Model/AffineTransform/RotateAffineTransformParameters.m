@@ -7,6 +7,7 @@
 
 #import "RotateAffineTransformParameters.h"
 #import "../../DrawingHelper.h"
+#import "../../GlobalConstants.h"
 
 static NSString* rotateAngleKey = @"rotateAngle";
 
@@ -29,7 +30,7 @@ static NSString* rotateAngleKey = @"rotateAngle";
 {
   self.rotateAngle = 0.0f;
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -47,7 +48,7 @@ static NSString* rotateAngleKey = @"rotateAngle";
 
   self.rotateAngle = [dictionary[rotateAngleKey] floatValue];
 
-  [self updateParametersDidChange];
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -55,11 +56,12 @@ static NSString* rotateAngleKey = @"rotateAngle";
   [self initializeWithDefaultValues];
 }
 
-- (void) updateParametersDidChange
+- (void) valuesDidChange
 {
   self.affineTransform = CGAffineTransformRotate(CGAffineTransformIdentity,
                                                  [DrawingHelper radians:_rotateAngle]);
   self.parametersAsString = [NSString stringWithFormat:@"%f", _rotateAngle];
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

@@ -8,6 +8,7 @@
 #import "PathParameters.h"
 #import "ArcParameters.h"
 #import "RectangleParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* pathEnabledKey = @"pathEnabled";
 static NSString* pathTypeKey = @"pathType";
@@ -32,6 +33,8 @@ static NSString* rectangleParametersKey = @"rectangleParameters";
 {
   self.pathEnabled = true;
   self.pathType = PathTypeArc;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -54,6 +57,8 @@ static NSString* rectangleParametersKey = @"rectangleParameters";
   self.pathType = [dictionary[pathTypeKey] intValue];
   [self.arcParameters setValuesWithDictionary:dictionary[arcParametersKey]];
   [self.rectangleParameters setValuesWithDictionary:dictionary[rectangleParametersKey]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -62,6 +67,11 @@ static NSString* rectangleParametersKey = @"rectangleParameters";
   [self.rectangleParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

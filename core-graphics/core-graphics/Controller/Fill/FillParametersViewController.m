@@ -110,6 +110,7 @@
   BOOL fillEnabled = sender.on;
 
   self.fillParameters.fillEnabled = fillEnabled;
+  [self.fillParameters valuesDidChange];
 
   [self updateUiVisibility];
 }
@@ -123,6 +124,7 @@
                        : FillTypeGradient);
 
   self.fillParameters.fillType = fillType;
+  [self.fillParameters valuesDidChange];
 
   [self removeChildViewController];
   [self integrateChildViewControllers];

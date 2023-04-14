@@ -8,6 +8,7 @@
 #import "SolidColorFillParameters.h"
 #import "../ColorParameters.h"
 #import "../ShadowParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* colorParametersKey = @"colorParameters";
 static NSString* shadowParametersKey = @"shadowParameters";
@@ -30,6 +31,8 @@ static NSString* shadowParametersKey = @"shadowParameters";
 {
   [self.colorParameters updateWithHexString:@"8080FFFF"];
   self.shadowParameters.shadowEnabled = false;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -48,6 +51,8 @@ static NSString* shadowParametersKey = @"shadowParameters";
 
   [self.colorParameters setValuesWithDictionary:dictionary[colorParametersKey]];
   [self.shadowParameters setValuesWithDictionary:dictionary[shadowParametersKey]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -56,6 +61,11 @@ static NSString* shadowParametersKey = @"shadowParameters";
   [self.shadowParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

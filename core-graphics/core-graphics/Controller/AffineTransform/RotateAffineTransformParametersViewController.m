@@ -48,7 +48,7 @@
   CGFloat rotateAngle = [Converter floatFromStringValue:sender.text];
 
   self.rotateAffineTransformParameters.rotateAngle = rotateAngle;
-  [self.rotateAffineTransformParameters updateParametersDidChange];
+  [self.rotateAffineTransformParameters valuesDidChange];
 
   self.rotateAngleSlider.value = [Converter fractionFromPartValue:rotateAngle
                                                        rangeValue:self.rotateAffineTransformParameters.rangeRotateAngle];
@@ -62,7 +62,7 @@
                                                    rangeValue:self.rotateAffineTransformParameters.rangeRotateAngle];
 
   self.rotateAffineTransformParameters.rotateAngle = rotateAngle;
-  [self.rotateAffineTransformParameters updateParametersDidChange];
+  [self.rotateAffineTransformParameters valuesDidChange];
 
   self.rotateAngleTextField.text = [NSString stringWithFormat:@"%f", rotateAngle];
 }

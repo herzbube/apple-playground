@@ -20,7 +20,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
 // Strong reference is needed so that the object is not deallocated when it is
 // removed from the view hierarchy
 @property (strong, nonatomic) IBOutlet UIStackView* affineParametersStackView;
-@property (weak, nonatomic) IBOutlet UITableView* transformsTableView;
+@property (weak, nonatomic) IBOutlet UITableView* itemsTableView;
 @property (weak, nonatomic) IBOutlet UIView* detailContainerView;
 @property (strong, nonatomic) IBOutlet UITextField* concatenatedAffineTransformTextField;
 @property (nonatomic) NSUInteger indexOfSelectedAffineTransformParametersItem;
@@ -89,6 +89,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
   BOOL affineTransformEnabled = sender.on;
 
   self.affineTransformParameters.affineTransformEnabled = affineTransformEnabled;
+  [self.affineTransformParameters valuesDidChange];
 
   [self updateUiVisibility];
 }
@@ -100,7 +101,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
   NSUInteger insertPosition = self.indexOfSelectedAffineTransformParametersItem + 1;
   NSUInteger indexOfInsertedItem = [self.affineTransformParameters insertItemAt:insertPosition];
 
-  [self.transformsTableView reloadData];
+  [self.itemsTableView reloadData];
 
   [self updateSelectedAffineTransformParametersItem:indexOfInsertedItem];
   [self updateCellSelection];
@@ -114,7 +115,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
   if (! success)
     return;
 
-  [self.transformsTableView reloadData];
+  [self.itemsTableView reloadData];
 
   NSUInteger numberOfItemsAfterRemoval = self.affineTransformParameters.affineTransformParametersItems.count;
   NSUInteger indexOfNewlySelectedItem = (indexOfItemToRemove < numberOfItemsAfterRemoval
@@ -132,7 +133,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
   if (! success)
     return;
 
-  [self.transformsTableView reloadData];
+  [self.itemsTableView reloadData];
 
   NSUInteger indexOfNewlySelectedItem = indexOfItemToMoveUp - 1;
   [self updateSelectedAffineTransformParametersItem:indexOfNewlySelectedItem];
@@ -146,7 +147,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
   if (! success)
     return;
 
-  [self.transformsTableView reloadData];
+  [self.itemsTableView reloadData];
 
   NSUInteger indexOfNewlySelectedItem = indexOfItemToMoveDown + 1;
   [self updateSelectedAffineTransformParametersItem:indexOfNewlySelectedItem];
@@ -208,7 +209,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
 
   [self updateUiVisibility];
 
-  [self.transformsTableView reloadData];
+  [self.itemsTableView reloadData];
 
   // How selection works:
   // - In general the table view manages cell selection without programmatic
@@ -281,7 +282,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
 
   // The table view does ***not*** invoke tableView:didSelectRowAtIndexPath: on
   // the delegate => the caller must also invoke updateDetailsView
-  [self.transformsTableView selectRowAtIndexPath:indexPath
+  [self.itemsTableView selectRowAtIndexPath:indexPath
                                         animated:YES
                                   scrollPosition:UITableViewScrollPositionMiddle];
 }
@@ -332,7 +333,7 @@ static NSString* reusableCellIdentifier = @"AffineTransformParametersItem";
 
     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:indexOfAffineTransformParametersItem
                                                 inSection:0];
-    [self.transformsTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.itemsTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
   }
 }
 

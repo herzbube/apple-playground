@@ -7,6 +7,7 @@
 
 #import "GradientStopParameters.h"
 #import "../ColorParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* position1Key = @"position1";
 static NSString* colorParameters1Key = @"colorParameters1";
@@ -31,6 +32,8 @@ static NSString* colorParameters2Key = @"colorParameters2";
 {
   self.position1 = 0.0f;
   self.position2 = 1.0f;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -53,6 +56,8 @@ static NSString* colorParameters2Key = @"colorParameters2";
   [self.colorParameters1 setValuesWithDictionary:dictionary[colorParameters1Key]];
   self.position2 = [dictionary[position2Key] floatValue];
   [self.colorParameters2 setValuesWithDictionary:dictionary[colorParameters2Key]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -61,6 +66,11 @@ static NSString* colorParameters2Key = @"colorParameters2";
   [self.colorParameters2 resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

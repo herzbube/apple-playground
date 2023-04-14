@@ -111,6 +111,7 @@
   BOOL gradientEnabled = sender.on;
 
   self.gradientParameters.gradientEnabled = gradientEnabled;
+  [self.gradientParameters valuesDidChange];
 
   [self updateUiVisibility];
 }
@@ -119,9 +120,13 @@
 
 - (IBAction) gradientTypeValueChanged:(UISegmentedControl*)sender
 {
-  self.gradientParameters.gradientType = (sender.selectedSegmentIndex == 0
-                                          ? GradientTypeLinear
-                                          : GradientTypeRadial);
+  GradientType gradientType = (sender.selectedSegmentIndex == 0
+                               ? GradientTypeLinear
+                               : GradientTypeRadial);
+  
+  self.gradientParameters.gradientType = gradientType;
+  [self.gradientParameters valuesDidChange];
+
   [self removeChildViewController];
   [self integrateChildViewControllers];
 }

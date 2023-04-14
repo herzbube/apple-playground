@@ -76,6 +76,7 @@
   BOOL shadowEnabled = sender.on;
 
   self.shadowParameters.shadowEnabled = shadowEnabled;
+  [self.shadowParameters valuesDidChange];
 
   [self updateUiVisibility];
 }
@@ -87,6 +88,7 @@
   CGFloat offsetX = [Converter floatFromStringValue:sender.text];
 
   self.shadowParameters.offsetX = offsetX;
+  [self.shadowParameters valuesDidChange];
 
   self.offsetXSlider.value = [Converter fractionFromPartValue:offsetX
                                                    rangeValue:self.shadowParameters.rangeOffsetX];
@@ -97,6 +99,7 @@
   CGFloat offsetY = [Converter floatFromStringValue:sender.text];
 
   self.shadowParameters.offsetY = offsetY;
+  [self.shadowParameters valuesDidChange];
 
   self.offsetYSlider.value = [Converter fractionFromPartValue:offsetY
                                                    rangeValue:self.shadowParameters.rangeOffsetY];
@@ -107,6 +110,7 @@
   CGFloat blur = [Converter floatFromStringValue:sender.text];
 
   self.shadowParameters.blur = blur;
+  [self.shadowParameters valuesDidChange];
 
   self.blurSlider.value = [Converter fractionFromPartValue:blur
                                                 wholeValue:self.shadowParameters.maximumBlur];
@@ -120,6 +124,7 @@
                                                rangeValue:self.shadowParameters.rangeOffsetX];
 
   self.shadowParameters.offsetX = offsetX;
+  [self.shadowParameters valuesDidChange];
 
   self.offsetXTextField.text = [NSString stringWithFormat:@"%f", offsetX];
 }
@@ -130,6 +135,7 @@
                                                rangeValue:self.shadowParameters.rangeOffsetY];
 
   self.shadowParameters.offsetY = offsetY;
+  [self.shadowParameters valuesDidChange];
 
   self.offsetYTextField.text = [NSString stringWithFormat:@"%f", offsetY];
 }
@@ -140,6 +146,7 @@
                                             wholeValue:self.shadowParameters.maximumBlur];
 
   self.shadowParameters.blur = blur;
+  [self.shadowParameters valuesDidChange];
 
   self.blurTextField.text = [NSString stringWithFormat:@"%f", blur];
 }

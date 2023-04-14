@@ -58,7 +58,7 @@
   CGFloat a = [Converter floatFromStringValue:sender.text];
 
   self.matrixAffineTransformParameters.a = a;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.aSlider.value = [Converter fractionFromPartValue:a
                                              rangeValue:self.matrixAffineTransformParameters.rangeA];
@@ -69,7 +69,7 @@
   CGFloat b = [Converter floatFromStringValue:sender.text];
 
   self.matrixAffineTransformParameters.b = b;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.bSlider.value = [Converter fractionFromPartValue:b
                                              rangeValue:self.matrixAffineTransformParameters.rangeB];
@@ -80,7 +80,7 @@
   CGFloat c = [Converter floatFromStringValue:sender.text];
 
   self.matrixAffineTransformParameters.c = c;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.cSlider.value = [Converter fractionFromPartValue:c
                                              rangeValue:self.matrixAffineTransformParameters.rangeC];
@@ -91,7 +91,7 @@
   CGFloat d = [Converter floatFromStringValue:sender.text];
 
   self.matrixAffineTransformParameters.d = d;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.dSlider.value = [Converter fractionFromPartValue:d
                                              rangeValue:self.matrixAffineTransformParameters.rangeD];
@@ -102,7 +102,7 @@
   CGFloat tx = [Converter floatFromStringValue:sender.text];
 
   self.matrixAffineTransformParameters.tx = tx;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.txSlider.value = [Converter fractionFromPartValue:tx
                                               rangeValue:self.matrixAffineTransformParameters.rangeTx];
@@ -113,7 +113,7 @@
   CGFloat ty = [Converter floatFromStringValue:sender.text];
 
   self.matrixAffineTransformParameters.ty = ty;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.tySlider.value = [Converter fractionFromPartValue:ty
                                               rangeValue:self.matrixAffineTransformParameters.rangeTy];
@@ -127,7 +127,7 @@
                                          rangeValue:self.matrixAffineTransformParameters.rangeA];
 
   self.matrixAffineTransformParameters.a = a;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.aTextField.text = [NSString stringWithFormat:@"%f", a];
 }
@@ -138,7 +138,7 @@
                                          rangeValue:self.matrixAffineTransformParameters.rangeB];
 
   self.matrixAffineTransformParameters.b = b;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.bTextField.text = [NSString stringWithFormat:@"%f", b];
 }
@@ -149,7 +149,7 @@
                                          rangeValue:self.matrixAffineTransformParameters.rangeC];
 
   self.matrixAffineTransformParameters.c = c;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.cTextField.text = [NSString stringWithFormat:@"%f", c];
 }
@@ -160,7 +160,7 @@
                                          rangeValue:self.matrixAffineTransformParameters.rangeD];
 
   self.matrixAffineTransformParameters.d = d;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.dTextField.text = [NSString stringWithFormat:@"%f", d];
 }
@@ -171,7 +171,7 @@
                                           rangeValue:self.matrixAffineTransformParameters.rangeTx];
 
   self.matrixAffineTransformParameters.tx = tx;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.txTextField.text = [NSString stringWithFormat:@"%f", tx];
 }
@@ -182,7 +182,7 @@
                                           rangeValue:self.matrixAffineTransformParameters.rangeTy];
 
   self.matrixAffineTransformParameters.ty = ty;
-  [self.matrixAffineTransformParameters updateParametersDidChange];
+  [self.matrixAffineTransformParameters valuesDidChange];
 
   self.tyTextField.text = [NSString stringWithFormat:@"%f", ty];
 }

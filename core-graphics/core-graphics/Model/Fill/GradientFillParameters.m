@@ -9,6 +9,7 @@
 #import "../Gradient/GradientParameters.h"
 #import "../Gradient/LinearGradientParameters.h"
 #import "../Gradient/RadialGradientParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* clipGradientToPathKey = @"clipGradientToPath";
 static NSString* gradientParametersKey = @"gradientParameters";
@@ -40,6 +41,8 @@ static NSString* gradientParametersKey = @"gradientParameters";
   self.gradientParameters.radialGradientParameters.endCenterX = 200.0f;
   self.gradientParameters.radialGradientParameters.endCenterY = 200.0f;
   self.gradientParameters.radialGradientParameters.endRadius = 120.0f;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -58,6 +61,8 @@ static NSString* gradientParametersKey = @"gradientParameters";
 
   self.clipGradientToPath = [dictionary[clipGradientToPathKey] boolValue];
   [self.gradientParameters setValuesWithDictionary:dictionary[gradientParametersKey]];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
@@ -65,6 +70,11 @@ static NSString* gradientParametersKey = @"gradientParameters";
   [self.gradientParameters resetToDefaultValues];
 
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

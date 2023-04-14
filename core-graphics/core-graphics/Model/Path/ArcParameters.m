@@ -6,6 +6,7 @@
 //
 
 #import "ArcParameters.h"
+#import "../../GlobalConstants.h"
 
 static NSString* centerXKey = @"centerX";
 static NSString* centerYKey = @"centerY";
@@ -39,6 +40,8 @@ static NSString* clockwiseKey = @"clockwise";
   self.startAngle = 0.0f;
   self.endAngle = 360.0f;
   self.clockwise = FALSE;
+
+  [self valuesDidChange];
 }
 
 - (NSDictionary*) valuesAsDictionary
@@ -64,11 +67,19 @@ static NSString* clockwiseKey = @"clockwise";
   self.startAngle = [dictionary[startAngleKey] floatValue];
   self.endAngle = [dictionary[endAngleKey] floatValue];
   self.clockwise = [dictionary[clockwiseKey] boolValue];
+
+  [self valuesDidChange];
 }
 
 - (void) resetToDefaultValues
 {
   [self initializeWithDefaultValues];
+}
+
+- (void) valuesDidChange
+{
+  self.parametersAsString = [NSString stringWithFormat:@"%f, %f, %f, %f, %f, %d", _centerX, _centerY, _radius, _startAngle, _endAngle, _clockwise];
+  [[NSNotificationCenter defaultCenter] postNotificationName:drawingParametersDidChange object:self];
 }
 
 @end

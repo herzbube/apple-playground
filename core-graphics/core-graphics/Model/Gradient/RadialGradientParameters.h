@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary;
 
 - (void) resetToDefaultValues;
+- (void) valuesDidChange;
 
 @property CGFloat startCenterX;
 @property (readonly) CGFloat maximumStartCenterX;

@@ -110,6 +110,7 @@
   BOOL pathEnabled = sender.on;
 
   self.pathParameters.pathEnabled = pathEnabled;
+  [self.pathParameters valuesDidChange];
 
   [self updateUiVisibility];
 }
@@ -118,9 +119,13 @@
 
 - (IBAction) pathTypeValueChanged:(UISegmentedControl*)sender
 {
-  self.pathParameters.pathType = (sender.selectedSegmentIndex == 0
-                                  ? PathTypeArc
-                                  : PathTypeRectangle);
+  PathType pathType = (sender.selectedSegmentIndex == 0
+                       ? PathTypeArc
+                       : PathTypeRectangle);
+
+  self.pathParameters.pathType = pathType;
+  [self.pathParameters valuesDidChange];
+
   [self removeChildViewController];
   [self integrateChildViewControllers];
 }

@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setValuesWithDictionary:(NSDictionary*)dictionary;
 
 - (void) resetToDefaultValues;
+- (void) valuesDidChange;
 
 @property CGFloat centerX;
 @property (readonly) CGFloat maximumCenterX;
@@ -34,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) CGFloat maximumEndAngle;
 
 @property BOOL clockwise;
+
+@property (strong, nonatomic) NSString* parametersAsString;
 
 @end
 

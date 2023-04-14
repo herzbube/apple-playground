@@ -50,7 +50,7 @@
   CGFloat scaleX = [Converter floatFromStringValue:sender.text];
 
   self.scaleAffineTransformParameters.scaleX = scaleX;
-  [self.scaleAffineTransformParameters updateParametersDidChange];
+  [self.scaleAffineTransformParameters valuesDidChange];
 
   self.scaleXSlider.value = [Converter fractionFromPartValue:scaleX
                                                   wholeValue:self.scaleAffineTransformParameters.maximumScaleX];
@@ -61,7 +61,7 @@
   CGFloat scaleY = [Converter floatFromStringValue:sender.text];
 
   self.scaleAffineTransformParameters.scaleY = scaleY;
-  [self.scaleAffineTransformParameters updateParametersDidChange];
+  [self.scaleAffineTransformParameters valuesDidChange];
 
   self.scaleYSlider.value = [Converter fractionFromPartValue:scaleY
                                                   wholeValue:self.scaleAffineTransformParameters.maximumScaleY];
@@ -75,7 +75,7 @@
                                               wholeValue:self.scaleAffineTransformParameters.maximumScaleX];
 
   self.scaleAffineTransformParameters.scaleX = scaleX;
-  [self.scaleAffineTransformParameters updateParametersDidChange];
+  [self.scaleAffineTransformParameters valuesDidChange];
 
   self.scaleXTextField.text = [NSString stringWithFormat:@"%f", scaleX];
 }
@@ -86,7 +86,7 @@
                                               wholeValue:self.scaleAffineTransformParameters.maximumScaleY];
 
   self.scaleAffineTransformParameters.scaleY = scaleY;
-  [self.scaleAffineTransformParameters updateParametersDidChange];
+  [self.scaleAffineTransformParameters valuesDidChange];
 
   self.scaleYTextField.text = [NSString stringWithFormat:@"%f", scaleY];
 }

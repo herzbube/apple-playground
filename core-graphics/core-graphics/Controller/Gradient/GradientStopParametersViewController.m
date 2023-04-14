@@ -89,6 +89,7 @@
   CGFloat position1 = [Converter floatFromStringValue:sender.text];
 
   self.gradientStopParameters.position1 = position1;
+  [self.gradientStopParameters valuesDidChange];
 
   self.position1Slider.value = position1;
 }
@@ -98,6 +99,7 @@
   CGFloat position2 = [Converter floatFromStringValue:sender.text];
 
   self.gradientStopParameters.position2 = position2;
+  [self.gradientStopParameters valuesDidChange];
 
   self.position2Slider.value = position2;
 }
@@ -109,6 +111,7 @@
   CGFloat position1 = sender.value;
 
   self.gradientStopParameters.position1 = position1;
+  [self.gradientStopParameters valuesDidChange];
 
   self.position1TextField.text = [NSString stringWithFormat:@"%f", position1];
 }
@@ -118,6 +121,7 @@
   CGFloat position2 = sender.value;
 
   self.gradientStopParameters.position2 = position2;
+  [self.gradientStopParameters valuesDidChange];
 
   self.position2TextField.text = [NSString stringWithFormat:@"%f", position2];
 }

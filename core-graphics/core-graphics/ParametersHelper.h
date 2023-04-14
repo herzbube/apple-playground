@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @class DrawingParameters;
+@class DrawingParametersItem;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) saveParameters:(DrawingParameters*)drawingParameters;
 + (void) loadParameters:(DrawingParameters*)drawingParameters;
 + (void) resetParameters:(DrawingParameters*)drawingParameters;
-+ (void) alignGradientToPathParameters:(DrawingParameters*)drawingParameters;
++ (void) alignGradientToPathParameters:(DrawingParametersItem*)drawingParametersItem;
 
 @end
 
