@@ -20,13 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) valuesDidChange;
 
 @property CGFloat centerX;
-@property (readonly) CGFloat maximumCenterX;
+@property (readonly) CGFloat rangeCenterX;
 
 @property CGFloat centerY;
-@property (readonly) CGFloat maximumCenterY;
+@property (readonly) CGFloat rangeCenterY;
 
 @property CGFloat radius;
-@property (readonly) CGFloat maximumRadius;
+@property (readonly) CGFloat rangeRadius;
 
 @property CGFloat startAngle;
 @property (readonly) CGFloat maximumStartAngle;

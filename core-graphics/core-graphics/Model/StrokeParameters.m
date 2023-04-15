@@ -26,7 +26,7 @@ static NSString* shadowParametersKey = @"shadowParameters";
 
   [self initializeWithDefaultValues];
 
-  _maximumLineWidth = 50.0f;
+  _maximumLineWidth = 250.0f;
 
   return self;
 }

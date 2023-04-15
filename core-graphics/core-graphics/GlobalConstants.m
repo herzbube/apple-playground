@@ -7,4 +7,6 @@
 
 #import "GlobalConstants.h"
 
+CGFloat drawingCanvasWidth = 400.0f;
+CGFloat drawingCanvasHeight = 1000.0f;
 NSString* drawingParametersDidChange = @"DrawingParametersDidChange";

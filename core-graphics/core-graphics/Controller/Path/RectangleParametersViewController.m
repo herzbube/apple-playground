@@ -57,7 +57,7 @@
   [self.rectangleParameters valuesDidChange];
 
   self.originXSlider.value = [Converter fractionFromPartValue:originX
-                                                   wholeValue:self.rectangleParameters.maximumOriginX];
+                                                   rangeValue:self.rectangleParameters.rangeOriginX];
 }
 
 - (IBAction) originYEditingDidEnd:(UITextField*)sender
@@ -68,7 +68,7 @@
   [self.rectangleParameters valuesDidChange];
 
   self.originYSlider.value = [Converter fractionFromPartValue:originY
-                                                   wholeValue:self.rectangleParameters.maximumOriginY];
+                                                   rangeValue:self.rectangleParameters.rangeOriginY];
 }
 
 - (IBAction) widthEditingDidEnd:(UITextField*)sender
@@ -79,7 +79,7 @@
   [self.rectangleParameters valuesDidChange];
 
   self.widthSlider.value = [Converter fractionFromPartValue:width
-                                                 wholeValue:self.rectangleParameters.maximumWidth];
+                                                 rangeValue:self.rectangleParameters.rangeWidth];
 }
 
 - (IBAction) heightEditingDidEnd:(UITextField*)sender
@@ -90,7 +90,7 @@
   [self.rectangleParameters valuesDidChange];
 
   self.heightSlider.value = [Converter fractionFromPartValue:height
-                                                  wholeValue:self.rectangleParameters.maximumHeight];
+                                                  rangeValue:self.rectangleParameters.rangeHeight];
 }
 
 #pragma mark - Slider input actions
@@ -98,7 +98,7 @@
 - (IBAction) originXValueChanged:(UISlider*)sender
 {
   CGFloat originX = [Converter partValueFromFractionValue:sender.value
-                                               wholeValue:self.rectangleParameters.maximumOriginX];
+                                               rangeValue:self.rectangleParameters.rangeOriginX];
 
   self.rectangleParameters.originX = originX;
   [self.rectangleParameters valuesDidChange];
@@ -109,7 +109,7 @@
 - (IBAction) originYValueChanged:(UISlider*)sender
 {
   CGFloat originY = [Converter partValueFromFractionValue:sender.value
-                                               wholeValue:self.rectangleParameters.maximumOriginY];
+                                               rangeValue:self.rectangleParameters.rangeOriginY];
 
   self.rectangleParameters.originY = originY;
   [self.rectangleParameters valuesDidChange];
@@ -120,7 +120,7 @@
 - (IBAction) widthValueChanged:(UISlider*)sender
 {
   CGFloat width = [Converter partValueFromFractionValue:sender.value
-                                             wholeValue:self.rectangleParameters.maximumWidth];
+                                             rangeValue:self.rectangleParameters.rangeWidth];
 
   self.rectangleParameters.width = width;
   [self.rectangleParameters valuesDidChange];
@@ -131,7 +131,7 @@
 - (IBAction) heightValueChanged:(UISlider*)sender
 {
   CGFloat height = [Converter partValueFromFractionValue:sender.value
-                                              wholeValue:self.rectangleParameters.maximumHeight];
+                                              rangeValue:self.rectangleParameters.rangeHeight];
 
   self.rectangleParameters.height = height;
   [self.rectangleParameters valuesDidChange];
@@ -149,13 +149,13 @@
   self.heightTextField.text = [NSString stringWithFormat:@"%f", self.rectangleParameters.height];
 
   self.originXSlider.value = [Converter fractionFromPartValue:self.rectangleParameters.originX
-                                                   wholeValue:self.rectangleParameters.maximumOriginX];
+                                                   rangeValue:self.rectangleParameters.rangeOriginX];
   self.originYSlider.value = [Converter fractionFromPartValue:self.rectangleParameters.originY
-                                                   wholeValue:self.rectangleParameters.maximumOriginY];
+                                                   rangeValue:self.rectangleParameters.rangeOriginY];
   self.widthSlider.value = [Converter fractionFromPartValue:self.rectangleParameters.width
-                                                 wholeValue:self.rectangleParameters.maximumWidth];
+                                                 rangeValue:self.rectangleParameters.rangeWidth];
   self.heightSlider.value = [Converter fractionFromPartValue:self.rectangleParameters.height
-                                                  wholeValue:self.rectangleParameters.maximumHeight];
+                                                  rangeValue:self.rectangleParameters.rangeHeight];
 }
 
 @end

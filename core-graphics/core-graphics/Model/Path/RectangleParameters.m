@@ -21,10 +21,10 @@ static NSString* heightKey = @"height";
 
   [self initializeWithDefaultValues];
 
-  _maximumOriginX = 500.0f;
-  _maximumOriginY = 500.0f;
-  _maximumWidth = 500.0f;
-  _maximumHeight = 360.0f;
+  _rangeOriginX = drawingCanvasWidth * 1.5f;
+  _rangeOriginY = drawingCanvasHeight * 1.5f;
+  _rangeWidth = drawingCanvasWidth;
+  _rangeHeight = drawingCanvasHeight;
 
   return self;
 }

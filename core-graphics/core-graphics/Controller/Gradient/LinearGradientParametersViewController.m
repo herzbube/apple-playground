@@ -141,7 +141,7 @@
   [self.linearGradientParameters valuesDidChange];
 
   self.startPointXSlider.value = [Converter fractionFromPartValue:startPointX
-                                                       wholeValue:self.linearGradientParameters.maximumStartPointX];
+                                                       rangeValue:self.linearGradientParameters.rangeStartPointX];
 }
 
 - (IBAction) startPointYEditingDidEnd:(UITextField*)sender
@@ -152,7 +152,7 @@
   [self.linearGradientParameters valuesDidChange];
 
   self.startPointYSlider.value = [Converter fractionFromPartValue:startPointY
-                                                       wholeValue:self.linearGradientParameters.maximumStartPointY];
+                                                       rangeValue:self.linearGradientParameters.rangeStartPointY];
 }
 
 - (IBAction) endPointXEditingDidEnd:(UITextField*)sender
@@ -163,7 +163,7 @@
   [self.linearGradientParameters valuesDidChange];
 
   self.endPointXSlider.value = [Converter fractionFromPartValue:endPointX
-                                                     wholeValue:self.linearGradientParameters.maximumEndPointX];
+                                                     rangeValue:self.linearGradientParameters.rangeEndPointX];
 }
 
 - (IBAction) endPointYEditingDidEnd:(UITextField*)sender
@@ -174,7 +174,7 @@
   [self.linearGradientParameters valuesDidChange];
 
   self.endPointYSlider.value = [Converter fractionFromPartValue:endPointY
-                                                     wholeValue:self.linearGradientParameters.maximumEndPointY];
+                                                     rangeValue:self.linearGradientParameters.rangeEndPointY];
 }
 
 #pragma mark - Slider input actions
@@ -182,7 +182,7 @@
 - (IBAction) startPointXValueChanged:(UISlider*)sender
 {
   CGFloat startPointX = [Converter partValueFromFractionValue:sender.value
-                                                   wholeValue:self.linearGradientParameters.maximumStartPointX];
+                                                   rangeValue:self.linearGradientParameters.rangeStartPointX];
 
   self.linearGradientParameters.startPointX = startPointX;
   [self.linearGradientParameters valuesDidChange];
@@ -193,7 +193,7 @@
 - (IBAction) startPointYValueChanged:(UISlider*)sender
 {
   CGFloat startPointY = [Converter partValueFromFractionValue:sender.value
-                                                   wholeValue:self.linearGradientParameters.maximumStartPointY];
+                                                   rangeValue:self.linearGradientParameters.rangeStartPointY];
 
   self.linearGradientParameters.startPointY = startPointY;
   [self.linearGradientParameters valuesDidChange];
@@ -204,7 +204,7 @@
 - (IBAction) endPointXValueChanged:(UISlider*)sender
 {
   CGFloat endPointX = [Converter partValueFromFractionValue:sender.value
-                                                 wholeValue:self.linearGradientParameters.maximumEndPointX];
+                                                 rangeValue:self.linearGradientParameters.rangeEndPointX];
 
   self.linearGradientParameters.endPointX = endPointX;
   [self.linearGradientParameters valuesDidChange];
@@ -215,7 +215,7 @@
 - (IBAction) endPointYValueChanged:(UISlider*)sender
 {
   CGFloat endPointY = [Converter partValueFromFractionValue:sender.value
-                                                 wholeValue:self.linearGradientParameters.maximumEndPointY];
+                                                 rangeValue:self.linearGradientParameters.rangeEndPointY];
 
   self.linearGradientParameters.endPointY = endPointY;
   [self.linearGradientParameters valuesDidChange];
@@ -233,13 +233,13 @@
   self.endPointYTextField.text = [NSString stringWithFormat:@"%f", self.linearGradientParameters.endPointY];
 
   self.startPointXSlider.value = [Converter fractionFromPartValue:self.linearGradientParameters.startPointX
-                                                       wholeValue:self.linearGradientParameters.maximumStartPointX];
+                                                       rangeValue:self.linearGradientParameters.rangeStartPointX];
   self.startPointYSlider.value = [Converter fractionFromPartValue:self.linearGradientParameters.startPointY
-                                                       wholeValue:self.linearGradientParameters.maximumStartPointY];
+                                                       rangeValue:self.linearGradientParameters.rangeStartPointY];
   self.endPointXSlider.value = [Converter fractionFromPartValue:self.linearGradientParameters.endPointX
-                                                     wholeValue:self.linearGradientParameters.maximumEndPointX];
+                                                     rangeValue:self.linearGradientParameters.rangeEndPointX];
   self.endPointYSlider.value = [Converter fractionFromPartValue:self.linearGradientParameters.endPointY
-                                                     wholeValue:self.linearGradientParameters.maximumEndPointY];
+                                                     rangeValue:self.linearGradientParameters.rangeEndPointY];
 
   for (id childViewController in self.childViewControllers)
     [childViewController updateUiWithModelValues];

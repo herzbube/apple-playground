@@ -60,7 +60,7 @@
   [self.arcParameters valuesDidChange];
 
   self.centerXSlider.value = [Converter fractionFromPartValue:centerX
-                                                   wholeValue:self.arcParameters.maximumCenterX];
+                                                   rangeValue:self.arcParameters.rangeCenterX];
 }
 
 - (IBAction) centerYEditingDidEnd:(UITextField*)sender
@@ -71,7 +71,7 @@
   [self.arcParameters valuesDidChange];
 
   self.centerYSlider.value = [Converter fractionFromPartValue:centerY
-                                                   wholeValue:self.arcParameters.maximumCenterY];
+                                                   rangeValue:self.arcParameters.rangeCenterY];
 }
 
 - (IBAction) radiusEditingDidEnd:(UITextField*)sender
@@ -82,7 +82,7 @@
   [self.arcParameters valuesDidChange];
 
   self.radiusSlider.value = [Converter fractionFromPartValue:radius
-                                                  wholeValue:self.arcParameters.maximumRadius];
+                                                  rangeValue:self.arcParameters.rangeRadius];
 }
 
 - (IBAction) startAngleEditingDidEnd:(UITextField*)sender
@@ -112,7 +112,7 @@
 - (IBAction) centerXValueChanged:(UISlider*)sender
 {
   CGFloat centerX = [Converter partValueFromFractionValue:sender.value
-                                               wholeValue:self.arcParameters.maximumCenterX];
+                                               rangeValue:self.arcParameters.rangeCenterX];
 
   self.arcParameters.centerX = centerX;
   [self.arcParameters valuesDidChange];
@@ -123,7 +123,7 @@
 - (IBAction) centerYValueChanged:(UISlider*)sender
 {
   CGFloat centerY = [Converter partValueFromFractionValue:sender.value
-                                               wholeValue:self.arcParameters.maximumCenterY];
+                                               rangeValue:self.arcParameters.rangeCenterY];
 
   self.arcParameters.centerY = centerY;
   [self.arcParameters valuesDidChange];
@@ -134,7 +134,7 @@
 - (IBAction) radiusValueChanged:(UISlider*)sender
 {
   CGFloat radius = [Converter partValueFromFractionValue:sender.value
-                                              wholeValue:self.arcParameters.maximumRadius];
+                                              rangeValue:self.arcParameters.rangeRadius];
 
   self.arcParameters.radius = radius;
   [self.arcParameters valuesDidChange];
@@ -185,11 +185,11 @@
   self.endAngleTextField.text = [NSString stringWithFormat:@"%f", self.arcParameters.endAngle];
 
   self.centerXSlider.value = [Converter fractionFromPartValue:self.arcParameters.centerX
-                                                   wholeValue:self.arcParameters.maximumCenterX];
+                                                   rangeValue:self.arcParameters.rangeCenterX];
   self.centerYSlider.value = [Converter fractionFromPartValue:self.arcParameters.centerY
-                                                   wholeValue:self.arcParameters.maximumCenterY];
+                                                   rangeValue:self.arcParameters.rangeCenterY];
   self.radiusSlider.value = [Converter fractionFromPartValue:self.arcParameters.radius
-                                                  wholeValue:self.arcParameters.maximumRadius];
+                                                  rangeValue:self.arcParameters.rangeRadius];
   self.startAngleSlider.value = [Converter fractionFromPartValue:self.arcParameters.startAngle
                                                       wholeValue:self.arcParameters.maximumStartAngle];
   self.endAngleSlider.value = [Converter fractionFromPartValue:self.arcParameters.endAngle

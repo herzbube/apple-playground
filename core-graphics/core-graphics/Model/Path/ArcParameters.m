@@ -23,9 +23,9 @@ static NSString* clockwiseKey = @"clockwise";
 
   [self initializeWithDefaultValues];
 
-  _maximumCenterX = 500.0f;
-  _maximumCenterY = 500.0f;
-  _maximumRadius = 500.0f;
+  _rangeCenterX = drawingCanvasWidth * 1.5f;
+  _rangeCenterY = drawingCanvasHeight * 1.5f;
+  _rangeRadius = MAX(drawingCanvasWidth, drawingCanvasHeight) / 2.0f;
   _maximumStartAngle = 360.0f;
   _maximumEndAngle = 360.0f;
 

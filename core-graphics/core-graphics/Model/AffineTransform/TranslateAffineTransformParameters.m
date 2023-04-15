@@ -19,8 +19,8 @@ static NSString* translateYKey = @"translateY";
 
   [self initializeWithDefaultValues];
 
-  _rangeTranslateX = 1000.0f;
-  _rangeTranslateY = 1000.0f;
+  _rangeTranslateX = drawingCanvasWidth * 1.5f;
+  _rangeTranslateY = drawingCanvasHeight * 1.5f;
 
   self.affineTransformTypeAsString = @"Translate";
 

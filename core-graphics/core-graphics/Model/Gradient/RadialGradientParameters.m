@@ -34,12 +34,12 @@ static NSString* affineTransformParametersKey = @"affineTransformParameters";
 
   [self initializeWithDefaultValues];
 
-  _maximumStartCenterX = 500.0f;
-  _maximumStartCenterY = 500.0f;
-  _maximumStartRadius = 500.0f;
-  _maximumEndCenterX = 500.0f;
-  _maximumEndCenterY = 500.0f;
-  _maximumEndRadius = 500.0f;
+  _rangeStartCenterX = drawingCanvasWidth * 1.5f;
+  _rangeStartCenterY = drawingCanvasHeight * 1.5f;
+  _rangeStartRadius = MAX(drawingCanvasWidth, drawingCanvasHeight) / 2.0f;
+  _rangeEndCenterX = drawingCanvasWidth * 1.5f;
+  _rangeEndCenterY = drawingCanvasHeight * 1.5f;
+  _rangeEndRadius = MAX(drawingCanvasWidth, drawingCanvasHeight) / 2.0f;
 
   return self;
 }

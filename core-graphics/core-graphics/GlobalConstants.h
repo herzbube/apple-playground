@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern CGFloat drawingCanvasWidth;
+extern CGFloat drawingCanvasHeight;
 extern NSString* drawingParametersDidChange;
 
 NS_ASSUME_NONNULL_END

@@ -25,9 +25,9 @@ static NSString* colorParametersKey = @"colorParameters";
 
   [self initializeWithDefaultValues];
 
-  _rangeOffsetX = 1000.0f;
-  _rangeOffsetY = 1000.0f;
-  _maximumBlur = 500.0f;
+  _rangeOffsetX = drawingCanvasWidth * 1.5f;
+  _rangeOffsetY = drawingCanvasHeight * 1.5f;
+  _maximumBlur = 200.0f;
 
   return self;
 }

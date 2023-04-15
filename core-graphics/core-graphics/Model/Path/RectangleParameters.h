@@ -20,16 +20,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) valuesDidChange;
 
 @property CGFloat originX;
-@property (readonly) CGFloat maximumOriginX;
+@property (readonly) CGFloat rangeOriginX;
 
 @property CGFloat originY;
-@property (readonly) CGFloat maximumOriginY;
+@property (readonly) CGFloat rangeOriginY;
 
 @property CGFloat width;
-@property (readonly) CGFloat maximumWidth;
+@property (readonly) CGFloat rangeWidth;
 
 @property CGFloat height;
-@property (readonly) CGFloat maximumHeight;
+@property (readonly) CGFloat rangeHeight;
 
 @property (strong, nonatomic) NSString* parametersAsString;
 

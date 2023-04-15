@@ -24,22 +24,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) valuesDidChange;
 
 @property CGFloat startCenterX;
-@property (readonly) CGFloat maximumStartCenterX;
+@property (readonly) CGFloat rangeStartCenterX;
 
 @property CGFloat startCenterY;
-@property (readonly) CGFloat maximumStartCenterY;
+@property (readonly) CGFloat rangeStartCenterY;
 
 @property CGFloat startRadius;
-@property (readonly) CGFloat maximumStartRadius;
+@property (readonly) CGFloat rangeStartRadius;
 
 @property CGFloat endCenterX;
-@property (readonly) CGFloat maximumEndCenterX;
+@property (readonly) CGFloat rangeEndCenterX;
 
 @property CGFloat endCenterY;
-@property (readonly) CGFloat maximumEndCenterY;
+@property (readonly) CGFloat rangeEndCenterY;
 
 @property CGFloat endRadius;
-@property (readonly) CGFloat maximumEndRadius;
+@property (readonly) CGFloat rangeEndRadius;
 
 @property (strong, nonatomic) GradientStopParameters* gradientStopParameters;
 @property (strong, nonatomic) ShadowParameters* shadowParameters;

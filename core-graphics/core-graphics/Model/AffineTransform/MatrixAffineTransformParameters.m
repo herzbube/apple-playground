@@ -23,12 +23,38 @@ static NSString* tyKey = @"ty";
 
   [self initializeWithDefaultValues];
 
-  _rangeA = 1000.0f;
-  _rangeB = 1000.0f;
-  _rangeC = 1000.0f;
-  _rangeD = 1000.0f;
-  _rangeTx = 1000.0f;
-  _rangeTy = 1000.0f;
+  // a and d
+  // - a and d are used for scaling and are set with the scaling factor in
+  //   x/y-direction. The two parameters can therefore theoretically become
+  //   +/-INF.
+  // - a and d are also used for rotation, in which case the two parameters are
+  //   set with cos(θ) - θ being the rotation angle - and cos() oscillates
+  //   between +/-1.
+  // - Setting the range for a and d to +/-10 is a compromise with usability
+  //   as it allows the user to drag a slider to the maximum/minimum position
+  //   with reasonable accuracy and still see the scaling effect. If more
+  //   scaling is needed the user can manually enter a value.
+  //
+  // b and c
+  // - b and c can become +/-INF because for shearing these two parameters are
+  //   set with tan(ψ) and tan(ϕ), respectively - ψ and ϕ being the shearing
+  //   angles in x/y-direction - and tan() becomes +/-INF at 90° angles.
+  // - b and c are also used for rotation, in which case the two parameters are
+  //   set with +/-sin(θ) - θ being the rotation angle - and sin() oscillates
+  //   between +/-1.
+  // - Setting the range for b and c to +/-10 is a compromise with usability
+  //   as it allows the user to drag a slider to the maximum/minimum position
+  //   with reasonable accuracy and still see the shearing effect. The maximum
+  //   shearing angle to be achieved is +/-84.3°, which should be sufficient for
+  //   most cases. If more shearing is needed the user can manually enter a
+  //   value, or use the transformation dedicated to shearing, which lets the
+  //   user enter a degree value.
+  _rangeA = 10.0f;
+  _rangeB = 10.0f;
+  _rangeC = 10.0f;
+  _rangeD = 10.0f;
+  _rangeTx = drawingCanvasWidth * 1.5f;
+  _rangeTy = drawingCanvasHeight * 1.5f;
   
   self.affineTransformTypeAsString = @"Matrix";
 
