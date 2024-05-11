@@ -6,6 +6,7 @@
 //
 
 #import "DrawingHelper.h"
+#import "CGDrawingHelper.h"
 #import "Model/ColorParameters.h"
 #import "Model/ShadowParameters.h"
 #import "Model/StrokeParameters.h"
@@ -311,6 +312,68 @@ CGGradientRef CreateGradient(CGColorSpaceRef colorSpace,
 
   // Remove shadow and transform
   CGContextRestoreGState(context);
+}
+
++ (bool) drawStones:(CGContextRef)context
+     pathParameters:(PathParameters*)pathParameters
+{
+  if (! pathParameters.pathEnabled)
+    return false;
+  if (pathParameters.pathType != PathTypeArc)
+    return false;
+
+  CGFloat radius = pathParameters.arcParameters.radius;
+  CGFloat diameter = radius * 2.0f;
+  CGFloat spacing = 20.0f;
+  CGSize size = CGSizeMake(diameter, diameter);
+  CGFloat originX = spacing;
+  CGFloat originY = spacing;
+
+  CGLayerRef blackStoneLayer = CreateStoneLayer(context,
+                                                size,
+                                                GoColorBlack,
+                                                false);
+  [DrawingHelper drawLayer:blackStoneLayer
+               withContext:context
+                  atOrigin:CGPointMake(originX, originY)];
+
+  // ----------
+
+  originY += diameter + spacing;
+  CGLayerRef whiteStoneLayer = CreateStoneLayer(context,
+                                                size,
+                                                GoColorWhite,
+                                                false);
+  [DrawingHelper drawLayer:whiteStoneLayer
+               withContext:context
+                  atOrigin:CGPointMake(originX, originY)];
+
+  // ----------
+
+  originY += diameter + spacing;
+  CGLayerRef crossHairStoneLayer = CreateStoneLayer(context,
+                                                    size,
+                                                    GoColorBlack,
+                                                    true);
+  [DrawingHelper drawLayer:crossHairStoneLayer
+               withContext:context
+                  atOrigin:CGPointMake(originX, originY)];
+
+  return true;
+}
+
++ (void) drawLayer:(CGLayerRef)layer
+       withContext:(CGContextRef)context
+          atOrigin:(CGPoint)origin
+{
+  if (! layer)
+    return;
+
+  CGRect drawingRect = CGRectZero;
+  drawingRect.origin = origin;
+  drawingRect.size = CGLayerGetSize(layer);
+
+  CGContextDrawLayerInRect(context, drawingRect, layer);
 }
 
 @end

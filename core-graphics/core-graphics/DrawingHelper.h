@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) drawGradientWithContext:(CGContextRef)context
               gradientParameters:(GradientParameters*)gradientParameters;
 
++ (bool) drawStones:(CGContextRef)context
+     pathParameters:(PathParameters*)pathParameters;
+
 @end
 
 NS_ASSUME_NONNULL_END

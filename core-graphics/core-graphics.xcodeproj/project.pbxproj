@@ -14,6 +14,8 @@
 		CD10878C29E875F200DF40AF /* DrawingParametersItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD10878729E875F200DF40AF /* DrawingParametersItemViewController.xib */; };
 		CD10878F29E8B96B00DF40AF /* GlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10878D29E8B96A00DF40AF /* GlobalConstants.m */; };
 		CD1A2A2829E046AC00CD0848 /* ParametersHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1A2A2729E046AC00CD0848 /* ParametersHelper.m */; };
+		CD7C43A129FE905E006D2063 /* CGDrawingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C43A029FE905E006D2063 /* CGDrawingHelper.m */; };
+		CD7C43A429FE949F006D2063 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7C43A229FE949F006D2063 /* UIColorAdditions.m */; };
 		CD84615229C78A5F00D4D6B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD84615129C78A5F00D4D6B7 /* AppDelegate.m */; };
 		CD84615529C78A5F00D4D6B7 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD84615429C78A5F00D4D6B7 /* SceneDelegate.m */; };
 		CD84615829C78A5F00D4D6B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD84615729C78A5F00D4D6B7 /* ViewController.m */; };
@@ -101,6 +103,10 @@
 		CD10878E29E8B96A00DF40AF /* GlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConstants.h; sourceTree = "<group>"; };
 		CD1A2A2629E046AC00CD0848 /* ParametersHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParametersHelper.h; sourceTree = "<group>"; };
 		CD1A2A2729E046AC00CD0848 /* ParametersHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParametersHelper.m; sourceTree = "<group>"; };
+		CD7C439F29FE905E006D2063 /* CGDrawingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGDrawingHelper.h; sourceTree = "<group>"; };
+		CD7C43A029FE905E006D2063 /* CGDrawingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGDrawingHelper.m; sourceTree = "<group>"; };
+		CD7C43A229FE949F006D2063 /* UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorAdditions.m; sourceTree = "<group>"; };
+		CD7C43A329FE949F006D2063 /* UIColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorAdditions.h; sourceTree = "<group>"; };
 		CD84614D29C78A5F00D4D6B7 /* core-graphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "core-graphics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD84615029C78A5F00D4D6B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CD84615129C78A5F00D4D6B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -304,6 +310,10 @@
 				CDC0F9EF29CF197B0005F9F6 /* Converter.m */,
 				CD1A2A2629E046AC00CD0848 /* ParametersHelper.h */,
 				CD1A2A2729E046AC00CD0848 /* ParametersHelper.m */,
+				CD7C439F29FE905E006D2063 /* CGDrawingHelper.h */,
+				CD7C43A029FE905E006D2063 /* CGDrawingHelper.m */,
+				CD7C43A329FE949F006D2063 /* UIColorAdditions.h */,
+				CD7C43A229FE949F006D2063 /* UIColorAdditions.m */,
 			);
 			path = "core-graphics";
 			sourceTree = "<group>";
@@ -595,7 +605,9 @@
 				CDC0F9DD29CBAAD10005F9F6 /* StrokeParametersViewController.m in Sources */,
 				CDAD568F29E5BB830036CF94 /* GradientStopParameters.m in Sources */,
 				CD84615229C78A5F00D4D6B7 /* AppDelegate.m in Sources */,
+				CD7C43A129FE905E006D2063 /* CGDrawingHelper.m in Sources */,
 				CDB6A13629D07323007618BA /* GradientStopParametersViewController.m in Sources */,
+				CD7C43A429FE949F006D2063 /* UIColorAdditions.m in Sources */,
 				CDAD568929E5BB830036CF94 /* GradientFillParameters.m in Sources */,
 				CDB6A16929D8899A007618BA /* MatrixAffineTransformParameters.m in Sources */,
 				CDAD568A29E5BB830036CF94 /* SolidColorFillParameters.m in Sources */,

@@ -49,6 +49,12 @@
 
     [DrawingHelper drawGradientWithContext:context
                         gradientParameters:item.gradientParameters];
+
+    // TODO: Enable this to draw Go stones. Obviously this should be
+    // integrated properly into the project
+//    bool didDraw = [DrawingHelper drawStones:context pathParameters:item.pathParameters];
+//    if (didDraw)
+//      break;
   }
 }
 
