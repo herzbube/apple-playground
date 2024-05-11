@@ -70,8 +70,6 @@ static CGFloat smallFontSize = 11.0f;
 @property (strong, nonatomic) NSLayoutConstraint* detailTextLabelYPositionConstraint;
 @property (strong, nonatomic) NSLayoutConstraint* detailTextLabelZeroHeightConstraint;
 
-@property (strong, nonatomic) NSLayoutConstraint* capturedStonesLabelZeroWidthConstraint;
-
 @property (strong, nonatomic) NSLayoutConstraint* infoIconImageViewLeftEdgeConstraint;
 @property (strong, nonatomic) NSLayoutConstraint* infoIconImageViewWidthConstraint;
 
@@ -80,10 +78,8 @@ static CGFloat smallFontSize = 11.0f;
 @property (strong, nonatomic) NSLayoutConstraint* markupIconImageViewLeftEdgeConstraint;
 @property (strong, nonatomic) NSLayoutConstraint* markupIconImageViewWidthConstraint;
 
-@property (strong, nonatomic) NSLayoutConstraint* infoIconImageViewXPositionConstraint;
 @property (strong, nonatomic) NSLayoutConstraint* infoIconImageViewYPositionConstraint;
 @property (strong, nonatomic) NSLayoutConstraint* hotspotIconImageViewYPositionConstraint;
-@property (strong, nonatomic) NSLayoutConstraint* markupIconImageViewXPositionConstraint;
 @property (strong, nonatomic) NSLayoutConstraint* markupIconImageViewYPositionConstraint;
 
 @property (strong, nonatomic) NSLayoutConstraint* contentWidthConstraint;
@@ -495,9 +491,6 @@ static CGFloat smallFontSize = 11.0f;
 
   // C036 vertical text alignment = default (center)
 
-  // C032 in ORIGINAL - set to nil to initialize
-  self.capturedStonesLabelZeroWidthConstraint = nil;
-
   NSArray* constraints = [AutoLayoutUtility installVisualFormats:visualFormats withViews:viewsDictionary inView:self];
   [self throwIfConstraints:constraints hasNotExpectedCount:1];
   ((NSLayoutConstraint*)constraints[0]).identifier = @"C030";
@@ -542,9 +535,6 @@ static CGFloat smallFontSize = 11.0f;
 
   // C044
   [visualFormats addObject:[NSString stringWithFormat:@"V:[infoIconImageView(==%f)]", iconImageDimension]];
-
-  // C040 in ORIGINAL - set to nil to initialize
-  self.infoIconImageViewXPositionConstraint = nil;
 
   NSArray* constraints = [AutoLayoutUtility installVisualFormats:visualFormats withViews:viewsDictionary inView:self];
   [self throwIfConstraints:constraints hasNotExpectedCount:2];
@@ -627,9 +617,6 @@ static CGFloat smallFontSize = 11.0f;
 
   // C064
   [visualFormats addObject:[NSString stringWithFormat:@"V:[markupIconImageView(==%f)]", iconImageDimension]];
-
-  // C060 in ORIGINAL - set to nil to initialize
-  self.markupIconImageViewXPositionConstraint = nil;
 
   NSArray* constraints = [AutoLayoutUtility installVisualFormats:visualFormats withViews:viewsDictionary inView:self];
   [self throwIfConstraints:constraints hasNotExpectedCount:2];
